@@ -11,7 +11,9 @@
       バックエンドはGo、<br />
       フロントエンドは現在Reactを使用しています。
     </p>
-    <app-button v-if="visible" class="learnMoreBtn" text="さらに詳しく" />
+    <nuxt-link to="/works/teamkitten">
+      <app-button v-if="visible" class="learnMoreBtn" text="さらに詳しく" />
+    </nuxt-link>
   </div>
 </template>
 

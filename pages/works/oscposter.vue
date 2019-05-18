@@ -195,6 +195,7 @@ export default {
   margin: 64px 0 32px 0;
   width: 180px;
   height: auto;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
 }
 
 .link {

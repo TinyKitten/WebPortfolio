@@ -2,64 +2,83 @@
   <div>
     <section class="container">
       <article class="content">
-        <app-postit class="postit" text="Dev/MobileApp" />
-        <img class="logo" src="~/assets/works/snovel.png" alt="Snovel" />
-        <h2 class="name">Snovel</h2>
+        <app-postit class="postit" text="Dev/FullStack" />
+        <img class="logo" src="~/assets/works/teamkitten.png" alt="Snovel" />
+        <h2 class="name">TeamKitten</h2>
         <p class="bio">
-          Snovelは、駅ノートでつながるSNS<br />
-          訪れた駅、思い出の駅。<br />
-          いろんな駅でチェックインして<br />
-          ノートに書き残そう。
+          TeamKittenというネットサークルの<br />
+          メンバー管理API設計・実装、<br />
+          ウェブサイトの開発を担当しました。<br />
+          バックエンドはGo、<br />
+          フロントエンドは現在Reactを使用しています。
         </p>
       </article>
     </section>
     <section class="container">
-      <app-title-postit v-if="visible" title="Snovel" subtitle="コンセプト" />
+      <app-title-postit
+        v-if="visible"
+        title="TeamKitten"
+        subtitle="コンセプト"
+      />
       <article class="content">
         <h2 class="concept">
-          位置情報を用いて<br />
-          SNSを作りたい
+          在籍していることを<br />
+          誇れるシステムに
         </h2>
         <p class="conceptDescription">
-          ぶっちゃけ、動機はただそれだけです。<br />
-          もともと<a
-            href="https://github.com/TinyKitten/StationAPI"
-            target="_blank"
-            rel="noopener noreferrer"
-            >StationAPI</a
-          >というAPIを作っていて、<br />
-          それの応用例として<br />
-          <a
-            href="https://near.tinykitten.me"
-            target="_blank"
-            rel="noopener noreferrer"
-            >NearStation</a
-          >というものがあります。<br />
-          それを拡張したらSNSにできるんじゃないか？<br />
-          そういう考えで作られています。
+          TeamKittenというネットサークルを<br />
+          自分が運営しています。<br />
+          メンバーが自分でサイトに映る<br />
+          自己紹介やアバターを変更していただく為に<br />
+          バックエンドの開発を決意しました。<br />
+          APIはGoで実装し、フロントは<br />
+          今はReact.jsを用いています。（昔はVue）<br />
+          ポータルというメンバーのみが使える内部システムで<br />
+          簡単に自己紹介・アバター・カバー画像を<br />
+          即座に変更できます。
         </p>
       </article>
     </section>
     <section class="container">
-      <app-title-postit v-if="visible" title="Snovel" subtitle="デザイン" />
+      <app-title-postit v-if="visible" title="TeamKitten" subtitle="デザイン" />
       <article class="content">
-        <img class="galleryImg" src="~/assets/works/snovel.png" alt="Snovel" />
+        <img
+          class="galleryImg"
+          src="~/assets/works/teamkitten.png"
+          alt="Snovel"
+        />
         <h2 class="galleryConcept">
-          鉄道ファン以外も<br />
-          親しみを持てるように
+          掲載されることに喜びを覚える<br />
+          シンプルながら美しいデザイン
         </h2>
       </article>
     </section>
     <section class="container">
-      <app-title-postit v-if="visible" title="Snovel" subtitle="リンク" />
+      <app-title-postit v-if="visible" title="TeamKitten" subtitle="リンク" />
       <article class="content">
         <a
-          href="https://snovel.tinykitten.me"
+          href="https://teamkitten.tk"
           target="_blank"
           class="link"
           rel="noopener noreferrer"
         >
           <app-button text="公式サイト" />
+        </a>
+        <a
+          href="https://github.com/TeamKitten/API"
+          target="_blank"
+          class="link"
+          rel="noopener noreferrer"
+        >
+          <app-button text="APIリポジトリ" />
+        </a>
+        <a
+          href="https://github.com/TeamKitten/OfficialWeb"
+          target="_blank"
+          class="link"
+          rel="noopener noreferrer"
+        >
+          <app-button text="フロントリポジトリ" />
         </a>
         <nuxt-link to="/" class="link">
           <app-button color="#555" text="戻る" />
@@ -121,7 +140,7 @@ export default {
 
 .logo {
   opacity: 0;
-  width: 180px;
+  width: 320px;
   height: auto;
   filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.16));
   animation: imageAnimation 1s ease 0.25s forwards;
@@ -187,9 +206,9 @@ export default {
 
 .galleryImg {
   margin: 64px 0 32px 0;
-  width: 180px;
+  width: 320px;
   height: auto;
-  filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.16));
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
 }
 
 .link {
@@ -229,12 +248,6 @@ export default {
 }
 
 @media (min-width: 800px) {
-  .logo {
-    width: 160px;
-  }
-  .galleryImg {
-    width: 210px;
-  }
   .content {
     padding-bottom: 64px;
   }
