@@ -187,7 +187,7 @@ export default {
 
 .galleryImg {
   margin: 64px 0 32px 0;
-  width: 120px;
+  width: 180px;
   height: auto;
 }
 
