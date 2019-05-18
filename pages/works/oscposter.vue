@@ -114,7 +114,7 @@ export default {
       {
         hid: 'og:image',
         property: 'og:image',
-        content: require('~/assets/works/oscposter.png')
+        content: `https://tinykitten.me${require('~/assets/works/oscposter.png')}`
       }
     ]
   }

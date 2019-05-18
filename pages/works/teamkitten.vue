@@ -127,7 +127,7 @@ export default {
       {
         hid: 'og:image',
         property: 'og:image',
-        content: require('~/assets/works/teamkitten_ogp.png')
+        content: `https://tinykitten.me${require('~/assets/works/teamkitten_ogp.png')}`
       }
     ]
   }
