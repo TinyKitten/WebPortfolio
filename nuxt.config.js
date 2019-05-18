@@ -106,7 +106,10 @@ export default {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [{ src: '~plugins/ga.js', ssr: false }],
+  plugins: [
+    { src: '~plugins/ga.js', ssr: false },
+    { src: '~plugins/smoothscroll.js', ssr: false }
+  ],
 
   /*
    ** Nuxt.js modules
