@@ -98,7 +98,7 @@ export default {
       {
         hid: 'og:url',
         property: 'og:url',
-        content: 'https://tinykitten.me/works/oscposter'
+        content: 'https://tinykitten.me/works/oscposter/'
       },
       {
         hid: 'og:title',

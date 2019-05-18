@@ -111,7 +111,7 @@ export default {
       {
         hid: 'og:url',
         property: 'og:url',
-        content: 'https://tinykitten.me/works/teamkitten'
+        content: 'https://tinykitten.me/works/teamkitten/'
       },
       {
         hid: 'og:title',

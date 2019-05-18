@@ -92,7 +92,7 @@ export default {
       {
         hid: 'og:url',
         property: 'og:url',
-        content: 'https://tinykitten.me/works/snovel'
+        content: 'https://tinykitten.me/works/snovel/'
       },
       {
         hid: 'og:title',
