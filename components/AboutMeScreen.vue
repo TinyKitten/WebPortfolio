@@ -75,6 +75,7 @@ export default {
   left: -44px;
   top: -24px;
   z-index: 1;
+  animation: headingPostitAnimation 1s ease forwards;
 }
 
 .bio {
@@ -83,10 +84,6 @@ export default {
   line-height: 1.75;
   margin-top: 12px;
   color: #555;
-}
-
-.postit {
-  animation: headingPostitAnimation 1s ease forwards;
 }
 
 .titlePostit {
