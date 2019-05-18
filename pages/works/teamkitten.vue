@@ -100,7 +100,37 @@ export default {
     AppTitlePostit,
     AppButton
   },
-  mixins: [scrollMixin]
+  mixins: [scrollMixin],
+  head: {
+    title: 'TeamKitten ',
+    description:
+      'TeamKittenというネットサークルのメンバー管理API設計・実装、ウェブサイトの開発を担当しました。',
+    meta: [
+      { hid: 'og:site_name', property: 'og:site_name', content: 'TinyKitten' },
+      { hid: 'og:type', property: 'og:type', content: 'article' },
+      {
+        hid: 'og:url',
+        property: 'og:url',
+        content: 'https://tinykitten.me/works/teamkitten'
+      },
+      {
+        hid: 'og:title',
+        property: 'og:title',
+        content: 'TeamKitten'
+      },
+      {
+        hid: 'og:description',
+        property: 'og:description',
+        content:
+          'TeamKittenというネットサークルのメンバー管理API設計・実装、ウェブサイトの開発を担当しました。'
+      },
+      {
+        hid: 'og:image',
+        property: 'og:image',
+        content: require('~/assets/works/teamkitten_ogp.png')
+      }
+    ]
+  }
 }
 </script>
 
@@ -251,6 +281,7 @@ export default {
   .content {
     padding-bottom: 64px;
   }
+  .logo,
   .galleryImg {
     width: 480px;
   }

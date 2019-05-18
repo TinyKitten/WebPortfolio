@@ -81,7 +81,37 @@ export default {
     AppTitlePostit,
     AppButton
   },
-  mixins: [scrollMixin]
+  mixins: [scrollMixin],
+  head: {
+    title: 'Snovel ',
+    description:
+      'Snovelは、駅ノートでつながるSNS 訪れた駅、思い出の駅。いろんな駅でチェックインしてノートに書き残そう。',
+    meta: [
+      { hid: 'og:site_name', property: 'og:site_name', content: 'TinyKitten' },
+      { hid: 'og:type', property: 'og:type', content: 'article' },
+      {
+        hid: 'og:url',
+        property: 'og:url',
+        content: 'https://tinykitten.me/works/snovel'
+      },
+      {
+        hid: 'og:title',
+        property: 'og:title',
+        content: 'Snovel'
+      },
+      {
+        hid: 'og:description',
+        property: 'og:description',
+        content:
+          'Snovelは、駅ノートでつながるSNS 訪れた駅、思い出の駅。いろんな駅でチェックインしてノートに書き残そう。'
+      },
+      {
+        hid: 'og:image',
+        property: 'og:image',
+        content: require('~/assets/works/snovel_ogp.png')
+      }
+    ]
+  }
 }
 </script>
 
