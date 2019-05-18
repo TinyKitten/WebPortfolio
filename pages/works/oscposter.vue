@@ -2,59 +2,65 @@
   <div>
     <section class="container">
       <article class="content">
-        <app-postit class="postit" text="Dev/MobileApp" />
-        <img class="logo" src="~/assets/works/snovel.png" alt="Snovel" />
-        <h2 class="name">Snovel</h2>
+        <app-postit class="postit" text="Design/Poster" />
+        <img
+          class="logo"
+          src="~/assets/works/oscposter.png"
+          alt="OSC 2016 Gunma Poster"
+        />
+        <h2 class="name">OSC 2016 Gunma</h2>
         <p class="bio">
-          Snovelは、駅ノートでつながるSNS<br />
-          訪れた駅、思い出の駅。<br />
-          いろんな駅でチェックインして<br />
-          ノートに書き残そう。
+          オープンソースカンファレンス2016群馬という<br />
+          イベントのポスターデザインを<br />
+          担当させていただきました。<br />
+          美しい曲線を描く線は流れるデータをイメージしました。
         </p>
       </article>
     </section>
     <section class="container">
-      <app-title-postit v-if="visible" title="Snovel" subtitle="コンセプト" />
+      <app-title-postit
+        v-if="visible"
+        title="OSCPoster"
+        subtitle="コンセプト"
+      />
       <article class="content">
         <h2 class="concept">
-          位置情報を用いて<br />
-          SNSを作りたい
+          先進的なイメージの<br />
+          ポスターを作りたい
         </h2>
         <p class="conceptDescription">
-          ぶっちゃけ、動機はただそれだけです。<br />
-          もともと<a
-            href="https://github.com/TinyKitten/StationAPI"
-            target="_blank"
-            rel="noopener noreferrer"
-            >StationAPI</a
-          >というAPIを作っていて、<br />
-          それの応用例として<br />
-          <a
-            href="https://near.tinykitten.me"
-            target="_blank"
-            rel="noopener noreferrer"
-            >NearStation</a
-          >というものがあります。<br />
-          それを拡張したらSNSにできるんじゃないか？<br />
-          そういう考えで作られています。
+          たしかこれは自分から名乗りあげて<br />
+          作ったものだったと思います。<br />
+          ただ作り始めてみると大変でした。<br />
+          自分は当時デザイナーを目指していましたが、<br />
+          デザインの知識は皆無でした（今もそうですが）<br />
+          いろいろなデザインを参考にしながら、<br />
+          このデザインを完成させました。<br />
+          結果、このデザインのポスターは大好評でした。<br />
+          私にとっては、<br />
+          いろいろと思い出深いデザインのポスターです。
         </p>
       </article>
     </section>
     <section class="container">
-      <app-title-postit v-if="visible" title="Snovel" subtitle="デザイン" />
+      <app-title-postit v-if="visible" title="OSCPoster" subtitle="デザイン" />
       <article class="content">
-        <img class="galleryImg" src="~/assets/works/snovel.png" alt="Snovel" />
+        <img
+          class="galleryImg"
+          src="~/assets/works/oscposter.png"
+          alt="Snovel"
+        />
         <h2 class="galleryConcept">
-          鉄道ファン以外も<br />
-          親しみを持てるように
+          先進的なイメージを持たせる<br />
+          美しいデザイン
         </h2>
       </article>
     </section>
     <section class="container">
-      <app-title-postit v-if="visible" title="Snovel" subtitle="リンク" />
+      <app-title-postit v-if="visible" title="OSCPoster" subtitle="リンク" />
       <article class="content">
         <a
-          href="https://snovel.tinykitten.me"
+          href="https://www.ospn.jp/osc2016-gunma/"
           target="_blank"
           class="link"
           rel="noopener noreferrer"
@@ -187,7 +193,7 @@ export default {
 
 .galleryImg {
   margin: 64px 0 32px 0;
-  width: 120px;
+  width: 180px;
   height: auto;
 }
 

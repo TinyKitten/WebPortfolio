@@ -14,7 +14,9 @@
       担当させていただきました。<br />
       美しく曲線を描く線は流れるデータをイメージしました。
     </p>
-    <app-button v-if="visible" class="learnMoreBtn" text="さらに詳しく" />
+    <nuxt-link to="/works/oscposter">
+      <app-button v-if="visible" class="learnMoreBtn" text="さらに詳しく" />
+    </nuxt-link>
   </div>
 </template>
 
