@@ -251,5 +251,8 @@ export default {
   .content {
     padding-bottom: 64px;
   }
+  .galleryImg {
+    width: 480px;
+  }
 }
 </style>
