@@ -127,7 +127,7 @@ export default {
 
 .logo {
   opacity: 0;
-  width: 120px;
+  width: 180px;
   height: auto;
   filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.16));
   animation: imageAnimation 1s ease 0.25s forwards;
@@ -179,7 +179,7 @@ export default {
 
 .conceptDescription {
   text-align: center;
-  max-width: 95%;
+  max-width: 90%;
   margin-top: 32px;
   line-height: 2;
   color: #555;
