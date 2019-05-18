@@ -1,5 +1,5 @@
 <template>
-  <section id="aboutme" class="container">
+  <section class="container">
     <app-title-postit
       v-if="visible"
       class="titilePostit"

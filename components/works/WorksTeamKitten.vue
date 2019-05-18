@@ -51,6 +51,7 @@ export default {
   max-width: 75%;
   height: auto;
   filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.16));
+  animation: imageAnimation 1s ease forwards;
 }
 
 .name {

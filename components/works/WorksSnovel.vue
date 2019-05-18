@@ -10,7 +10,9 @@
       いろんな駅でチェックインして<br />
       ノートに書き残そう。
     </p>
-    <app-button v-if="visible" class="learnMoreBtn" text="さらに詳しく" />
+    <nuxt-link to="/works/snovel">
+      <app-button v-if="visible" class="learnMoreBtn" text="さらに詳しく" />
+    </nuxt-link>
   </div>
 </template>
 

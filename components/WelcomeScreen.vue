@@ -42,10 +42,6 @@ export default {
 }
 
 .postit {
-  position: absolute;
-  left: -32px;
-  top: -24px;
-  z-index: 1;
   animation: headingPostitAnimation 1s ease forwards;
 }
 
@@ -67,12 +63,16 @@ export default {
 
 @keyframes headingPostitAnimation {
   from {
+    z-index: 1;
+    position: absolute;
     opacity: 0;
-    transform: translateY(-64px);
+    transform: translateX(-64px) translateY(-72px);
   }
   to {
+    z-index: 1;
+    position: absolute;
     opacity: 1;
-    transform: translateY(0) rotate(5deg);
+    transform: translateX(-32px) translateY(-24px) rotate(5deg);
   }
 }
 
