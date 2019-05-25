@@ -23,24 +23,42 @@
         >
           <app-button class="shareButton" color="#3E54A4" text="Facebook" />
         </a>
+        <app-praise-button class="shareButton" :count="praiseCount" />
       </p>
     </div>
   </section>
 </template>
 
 <script>
+import { mapActions, mapGetters } from 'vuex'
+
 import AppTitlePostit from '~/components/AppTitlePostit.vue'
 import AppPostit from '~/components/AppPostit.vue'
 import AppButton from '~/components/AppButton.vue'
+import AppPraiseButton from '~/components/AppPraiseButton.vue'
 import { scrollMixin } from '~/mixins/scroll'
 
 export default {
   components: {
     AppTitlePostit,
     AppPostit,
-    AppButton
+    AppButton,
+    AppPraiseButton
   },
-  mixins: [scrollMixin]
+  mixins: [scrollMixin],
+  computed: {
+    ...mapGetters({
+      praiseCount: 'praise/count'
+    })
+  },
+  mounted() {
+    this.fetchPraiseCount()
+  },
+  methods: {
+    ...mapActions({
+      fetchPraiseCount: 'praise/fetchCount'
+    })
+  }
 }
 </script>
 
@@ -91,10 +109,7 @@ export default {
 
 .shareButton {
   height: 64px;
-}
-
-.shareButton:first-child {
-  margin: 16px 0;
+  margin: 12px 0;
 }
 
 .titlePostit {
