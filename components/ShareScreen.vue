@@ -108,7 +108,6 @@ export default {
 }
 
 .shareButton {
-  height: 64px;
   margin: 12px 0;
 }
 
