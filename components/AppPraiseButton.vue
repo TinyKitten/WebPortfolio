@@ -64,7 +64,7 @@ export default {
   color: #fff;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
   min-width: 210px;
-  height: 64px;
+  height: 48px;
   font-size: 1.2rem;
   border-radius: 1px;
   cursor: pointer;
