@@ -42,19 +42,23 @@ export default {
   display: flex;
   align-items: center;
   position: relative;
+  flex-direction: column;
 }
 
 .balloon {
-  position: absolute;
+  display: inline-block;
+  position: relative;
   background: #fff;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
-  padding: 14px;
+  padding: 14px 0;
   font-size: 1.2rem;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
     Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  left: 220px;
   border-radius: 8px;
   color: #707070;
+  margin-top: 14px;
+  text-align: center;
+  width: 210px;
 }
 
 .button {
@@ -78,5 +82,18 @@ export default {
 
 .button:hover {
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
+}
+
+@media (min-width: 800px) {
+  .praiseButton {
+    flex-direction: row;
+  }
+  .balloon {
+    position: absolute;
+    left: 220px;
+    margin-top: 0;
+    width: auto;
+    padding: 14px;
+  }
 }
 </style>
