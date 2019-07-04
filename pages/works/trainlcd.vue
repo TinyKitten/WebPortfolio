@@ -2,64 +2,68 @@
   <div>
     <section class="container">
       <article class="content">
-        <app-postit class="postit" text="Dev/MobileApp" />
-        <img class="logo" src="~/assets/works/snovel.png" alt="Snovel" />
-        <h2 class="name">Snovel</h2>
+        <app-postit class="postit" text="Dev/WebApp" />
+        <img class="logo" src="~/assets/works/trainlcd.png" alt="TrainLCD" />
+        <h2 class="name">TrainLCD</h2>
         <p class="bio">
-          Snovelは、駅ノートでつながるSNS<br />
-          訪れた駅、思い出の駅。<br />
-          いろんな駅でチェックインして<br />
-          ノートに書き残そう。
+          電車のLCDをスマホで
         </p>
       </article>
     </section>
     <section class="container">
-      <app-title-postit v-if="visible" title="Snovel" subtitle="コンセプト" />
+      <app-title-postit v-if="visible" title="TrainLCD" subtitle="コンセプト" />
       <article class="content">
         <h2 class="concept">
-          位置情報を用いて<br />
-          SNSを作りたい
+          暇だし電車のLCD作るか！ｗ
         </h2>
         <p class="conceptDescription">
-          ぶっちゃけ、動機はただそれだけです。<br />
-          もともと<a
+          <a
             href="https://github.com/TinyKitten/StationAPI"
             target="_blank"
             rel="noopener noreferrer"
             >StationAPI</a
-          >というAPIを作っていて、<br />
-          それの応用例として<br />
+          >の応用例の一つです。<br />
+          前から電車のLCDを再現したいと思っていて、
           <a
-            href="https://near.tinykitten.me"
+            href="https://github.com/TinyKitten/StationAPI"
             target="_blank"
             rel="noopener noreferrer"
-            >NearStation</a
-          >というものがあります。<br />
-          それを拡張したらSNSにできるんじゃないか？<br />
-          そういう考えで作られています。
+            >StationAPI</a
+          >の大型アップデートで色々取れるようにした影響で作ろうと思いました。
         </p>
       </article>
     </section>
     <section class="container">
-      <app-title-postit v-if="visible" title="Snovel" subtitle="デザイン" />
+      <app-title-postit v-if="visible" title="TrainLCD" subtitle="デザイン" />
       <article class="content">
-        <img class="galleryImg" src="~/assets/works/snovel.png" alt="Snovel" />
+        <img
+          class="galleryImg"
+          src="~/assets/works/trainlcd.png"
+          alt="TrainLCD"
+        />
         <h2 class="galleryConcept">
-          鉄道ファン以外も<br />
-          親しみを持てるように
+          実物のLCDに近づくように
         </h2>
       </article>
     </section>
     <section class="container">
-      <app-title-postit v-if="visible" title="Snovel" subtitle="リンク" />
+      <app-title-postit v-if="visible" title="TrainLCD" subtitle="リンク" />
       <article class="content">
         <a
-          href="https://snovel.tinykitten.me"
+          href="https://trainlcd.tinykitten.me"
           target="_blank"
           class="link"
           rel="noopener noreferrer"
         >
-          <app-button text="公式サイト" />
+          <app-button text="使ってみる" />
+        </a>
+        <a
+          href="https://github.com/TinyKitten/TrainLCD"
+          target="_blank"
+          class="link"
+          rel="noopener noreferrer"
+        >
+          <app-button text="リポジトリ" />
         </a>
         <nuxt-link to="/" class="link">
           <app-button color="#555" text="戻る" />
@@ -83,32 +87,30 @@ export default {
   },
   mixins: [scrollMixin],
   head: {
-    title: 'Snovel',
-    description:
-      'Snovelは、駅ノートでつながるSNS 訪れた駅、思い出の駅。いろんな駅でチェックインしてノートに書き残そう。',
+    title: 'TrainLCD',
+    description: '電車のLCDをスマホで',
     meta: [
       { hid: 'og:site_name', property: 'og:site_name', content: 'TinyKitten' },
       { hid: 'og:type', property: 'og:type', content: 'article' },
       {
         hid: 'og:url',
         property: 'og:url',
-        content: 'https://tinykitten.me/works/snovel/'
+        content: 'https://tinykitten.me/works/trainlcd/'
       },
       {
         hid: 'og:title',
         property: 'og:title',
-        content: 'Snovel'
+        content: 'TrainLCD'
       },
       {
         hid: 'og:description',
         property: 'og:description',
-        content:
-          'Snovelは、駅ノートでつながるSNS 訪れた駅、思い出の駅。いろんな駅でチェックインしてノートに書き残そう。'
+        content: '電車のLCDをスマホで'
       },
       {
         hid: 'og:image',
         property: 'og:image',
-        content: `https://tinykitten.me${require('~/assets/works/snovel_ogp.png')}`
+        content: `https://tinykitten.me${require('~/assets/works/trainlcd.png')}`
       }
     ]
   }
@@ -151,7 +153,7 @@ export default {
 
 .logo {
   opacity: 0;
-  width: 180px;
+  width: 80%;
   height: auto;
   filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.16));
   animation: imageAnimation 1s ease 0.25s forwards;
@@ -217,7 +219,7 @@ export default {
 
 .galleryImg {
   margin: 64px 0 32px 0;
-  width: 180px;
+  width: 80%;
   height: auto;
   filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.16));
 }
@@ -260,10 +262,10 @@ export default {
 
 @media (min-width: 800px) {
   .logo {
-    width: 160px;
+    width: 25%;
   }
   .galleryImg {
-    width: 210px;
+    width: 25%;
   }
   .content {
     padding-bottom: 64px;

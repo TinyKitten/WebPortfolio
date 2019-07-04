@@ -9,6 +9,7 @@
     <works-snovel />
     <works-osc-poster />
     <works-team-kitten />
+    <works-train-l-c-d />
   </section>
 </template>
 
@@ -18,13 +19,15 @@ import AppTitlePostit from '~/components/AppTitlePostit.vue'
 import WorksSnovel from '~/components/works/WorksSnovel.vue'
 import WorksOscPoster from '~/components/works/WorksOscPoster.vue'
 import WorksTeamKitten from '~/components/works/WorksTeamKitten.vue'
+import WorksTrainLCD from '~/components/works/WorksTrainLCD.vue'
 
 export default {
   components: {
     AppTitlePostit,
     WorksSnovel,
     WorksOscPoster,
-    WorksTeamKitten
+    WorksTeamKitten,
+    WorksTrainLCD
   },
   mixins: [scrollMixin]
 }
