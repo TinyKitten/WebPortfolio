@@ -5,7 +5,7 @@
       <img class="image" src="~/assets/works/trainlcd.png" alt="TrainLCD" />
     </div>
     <p v-if="visible" class="description">
-      暇だったので作った電車のLCDを風Webアプリです。
+      暇だったので作った電車のLCD風Webアプリです。
     </p>
     <nuxt-link to="/works/trainlcd">
       <app-button v-if="visible" class="learnMoreBtn" text="さらに詳しく" />
