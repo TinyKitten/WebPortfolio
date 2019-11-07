@@ -5,25 +5,20 @@
         <app-postit class="postit" text="Dev/WebApp" />
         <img class="logo" src="~/assets/works/trainlcd.png" alt="TrainLCD" />
         <h2 class="name">TrainLCD</h2>
-        <p class="bio">
-          電車のLCDをスマホで
-        </p>
+        <p class="bio">電車のLCDをスマホで</p>
       </article>
     </section>
     <section class="container">
       <app-title-postit v-if="visible" title="TrainLCD" subtitle="コンセプト" />
       <article class="content">
-        <h2 class="concept">
-          暇だし電車のLCD作るか！ｗ
-        </h2>
+        <h2 class="concept">暇だし電車のLCD作るか！ｗ</h2>
         <p class="conceptDescription">
           <a
             href="https://github.com/TinyKitten/StationAPI"
             target="_blank"
             rel="noopener noreferrer"
             >StationAPI</a
-          >の応用例の一つです。<br />
-          前から電車のLCDを再現したいと思っていて、
+          >の応用例の一つです。 <br />前から電車のLCDを再現したいと思っていて、
           <a
             href="https://github.com/TinyKitten/StationAPI"
             target="_blank"
@@ -41,21 +36,29 @@
           src="~/assets/works/trainlcd.png"
           alt="TrainLCD"
         />
-        <h2 class="galleryConcept">
-          実物のLCDに近づくように
-        </h2>
+        <h2 class="galleryConcept">実物のLCDに近づくように</h2>
       </article>
     </section>
     <section class="container">
       <app-title-postit v-if="visible" title="TrainLCD" subtitle="リンク" />
       <article class="content">
         <a
-          href="https://trainlcd.tinykitten.me"
-          target="_blank"
-          class="link"
-          rel="noopener noreferrer"
+          class="appStoreButton"
+          href="https://play.google.com/store/apps/details?id=me.tinykitten.trainlcd&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1"
         >
-          <app-button text="使ってみる" />
+          <img
+            alt="Google Play で手に入れよう"
+            src="~/assets/works/store-badges/google-play-store.svg"
+          />
+        </a>
+        <a
+          class="appStoreButton appleAppStore"
+          href="https://apps.apple.com/jp/app/trainlcd/id1486355943"
+        >
+          <img
+            alt="App Storeからダウンロード"
+            src="~/assets/works/store-badges/apple-app-store.svg"
+          />
         </a>
         <a
           href="https://github.com/TinyKitten/TrainLCD"
@@ -225,6 +228,23 @@ export default {
 }
 
 .link {
+  margin-bottom: 32px;
+}
+
+.appStoreButton {
+  width: 210px;
+  height: auto;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+
+.appStoreButton img {
+  width: 100%;
+  height: auto;
+}
+
+.appleAppStore {
+  width: 180px;
   margin-bottom: 32px;
 }
 
