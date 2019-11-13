@@ -15,6 +15,7 @@ export const mutations = {
 
 export const actions = {
   fetchCount: async ({ commit }) => {
+    await firebase.auth().signInAnonymously()
     const firestore = firebase.firestore()
     const countRef = await firestore
       .collection('public')
@@ -24,6 +25,7 @@ export const actions = {
     commit('setCount', { amount: count })
   },
   incrementCountAsync: async ({ commit, dispatch }) => {
+    await firebase.auth().signInAnonymously()
     const firestore = firebase.firestore()
     const countRef = await firestore
       .collection('public')
