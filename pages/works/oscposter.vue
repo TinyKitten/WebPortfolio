@@ -48,7 +48,7 @@
         <img
           class="galleryImg"
           src="~/assets/works/oscposter.png"
-          alt="Snovel"
+          alt="OSC Gunma"
         />
         <h2 class="galleryConcept">
           先進的なイメージを持たせる<br />

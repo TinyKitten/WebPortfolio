@@ -45,7 +45,7 @@
         <img
           class="galleryImg"
           src="~/assets/works/teamkitten.png"
-          alt="Snovel"
+          alt="TeamKitten"
         />
         <h2 class="galleryConcept">
           掲載されることに喜びを覚える<br />
