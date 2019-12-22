@@ -11,7 +11,7 @@
     <section class="container">
       <app-title-postit v-if="visible" title="TrainLCD" subtitle="コンセプト" />
       <article class="content">
-        <h2 class="concept">暇だし電車のLCD作るか！ｗ</h2>
+        <h2 class="concept">StationAPIで電車のLCDを再現したい</h2>
         <p class="conceptDescription">
           <a
             href="https://github.com/TinyKitten/StationAPI"
@@ -24,8 +24,13 @@
             target="_blank"
             rel="noopener noreferrer"
             >StationAPI</a
-          >の大型アップデートで色々取れるようにした影響で作ろうと思いました。
+          >の大型アップデートで色々取れるようにした影響で作ろうと思いました。<br />
+          満員電車、LCDのない路線など、現在どこにいるか、どの駅を通るのかひと目で分かります。<br />
+          ぜひお試しください。
         </p>
+        <small class="conceptDescription smallCaption"
+          >※地下区間は非対応です</small
+        >
       </article>
     </section>
     <section class="container">
@@ -246,6 +251,11 @@ export default {
 .appleAppStore {
   width: 180px;
   margin-bottom: 32px;
+}
+
+.smallCaption {
+  font-size: 0.8rem;
+  margin-top: 0;
 }
 
 /* Animation */

@@ -5,7 +5,8 @@
       <img class="image" src="~/assets/works/trainlcd.png" alt="TrainLCD" />
     </div>
     <p v-if="visible" class="description">
-      暇だったので作った電車のLCD風Webアプリです。
+      電車のLCDを再現したスマホアプリです。<br />
+      現在App Store、Google Play Storeにて配信中。
     </p>
     <nuxt-link to="/works/trainlcd">
       <app-button v-if="visible" class="learnMoreBtn" text="さらに詳しく" />
