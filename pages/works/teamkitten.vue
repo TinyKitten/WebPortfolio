@@ -9,8 +9,9 @@
           TeamKittenというネットサークルの<br />
           メンバー管理API設計・実装、<br />
           ウェブサイトの開発を担当しました。<br />
-          バックエンドはGo、<br />
-          フロントエンドは現在Reactを使用しています。
+          現在はNuxt.jsを用いており、<br />
+          コンテンツを完全に静的に配信することにより<br />
+          高速な表示とより良いUXを実現しました。
         </p>
       </article>
     </section>
@@ -22,20 +23,14 @@
       />
       <article class="content">
         <h2 class="concept">
-          在籍していることを<br />
-          誇れるシステムに
+          シンプルを追求した<br />
+          設計とUX
         </h2>
         <p class="conceptDescription">
-          TeamKittenというネットサークルを<br />
-          自分が運営しています。<br />
-          メンバーが自分でサイトに映る<br />
-          自己紹介やアバターを変更していただく為に<br />
-          バックエンドの開発を決意しました。<br />
-          APIはGoで実装し、フロントは<br />
-          今はReact.jsを用いています。（昔はVue）<br />
-          ポータルというメンバーのみが使える内部システムで<br />
-          簡単に自己紹介・アバター・カバー画像を<br />
-          即座に変更できます。
+          TeamKittenというネットサークルを僕が運営しています。<br />
+          過去にはGoやNode.jsでAPIを自作して動的なコンテンツ配信を行っていましたが、<br />
+          現在はNuxt.jsを用いて完全に静的に配信しています。(JAMStack)<br />
+          ウェブサイトのデザインはシンプルを追求し、どこか暖かさを感じるデザインにしました。
         </p>
       </article>
     </section>
@@ -65,20 +60,12 @@
           <app-button text="公式サイト" />
         </a>
         <a
-          href="https://github.com/TeamKitten/API"
+          href="https://github.com/TeamKitten/StaticOfficialWeb"
           target="_blank"
           class="link"
           rel="noopener noreferrer"
         >
-          <app-button text="APIリポジトリ" />
-        </a>
-        <a
-          href="https://github.com/TeamKitten/OfficialWeb"
-          target="_blank"
-          class="link"
-          rel="noopener noreferrer"
-        >
-          <app-button text="フロントリポジトリ" />
+          <app-button text="リポジトリ" />
         </a>
         <nuxt-link to="/" class="link">
           <app-button color="#555" text="戻る" />

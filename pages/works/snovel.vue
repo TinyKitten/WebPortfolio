@@ -2,65 +2,74 @@
   <div>
     <section class="container">
       <article class="content">
-        <app-postit class="postit" text="Design/Poster" />
-        <img
-          class="logo"
-          src="~/assets/works/oscposter.png"
-          alt="OSC 2016 Gunma Poster"
-        />
-        <h2 class="name">OSC 2016 Gunma</h2>
+        <app-postit class="postit" text="Dev/MobileApp" />
+        <img class="logo" src="~/assets/works/snovel.png" alt="Snovel" />
+        <h2 class="name">Snovel</h2>
         <p class="bio">
-          オープンソースカンファレンス2016群馬という<br />
-          イベントのポスターデザインを<br />
-          担当させていただきました。<br />
-          美しい曲線を描く線は流れるデータをイメージしました。
+          Snovelは、駅ノートでつながるSNS<br />
+          訪れた駅、思い出の駅。<br />
+          いろんな駅でチェックインして<br />
+          ノートに書き残そう。
         </p>
       </article>
     </section>
     <section class="container">
-      <app-title-postit
-        v-if="visible"
-        title="OSCPoster"
-        subtitle="コンセプト"
-      />
+      <app-title-postit v-if="visible" title="Snovel" subtitle="コンセプト" />
       <article class="content">
         <h2 class="concept">
-          先進的なイメージの<br />
-          ポスターを作りたい
+          駅ノートでつながるSNS
         </h2>
         <p class="conceptDescription">
-          たしかこれは自分から名乗りあげて<br />
-          作ったものだったと思います。<br />
-          ただ作り始めてみると大変でした。<br />
-          僕は当時デザイナーを目指していましたが、<br />
-          デザインの知識は皆無でした（今もそうですが）<br />
-          いろいろなデザインを参考にしながら、<br />
-          このデザインを完成させました。<br />
-          結果、このデザインのポスターは大好評でした。<br />
-          私にとっては、<br />
-          いろいろと思い出深いデザインのポスターです。
+          もともと<a
+            href="https://github.com/TinyKitten/StationAPI"
+            target="_blank"
+            rel="noopener noreferrer"
+            >StationAPI</a
+          >というAPIを作っていて、<br />
+          それの応用例として<br />
+          <a
+            href="https://near.tinykitten.me"
+            target="_blank"
+            rel="noopener noreferrer"
+            >NearStation</a
+          >というものがあります。<br />
+          それを拡張してSNSにしたら面白いんじゃないだろうか。<br />
+          そう考えて開発を開始しました。
         </p>
       </article>
     </section>
     <section class="container">
-      <app-title-postit v-if="visible" title="OSCPoster" subtitle="デザイン" />
+      <app-title-postit v-if="visible" title="Snovel" subtitle="デザイン" />
       <article class="content">
+        <img class="galleryImg" src="~/assets/works/snovel.png" alt="Snovel" />
+        <h2 class="galleryConcept">
+          鉄道ファン以外も<br />
+          親しみを持てるように
+        </h2>
+      </article>
+      <article class="content">
+        <app-postit
+          v-if="visible"
+          class="postit galleryPostit"
+          text="Snovelのロゴです"
+        />
         <img
-          class="galleryImg"
-          src="~/assets/works/oscposter.png"
-          alt="OSC Gunma"
+          class="galleryImg nofilter"
+          src="~/assets/works/snovel_logo.svg"
+          alt="Snovel"
         />
         <h2 class="galleryConcept">
-          先進的なイメージを持たせる<br />
-          美しいデザイン
+          2つの点は、起点と終点。<br />
+          健全で、駅利用者をつなぐ<br />
+          コミュニティでありたい。
         </h2>
       </article>
     </section>
     <section class="container">
-      <app-title-postit v-if="visible" title="OSCPoster" subtitle="リンク" />
+      <app-title-postit v-if="visible" title="Snovel" subtitle="リンク" />
       <article class="content">
         <a
-          href="https://www.ospn.jp/osc2016-gunma/"
+          href="https://snovel.app"
           target="_blank"
           class="link"
           rel="noopener noreferrer"
@@ -80,7 +89,6 @@ import AppTitlePostit from '~/components/AppTitlePostit.vue'
 import AppPostit from '~/components/AppPostit.vue'
 import AppButton from '~/components/AppButton.vue'
 import { scrollMixin } from '~/mixins/scroll'
-
 export default {
   components: {
     AppPostit,
@@ -89,32 +97,32 @@ export default {
   },
   mixins: [scrollMixin],
   head: {
-    title: 'OSC 2016 Gunma Poster ',
+    title: 'Snovel',
     description:
-      'オープンソースカンファレンス2016群馬というイベントのポスターデザインを担当させていただきました。',
+      'Snovelは、駅ノートでつながるSNS 訪れた駅、思い出の駅。いろんな駅でチェックインしてノートに書き残そう。',
     meta: [
       { hid: 'og:site_name', property: 'og:site_name', content: 'TinyKitten' },
       { hid: 'og:type', property: 'og:type', content: 'article' },
       {
         hid: 'og:url',
         property: 'og:url',
-        content: 'https://tinykitten.me/works/oscposter/'
+        content: 'https://tinykitten.me/works/snovel/'
       },
       {
         hid: 'og:title',
         property: 'og:title',
-        content: 'OSC 2016 Gunma Poster'
+        content: 'Snovel'
       },
       {
         hid: 'og:description',
         property: 'og:description',
         content:
-          'オープンソースカンファレンス2016群馬というイベントのポスターデザインを担当させていただきました。'
+          'Snovelは、駅ノートでつながるSNS 訪れた駅、思い出の駅。いろんな駅でチェックインしてノートに書き残そう。'
       },
       {
         hid: 'og:image',
         property: 'og:image',
-        content: `https://tinykitten.me${require('~/assets/works/oscposter.png')}`
+        content: `https://tinykitten.me${require('~/assets/works/snovel_ogp.png')}`
       }
     ]
   }
@@ -131,11 +139,9 @@ export default {
   justify-content: center;
   flex-direction: column;
 }
-
 .container:first-child {
   min-height: 100vh;
 }
-
 .content {
   width: 100%;
   min-height: 100%;
@@ -146,15 +152,12 @@ export default {
   margin-top: 144px;
   padding-bottom: 32px;
 }
-
 .content:first-child {
   margin-top: 48px;
 }
-
 .container:nth-child(even) {
   background: #fafafa;
 }
-
 .logo {
   opacity: 0;
   width: 180px;
@@ -162,7 +165,6 @@ export default {
   filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.16));
   animation: imageAnimation 1s ease 0.25s forwards;
 }
-
 .bio {
   text-align: center;
   max-width: calc(100% - 64px);
@@ -170,7 +172,6 @@ export default {
   margin-top: 12px;
   color: #555;
 }
-
 .name {
   margin-top: 32px;
   font-size: 2rem;
@@ -178,17 +179,19 @@ export default {
   font-weight: bold;
   color: #707070;
 }
-
 .postit {
   display: block;
   margin-bottom: 32px;
   animation: headingPostitAnimation 1s ease forwards;
 }
-
 .titlePostit {
   animation: titlePostitAnimation 1s ease forwards;
 }
-
+.galleryPostit {
+  margin-bottom: -84px;
+  margin-left: -120px;
+  animation: galleryPostitAnimation 1s ease forwards;
+}
 .concept {
   text-align: center;
   line-height: 1.5;
@@ -197,7 +200,6 @@ export default {
   font-weight: bold;
   max-width: 90%;
 }
-
 .galleryConcept {
   text-align: center;
   line-height: 1.5;
@@ -206,7 +208,6 @@ export default {
   font-weight: bold;
   max-width: 90%;
 }
-
 .conceptDescription {
   text-align: center;
   max-width: 90%;
@@ -214,24 +215,20 @@ export default {
   line-height: 2;
   color: #555;
 }
-
 .conceptDescription a {
   color: #555;
   font-weight: bold;
   text-decoration: none;
 }
-
 .galleryImg {
   margin: 64px 0 32px 0;
   width: 180px;
   height: auto;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+  filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.16));
 }
-
 .link {
   margin-bottom: 32px;
 }
-
 /* Animation */
 @keyframes titlePostitAnimation {
   from {
@@ -241,7 +238,6 @@ export default {
     transform: translateY(0);
   }
 }
-
 @keyframes headingPostitAnimation {
   from {
     opacity: 0;
@@ -252,7 +248,16 @@ export default {
     transform: translateY(0);
   }
 }
-
+@keyframes galleryPostitAnimation {
+  from {
+    opacity: 0;
+    transform: translateY(-64px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) rotate(-5deg);
+  }
+}
 @keyframes imageAnimation {
   from {
     opacity: 0;
@@ -263,7 +268,9 @@ export default {
     transform: translateY(0);
   }
 }
-
+.nofilter {
+  filter: none;
+}
 @media (min-width: 800px) {
   .logo {
     width: 160px;

@@ -1,18 +1,17 @@
 <template>
   <div class="content">
     <div v-if="visible" class="logoWrapper">
-      <app-postit class="postit" text="TeamKitten" />
-      <img class="image" src="~/assets/works/teamkitten.png" alt="TeamKitten" />
+      <app-postit class="postit" text="Snovel" />
+      <img class="image" src="~/assets/works/snovel.png" alt="Snovel" />
     </div>
     <p v-if="visible" class="description">
-      TeamKittenというネットサークルの<br />
-      メンバー管理API設計・実装、<br />
-      ウェブサイトの開発を担当しました。<br />
-      現在はNuxt.jsを用いており、<br />
-      コンテンツを完全に静的に配信することにより<br />
-      高速な表示とより良いUXを実現しました。
+      Snovelは、駅ノートでつながるSNS<br />
+      訪れた駅、思い出の駅。<br />
+      いろんな駅でチェックインして<br />
+      ノートに書き残そう。<br />
+      早期テスター募集中です。
     </p>
-    <nuxt-link to="/works/teamkitten">
+    <nuxt-link to="/works/snovel">
       <app-button v-if="visible" class="learnMoreBtn" text="さらに詳しく" />
     </nuxt-link>
   </div>
@@ -22,7 +21,6 @@
 import AppPostit from '~/components/AppPostit.vue'
 import AppButton from '~/components/AppButton.vue'
 import { scrollMixin } from '~/mixins/scroll'
-
 export default {
   components: {
     AppPostit,
@@ -34,62 +32,41 @@ export default {
 
 <style scoped>
 .content {
+  padding-top: 210px;
   display: flex;
   align-items: center;
   flex-direction: column;
-  justify-content: center;
-  min-height: calc(100vh - 48px);
   background: #fafafa;
 }
-
 .logoWrapper {
   position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
-
 .image {
-  width: 480px;
-  max-width: 75%;
+  width: 180px;
   height: auto;
   filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.16));
   animation: imageAnimation 1s ease forwards;
 }
-
-.name {
-  margin-top: 32px;
-  font-size: 2rem;
-  text-align: center;
-  font-weight: bold;
-  color: #707070;
-}
-
 .postit {
   position: absolute;
-  transform: rotate(5deg);
-  left: auto;
-  right: auto;
-  bottom: -24px;
+  left: -24px;
+  bottom: 0;
   z-index: 1;
-  animation: headingPostitAnimation 1s ease 0.25s forwards;
   opacity: 0;
+  animation: headingPostitAnimation 1s ease 0.25s forwards;
 }
-
 .description {
   text-align: center;
   max-width: calc(100% - 64px);
   line-height: 1.75;
-  margin-top: 48px;
+  margin-top: 32px;
   color: #555;
   animation: imageAnimation 1s ease forwards;
 }
-
 .learnMoreBtn {
   margin: 32px 0;
   animation: imageAnimation 1s ease forwards;
 }
-
 @keyframes headingPostitAnimation {
   from {
     opacity: 0;
@@ -100,7 +77,6 @@ export default {
     transform: translateY(0) rotate(5deg);
   }
 }
-
 @keyframes imageAnimation {
   from {
     opacity: 0;
