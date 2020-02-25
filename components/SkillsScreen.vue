@@ -9,12 +9,12 @@
     <div class="content">
       <div v-if="visible" class="skills">
         <app-skill-circle
-          :image-path="require('~/assets/marks/angular.svg')"
-          skill-name="Angular"
-        />
-        <app-skill-circle
           :image-path="require('~/assets/marks/js.svg')"
           skill-name="JavaScript"
+        />
+        <app-skill-circle
+          :image-path="require('~/assets/marks/angular.svg')"
+          skill-name="Angular"
         />
         <app-skill-circle
           :image-path="require('~/assets/marks/vue.svg')"
@@ -23,10 +23,6 @@
         <app-skill-circle
           :image-path="require('~/assets/marks/react.svg')"
           skill-name="React.js"
-        />
-        <app-skill-circle
-          :image-path="require('~/assets/marks/go.svg')"
-          skill-name="Go"
         />
       </div>
     </div>
