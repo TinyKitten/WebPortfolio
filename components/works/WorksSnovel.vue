@@ -32,11 +32,11 @@ export default {
 
 <style scoped>
 .content {
-  padding-top: 210px;
   display: flex;
   align-items: center;
   flex-direction: column;
-  background: #fafafa;
+  justify-content: center;
+  min-height: calc(100vh - 48px);
 }
 .logoWrapper {
   position: relative;

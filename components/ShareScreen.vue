@@ -67,6 +67,7 @@ export default {
   position: relative;
   min-height: calc(100vh - 48px);
   overflow: hidden;
+  background: #fafafa;
 }
 
 .content {

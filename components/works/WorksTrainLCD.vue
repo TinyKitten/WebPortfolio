@@ -35,6 +35,7 @@ export default {
   flex-direction: column;
   justify-content: center;
   min-height: calc(100vh - 48px);
+  background: #fafafa;
 }
 
 .logoWrapper {
