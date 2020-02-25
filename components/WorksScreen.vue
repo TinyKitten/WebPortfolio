@@ -8,7 +8,6 @@
     />
     <works-snovel />
     <works-train-l-c-d />
-    <works-osc-poster />
     <works-team-kitten />
   </section>
 </template>
@@ -16,7 +15,6 @@
 <script>
 import { scrollMixin } from '~/mixins/scroll'
 import AppTitlePostit from '~/components/AppTitlePostit.vue'
-import WorksOscPoster from '~/components/works/WorksOscPoster.vue'
 import WorksTeamKitten from '~/components/works/WorksTeamKitten.vue'
 import WorksTrainLCD from '~/components/works/WorksTrainLCD.vue'
 import WorksSnovel from '~/components/works/WorksSnovel.vue'
@@ -24,7 +22,6 @@ import WorksSnovel from '~/components/works/WorksSnovel.vue'
 export default {
   components: {
     AppTitlePostit,
-    WorksOscPoster,
     WorksTeamKitten,
     WorksTrainLCD,
     WorksSnovel
