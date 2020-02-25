@@ -8,7 +8,7 @@
     />
     <div class="content">
       <div class="logoWrapper">
-        <app-postit v-if="visible" class="postit" text="大の猫好き" />
+        <app-postit v-if="visible" class="postit" text="デザインもできます" />
         <img class="logo" src="~/assets/icon.svg" alt="TinyKitten" />
       </div>
       <h2 class="name">TinyKitten</h2>

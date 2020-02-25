@@ -9,6 +9,10 @@
     <div class="content">
       <div v-if="visible" class="skills">
         <app-skill-circle
+          :image-path="require('~/assets/marks/angular.svg')"
+          skill-name="Angular"
+        />
+        <app-skill-circle
           :image-path="require('~/assets/marks/js.svg')"
           skill-name="JavaScript"
         />
@@ -25,21 +29,18 @@
           skill-name="Go"
         />
       </div>
-      <app-postit v-if="visible" class="tipsPostit" text="Webが得意！" />
     </div>
   </section>
 </template>
 
 <script>
 import AppTitlePostit from '~/components/AppTitlePostit.vue'
-import AppPostit from '~/components/AppPostit.vue'
 import AppSkillCircle from '~/components/AppSkillCircle.vue'
 import { scrollMixin } from '~/mixins/scroll'
 
 export default {
   components: {
     AppTitlePostit,
-    AppPostit,
     AppSkillCircle
   },
   mixins: [scrollMixin]
@@ -66,12 +67,6 @@ export default {
   grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
   grid-gap: 32px;
   animation: tipsPostitAnimation 1s ease forwards;
-}
-
-.tipsPostit {
-  margin: 48px 0;
-  opacity: 0;
-  animation: tipsPostitAnimation 1s ease 0.25s forwards;
 }
 
 .titlePostit {
