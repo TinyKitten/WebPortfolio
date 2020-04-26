@@ -1,14 +1,8 @@
 <template>
   <div class="container">
-    <app-postit
-      :text="error.statusCode === 404 ? 'Not Found' : 'Server Error'"
-    />
+    <app-postit text="Not Found" />
     <p class="message">
-      {{
-        error.statusCode === 404
-          ? 'お探しのページは見つかりませんでした。'
-          : 'エラーが発生しました。'
-      }}
+      お探しのページは見つかりませんでした。
     </p>
     <nuxt-link to="/">
       <app-button text="トップ" />
