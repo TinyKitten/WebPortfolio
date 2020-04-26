@@ -18,12 +18,6 @@ export default {
   components: {
     AppPostit,
     AppButton
-  },
-  props: {
-    error: {
-      type: Object,
-      required: true
-    }
   }
 }
 </script>
