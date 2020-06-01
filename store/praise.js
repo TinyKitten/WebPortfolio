@@ -16,18 +16,17 @@ export const mutations = {
 export const actions = {
   fetchCount: async ({ commit }) => {
     const firestore = firebase.firestore()
-    const countRef = await firestore
+    const countDoc = await firestore
       .collection('public')
       .doc('praise')
       .get()
-    commit('setCount', { amount: countRef.data().count })
+    commit('setCount', { amount: countDoc.data().count })
   },
   incrementCountAsync: async ({ commit, dispatch }) => {
     const firestore = firebase.firestore()
-    await firestore
-      .collection('public')
-      .doc('praise')
-      .update('count', firebase.firestore.FieldValue.increment(1))
-    dispatch('fetchCount')
+    const countRef = firestore.collection('public').doc('praise')
+    await countRef.update('count', firebase.firestore.FieldValue.increment(1))
+    const countDoc = await countRef.get()
+    commit('setCount', { amount: countDoc.data().count })
   }
 }
