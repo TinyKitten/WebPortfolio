@@ -27,15 +27,10 @@ export const actions = {
   incrementCountAsync: async ({ commit, dispatch }) => {
     await firebase.auth().signInAnonymously()
     const firestore = firebase.firestore()
-    const countRef = await firestore
-      .collection('public')
-      .doc('praise')
-      .get()
-    const count = countRef.data() ? countRef.data().count : 0
     firestore
       .collection('public')
       .doc('praise')
-      .set({ count: count + 1 })
+      .update('count', firebase.firestore.FieldValue.increment(1))
     dispatch('fetchCount')
   }
 }
