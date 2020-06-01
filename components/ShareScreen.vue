@@ -37,6 +37,7 @@ import AppPostit from '~/components/AppPostit.vue'
 import AppButton from '~/components/AppButton.vue'
 import AppPraiseButton from '~/components/AppPraiseButton.vue'
 import { scrollMixin } from '~/mixins/scroll'
+import firebase from '~/vendor/firebase'
 
 export default {
   components: {
@@ -51,7 +52,8 @@ export default {
       praiseCount: 'praise/count'
     })
   },
-  mounted() {
+  async mounted() {
+    await firebase.auth().signInAnonymously()
     this.fetchPraiseCount()
   },
   methods: {
