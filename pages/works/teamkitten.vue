@@ -3,7 +3,11 @@
     <section class="container">
       <article class="content">
         <app-postit class="postit" text="Dev/FullStack" />
-        <img class="logo" src="~/assets/works/teamkitten.png" alt="Snovel" />
+        <img
+          class="logo"
+          src="~/assets/works/teamkitten.png"
+          alt="TeamKitten"
+        />
         <h2 class="name">TeamKitten</h2>
         <p class="bio">
           TeamKittenというネットサークルの<br />
