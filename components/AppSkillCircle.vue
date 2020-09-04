@@ -1,7 +1,7 @@
 <template>
   <div class="skill">
     <div class="skillImageWrapper">
-      <img class="skillImage" :src="imagePath" :alt="skillName" />
+      <img :src="imagePath" :alt="skillName" class="skillImage" />
     </div>
     <p class="skillName">{{ skillName }}</p>
   </div>

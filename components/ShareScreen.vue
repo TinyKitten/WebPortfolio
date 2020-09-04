@@ -23,7 +23,7 @@
         >
           <app-button class="shareButton" color="#3E54A4" text="Facebook" />
         </a>
-        <app-praise-button class="shareButton" :count="praiseCount" />
+        <app-praise-button :count="praiseCount" class="shareButton" />
       </p>
     </div>
   </section>

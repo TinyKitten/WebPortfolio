@@ -1,5 +1,5 @@
 <template>
-  <button class="button" :style="{ backgroundColor: color }">
+  <button :style="{ backgroundColor: color }" class="button">
     {{ text }}
   </button>
 </template>
