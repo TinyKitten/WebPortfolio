@@ -1,9 +1,9 @@
 <template>
   <div class="titlePostit">
     <img
+      :alt="`${title}${subtitle}`"
       class="titlePostitBg"
       src="~/assets/vertical-postit.svg"
-      :alt="`${title}${subtitle}`"
     />
     <div class="titleText">
       <p class="appName">{{ title }}</p>
