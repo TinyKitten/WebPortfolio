@@ -6,7 +6,6 @@
       title="TinyKitten"
       subtitle="が作ったよ"
     />
-    <works-blog />
     <works-train-l-c-d />
     <works-team-kitten />
   </section>
@@ -17,14 +16,12 @@ import { scrollMixin } from '~/mixins/scroll'
 import AppTitlePostit from '~/components/AppTitlePostit.vue'
 import WorksTeamKitten from '~/components/works/WorksTeamKitten.vue'
 import WorksTrainLCD from '~/components/works/WorksTrainLCD.vue'
-import WorksBlog from '~/components/works/WorksBlog.vue'
 
 export default {
   components: {
     AppTitlePostit,
     WorksTeamKitten,
-    WorksTrainLCD,
-    WorksBlog
+    WorksTrainLCD
   },
   mixins: [scrollMixin]
 }
