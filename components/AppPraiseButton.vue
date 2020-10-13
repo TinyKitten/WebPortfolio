@@ -1,6 +1,6 @@
 <template>
   <div class="praiseButton">
-    <button class="button" @click="handleClick()">
+    <button @click="handleClick()" class="button">
       {{ clicked ? 'ありがとう！' : 'ほめる' }}
     </button>
     <div class="balloon">

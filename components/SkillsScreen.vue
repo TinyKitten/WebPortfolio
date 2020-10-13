@@ -13,8 +13,8 @@
           skill-name="JavaScript"
         />
         <app-skill-circle
-          :image-path="require('~/assets/marks/angular.svg')"
-          skill-name="Angular"
+          :image-path="require('~/assets/marks/ts.svg')"
+          skill-name="TypeScript"
         />
         <app-skill-circle
           :image-path="require('~/assets/marks/vue.svg')"
@@ -22,7 +22,7 @@
         />
         <app-skill-circle
           :image-path="require('~/assets/marks/react.svg')"
-          skill-name="React.js"
+          skill-name="React (Native)"
         />
       </div>
     </div>
@@ -48,10 +48,13 @@ export default {
   position: relative;
   min-height: calc(100vh - 48px);
   overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .content {
-  padding-top: 210px;
+  width: 100%;
   display: flex;
   align-items: center;
   flex-direction: column;
