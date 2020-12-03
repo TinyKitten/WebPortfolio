@@ -61,10 +61,10 @@
         title="NearStation"
         subtitle="使用技術"
       />
-      <article class="content techs">
+      <article class="techs">
         <app-skill-circle
           :image-path="require('~/assets/marks/ts.svg')"
-          skill-name="TypeScript(API/App)"
+          skill-name="TypeScript"
         />
         <app-skill-circle
           :image-path="require('~/assets/marks/react.svg')"
@@ -288,6 +288,7 @@ export default {
 }
 
 .techs {
+  margin-top: 64px;
   width: 75%;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));

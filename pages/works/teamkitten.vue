@@ -56,7 +56,7 @@
     </section>
     <section class="container">
       <app-title-postit v-if="visible" title="TeamKitten" subtitle="使用技術" />
-      <article class="content techs">
+      <article class="techs">
         <app-skill-circle
           :image-path="require('~/assets/marks/js.svg')"
           skill-name="JavaScript"
@@ -254,6 +254,7 @@ export default {
 }
 
 .techs {
+  margin-top: 64px;
   width: 75%;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
