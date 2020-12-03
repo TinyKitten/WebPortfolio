@@ -55,6 +55,19 @@
       </article>
     </section>
     <section class="container">
+      <app-title-postit v-if="visible" title="TeamKitten" subtitle="使用技術" />
+      <article class="content techs">
+        <app-skill-circle
+          :image-path="require('~/assets/marks/js.svg')"
+          skill-name="JavaScript"
+        />
+        <app-skill-circle
+          :image-path="require('~/assets/marks/nuxtjs.svg')"
+          skill-name="NuxtJS"
+        />
+      </article>
+    </section>
+    <section class="container">
       <app-title-postit v-if="visible" title="TeamKitten" subtitle="リンク" />
       <article class="content">
         <a
@@ -85,13 +98,15 @@
 import AppTitlePostit from '~/components/AppTitlePostit.vue'
 import AppPostit from '~/components/AppPostit.vue'
 import AppButton from '~/components/AppButton.vue'
+import AppSkillCircle from '~/components/AppSkillCircle.vue'
 import { scrollMixin } from '~/mixins/scroll'
 
 export default {
   components: {
     AppPostit,
     AppTitlePostit,
-    AppButton
+    AppButton,
+    AppSkillCircle
   },
   mixins: [scrollMixin],
   head: {
@@ -236,6 +251,14 @@ export default {
 
 .link {
   margin-bottom: 32px;
+}
+
+.techs {
+  width: 75%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  grid-gap: 32px;
+  animation: imageAnimation 1s ease forwards;
 }
 
 /* Animation */

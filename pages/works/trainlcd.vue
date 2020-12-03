@@ -51,6 +51,27 @@
       </article>
     </section>
     <section class="container">
+      <app-title-postit v-if="visible" title="TrainLCD" subtitle="使用技術" />
+      <article class="content techs">
+        <app-skill-circle
+          :image-path="require('~/assets/marks/ts.svg')"
+          skill-name="TypeScript(API/App)"
+        />
+        <app-skill-circle
+          :image-path="require('~/assets/marks/react.svg')"
+          skill-name="React Native"
+        />
+        <app-skill-circle
+          :image-path="require('~/assets/marks/nestjs.svg')"
+          skill-name="NestJS"
+        />
+        <app-skill-circle
+          :image-path="require('~/assets/marks/mysql.svg')"
+          skill-name="MySQL"
+        />
+      </article>
+    </section>
+    <section class="container">
       <app-title-postit v-if="visible" title="TrainLCD" subtitle="リンク" />
       <article class="content">
         <a
@@ -91,13 +112,15 @@
 import AppTitlePostit from '~/components/AppTitlePostit.vue'
 import AppPostit from '~/components/AppPostit.vue'
 import AppButton from '~/components/AppButton.vue'
+import AppSkillCircle from '~/components/AppSkillCircle.vue'
 import { scrollMixin } from '~/mixins/scroll'
 
 export default {
   components: {
     AppPostit,
     AppTitlePostit,
-    AppButton
+    AppButton,
+    AppSkillCircle
   },
   mixins: [scrollMixin],
   head: {
@@ -262,6 +285,14 @@ export default {
 .smallCaption {
   font-size: 0.8rem;
   margin-top: 0;
+}
+
+.techs {
+  width: 75%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  grid-gap: 32px;
+  animation: imageAnimation 1s ease forwards;
 }
 
 /* Animation */
