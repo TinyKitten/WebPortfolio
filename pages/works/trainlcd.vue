@@ -167,7 +167,7 @@ export default {
 
 .logo {
   opacity: 0;
-  width: 80%;
+  width: 320px;
   height: auto;
   filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.16));
   animation: imageAnimation 1s ease 0.25s forwards;
@@ -233,9 +233,9 @@ export default {
 
 .galleryImg {
   margin: 64px 0 32px 0;
-  width: 80%;
+  width: 320px;
   height: auto;
-  filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.16));
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
 }
 
 .link {
@@ -297,14 +297,12 @@ export default {
 }
 
 @media (min-width: 800px) {
-  .logo {
-    width: 25%;
-  }
-  .galleryImg {
-    width: 25%;
-  }
   .content {
     padding-bottom: 64px;
+  }
+  .logo,
+  .galleryImg {
+    width: 480px;
   }
 }
 </style>
