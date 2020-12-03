@@ -4,10 +4,14 @@
       :alt="`${title}${subtitle}`"
       class="titlePostitBg"
       src="~/assets/vertical-postit.svg"
-    />
+    >
     <div class="titleText">
-      <p class="appName">{{ title }}</p>
-      <p class="subtitle">{{ subtitle }}</p>
+      <p class="appName">
+        {{ title }}
+      </p>
+      <p class="subtitle">
+        {{ subtitle }}
+      </p>
     </div>
   </div>
 </template>

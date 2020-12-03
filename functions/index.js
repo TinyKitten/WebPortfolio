@@ -1,8 +1,8 @@
 const functions = require('firebase-functions')
 const rp = require('request-promise')
-var bbt = require('beebotte')
+const bbt = require('beebotte')
 
-function postToSlack(text) {
+function postToSlack (text) {
   return rp({
     method: 'POST',
     uri: functions.config().slack.webhook_url,
@@ -13,11 +13,11 @@ function postToSlack(text) {
   })
 }
 
-function postToBeebotte(count) {
-  const { api_key, secret_key } = functions.config().beebotte
-  var bclient = new bbt.Connector({
-    apiKey: api_key,
-    secretKey: secret_key
+function postToBeebotte (count) {
+  const { api_key: apiKey, secret_key: secretKey } = functions.config().beebotte
+  const bclient = new bbt.Connector({
+    apiKey,
+    secretKey
   })
   bclient.write(
     {
@@ -35,7 +35,7 @@ function postToBeebotte(count) {
 
 exports.praiseUpdateHook = functions.firestore
   .document('/public/praise')
-  .onUpdate(change => {
+  .onUpdate((change) => {
     const newValue = change.after.data()
     const msg = `
     TinyKitten.meのほめるが増えました:clap:

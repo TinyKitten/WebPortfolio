@@ -52,7 +52,7 @@ export default {
       praiseCount: 'praise/count'
     })
   },
-  async mounted() {
+  async mounted () {
     await firebase.auth().signInAnonymously()
     this.fetchPraiseCount()
   },

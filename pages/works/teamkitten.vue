@@ -7,14 +7,16 @@
           class="logo"
           src="~/assets/works/teamkitten.png"
           alt="TeamKitten"
-        />
-        <h2 class="name">TeamKitten</h2>
+        >
+        <h2 class="name">
+          TeamKitten
+        </h2>
         <p class="bio">
-          TeamKittenというネットサークルの<br />
-          メンバー管理API設計・実装、<br />
-          ウェブサイトの開発を担当しました。<br />
-          現在はNuxt.jsを用いており、<br />
-          コンテンツを完全に静的に配信することにより<br />
+          TeamKittenというネットサークルの<br>
+          メンバー管理API設計・実装、<br>
+          ウェブサイトの開発を担当しました。<br>
+          現在はNuxt.jsを用いており、<br>
+          コンテンツを完全に静的に配信することにより<br>
           高速な表示とより良いUXを実現しました。
         </p>
       </article>
@@ -27,13 +29,13 @@
       />
       <article class="content">
         <h2 class="concept">
-          シンプルを追求した<br />
+          シンプルを追求した<br>
           設計とUX
         </h2>
         <p class="conceptDescription">
-          TeamKittenというネットサークルを僕が運営しています。<br />
-          過去にはGoやNode.jsでAPIを自作して動的なコンテンツ配信を行っていましたが、<br />
-          現在はNuxt.jsを用いて完全に静的に配信しています。(JAMStack)<br />
+          TeamKittenというネットサークルを僕が運営しています。<br>
+          過去にはGoやNode.jsでAPIを自作して動的なコンテンツ配信を行っていましたが、<br>
+          現在はNuxt.jsを用いて完全に静的に配信しています。(JAMStack)<br>
           ウェブサイトのデザインはシンプルを追求し、どこか暖かさを感じるデザインにしました。
         </p>
       </article>
@@ -45,9 +47,9 @@
           class="galleryImg"
           src="~/assets/works/teamkitten.png"
           alt="TeamKitten"
-        />
+        >
         <h2 class="galleryConcept">
-          掲載されることに喜びを覚える<br />
+          掲載されることに喜びを覚える<br>
           シンプルながら美しいデザイン
         </h2>
       </article>

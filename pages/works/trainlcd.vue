@@ -3,34 +3,38 @@
     <section class="container">
       <article class="content">
         <app-postit class="postit" text="Dev/WebApp" />
-        <img class="logo" src="~/assets/works/trainlcd.png" alt="TrainLCD" />
-        <h2 class="name">TrainLCD</h2>
-        <p class="bio">電車のLCDをスマホで</p>
+        <img class="logo" src="~/assets/works/trainlcd.png" alt="TrainLCD">
+        <h2 class="name">
+          TrainLCD
+        </h2>
+        <p class="bio">
+          電車のLCDをスマホで
+        </p>
       </article>
     </section>
     <section class="container">
       <app-title-postit v-if="visible" title="TrainLCD" subtitle="コンセプト" />
       <article class="content">
-        <h2 class="concept">StationAPIで電車のLCDを再現したい</h2>
+        <h2 class="concept">
+          StationAPIで電車のLCDを再現したい
+        </h2>
         <p class="conceptDescription">
           <a
             href="https://github.com/TinyKitten/StationAPI"
             target="_blank"
             rel="noopener noreferrer"
-            >StationAPI</a
-          >の応用例の一つです。 <br />前から電車のLCDを再現したいと思っていて、
+          >StationAPI</a>の応用例の一つです。 <br>前から電車のLCDを再現したいと思っていて、
           <a
             href="https://github.com/TinyKitten/StationAPI"
             target="_blank"
             rel="noopener noreferrer"
-            >StationAPI</a
-          >の大型アップデートで色々取れるようにした影響で作ろうと思いました。<br />
-          満員電車、LCDのない路線など、現在どこにいるか、どの駅を通るのかひと目で分かります。<br />
+          >StationAPI</a>の大型アップデートで色々取れるようにした影響で作ろうと思いました。<br>
+          満員電車、LCDのない路線など、現在どこにいるか、どの駅を通るのかひと目で分かります。<br>
           ぜひお試しください。
         </p>
-        <small class="conceptDescription smallCaption"
-          >※地下区間は非対応です</small
-        >
+        <small
+          class="conceptDescription smallCaption"
+        >※地下区間は非対応です</small>
       </article>
     </section>
     <section class="container">
@@ -40,8 +44,10 @@
           class="galleryImg"
           src="~/assets/works/trainlcd.png"
           alt="TrainLCD"
-        />
-        <h2 class="galleryConcept">実物のLCDに近づくように</h2>
+        >
+        <h2 class="galleryConcept">
+          実物のLCDに近づくように
+        </h2>
       </article>
     </section>
     <section class="container">
@@ -54,7 +60,7 @@
           <img
             alt="Google Play で手に入れよう"
             src="~/assets/works/store-badges/google-play-store.svg"
-          />
+          >
         </a>
         <a
           class="appStoreButton appleAppStore"
@@ -63,7 +69,7 @@
           <img
             alt="App Storeからダウンロード"
             src="~/assets/works/store-badges/apple-app-store.svg"
-          />
+          >
         </a>
         <a
           href="https://github.com/TinyKitten/TrainLCD"

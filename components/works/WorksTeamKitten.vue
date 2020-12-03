@@ -2,14 +2,14 @@
   <div class="content">
     <div v-if="visible" class="logoWrapper">
       <app-postit class="postit" text="TeamKitten" />
-      <img class="image" src="~/assets/works/teamkitten.png" alt="TeamKitten" />
+      <img class="image" src="~/assets/works/teamkitten.png" alt="TeamKitten">
     </div>
     <p v-if="visible" class="description">
-      TeamKittenというネットサークルの<br />
-      メンバー管理API設計・実装、<br />
-      ウェブサイトの開発を担当しました。<br />
-      現在はNuxt.jsを用いており、<br />
-      コンテンツを完全に静的に配信することにより<br />
+      TeamKittenというネットサークルの<br>
+      メンバー管理API設計・実装、<br>
+      ウェブサイトの開発を担当しました。<br>
+      現在はNuxt.jsを用いており、<br>
+      コンテンツを完全に静的に配信することにより<br>
       高速な表示とより良いUXを実現しました。
     </p>
     <nuxt-link to="/works/teamkitten">

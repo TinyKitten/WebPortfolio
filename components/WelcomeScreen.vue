@@ -2,11 +2,13 @@
   <section class="container">
     <div class="logoWrapper">
       <app-postit class="postit" text="Frontend Engineer" />
-      <img class="logo" src="~/assets/icon.svg" alt="TinyKitten" />
+      <img class="logo" src="~/assets/icon.svg" alt="TinyKitten">
     </div>
-    <h1 class="name">TinyKitten</h1>
+    <h1 class="name">
+      TinyKitten
+    </h1>
     <a v-smooth-scroll="{ duration: 1000 }" class="arrowLink" href="#aboutme">
-      <img src="~/assets/arrow.svg" alt="下へ" />
+      <img src="~/assets/arrow.svg" alt="下へ">
     </a>
   </section>
 </template>

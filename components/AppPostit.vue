@@ -1,7 +1,9 @@
 <template>
   <div class="postit">
-    <img class="bg" src="~/assets/postit.svg" alt="付箋" />
-    <p class="text">{{ text }}</p>
+    <img class="bg" src="~/assets/postit.svg" alt="付箋">
+    <p class="text">
+      {{ text }}
+    </p>
   </div>
 </template>
 

@@ -9,13 +9,15 @@
     <div class="content">
       <div class="logoWrapper">
         <app-postit v-if="visible" class="postit" text="デザインもできます" />
-        <img class="logo" src="~/assets/icon.svg" alt="TinyKitten" />
+        <img class="logo" src="~/assets/icon.svg" alt="TinyKitten">
       </div>
-      <h2 class="name">TinyKitten</h2>
+      <h2 class="name">
+        TinyKitten
+      </h2>
       <p class="bio">
-        東京都豊島区在住のフリーの<br />
-        フロントエンドエンジニア。<br />
-        タイニーキトゥンと読みます。<br />
+        東京都豊島区在住のフリーの<br>
+        フロントエンドエンジニア。<br>
+        タイニーキトゥンと読みます。<br>
         でも、「きったん」と呼ばれることが多いです。
       </p>
     </div>

@@ -2,10 +2,10 @@
   <div class="content">
     <div v-if="visible" class="logoWrapper">
       <app-postit class="postit" text="TrainLCD" />
-      <img class="image" src="~/assets/works/trainlcd.png" alt="TrainLCD" />
+      <img class="image" src="~/assets/works/trainlcd.png" alt="TrainLCD">
     </div>
     <p v-if="visible" class="description">
-      電車のLCDを再現したスマホアプリです。<br />
+      電車のLCDを再現したスマホアプリです。<br>
       現在App Store、Google Play Storeにて配信中。
     </p>
     <nuxt-link to="/works/trainlcd">

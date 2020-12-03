@@ -3,11 +3,13 @@
     <section class="container">
       <article class="content">
         <app-postit class="postit" text="Dev/WebApp" />
-        <img class="logo" src="~/assets/works/blog.png" alt="Blog" />
-        <h2 class="name">ブログ</h2>
+        <img class="logo" src="~/assets/works/blog.png" alt="Blog">
+        <h2 class="name">
+          ブログ
+        </h2>
         <p class="bio">
           個人的なことを書くためのブログです。
-          Nuxt.jsとMarkdownを用いており、<br />
+          Nuxt.jsとMarkdownを用いており、<br>
           高速な表示とより良いUXを実現しました。
         </p>
       </article>
@@ -19,10 +21,10 @@
           省力化を考えた設計
         </h2>
         <p class="conceptDescription">
-          ブログというものは書くことが重要です。基本的にシステムを構築することが目標ではありません。<br />
-          どうすれば楽にシステムを構築し、かつ楽に書くことが出来るか。<br />
-          そう考えたらNuxt.jsとMarkdownの組み合わせしかありませんでした。<br />
-          普段自分はUIフレームワークを使わず、自力でCSSを書いていますが（このサイトもそうです）、<br />
+          ブログというものは書くことが重要です。基本的にシステムを構築することが目標ではありません。<br>
+          どうすれば楽にシステムを構築し、かつ楽に書くことが出来るか。<br>
+          そう考えたらNuxt.jsとMarkdownの組み合わせしかありませんでした。<br>
+          普段自分はUIフレームワークを使わず、自力でCSSを書いていますが（このサイトもそうです）、<br>
           今回はBulmaというUIフレームワークを使用しました。
         </p>
       </article>
@@ -30,7 +32,7 @@
     <section class="container">
       <app-title-postit v-if="visible" title="ブログ" subtitle="デザイン" />
       <article class="content">
-        <img class="galleryImg" src="~/assets/works/blog.png" alt="Blog" />
+        <img class="galleryImg" src="~/assets/works/blog.png" alt="Blog">
         <h2 class="galleryConcept">
           簡略化された読みやすいデザインを目指しました。
         </h2>

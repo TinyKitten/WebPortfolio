@@ -8,7 +8,7 @@ const meta = {
 }
 
 export default {
-  mode: 'universal',
+  target: 'static',
 
   /*
    ** Headers of the page
@@ -123,7 +123,7 @@ export default {
     /*
      ** You can extend webpack config here
      */
-    extend(config, ctx) {
+    extend (config, ctx) {
       // Run ESLint on save
       if (ctx.isDev && ctx.isClient) {
         config.module.rules.push({
@@ -135,7 +135,7 @@ export default {
       }
     }
   },
-  buildModules: [['@nuxtjs/dotenv', { systemvars: true }]],
+  buildModules: ['@nuxtjs/dotenv'],
   manifest: {
     name: meta.title,
     short_name: meta.title,

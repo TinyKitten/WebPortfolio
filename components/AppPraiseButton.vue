@@ -1,6 +1,6 @@
 <template>
   <div class="praiseButton">
-    <button @click="handleClick()" class="button">
+    <button class="button" @click="handleClick()">
       {{ clicked ? 'ありがとう！' : 'ほめる' }}
     </button>
     <div class="balloon">
@@ -26,7 +26,7 @@ export default {
     ...mapActions({
       incrementCount: 'praise/incrementCountAsync'
     }),
-    handleClick() {
+    handleClick () {
       this.incrementCount()
       this.clicked = true
       setTimeout(() => {

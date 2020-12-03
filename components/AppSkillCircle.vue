@@ -1,9 +1,11 @@
 <template>
   <div class="skill">
     <div class="skillImageWrapper">
-      <img :src="imagePath" :alt="skillName" class="skillImage" />
+      <img :src="imagePath" :alt="skillName" class="skillImage">
     </div>
-    <p class="skillName">{{ skillName }}</p>
+    <p class="skillName">
+      {{ skillName }}
+    </p>
   </div>
 </template>
 
