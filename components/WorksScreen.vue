@@ -8,6 +8,7 @@
     />
     <works-train-l-c-d />
     <works-team-kitten />
+    <works-near-station />
   </section>
 </template>
 
@@ -16,12 +17,14 @@ import { scrollMixin } from '~/mixins/scroll'
 import AppTitlePostit from '~/components/AppTitlePostit.vue'
 import WorksTeamKitten from '~/components/works/WorksTeamKitten.vue'
 import WorksTrainLCD from '~/components/works/WorksTrainLCD.vue'
+import WorksNearStation from '~/components/works/WorksNearStation.vue'
 
 export default {
   components: {
     AppTitlePostit,
     WorksTeamKitten,
-    WorksTrainLCD
+    WorksTrainLCD,
+    WorksNearStation
   },
   mixins: [scrollMixin]
 }
