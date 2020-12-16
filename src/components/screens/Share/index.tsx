@@ -1,4 +1,5 @@
-import React, { useCallback, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
+import usePraise from '../../../hooks/usePraise';
 import Button from '../../Button';
 import Postit from '../../Postit';
 import Praise from '../../Praise';
@@ -9,10 +10,7 @@ import styles from './styles.module.css';
 const ShareScreen: React.FC = () => {
   const [visible, setVisible] = useState(false);
   const ref = useRef(null);
-
-  const handleIncrement = useCallback(() => {
-    // TODO: implement
-  }, []);
+  const { count, incrementCount } = usePraise();
 
   return (
     <ScreenVisibleProvider contentRef={ref} onVisibleChange={setVisible}>
@@ -27,7 +25,7 @@ const ShareScreen: React.FC = () => {
         <div className={styles.content}>
           {visible && <Postit className={styles.postit}>シェアしよう！</Postit>}
           {visible && (
-            <p className={styles.links}>
+            <div className={styles.links}>
               <a
                 href="https://twitter.com/intent/tweet?url=https://tinykitten.me&text=TinyKittenのポートフォリオ&via=tinykitten8&related=tinykitten8"
                 target="_blank"
@@ -47,11 +45,11 @@ const ShareScreen: React.FC = () => {
                 </Button>
               </a>
               <Praise
-                count={0}
-                onIncrement={handleIncrement}
+                count={count}
+                onIncrement={incrementCount}
                 className={styles.shareButton}
               />
-            </p>
+            </div>
           )}
         </div>
       </section>
