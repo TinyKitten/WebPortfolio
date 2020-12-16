@@ -4,7 +4,7 @@ import TrainLCDIMG from '../../../assets/works/trainlcd.png';
 import styles from './styles.module.css';
 
 const TrainLCDFirstSection: React.FC = () => (
-  <section className={styles.container}>
+  <section className={[styles.container, styles.fullHeight].join(' ')}>
     <article className={styles.content}>
       <Postit className={styles.postit}>Dev/WebApp</Postit>
       <img className={styles.logo} src={TrainLCDIMG} alt="TrainLCD" />
