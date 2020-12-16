@@ -17,7 +17,7 @@ const WorksTeamKittenPage: React.FC = () => {
   return (
     <div ref={ref}>
       <Helmet>
-        <title>TrainLCD</title>
+        <title>TeamKitten</title>
         <meta
           name="description"
           content="
