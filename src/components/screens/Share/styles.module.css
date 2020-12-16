@@ -42,7 +42,6 @@
 .titlePostit {
   animation: titlePostitAnimation 1s ease forwards;
 }
-/* Animation */
 @keyframes titlePostitAnimation {
   from {
     transform: translateY(-147px);

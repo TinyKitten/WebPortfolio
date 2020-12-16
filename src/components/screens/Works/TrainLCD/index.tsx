@@ -4,6 +4,7 @@ import Postit from '../../../Postit';
 import ScreenVisibleProvider from '../../ScreenVisibleProvider';
 import styles from './styles.module.css';
 import TrainLCDIMG from '../../../../assets/works/trainlcd.png';
+import { Link } from 'react-router-dom';
 
 const WorksTrainLCD: React.FC = () => {
   const [visible, setVisible] = useState(false);
@@ -26,11 +27,11 @@ const WorksTrainLCD: React.FC = () => {
             現在App Store、Google Play Storeにて配信中。
           </p>
         )}
-        <a href="/works/trainlcd">
+        <Link to="/works/trainlcd">
           {visible && (
             <Button className={styles.learnMoreBtn} text="さらに詳しく" />
           )}
-        </a>
+        </Link>
       </div>
     </ScreenVisibleProvider>
   );

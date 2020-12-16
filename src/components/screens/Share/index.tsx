@@ -55,7 +55,6 @@ const ShareScreen: React.FC = () => {
                 onIncrement={handleIncrement}
                 className={styles.shareButton}
               />
-              {/* <app-praise-button :count="praiseCount" className="shareButton" /> */}
             </p>
           )}
         </div>

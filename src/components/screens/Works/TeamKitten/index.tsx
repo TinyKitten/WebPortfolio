@@ -4,6 +4,7 @@ import Postit from '../../../Postit';
 import ScreenVisibleProvider from '../../ScreenVisibleProvider';
 import styles from './styles.module.css';
 import TeamKittenIMG from '../../../../assets/works/teamkitten.png';
+import { Link } from 'react-router-dom';
 
 const WorksTeamKitten: React.FC = () => {
   const [visible, setVisible] = useState(false);
@@ -37,11 +38,11 @@ const WorksTeamKitten: React.FC = () => {
             高速な表示とより良いUXを実現しました。
           </p>
         )}
-        <a href="/works/teamkitten">
+        <Link to="/works/teamkitten">
           {visible && (
             <Button className={styles.learnMoreBtn} text="さらに詳しく" />
           )}
-        </a>
+        </Link>
       </div>
     </ScreenVisibleProvider>
   );
