@@ -1,10 +1,10 @@
 import React, { useRef, useState } from 'react';
 import TitlePostit from '../../../components/TitlePostit';
 import styles from './styles.module.css';
-import TeamKittenIMG from '../../../assets/works/teamkitten.png';
+import NearStationIMG from '../../../assets/works/nearstation.png';
 import ScreenVisibleProvider from '../../../components/screens/ScreenVisibleProvider';
 
-const TeamKittenDesignSection: React.FC = () => {
+const NearStationDesignSection: React.FC = () => {
   const [visible, setVisible] = useState(false);
   const ref = useRef(null);
 
@@ -14,20 +14,18 @@ const TeamKittenDesignSection: React.FC = () => {
         {visible && (
           <TitlePostit
             className={styles.titlePostit}
-            title="TeamKitten"
+            title="NearStation"
             subtitle="デザイン"
           />
         )}
         <article className={styles.content}>
           <img
             className={styles.galleryImg}
-            src={TeamKittenIMG}
+            src={NearStationIMG}
             alt="NearStation"
           />
           <h2 className={styles.galleryConcept}>
-            掲載されることに喜びを覚える
-            <br />
-            シンプルながら美しいデザイン
+            すっきりと透き通るような繊細なデザイン
           </h2>
         </article>
       </section>
@@ -35,4 +33,4 @@ const TeamKittenDesignSection: React.FC = () => {
   );
 };
 
-export default TeamKittenDesignSection;
+export default NearStationDesignSection;
