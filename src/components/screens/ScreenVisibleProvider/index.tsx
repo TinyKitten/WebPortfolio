@@ -14,7 +14,7 @@ const ScreenVisibleProvider: React.FC<Props> = ({
   const handleScroll = useCallback(() => {
     const top = contentRef.current?.getBoundingClientRect().top;
     if (top) {
-      onVisibleChange(top < window.innerHeight / 1.5);
+      onVisibleChange(top < window.innerHeight);
     }
   }, [contentRef, onVisibleChange]);
 
