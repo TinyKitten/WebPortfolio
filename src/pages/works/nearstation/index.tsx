@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Helmet } from 'react-helmet';
 import NearStationFirstSection from './FirstSection';
 import NearStationConceptSection from './ConceptSection';
@@ -8,8 +8,14 @@ import NearStationDesignSection from './DesignSection';
 import NearStationIMG from '../../../assets/works/nearstation.png';
 
 const WorksNearStationPage: React.FC = () => {
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    ref.current?.scrollIntoView();
+  }, []);
+
   return (
-    <>
+    <div ref={ref}>
       <Helmet>
         <title>NearStation</title>
         <meta
@@ -35,7 +41,7 @@ const WorksNearStationPage: React.FC = () => {
       <NearStationDesignSection />
       <NearStationTechnologySection />
       <NearStationAccessSection />
-    </>
+    </div>
   );
 };
 

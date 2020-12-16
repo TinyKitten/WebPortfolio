@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Helmet } from 'react-helmet';
 import TrainLCDFirstSection from './FirstSection';
 import TrainLCDConceptSection from './ConceptSection';
@@ -8,8 +8,14 @@ import TrainLCDDesignSection from './DesignSection';
 import TrainLCDIMG from '../../../assets/works/trainlcd.png';
 
 const WorksTrainLCDPage: React.FC = () => {
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    ref.current?.scrollIntoView();
+  }, []);
+
   return (
-    <>
+    <div ref={ref}>
       <Helmet>
         <title>TrainLCD</title>
         <meta name="description" content="電車のLCDをスマホで" />
@@ -28,7 +34,7 @@ const WorksTrainLCDPage: React.FC = () => {
       <TrainLCDDesignSection />
       <TrainLCDTechnologySection />
       <TrainLCDAccessSection />
-    </>
+    </div>
   );
 };
 

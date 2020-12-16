@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Helmet } from 'react-helmet';
 import TeamKittenFirstSection from './FirstSection';
 import TeamKittenConceptSection from './ConceptSection';
@@ -8,8 +8,14 @@ import TeamKittenDesignSection from './DesignSection';
 import TeamKittenIMG from '../../../assets/works/teamkitten.png';
 
 const WorksTeamKittenPage: React.FC = () => {
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    ref.current?.scrollIntoView();
+  }, []);
+
   return (
-    <>
+    <div ref={ref}>
       <Helmet>
         <title>TrainLCD</title>
         <meta
@@ -37,7 +43,7 @@ const WorksTeamKittenPage: React.FC = () => {
       <TeamKittenDesignSection />
       <TeamKittenTechnologySection />
       <TeamKittenAccessSection />
-    </>
+    </div>
   );
 };
 
