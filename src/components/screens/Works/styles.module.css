@@ -1,0 +1,16 @@
+.container {
+  overflow: hidden;
+  position: relative;
+  min-height: calc(100vh - 48px);
+}
+.titlePostit {
+  animation: titlePostitAnimation 1s ease forwards;
+}
+@keyframes titlePostitAnimation {
+  from {
+    transform: translateY(-147px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
