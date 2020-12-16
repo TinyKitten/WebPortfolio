@@ -33,22 +33,18 @@ const ShareScreen: React.FC = () => {
                 target="_blank"
                 rel="noreferrer noopener"
               >
-                <Button
-                  className={styles.shareButton}
-                  color="#1DA1F2"
-                  text="Twitter"
-                />
+                <Button className={styles.shareButton} color="#1DA1F2">
+                  Twitter
+                </Button>
               </a>
               <a
                 href="https://www.facebook.com/sharer/sharer.php?u=https://tinykitten.me"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <Button
-                  className={styles.shareButton}
-                  color="#3E54A4"
-                  text="Facebook"
-                />
+                <Button className={styles.shareButton} color="#3E54A4">
+                  Facebook
+                </Button>
               </a>
               <Praise
                 count={0}

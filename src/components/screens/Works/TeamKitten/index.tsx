@@ -40,7 +40,7 @@ const WorksTeamKitten: React.FC = () => {
         )}
         <Link to="/works/teamkitten">
           {visible && (
-            <Button className={styles.learnMoreBtn} text="さらに詳しく" />
+            <Button className={styles.learnMoreBtn}>さらに詳しく</Button>
           )}
         </Link>
       </div>

@@ -3,20 +3,20 @@ import styles from './styles.module.css';
 
 type Props = {
   color?: string;
-  text: string;
+  children: React.ReactNode;
   className?: string;
 };
 
 const Button: React.FC<Props> = ({
   color = '#008ffe',
-  text,
+  children,
   className,
 }: Props) => (
   <button
     style={{ backgroundColor: color }}
     className={[className, styles.button].join(' ')}
   >
-    {text}
+    {children}
   </button>
 );
 

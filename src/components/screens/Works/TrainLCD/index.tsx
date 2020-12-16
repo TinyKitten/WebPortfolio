@@ -29,7 +29,7 @@ const WorksTrainLCD: React.FC = () => {
         )}
         <Link to="/works/trainlcd">
           {visible && (
-            <Button className={styles.learnMoreBtn} text="さらに詳しく" />
+            <Button className={styles.learnMoreBtn}>さらに詳しく</Button>
           )}
         </Link>
       </div>

@@ -15,7 +15,7 @@ const WorksScreen: React.FC = () => {
       <section className={styles.container} ref={ref}>
         {visible && (
           <TitlePostit
-            className={styles.titilePostit}
+            className={styles.titlePostit}
             title="TinyKitten"
             subtitle="が作ったよ"
           />
