@@ -1,16 +1,20 @@
-import React, { useRef } from 'react';
-import WelcomeScreen from '../../components/screens/Welcome';
-import AboutScreen from '../../components/screens/About';
-import SkillsScreen from '../../components/screens/Skills';
-import WorksScreen from '../../components/screens/Works';
-import ShareScreen from '../../components/screens/Share';
+import React, { Suspense, useRef } from 'react';
+const WelcomeScreen = React.lazy(
+  () => import('../../components/screens/Welcome')
+);
+const AboutScreen = React.lazy(() => import('../../components/screens/About'));
+const SkillsScreen = React.lazy(
+  () => import('../../components/screens/Skills')
+);
+const WorksScreen = React.lazy(() => import('../../components/screens/Works'));
+const ShareScreen = React.lazy(() => import('../../components/screens/Share'));
 import { Helmet } from 'react-helmet';
 
 const IndexPage: React.FC = () => {
   const aboutScreenRef = useRef<HTMLDivElement | null>(null);
 
   return (
-    <>
+    <Suspense fallback={<></>}>
       <Helmet>
         <title>TinyKitten</title>
         <meta
@@ -37,7 +41,7 @@ const IndexPage: React.FC = () => {
       <SkillsScreen />
       <WorksScreen />
       <ShareScreen />
-    </>
+    </Suspense>
   );
 };
 
