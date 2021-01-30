@@ -3,7 +3,7 @@ import { SVGProps } from 'react';
 type Props = SVGProps<SVGSVGElement>;
 
 const GooglePlayIcon: React.FC<Props> = (props: Props) => (
-  <svg viewBox="0 0 135 40" {...props}>
+  <svg viewBox="0 0 135 40" width="100%" height="100%" {...props}>
     <defs>
       <linearGradient
         id="a"

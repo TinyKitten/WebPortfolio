@@ -3,7 +3,7 @@ import { useRef, useState } from 'react';
 import ScreenVisibleProvider from '../../../providers/ScreenVisibleProvider';
 import Button from '../../Button';
 import Postit from '../../Postit';
-import styles from '../../../styles/components/screens/Works/TeamKitten.module.css';
+import styles from '../../../styles/components/screens/Works/teamkitten.module.css';
 
 const WorksTeamKitten: React.FC = () => {
   const [visible, setVisible] = useState(false);

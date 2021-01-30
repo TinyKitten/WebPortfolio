@@ -3,7 +3,7 @@ import { SVGProps } from 'react';
 type Props = SVGProps<SVGSVGElement>;
 
 const AppStoreIcon: React.FC<Props> = (props: Props) => (
-  <svg id="JP" width="" height="" viewBox="0 0 108.85157 40" {...props}>
+  <svg id="JP" width="100%" height="100%" viewBox="0 0 108.85157 40" {...props}>
     <title>Download_on_the_App_Store_Badge_JP_RGB_blk_100317</title>
     <g>
       <g>
