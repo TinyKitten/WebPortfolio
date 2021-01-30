@@ -77,33 +77,6 @@ const ConceptSection: React.FC = () => {
   );
 };
 
-const DesignSection: React.FC = () => {
-  const [visible, setVisible] = useState(false);
-  const ref = useRef(null);
-
-  return (
-    <ScreenVisibleProvider contentRef={ref} onVisibleChange={setVisible}>
-      <section className={styles.container} ref={ref}>
-        {visible && (
-          <TitlePostit
-            className={styles.titlePostit}
-            title="TrainLCD"
-            subtitle="デザイン"
-          />
-        )}
-        <article className={styles.content}>
-          <img
-            className={styles.galleryImg}
-            src="/works/trainlcd.png"
-            alt="TrainLCD"
-          />
-          <h2 className={styles.galleryConcept}>実物のLCDに近づくように</h2>
-        </article>
-      </section>
-    </ScreenVisibleProvider>
-  );
-};
-
 const TechnologySection: React.FC = () => {
   const [visible, setVisible] = useState(false);
   const ref = useRef(null);
@@ -203,7 +176,6 @@ const WorksTrainLCDPage: React.FC = () => {
       </Head>
       <FirstSection />
       <ConceptSection />
-      <DesignSection />
       <TechnologySection />
       <AccessSection />
     </div>
