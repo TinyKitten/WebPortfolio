@@ -34,7 +34,7 @@
   width: 64px;
   height: auto;
   bottom: 32px;
-  animation: 1s arrow forwards;
+  animation: arrow 1s forwards;
 }
 @keyframes headingPostitAnimation {
   from {

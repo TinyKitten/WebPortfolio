@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import Link from 'next/link';
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Button from '../../components/Button';
 import JSIcon from '../../components/marks/JSIcon';
 import NuxtJSIcon from '../../components/marks/NuxtJSIcon';
