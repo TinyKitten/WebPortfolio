@@ -32,7 +32,6 @@ const usePraise = (): {
       });
     }
     const f = async () => {
-      await firebase.auth().signInAnonymously();
       const countDoc = await firebase
         .firestore()
         .collection('public')
@@ -47,6 +46,10 @@ const usePraise = (): {
   }, []);
 
   const incrementCount = useCallback(async () => {
+    if (!firebase.auth().currentUser) {
+      await firebase.auth().signInAnonymously();
+    }
+
     const countRef = firebase.firestore().collection('public').doc('praise');
     await countRef.update('count', firebase.firestore.FieldValue.increment(1));
     const countDoc = await countRef.get();
