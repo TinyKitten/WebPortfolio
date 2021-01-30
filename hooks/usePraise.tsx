@@ -41,6 +41,14 @@ const usePraise = (): {
       if (data) {
         setCount(data.count);
       }
+      firebase
+        .firestore()
+        .collection('public')
+        .doc('praise')
+        .onSnapshot((snapshot) => {
+          const snapshotData = snapshot.data();
+          setCount(snapshotData.count);
+        });
     };
     f();
   }, []);
@@ -52,11 +60,6 @@ const usePraise = (): {
 
     const countRef = firebase.firestore().collection('public').doc('praise');
     await countRef.update('count', firebase.firestore.FieldValue.increment(1));
-    const countDoc = await countRef.get();
-    const data = countDoc.data();
-    if (data) {
-      setCount(data.count);
-    }
   }, []);
 
   return {
