@@ -79,7 +79,7 @@ const TechnologySection: React.FC = () => {
         {visible && (
           <article className={styles.techs}>
             <SkillsCircle icon={JSIcon} name="JavaScript" />
-            <SkillsCircle icon={NuxtJSIcon} name="NuxtJS" />
+            <SkillsCircle icon={NuxtJSIcon} name="Nuxt.js" />
           </article>
         )}
       </section>

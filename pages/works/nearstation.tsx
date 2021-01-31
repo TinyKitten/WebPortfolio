@@ -79,7 +79,7 @@ const TechnologySection: React.FC = () => {
             <SkillsCircle icon={TSIcon} name="TypeScript" />
             <SkillsCircle icon={ReactIcon} name="React.js" />
             <SkillsCircle icon={NestJSIcon} name="NestJS" />
-            <SkillsCircle icon={MySQLIcon} name="NestJS" />
+            <SkillsCircle icon={MySQLIcon} name="MySQL" />
           </article>
         )}
       </section>
