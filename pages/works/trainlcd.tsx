@@ -132,6 +132,14 @@ const AccessSection: React.FC = () => {
             <AppStoreIcon width={180} />
           </a>
           <a
+            href="https://trainlcd.tinykitten.me"
+            target="_blank"
+            className={styles.link}
+            rel="noopener noreferrer"
+          >
+            <Button>公式サイト</Button>
+          </a>
+          <a
             href="https://github.com/TinyKitten/TrainLCD"
             target="_blank"
             className={styles.link}
