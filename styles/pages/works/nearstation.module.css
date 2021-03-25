@@ -9,7 +9,7 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  background-color: #fcfcfc;
+  background-color: #fefefe;
 }
 .container:first-child {
   min-height: 100vh;

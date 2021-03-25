@@ -1,5 +1,5 @@
 .child:nth-child(odd) {
-  background-color: #fcfcfc;
+  background-color: #fefefe;
 }
 .child:nth-child(even) {
   background-color: #fafafa;
