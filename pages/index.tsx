@@ -5,6 +5,7 @@ import SkillsScreen from '../components/screens/Skills';
 import WorksScreen from '../components/screens/Works';
 import ShareScreen from '../components/screens/Share';
 import styles from '../styles/pages/Index.module.css';
+import ResumeScreen from '../components/screens/Resume';
 
 export default function Home(): React.ReactElement {
   const aboutScreenRef = useRef<HTMLDivElement | null>(null);
@@ -14,6 +15,7 @@ export default function Home(): React.ReactElement {
       <WelcomeScreen aboutScreenRef={aboutScreenRef} className={styles.child} />
       <AboutScreen ref={aboutScreenRef} className={styles.child} />
       <SkillsScreen className={styles.child} />
+      <ResumeScreen className={styles.child} />
       <WorksScreen className={styles.child} />
       <ShareScreen className={styles.child} />
     </div>
