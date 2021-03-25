@@ -5,10 +5,14 @@ import ArrowIcon from '../ArrowIcon';
 import Postit from '../Postit';
 
 type Props = {
+  className: string;
   aboutScreenRef: MutableRefObject<HTMLDivElement | null>;
 };
 
-const WelcomeScreen: React.FC<Props> = ({ aboutScreenRef }: Props) => {
+const WelcomeScreen: React.FC<Props> = ({
+  aboutScreenRef,
+  className,
+}: Props) => {
   const handleArrowClick = useCallback(
     () =>
       aboutScreenRef.current?.scrollIntoView({
@@ -18,7 +22,7 @@ const WelcomeScreen: React.FC<Props> = ({ aboutScreenRef }: Props) => {
   );
 
   return (
-    <section className={styles.container}>
+    <section className={[styles.container, className].join(' ')}>
       <div className={styles.logoWrapper}>
         <Postit className={styles.postit}>Frontend Engineer</Postit>
         <TinyKittenIcon width={120} height={120} className={styles.logo} />

@@ -8,13 +8,17 @@ import TSIcon from '../marks/TSIcon';
 import VueJSIcon from '../marks/VueJSIcon';
 import ReactIcon from '../marks/ReactIcon';
 
-const SkillsScreen: React.FC = () => {
+type Props = {
+  className: string;
+};
+
+const SkillsScreen: React.FC<Props> = ({ className }: Props) => {
   const ref = useRef(null);
   const [visible, setVisible] = useState(false);
 
   return (
     <ScreenVisibleProvider contentRef={ref} onVisibleChange={setVisible}>
-      <section className={styles.container} ref={ref}>
+      <section className={[styles.container, className].join(' ')} ref={ref}>
         {visible && (
           <TitlePostit
             className={styles.titlePostit}

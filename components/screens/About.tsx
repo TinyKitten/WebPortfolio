@@ -11,8 +11,12 @@ import Postit from '../Postit';
 import TinyKittenIcon from '../TinyKittenIcon';
 import ScreenVisibleProvider from '../../providers/ScreenVisibleProvider';
 
-const AboutScreen: ForwardRefRenderFunction<HTMLDivElement, unknown> = (
-  props: unknown,
+type Props = {
+  className?: string;
+};
+
+const AboutScreen: ForwardRefRenderFunction<HTMLDivElement, Props> = (
+  { className }: Props,
   forwardefRef:
     | ((instance: HTMLDivElement | null) => void)
     | MutableRefObject<HTMLDivElement | null>
@@ -23,7 +27,7 @@ const AboutScreen: ForwardRefRenderFunction<HTMLDivElement, unknown> = (
 
   return (
     <ScreenVisibleProvider contentRef={ref} onVisibleChange={setVisible}>
-      <div ref={ref}>
+      <div className={className} ref={ref}>
         <section ref={forwardefRef} className={styles.container}>
           {visible && (
             <TitlePostit
@@ -41,13 +45,15 @@ const AboutScreen: ForwardRefRenderFunction<HTMLDivElement, unknown> = (
             </div>
             <h2 className={styles.name}>TinyKitten</h2>
             <p className={styles.bio}>
-              東京都豊島区在住のフリーの
-              <br />
-              フロントエンドエンジニア。
+              東京都豊島区在住のフリーのフロントエンドエンジニア。
               <br />
               タイニーキトゥンと読みます。
               <br />
               でも、「きったん」と呼ばれることが多いです。
+              <br />
+              Reactの案件を基本的に引き受けています。
+              <br />
+              デザインとネイティブアプリの知識があることが強みです。
             </p>
           </div>
         </section>
@@ -56,4 +62,4 @@ const AboutScreen: ForwardRefRenderFunction<HTMLDivElement, unknown> = (
   );
 };
 
-export default forwardRef<HTMLDivElement>(AboutScreen);
+export default forwardRef<HTMLDivElement, Props>(AboutScreen);

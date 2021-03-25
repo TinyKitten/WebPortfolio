@@ -1,7 +1,6 @@
 .container {
   position: relative;
   min-height: calc(100vh - 48px);
-  background: #fafafa;
   overflow: hidden;
 }
 .content {
