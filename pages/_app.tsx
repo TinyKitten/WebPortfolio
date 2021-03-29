@@ -42,6 +42,7 @@ function MyApp({ Component, pageProps }: AppProps): React.ReactElement {
         <meta property="og:type" content="website" />
         <meta property="og:url" content={`${NEXT_PUBLIC_URL}`} />
         <meta property="og:title" content="TinyKitten" />
+        <meta name="twitter:card" content="summary_large_image" />
         <meta
           property="og:description"
           content="フロントエンドエンジニア TinyKittenのポートフォリオです。"
