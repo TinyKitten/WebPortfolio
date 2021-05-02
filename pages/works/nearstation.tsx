@@ -70,7 +70,7 @@ const TechnologySection: React.FC = () => {
         {visible && (
           <TitlePostit
             className={styles.titlePostit}
-            title="TeamKitten"
+            title="NearStation"
             subtitle="使用技術"
           />
         )}

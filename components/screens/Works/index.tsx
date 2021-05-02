@@ -3,7 +3,6 @@ import ScreenVisibleProvider from '../../../providers/ScreenVisibleProvider';
 import TitlePostit from '../../TitlePostit';
 import styles from '../../../styles/components/screens/Works/index.module.css';
 import WorksTrainLCD from './TrainLCD';
-import WorksTeamKitten from './TeamKitten';
 import WorksNearStation from './NearStation';
 
 type Props = {
@@ -25,7 +24,6 @@ const WorksScreen: React.FC<Props> = ({ className }: Props) => {
           />
         )}
         <WorksTrainLCD />
-        <WorksTeamKitten />
         <WorksNearStation />
       </section>
     </ScreenVisibleProvider>
