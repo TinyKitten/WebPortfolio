@@ -2,9 +2,29 @@ import '../styles/globals.css';
 import type { AppProps } from 'next/app';
 import Header from '../components/Header';
 import Head from 'next/head';
+import { existsGaId, GA_ID, recordPV } from '../lib/gtag';
+import { useEffect } from 'react';
+import { useRouter } from 'next/router';
 
 function MyApp({ Component, pageProps }: AppProps): React.ReactElement {
   const { NEXT_PUBLIC_URL } = process.env;
+  const router = useRouter();
+
+  useEffect(() => {
+    if (!existsGaId) {
+      return;
+    }
+
+    const handleRouteChange = (path) => {
+      recordPV(path);
+    };
+
+    router.events.on('routeChangeComplete', handleRouteChange);
+    return () => {
+      router.events.off('routeChangeComplete', handleRouteChange);
+    };
+  }, [router.events]);
+
   return (
     <>
       <Head>
@@ -49,6 +69,25 @@ function MyApp({ Component, pageProps }: AppProps): React.ReactElement {
         />
         <meta property="og:image" content={`${NEXT_PUBLIC_URL}/ogp.png`} />
         <title>TinyKitten</title>
+        {existsGaId && (
+          <>
+            <script
+              async
+              src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+            />
+            <script
+              dangerouslySetInnerHTML={{
+                __html: `
+                  window.dataLayer = window.dataLayer || [];
+                  function gtag(){dataLayer.push(arguments);}
+                  gtag('js', new Date());
+                  gtag('config', '${GA_ID}', {
+                    page_path: window.location.pathname,
+                  });`,
+              }}
+            />
+          </>
+        )}
       </Head>
       <Header />
       <Component {...pageProps} />
