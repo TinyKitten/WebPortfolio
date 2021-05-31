@@ -1,7 +1,4 @@
 import { useCallback, useEffect, useState } from 'react';
-import firebase from 'firebase/app';
-import 'firebase/firestore';
-import 'firebase/auth';
 
 // https://github.com/vercel/next.js/issues/19420
 const NEXT_PUBLIC_FIR_API_KEY = process.env.NEXT_PUBLIC_FIR_API_KEY;
@@ -19,7 +16,10 @@ const usePraise = (): {
   incrementCount: () => Promise<void>;
 } => {
   const [count, setCount] = useState(0);
-  useEffect(() => {
+
+  const getFirebase = useCallback(async () => {
+    const firebase = (await import('firebase/app')).default;
+
     if (!firebase.apps.length) {
       firebase.initializeApp({
         apiKey: NEXT_PUBLIC_FIR_API_KEY,
@@ -31,7 +31,15 @@ const usePraise = (): {
         appId: NEXT_PUBLIC_FIR_APP_ID,
       });
     }
-    const f = async () => {
+
+    return firebase;
+  }, []);
+
+  useEffect(() => {
+    const fetchAsync = async () => {
+      const firebase = await getFirebase();
+      await import('firebase/firestore');
+
       const countDoc = await firebase
         .firestore()
         .collection('public')
@@ -50,17 +58,20 @@ const usePraise = (): {
           setCount(snapshotData.count);
         });
     };
-    f();
-  }, []);
+    fetchAsync();
+  }, [getFirebase]);
 
   const incrementCount = useCallback(async () => {
+    const firebase = await getFirebase();
+    await import('firebase/auth');
+
     if (!firebase.auth().currentUser) {
       await firebase.auth().signInAnonymously();
     }
 
     const countRef = firebase.firestore().collection('public').doc('praise');
     await countRef.update('count', firebase.firestore.FieldValue.increment(1));
-  }, []);
+  }, [getFirebase]);
 
   return {
     count,
