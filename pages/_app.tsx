@@ -69,6 +69,9 @@ function MyApp({ Component, pageProps }: AppProps): React.ReactElement {
         />
         <meta property="og:image" content={`${NEXT_PUBLIC_URL}/ogp.png`} />
         <title>TinyKitten</title>
+        <link rel="preconnect" href="https://www.google-analytics.com" />
+        <link rel="preconnect" href="https://firestore.googleapis.com" />
+
         {existsGaId && (
           <>
             <script
