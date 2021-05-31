@@ -14,7 +14,7 @@ type Props = {
 const ShareScreen: React.FC<Props> = ({ className }: Props) => {
   const [visible, setVisible] = useState(false);
   const ref = useRef(null);
-  const { count, incrementCount } = usePraise();
+  const { count, incrementCount } = usePraise(visible);
 
   return (
     <ScreenVisibleProvider contentRef={ref} onVisibleChange={setVisible}>

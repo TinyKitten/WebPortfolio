@@ -11,11 +11,14 @@ const NEXT_PUBLIC_FIR_MESSAGING_SENDER_ID =
   process.env.NEXT_PUBLIC_FIR_MESSAGING_SENDER_ID;
 const NEXT_PUBLIC_FIR_APP_ID = process.env.NEXT_PUBLIC_FIR_APP_ID;
 
-const usePraise = (): {
+const usePraise = (
+  ready: boolean
+): {
   count: number;
   incrementCount: () => Promise<void>;
 } => {
   const [count, setCount] = useState(0);
+  const [firstLoaded, setFirstLoaded] = useState(false);
 
   const getFirebase = useCallback(async () => {
     const firebase = (await import('firebase/app')).default;
@@ -57,9 +60,12 @@ const usePraise = (): {
           const snapshotData = snapshot.data();
           setCount(snapshotData.count);
         });
+      setFirstLoaded(true);
     };
-    fetchAsync();
-  }, [getFirebase]);
+    if (ready && !firstLoaded) {
+      fetchAsync();
+    }
+  }, [firstLoaded, getFirebase, ready]);
 
   const incrementCount = useCallback(async () => {
     const firebase = await getFirebase();
