@@ -7,18 +7,14 @@ import Postit from '../Postit';
 import TitlePostit from '../TitlePostit';
 import Praise from '../Praise';
 
-type Props = {
-  className: string;
-};
-
-const ShareScreen: React.FC<Props> = ({ className }: Props) => {
+const ShareScreen: React.FC = () => {
   const [visible, setVisible] = useState(false);
   const ref = useRef(null);
   const { count, incrementCount } = usePraise(visible);
 
   return (
     <ScreenVisibleProvider contentRef={ref} onVisibleChange={setVisible}>
-      <section className={[styles.container, className].join(' ')} ref={ref}>
+      <section className={styles.container} ref={ref}>
         {visible && (
           <TitlePostit
             className={styles.titlePostit}
