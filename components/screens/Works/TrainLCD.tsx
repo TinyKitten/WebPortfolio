@@ -4,6 +4,8 @@ import Postit from '../../Postit';
 import styles from '../../../styles/components/screens/Works/TrainLCD.module.css';
 import ScreenVisibleProvider from '../../../providers/ScreenVisibleProvider';
 import Link from 'next/link';
+import Image from 'next/image';
+import TrainLCDImage from '../../../assets/works/trainlcd.png';
 
 const WorksTrainLCD: React.FC = () => {
   const [visible, setVisible] = useState(false);
@@ -15,11 +17,9 @@ const WorksTrainLCD: React.FC = () => {
         {visible && (
           <div className={styles.logoWrapper}>
             <Postit className={styles.postit}>TrainLCD</Postit>
-            <img
-              className={styles.image}
-              src="works/trainlcd.png"
-              alt="TrainLCD"
-            />
+            <div className={styles.image}>
+              <Image src={TrainLCDImage} alt="TrainLCD" />
+            </div>
           </div>
         )}
 
@@ -30,7 +30,7 @@ const WorksTrainLCD: React.FC = () => {
             現在App Store、Google Play Storeにて配信中。
           </p>
         )}
-        <Link href="/works/trainlcd">
+        <Link href="/works/trainlcd" passHref>
           <div>
             {visible && (
               <Button className={styles.learnMoreBtn}>さらに詳しく</Button>

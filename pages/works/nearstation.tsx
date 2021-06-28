@@ -11,16 +11,16 @@ import NestJSIcon from '../../components/marks/NestJSIcon';
 import MySQLIcon from '../../components/marks/MySQLIcon';
 import Button from '../../components/Button';
 import Link from 'next/link';
+import Image from 'next/image';
+import NearStationPic from '../../assets/works/nearstation.png';
 
 const FirstSection: React.FC = () => (
   <section className={[styles.container, styles.fullHeight].join(' ')}>
     <article className={styles.content}>
       <Postit className={styles.postit}>Dev/WebApp</Postit>
-      <img
-        className={styles.logo}
-        src="/works/nearstation.png"
-        alt="NearStation"
-      />
+      <div className={styles.logo}>
+        <Image src={NearStationPic} alt="NearStation" />
+      </div>
       <h2 className={styles.name}>NearStation</h2>
       <p className={styles.bio}>最寄り駅とその路線がひと目で分かるWebアプリ</p>
     </article>
@@ -119,7 +119,7 @@ const AccessSection: React.FC = () => {
             <Button>リポジトリ</Button>
           </a>
           <div className={styles.link}>
-            <Link href="/">
+            <Link href="/" passHref>
               <div>
                 <Button color="#555">戻る</Button>
               </div>

@@ -32,9 +32,7 @@
 }
 .logo {
   opacity: 0;
-  width: auto;
-  max-height: 320px;
-  height: auto;
+  width: 210px;
   filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.16));
   animation: imageAnimation 1s ease 0.25s forwards;
 }

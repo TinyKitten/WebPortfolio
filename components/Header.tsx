@@ -13,7 +13,7 @@ const Header: React.FC = () => {
   return (
     <header className={styles.header}>
       <div className={styles.title}>
-        <Link href="/">
+        <Link href="/" passHref>
           <div>
             <ForwardedIcon />
           </div>

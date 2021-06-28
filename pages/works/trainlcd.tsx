@@ -13,12 +13,16 @@ import ScreenVisibleProvider from '../../providers/ScreenVisibleProvider';
 import styles from '../../styles/pages/works/trainlcd.module.css';
 import Button from '../../components/Button';
 import Link from 'next/link';
+import Image from 'next/image';
+import TrainLCDImage from '../../assets/works/trainlcd.png';
 
 const FirstSection: React.FC = () => (
   <section className={[styles.container, styles.fullHeight].join(' ')}>
     <article className={styles.content}>
       <Postit className={styles.postit}>Dev/WebApp</Postit>
-      <img className={styles.logo} src="/works/trainlcd.png" alt="TrainLCD" />
+      <div className={styles.logo}>
+        <Image src={TrainLCDImage} alt="TrainLCD" />
+      </div>
       <h2 className={styles.name}>TrainLCD</h2>
       <p className={styles.bio}>電車のLCDをスマホで</p>
     </article>
@@ -148,7 +152,7 @@ const AccessSection: React.FC = () => {
             <Button>リポジトリ</Button>
           </a>
           <div className={styles.link}>
-            <Link href="/">
+            <Link href="/" passHref>
               <div>
                 <Button color="#555">戻る</Button>
               </div>
