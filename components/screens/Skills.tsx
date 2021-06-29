@@ -1,5 +1,4 @@
 import { useRef, useState } from 'react';
-import styles from '../../styles/components/screens/Skills.module.css';
 import ScreenVisibleProvider from '../../providers/ScreenVisibleProvider';
 import TitlePostit from '../TitlePostit';
 import SkillsCircle from '../SkillsCircle';
@@ -7,36 +6,90 @@ import JSIcon from '../marks/JSIcon';
 import TSIcon from '../marks/TSIcon';
 import VueJSIcon from '../marks/VueJSIcon';
 import ReactIcon from '../marks/ReactIcon';
+import styled from 'styled-components';
 
-type Props = {
-  className: string;
-};
+const Container = styled.section`
+  position: relative;
+  min-height: calc(100vh - 48px);
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 
-const SkillsScreen: React.FC<Props> = ({ className }: Props) => {
+const StyledTitlePostit = styled(TitlePostit)`
+  animation: titlePostitAnimation 1s ease forwards;
+  @keyframes titlePostitAnimation {
+    from {
+      transform: translateY(-147px);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+`;
+
+const ContentContainer = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+`;
+
+const SkillsContainer = styled.div`
+  width: 75%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  grid-gap: 32px;
+  animation: tipsPostitAnimation 1s ease forwards;
+
+  @keyframes tipsPostitAnimation {
+    from {
+      opacity: 0;
+      transform: translateY(-32px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+`;
+
+/*
+.container {
+}
+.content {
+}
+.skills {
+}
+.titlePostit {
+}
+
+}
+
+*/
+
+const SkillsScreen: React.FC = () => {
   const ref = useRef(null);
   const [visible, setVisible] = useState(false);
 
   return (
     <ScreenVisibleProvider contentRef={ref} onVisibleChange={setVisible}>
-      <section className={[styles.container, className].join(' ')} ref={ref}>
+      <Container ref={ref}>
         {visible && (
-          <TitlePostit
-            className={styles.titlePostit}
-            title="TinyKitten"
-            subtitle="のスキル"
-          />
+          <StyledTitlePostit title="TinyKitten" subtitle="のスキル" />
         )}
-        <div className={styles.content}>
+        <ContentContainer>
           {visible && (
-            <div className={styles.skills}>
+            <SkillsContainer>
               <SkillsCircle icon={JSIcon} name="JavaScript" />
               <SkillsCircle icon={TSIcon} name="TypeScript" />
               <SkillsCircle icon={VueJSIcon} name="Vue.js" />
               <SkillsCircle icon={ReactIcon} name="React (Native)" />
-            </div>
+            </SkillsContainer>
           )}
-        </div>
-      </section>
+        </ContentContainer>
+      </Container>
     </ScreenVisibleProvider>
   );
 };

@@ -1,31 +1,42 @@
 import { useRef, useState } from 'react';
 import ScreenVisibleProvider from '../../../providers/ScreenVisibleProvider';
 import TitlePostit from '../../TitlePostit';
-import styles from '../../../styles/components/screens/Works/index.module.css';
 import WorksTrainLCD from './TrainLCD';
 import WorksNearStation from './NearStation';
+import styled from 'styled-components';
 
-type Props = {
-  className: string;
-};
+const Container = styled.section`
+  overflow: hidden;
+  position: relative;
+  min-height: calc(100vh - 48px);
+`;
 
-const WorksScreen: React.FC<Props> = ({ className }: Props) => {
+const StyledTitlePostit = styled(TitlePostit)`
+  animation: titlePostitAnimation 1s ease forwards;
+
+  @keyframes titlePostitAnimation {
+    from {
+      transform: translateY(-147px);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+`;
+
+const WorksScreen: React.FC = () => {
   const ref = useRef(null);
   const [visible, setVisible] = useState(false);
 
   return (
     <ScreenVisibleProvider contentRef={ref} onVisibleChange={setVisible}>
-      <section className={[styles.container, className].join(' ')} ref={ref}>
+      <Container ref={ref}>
         {visible && (
-          <TitlePostit
-            className={styles.titlePostit}
-            title="TinyKitten"
-            subtitle="が作ったよ"
-          />
+          <StyledTitlePostit title="TinyKitten" subtitle="が作ったよ" />
         )}
         <WorksTrainLCD />
         <WorksNearStation />
-      </section>
+      </Container>
     </ScreenVisibleProvider>
   );
 };

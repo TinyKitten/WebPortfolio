@@ -1,42 +1,93 @@
-import styles from '../../styles/components/screens/Resume.module.css';
 import React, { useRef, useState } from 'react';
 import TitlePostit from '../TitlePostit';
 import ScreenVisibleProvider from '../../providers/ScreenVisibleProvider';
 import resumeFixutre from '../../fixtures/resume.json';
 import ResumeItem from '../ResumeItem';
+import styled from 'styled-components';
 
-type Props = {
-  className?: string;
-};
+const Container = styled.section`
+  position: relative;
+  min-height: calc(100vh - 48px);
+  overflow: hidden;
+`;
 
-const ResumeScreen: React.FC<Props> = ({ className }: Props) => {
+const StyledTitlePostit = styled(TitlePostit)`
+  animation: titlePostitAnimation 1s ease forwards;
+  @keyframes titlePostitAnimation {
+    from {
+      transform: translateY(-147px);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+`;
+
+const ContentContainer = styled.div`
+  padding-top: 210px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding-bottom: 64px;
+`;
+
+const Tree = styled.div`
+  border-left: 4px solid #008ffe;
+`;
+
+const StartItemContainer = styled.div`
+  background-color: ${({ theme }) => theme.boxBg};
+  width: 128px;
+  padding: 16px;
+  text-align: center;
+  color: ${({ theme }) => theme.text};
+  border-radius: 8px;
+  font-weight: bold;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.25);
+  margin-left: -8px;
+  margin-bottom: 32px;
+  margin-top: -32px;
+  margin-left: -32px;
+  font-size: 1.25rem;
+`;
+
+const EndItemContainer = styled.div`
+  background-color: ${({ theme }) => theme.boxBg};
+  width: 128px;
+  padding: 16px;
+  text-align: center;
+  color: ${({ theme }) => theme.text};
+  border-radius: 8px;
+  font-weight: bold;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.25);
+  margin-left: -8px;
+  margin-top: 32px;
+  margin-left: -32px;
+  font-size: 1.25rem;
+`;
+
+const ResumeScreen: React.FC = () => {
   const ref = useRef(null);
   const [visible, setVisible] = useState(false);
 
   return (
     <ScreenVisibleProvider contentRef={ref} onVisibleChange={setVisible}>
-      <section ref={ref} className={[styles.container, className].join(' ')}>
-        {visible && (
-          <TitlePostit
-            className={styles.titlePostit}
-            title="TinyKitten"
-            subtitle="の職歴"
-          />
-        )}
-        <div className={styles.content}>
-          <div className={styles.tree}>
-            <div className={styles.startItem}>
+      <Container ref={ref}>
+        {visible && <StyledTitlePostit title="TinyKitten" subtitle="の職歴" />}
+        <ContentContainer>
+          <Tree>
+            <StartItemContainer>
               <p>START</p>
-            </div>
+            </StartItemContainer>
             {resumeFixutre.map((r) => (
               <ResumeItem key={r.companyName} resume={r} />
             ))}
-            <div className={styles.endItem}>
+            <EndItemContainer>
               <p>PRESENT</p>
-            </div>
-          </div>
-        </div>
-      </section>
+            </EndItemContainer>
+          </Tree>
+        </ContentContainer>
+      </Container>
     </ScreenVisibleProvider>
   );
 };

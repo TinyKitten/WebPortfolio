@@ -1,4 +1,4 @@
-import styles from '../styles/components/SkillsCircle.module.css';
+import styled from 'styled-components';
 
 type Props = {
   name: string;
@@ -7,14 +7,46 @@ type Props = {
   >;
 };
 
+const Container = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+`;
+
+const SkillImageWrapper = styled.div`
+  overflow: hidden;
+  background: ${({ theme }) => theme.boxBg};
+  width: 120px;
+  height: 120px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+  border-radius: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 18px;
+`;
+
+const SkillName = styled.p`
+  color: ${({ theme }) => theme.text};
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+`;
+
 const SkillsCircle: React.FC<Props> = ({ name, icon: Icon }: Props) => {
+  const SkillImage = styled(Icon)`
+    width: 50%;
+    height: auto;
+  `;
+
   return (
-    <div className={styles.skill}>
-      <div className={styles.skillImageWrapper}>
-        <Icon className={styles.skillImage} />
-      </div>
-      <p className={styles.skillName}>{name}</p>
-    </div>
+    <Container>
+      <SkillImageWrapper>
+        <SkillImage />
+      </SkillImageWrapper>
+      <SkillName>{name}</SkillName>
+    </Container>
   );
 };
 

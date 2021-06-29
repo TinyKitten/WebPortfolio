@@ -1,13 +1,17 @@
-import '../styles/globals.css';
 import type { AppProps } from 'next/app';
 import Header from '../components/Header';
 import Head from 'next/head';
 import { existsGaId, GA_ID, recordPV } from '../lib/gtag';
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useRouter } from 'next/router';
+import useDarkMode from '../hooks/useDarkMode';
+import { darkTheme, lightTheme } from '../constants/theme';
+import { ThemeProvider } from 'styled-components';
+import GlobalStyles from '../constants/globalStyle';
 
 function MyApp({ Component, pageProps }: AppProps): React.ReactElement {
   const { NEXT_PUBLIC_URL } = process.env;
+  const { theme, themeReady } = useDarkMode();
   const router = useRouter();
 
   useEffect(() => {
@@ -25,8 +29,13 @@ function MyApp({ Component, pageProps }: AppProps): React.ReactElement {
     };
   }, [router.events]);
 
+  if (!themeReady) {
+    return null;
+  }
+
   return (
-    <>
+    <ThemeProvider theme={theme === 'dark' ? darkTheme : lightTheme}>
+      <GlobalStyles />
       <Head>
         <link
           rel="apple-touch-icon"
@@ -94,7 +103,7 @@ function MyApp({ Component, pageProps }: AppProps): React.ReactElement {
       </Head>
       <Header />
       <Component {...pageProps} />
-    </>
+    </ThemeProvider>
   );
 }
 

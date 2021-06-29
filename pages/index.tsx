@@ -4,20 +4,41 @@ import AboutScreen from '../components/screens/About';
 import SkillsScreen from '../components/screens/Skills';
 import WorksScreen from '../components/screens/Works';
 import ShareScreen from '../components/screens/Share';
-import styles from '../styles/pages/Index.module.css';
 import ResumeScreen from '../components/screens/Resume';
+import styled from 'styled-components';
+
+const SectionContainer = styled.div`
+  :nth-child(even) {
+    background-color: ${({ theme }) => theme.bg};
+  }
+  :nth-child(odd) {
+    background-color: ${({ theme }) => theme.subBg};
+  }
+`;
 
 export default function Home(): React.ReactElement {
   const aboutScreenRef = useRef<HTMLDivElement | null>(null);
 
   return (
-    <div>
-      <WelcomeScreen aboutScreenRef={aboutScreenRef} className={styles.child} />
-      <AboutScreen ref={aboutScreenRef} className={styles.child} />
-      <SkillsScreen className={styles.child} />
-      <ResumeScreen className={styles.child} />
-      <WorksScreen className={styles.child} />
-      <ShareScreen className={styles.child} />
-    </div>
+    <>
+      <SectionContainer>
+        <WelcomeScreen aboutScreenRef={aboutScreenRef} />
+      </SectionContainer>
+      <SectionContainer>
+        <AboutScreen ref={aboutScreenRef} />
+      </SectionContainer>
+      <SectionContainer>
+        <SkillsScreen />
+      </SectionContainer>
+      <SectionContainer>
+        <ResumeScreen />
+      </SectionContainer>
+      <SectionContainer>
+        <WorksScreen />
+      </SectionContainer>
+      <SectionContainer>
+        <ShareScreen />
+      </SectionContainer>
+    </>
   );
 }
