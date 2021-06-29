@@ -10,23 +10,182 @@ import Postit from '../../components/Postit';
 import SkillsCircle from '../../components/SkillsCircle';
 import TitlePostit from '../../components/TitlePostit';
 import ScreenVisibleProvider from '../../providers/ScreenVisibleProvider';
-import styles from '../../styles/pages/works/trainlcd.module.css';
 import Button from '../../components/Button';
 import Link from 'next/link';
 import Image from 'next/image';
 import TrainLCDImage from '../../assets/works/trainlcd.png';
+import styled, { css } from 'styled-components';
 
+const Container = styled.section<{ fullHeight?: boolean }>`
+  position: relative;
+  min-height: calc(100vh - 48px);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: ${({ theme }) => theme.bg};
+  &:nth-child(even) {
+    background: ${({ theme }) => theme.subBg};
+  }
+  &:first-child {
+    min-height: 100vh;
+  }
+
+  min-height: ${({ fullHeight }) => (fullHeight ? '100vh' : undefined)};
+`;
+
+const ContentContainer = styled.article`
+  width: 100%;
+  min-height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 144px;
+  padding-bottom: 32px;
+  &:first-child {
+    margin-top: 48px;
+  }
+
+  @media (min-width: 800px) {
+    padding-bottom: 64px;
+  }
+`;
+
+const Anchor = styled.a`
+  margin-bottom: 32px;
+`;
+
+const StyledPostit = styled(Postit)`
+  display: block;
+  margin-bottom: 32px;
+  animation: headingPostitAnimation 1s ease forwards;
+
+  @keyframes headingPostitAnimation {
+    from {
+      opacity: 0;
+      transform: translateY(-64px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+`;
+
+const imageAnimationKeyframes = css`
+  @keyframes imageAnimation {
+    from {
+      opacity: 0;
+      transform: translateY(-32px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+`;
+
+const Name = styled.h2`
+  margin-top: 32px;
+  font-size: 2rem;
+  text-align: center;
+  font-weight: bold;
+  color: ${({ theme }) => theme.text};
+`;
+
+const LogoContainer = styled.div`
+  opacity: 0;
+  width: 320px;
+  height: auto;
+  filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.16));
+  animation: imageAnimation 1s ease 0.25s forwards;
+  @media (min-width: 800px) {
+    width: 480px;
+  }
+
+  ${imageAnimationKeyframes}
+`;
+
+const Bio = styled.p`
+  text-align: center;
+  max-width: calc(100% - 64px);
+  line-height: 1.75;
+  margin-top: 12px;
+  color: ${({ theme }) => theme.text};
+`;
+
+const Concept = styled.h2`
+  text-align: center;
+  line-height: 1.5;
+  font-size: 2rem;
+  color: ${({ theme }) => theme.text};
+  font-weight: bold;
+  max-width: 90%;
+`;
+const ConceptDescription = styled.p`
+  text-align: center;
+  max-width: 90%;
+  margin-top: 32px;
+  line-height: 2;
+  color: ${({ theme }) => theme.text};
+`;
+const ConceptDescriptionAnchor = styled.a`
+  color: ${({ theme }) => theme.text};
+  font-weight: bold;
+  text-decoration: none;
+`;
+
+const SmallCaption = styled.small`
+  text-align: center;
+  max-width: 90%;
+  margin-top: 32px;
+  line-height: 2;
+  color: ${({ theme }) => theme.text};
+  font-size: 0.8rem;
+  margin-top: 0;
+`;
+
+const TechContainer = styled.article`
+  margin-top: 64px;
+  width: 75%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  grid-gap: 32px;
+  animation: imageAnimation 1s ease forwards;
+  ${imageAnimationKeyframes}
+`;
+
+const AppStoreButton = styled.a<{ apple?: boolean }>`
+  height: auto;
+  overflow: hidden;
+  margin-bottom: ${({ apple }) => (apple ? '32px' : '12px')};
+`;
+
+const StyledTitlePostit = styled(TitlePostit)`
+  animation: titlePostitAnimation 1s ease forwards;
+
+  @keyframes titlePostitAnimation {
+    from {
+      transform: translateY(-147px);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+`;
 const FirstSection: React.FC = () => (
-  <section className={[styles.container, styles.fullHeight].join(' ')}>
-    <article className={styles.content}>
-      <Postit className={styles.postit}>Dev/WebApp</Postit>
-      <div className={styles.logo}>
+  <Container fullHeight>
+    <ContentContainer>
+      <StyledPostit>Dev/WebApp</StyledPostit>
+      <LogoContainer>
         <Image src={TrainLCDImage} alt="TrainLCD" />
-      </div>
-      <h2 className={styles.name}>TrainLCD</h2>
-      <p className={styles.bio}>電車のLCDをスマホで</p>
-    </article>
-  </section>
+      </LogoContainer>
+      <Name>TrainLCD</Name>
+      <Bio>電車のLCDをスマホで</Bio>
+    </ContentContainer>
+  </Container>
 );
 
 const ConceptSection: React.FC = () => {
@@ -35,48 +194,38 @@ const ConceptSection: React.FC = () => {
 
   return (
     <ScreenVisibleProvider contentRef={ref} onVisibleChange={setVisible}>
-      <section className={styles.container} ref={ref}>
+      <Container ref={ref}>
         {visible && (
-          <TitlePostit
-            className={styles.titlePostit}
-            title="TrainLCD"
-            subtitle="コンセプト"
-          />
+          <StyledTitlePostit title="TrainLCD" subtitle="コンセプト" />
         )}
-        <article className={styles.content}>
-          <h2 className={styles.concept}>StationAPIで電車のLCDを再現したい</h2>
-          <p className={styles.conceptDescription}>
-            <a
+        <ContentContainer>
+          <Concept>StationAPIで電車のLCDを再現したい</Concept>
+          <ConceptDescription>
+            <ConceptDescriptionAnchor
               href="https://github.com/TinyKitten/StationAPI"
               target="_blank"
               rel="noopener noreferrer"
             >
               StationAPI
-            </a>
+            </ConceptDescriptionAnchor>
             の応用例の一つです。 <br />
             前から電車のLCDを再現したいと思っていて、
-            <a
+            <ConceptDescriptionAnchor
               href="https://github.com/TinyKitten/StationAPI"
               target="_blank"
               rel="noopener noreferrer"
             >
               StationAPI
-            </a>
+            </ConceptDescriptionAnchor>
             の大型アップデートで色々取れるようにした影響で作ろうと思いました。
             <br />
             満員電車、LCDのない路線など、現在どこにいるか、どの駅を通るのかひと目で分かります。
             <br />
             ぜひお試しください。
-          </p>
-          <small
-            className={[styles.conceptDescription, styles.smallCaption].join(
-              ' '
-            )}
-          >
-            ※地下区間は非対応です
-          </small>
-        </article>
-      </section>
+          </ConceptDescription>
+          <SmallCaption>※地下区間は非対応です</SmallCaption>
+        </ContentContainer>
+      </Container>
     </ScreenVisibleProvider>
   );
 };
@@ -87,23 +236,17 @@ const TechnologySection: React.FC = () => {
 
   return (
     <ScreenVisibleProvider contentRef={ref} onVisibleChange={setVisible}>
-      <section className={styles.container} ref={ref}>
+      <Container ref={ref}>
+        {visible && <StyledTitlePostit title="TrainLCD" subtitle="使用技術" />}
         {visible && (
-          <TitlePostit
-            className={styles.titlePostit}
-            title="TrainLCD"
-            subtitle="使用技術"
-          />
-        )}
-        {visible && (
-          <article className={styles.techs}>
+          <TechContainer>
             <SkillsCircle icon={TSIcon} name="TypeScript" />
             <SkillsCircle icon={ReactIcon} name="React Native" />
             <SkillsCircle icon={NestJSIcon} name="NestJS" />
             <SkillsCircle icon={MySQLIcon} name="MySQL" />
-          </article>
+          </TechContainer>
         )}
-      </section>
+      </Container>
     </ScreenVisibleProvider>
   );
 };
@@ -114,52 +257,41 @@ const AccessSection: React.FC = () => {
 
   return (
     <ScreenVisibleProvider contentRef={ref} onVisibleChange={setVisible}>
-      <section className={styles.container} ref={ref}>
-        {visible && (
-          <TitlePostit
-            className={styles.titlePostit}
-            title="TrainLCD"
-            subtitle="リンク"
-          />
-        )}
-        <article className={styles.content}>
-          <a
-            className={styles.appStoreButton}
-            href="https://play.google.com/store/apps/details?id=me.tinykitten.trainlcd&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1"
-          >
+      <Container ref={ref}>
+        {visible && <StyledTitlePostit title="TrainLCD" subtitle="リンク" />}
+        <ContentContainer>
+          <AppStoreButton href="https://play.google.com/store/apps/details?id=me.tinykitten.trainlcd&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1">
             <GooglePlayIcon width={180} />
-          </a>
-          <a
-            className={[styles.appStoreButton, styles.appleAppStore].join(' ')}
+          </AppStoreButton>
+          <AppStoreButton
+            apple
             href="https://apps.apple.com/jp/app/trainlcd/id1486355943"
           >
             <AppStoreIcon width={180} />
-          </a>
-          <a
+          </AppStoreButton>
+          <Anchor
             href="https://trainlcd.tinykitten.me"
             target="_blank"
-            className={styles.link}
             rel="noopener noreferrer"
           >
             <Button>公式サイト</Button>
-          </a>
-          <a
+          </Anchor>
+          <Anchor
             href="https://github.com/TinyKitten/TrainLCD"
             target="_blank"
-            className={styles.link}
             rel="noopener noreferrer"
           >
             <Button>リポジトリ</Button>
-          </a>
-          <div className={styles.link}>
+          </Anchor>
+          <Anchor>
             <Link href="/" passHref>
               <div>
                 <Button color="#555">戻る</Button>
               </div>
             </Link>
-          </div>
-        </article>
-      </section>
+          </Anchor>
+        </ContentContainer>
+      </Container>
     </ScreenVisibleProvider>
   );
 };

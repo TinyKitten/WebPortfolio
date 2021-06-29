@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from 'react';
-import styles from '../../styles/pages/works/nearstation.module.css';
 import Head from 'next/head';
 import Postit from '../../components/Postit';
 import TitlePostit from '../../components/TitlePostit';
@@ -13,18 +12,153 @@ import Button from '../../components/Button';
 import Link from 'next/link';
 import Image from 'next/image';
 import NearStationPic from '../../assets/works/nearstation.png';
+import styled, { css } from 'styled-components';
 
+const Container = styled.section<{ fullHeight?: boolean }>`
+  position: relative;
+  min-height: calc(100vh - 48px);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: ${({ theme }) => theme.bg};
+  &:nth-child(even) {
+    background: ${({ theme }) => theme.subBg};
+  }
+  &:first-child {
+    min-height: 100vh;
+  }
+
+  min-height: ${({ fullHeight }) => (fullHeight ? '100vh' : undefined)};
+`;
+
+const ContentContainer = styled.article`
+  width: 100%;
+  min-height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 144px;
+  padding-bottom: 32px;
+  &:first-child {
+    margin-top: 48px;
+  }
+
+  @media (min-width: 800px) {
+    padding-bottom: 64px;
+  }
+`;
+
+const Anchor = styled.a`
+  margin-bottom: 32px;
+`;
+
+const StyledPostit = styled(Postit)`
+  display: block;
+  margin-bottom: 32px;
+  animation: headingPostitAnimation 1s ease forwards;
+
+  @keyframes headingPostitAnimation {
+    from {
+      opacity: 0;
+      transform: translateY(-64px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+`;
+
+const imageAnimationKeyframes = css`
+  @keyframes imageAnimation {
+    from {
+      opacity: 0;
+      transform: translateY(-32px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+`;
+
+const Name = styled.h2`
+  margin-top: 32px;
+  font-size: 2rem;
+  text-align: center;
+  font-weight: bold;
+  color: ${({ theme }) => theme.text};
+`;
+
+const LogoContainer = styled.div`
+  opacity: 0;
+  width: 210px;
+  height: auto;
+  filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.16));
+  animation: imageAnimation 1s ease 0.25s forwards;
+  ${imageAnimationKeyframes}
+`;
+
+const Bio = styled.p`
+  text-align: center;
+  max-width: calc(100% - 64px);
+  line-height: 1.75;
+  margin-top: 12px;
+  color: ${({ theme }) => theme.text};
+`;
+
+const Concept = styled.h2`
+  text-align: center;
+  line-height: 1.5;
+  font-size: 2rem;
+  color: ${({ theme }) => theme.text};
+  font-weight: bold;
+  max-width: 90%;
+`;
+const ConceptDescription = styled.p`
+  text-align: center;
+  max-width: 90%;
+  margin-top: 32px;
+  line-height: 2;
+  color: ${({ theme }) => theme.text};
+`;
+
+const TechContainer = styled.article`
+  margin-top: 64px;
+  width: 75%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  grid-gap: 32px;
+  animation: imageAnimation 1s ease forwards;
+  ${imageAnimationKeyframes}
+`;
+
+const StyledTitlePostit = styled(TitlePostit)`
+  animation: titlePostitAnimation 1s ease forwards;
+
+  @keyframes titlePostitAnimation {
+    from {
+      transform: translateY(-147px);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+`;
 const FirstSection: React.FC = () => (
-  <section className={[styles.container, styles.fullHeight].join(' ')}>
-    <article className={styles.content}>
-      <Postit className={styles.postit}>Dev/WebApp</Postit>
-      <div className={styles.logo}>
+  <Container fullHeight>
+    <ContentContainer>
+      <StyledPostit>Dev/WebApp</StyledPostit>
+      <LogoContainer>
         <Image src={NearStationPic} alt="NearStation" />
-      </div>
-      <h2 className={styles.name}>NearStation</h2>
-      <p className={styles.bio}>最寄り駅とその路線がひと目で分かるWebアプリ</p>
-    </article>
-  </section>
+      </LogoContainer>
+      <Name>NearStation</Name>
+      <Bio>最寄り駅とその路線がひと目で分かるWebアプリ</Bio>
+    </ContentContainer>
+  </Container>
 );
 
 const ConceptSection: React.FC = () => {
@@ -33,19 +167,11 @@ const ConceptSection: React.FC = () => {
 
   return (
     <ScreenVisibleProvider contentRef={ref} onVisibleChange={setVisible}>
-      <section className={styles.container} ref={ref}>
-        {visible && (
-          <TitlePostit
-            className={styles.titlePostit}
-            title="NearStation"
-            subtitle="コンセプト"
-          />
-        )}
-        <article className={styles.content}>
-          <h2 className={styles.concept}>
-            今いる場所の最寄り駅と路線を知りたい
-          </h2>
-          <p className={styles.conceptDescription}>
+      <Container ref={ref}>
+        {visible && <TitlePostit title="NearStation" subtitle="コンセプト" />}
+        <ContentContainer>
+          <Concept>今いる場所の最寄り駅と路線を知りたい</Concept>
+          <ConceptDescription>
             StationAPIの応用例の一つです。
             <br />
             シンプルに今いる場所の最寄り駅の名前と
@@ -53,9 +179,9 @@ const ConceptSection: React.FC = () => {
             駅の路線の停車駅を知りたいときに役に立つと思い、開発しました。
             <br />
             今いる駅の路線がどこに行くのか知りたいときなどにお役に立つかと思います。
-          </p>
-        </article>
-      </section>
+          </ConceptDescription>
+        </ContentContainer>
+      </Container>
     </ScreenVisibleProvider>
   );
 };
@@ -66,23 +192,19 @@ const TechnologySection: React.FC = () => {
 
   return (
     <ScreenVisibleProvider contentRef={ref} onVisibleChange={setVisible}>
-      <section className={styles.container} ref={ref}>
+      <Container ref={ref}>
         {visible && (
-          <TitlePostit
-            className={styles.titlePostit}
-            title="NearStation"
-            subtitle="使用技術"
-          />
+          <StyledTitlePostit title="NearStation" subtitle="使用技術" />
         )}
         {visible && (
-          <article className={styles.techs}>
+          <TechContainer>
             <SkillsCircle icon={TSIcon} name="TypeScript" />
             <SkillsCircle icon={ReactIcon} name="React.js" />
             <SkillsCircle icon={NestJSIcon} name="NestJS" />
             <SkillsCircle icon={MySQLIcon} name="MySQL" />
-          </article>
+          </TechContainer>
         )}
-      </section>
+      </Container>
     </ScreenVisibleProvider>
   );
 };
@@ -93,40 +215,32 @@ const AccessSection: React.FC = () => {
 
   return (
     <ScreenVisibleProvider contentRef={ref} onVisibleChange={setVisible}>
-      <section className={styles.container} ref={ref}>
-        {visible && (
-          <TitlePostit
-            className={styles.titlePostit}
-            title="NearStation"
-            subtitle="リンク"
-          />
-        )}
-        <article className={styles.content}>
-          <a
+      <Container ref={ref}>
+        {visible && <StyledTitlePostit title="NearStation" subtitle="リンク" />}
+        <ContentContainer>
+          <Anchor
             href="https://near.tinykitten.me"
             target="_blank"
-            className={styles.link}
             rel="noopener noreferrer"
           >
             <Button>使ってみる</Button>
-          </a>
-          <a
+          </Anchor>
+          <Anchor
             href="https://github.com/TinyKitten/NearStation"
             target="_blank"
-            className={styles.link}
             rel="noopener noreferrer"
           >
             <Button>リポジトリ</Button>
-          </a>
-          <div className={styles.link}>
+          </Anchor>
+          <Anchor>
             <Link href="/" passHref>
               <div>
                 <Button color="#555">戻る</Button>
               </div>
             </Link>
-          </div>
-        </article>
-      </section>
+          </Anchor>
+        </ContentContainer>
+      </Container>
     </ScreenVisibleProvider>
   );
 };

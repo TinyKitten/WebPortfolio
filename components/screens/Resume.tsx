@@ -5,21 +5,6 @@ import resumeFixutre from '../../fixtures/resume.json';
 import ResumeItem from '../ResumeItem';
 import styled from 'styled-components';
 
-/*
-.container {
-}
-.content {
-}
-.tree {
-}
-.startItem {
-}
-.endItem {
-}
-.titlePostit {
-}
-*/
-
 const Container = styled.section`
   position: relative;
   min-height: calc(100vh - 48px);
