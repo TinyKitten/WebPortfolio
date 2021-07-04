@@ -105,7 +105,7 @@ const AboutScreen: ForwardRefRenderFunction<HTMLDivElement> = (
             </LogoWrapper>
             <NameText>TinyKitten</NameText>
             <BioText>
-              東京都豊島区在住のフリーのフロントエンドエンジニア。
+              東京都練馬区在住のフリーのフロントエンドエンジニア。
               <br />
               タイニーキトゥンと読みます。
               <br />
