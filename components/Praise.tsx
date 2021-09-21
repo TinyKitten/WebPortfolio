@@ -29,7 +29,7 @@ const Button = styled.button`
   border-radius: 1px;
   cursor: pointer;
   transition: 0.25s;
-  background: #008ffe;
+  background: ${({ theme }) => theme.primary};
 
   &:focus {
     outline: none;

@@ -24,3 +24,21 @@ export const darkTheme: AppPalette = {
   headingText: '#eee',
   text: '#eee',
 };
+
+export const halloweenLightTheme: AppPalette = {
+  primary: '#FF7600',
+  bg: '#fefefe',
+  subBg: '#fafafa',
+  boxBg: '#fff',
+  headingText: '#707070',
+  text: '#555',
+};
+
+export const halloweenDarkTheme: AppPalette = {
+  primary: '#FF7600',
+  bg: '#212121',
+  subBg: '#252525',
+  boxBg: '#333',
+  headingText: '#eee',
+  text: '#eee',
+};

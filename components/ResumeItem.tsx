@@ -11,14 +11,14 @@ const Container = styled.div`
   position: relative;
   margin-left: 32px;
   border-radius: 4px;
-  border-top: 4px solid #008ffe;
+  border-top: ${({ theme }) => ` 4px solid ${theme.primary}`};
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.25);
   padding: 24px;
   width: 480px;
   max-width: 60vw;
   &:before {
     content: '';
-    background-color: #008ffe;
+    background-color: ${({ theme }) => theme.primary};
     width: 32px;
     height: 4px;
     position: absolute;
@@ -31,7 +31,7 @@ const PeriodText = styled.time`
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
     Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   font-weight: bold;
-  color: #008ffe;
+  color: ${({ theme }) => theme.primary};
 `;
 
 const CompanyNameText = styled.h3`

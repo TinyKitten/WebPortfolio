@@ -5,7 +5,12 @@ import { existsGaId, GA_ID, recordPV } from '../lib/gtag';
 import React, { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import useDarkMode from '../hooks/useDarkMode';
-import { darkTheme, lightTheme } from '../constants/theme';
+import {
+  // darkTheme,
+  halloweenDarkTheme,
+  halloweenLightTheme,
+  // lightTheme,
+} from '../constants/theme';
 import { ThemeProvider } from 'styled-components';
 import GlobalStyles from '../constants/globalStyle';
 
@@ -34,7 +39,10 @@ function MyApp({ Component, pageProps }: AppProps): React.ReactElement {
   }
 
   return (
-    <ThemeProvider theme={theme === 'dark' ? darkTheme : lightTheme}>
+    // <ThemeProvider theme={theme === 'dark' ? darkTheme : lightTheme}>
+    <ThemeProvider
+      theme={theme === 'dark' ? halloweenDarkTheme : halloweenLightTheme}
+    >
       <GlobalStyles />
       <Head>
         <link

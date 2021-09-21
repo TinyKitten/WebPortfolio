@@ -19,7 +19,7 @@ const PostitIcon: React.FC<Props> = (props: Props) => {
           width="21"
           height="48"
           transform="translate(63 439)"
-          fill="#008ffe"
+          fill={themeContext.primary}
         />
       </g>
     </svg>
