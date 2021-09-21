@@ -32,7 +32,7 @@ const ContentContainer = styled.div`
 `;
 
 const Tree = styled.div`
-  border-left: 4px solid #008ffe;
+  border-left: ${({ theme }) => `4px solid ${theme.primary}`};
 `;
 
 const StartItemContainer = styled.div`

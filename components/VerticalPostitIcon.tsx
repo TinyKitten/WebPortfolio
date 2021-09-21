@@ -19,7 +19,7 @@ const VerticalPostitIcon: React.FC<Props> = (props: Props) => {
           width="120"
           height="21"
           transform="translate(32 790)"
-          fill="#008ffe"
+          fill={themeContext.primary}
         />
       </g>
     </svg>

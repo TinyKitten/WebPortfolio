@@ -1,4 +1,5 @@
-import styled from 'styled-components';
+import { useContext } from 'react';
+import styled, { ThemeContext } from 'styled-components';
 
 type Props = {
   color?: string;
@@ -26,14 +27,16 @@ const ButtonBase = styled.button`
   }
 `;
 
-const Button: React.FC<Props> = ({
-  color = '#008ffe',
-  children,
-  className,
-}: Props) => (
-  <ButtonBase style={{ backgroundColor: color }} className={className}>
-    {children}
-  </ButtonBase>
-);
+const Button: React.FC<Props> = ({ color, children, className }: Props) => {
+  const themeContext = useContext(ThemeContext);
+  return (
+    <ButtonBase
+      style={{ backgroundColor: color || themeContext.primary }}
+      className={className}
+    >
+      {children}
+    </ButtonBase>
+  );
+};
 
 export default Button;
