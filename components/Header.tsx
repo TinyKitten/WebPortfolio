@@ -14,7 +14,7 @@ const Root = styled.header`
   left: 0;
   top: 0;
   height: 48px;
-  background: ${({ theme }) => theme.subBg};
+  background: ${({ theme }) => theme.bg};
   z-index: 9999;
   width: 100%;
   display: flex;
