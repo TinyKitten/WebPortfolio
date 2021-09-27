@@ -72,6 +72,7 @@ const ArrowLink = styled(ArrowIcon)`
   height: auto;
   bottom: 32px;
   animation: ${arrowAnimation} 1s forwards;
+  cursor: pointer;
 `;
 
 const WelcomeScreen: React.FC<Props> = ({ aboutScreenRef }: Props) => {
