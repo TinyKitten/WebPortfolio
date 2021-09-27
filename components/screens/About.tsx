@@ -9,7 +9,8 @@ import TitlePostit from '../TitlePostit';
 import Postit from '../Postit';
 import TinyKittenIcon from '../TinyKittenIcon';
 import ScreenVisibleProvider from '../../providers/ScreenVisibleProvider';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+import { titlePostitAnimation } from '../../constants/keyframets';
 
 const Container = styled.section`
   position: relative;
@@ -18,15 +19,7 @@ const Container = styled.section`
 `;
 
 const StyledTitlePostit = styled(TitlePostit)`
-  animation: titlePostitAnimation 1s ease forwards;
-  @keyframes titlePostitAnimation {
-    from {
-      transform: translateY(-147px);
-    }
-    to {
-      transform: translateY(0);
-    }
-  }
+  animation: ${titlePostitAnimation} 1s ease forwards;
 `;
 
 const ContentContainer = styled.div`
@@ -40,23 +33,24 @@ const LogoWrapper = styled.div`
   position: relative;
 `;
 
+const headingPostitAnimation = keyframes({
+  from: {
+    opacity: 0,
+    transform: 'translateY(-64px)',
+  },
+  to: {
+    opacity: 1,
+    transform: 'translateY(0) rotate(-5deg)',
+  },
+});
+
 const StyledPostit = styled(Postit)`
   position: absolute;
   transform: rotate(-5deg);
   left: -44px;
   top: -24px;
   z-index: 1;
-  animation: headingPostitAnimation 1s ease forwards;
-  @keyframes headingPostitAnimation {
-    from {
-      opacity: 0;
-      transform: translateY(-64px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0) rotate(-5deg);
-    }
-  }
+  animation: ${headingPostitAnimation} 1s ease forwards;
 `;
 
 const Logo = styled(TinyKittenIcon)`

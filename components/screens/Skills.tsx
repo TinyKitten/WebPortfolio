@@ -6,7 +6,8 @@ import JSIcon from '../marks/JSIcon';
 import TSIcon from '../marks/TSIcon';
 import VueJSIcon from '../marks/VueJSIcon';
 import ReactIcon from '../marks/ReactIcon';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+import { titlePostitAnimation } from '../../constants/keyframets';
 
 const Container = styled.section`
   position: relative;
@@ -18,15 +19,7 @@ const Container = styled.section`
 `;
 
 const StyledTitlePostit = styled(TitlePostit)`
-  animation: titlePostitAnimation 1s ease forwards;
-  @keyframes titlePostitAnimation {
-    from {
-      transform: translateY(-147px);
-    }
-    to {
-      transform: translateY(0);
-    }
-  }
+  animation: ${titlePostitAnimation} 1s ease forwards;
 `;
 
 const ContentContainer = styled.div`
@@ -36,38 +29,24 @@ const ContentContainer = styled.div`
   flex-direction: column;
 `;
 
+const tipsPostitAnimation = keyframes({
+  from: {
+    opacity: 0,
+    transform: 'translateY(-32px)',
+  },
+  to: {
+    opacity: 1,
+    transform: 'translateY(0)',
+  },
+});
+
 const SkillsContainer = styled.div`
   width: 75%;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
   grid-gap: 32px;
-  animation: tipsPostitAnimation 1s ease forwards;
-
-  @keyframes tipsPostitAnimation {
-    from {
-      opacity: 0;
-      transform: translateY(-32px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
+  animation: ${tipsPostitAnimation} 1s ease forwards;
 `;
-
-/*
-.container {
-}
-.content {
-}
-.skills {
-}
-.titlePostit {
-}
-
-}
-
-*/
 
 const SkillsScreen: React.FC = () => {
   const ref = useRef(null);

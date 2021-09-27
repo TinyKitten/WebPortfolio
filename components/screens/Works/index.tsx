@@ -4,6 +4,7 @@ import TitlePostit from '../../TitlePostit';
 import WorksTrainLCD from './TrainLCD';
 import WorksNearStation from './NearStation';
 import styled from 'styled-components';
+import { titlePostitAnimation } from '../../../constants/keyframets';
 
 const Container = styled.section`
   overflow: hidden;
@@ -12,16 +13,7 @@ const Container = styled.section`
 `;
 
 const StyledTitlePostit = styled(TitlePostit)`
-  animation: titlePostitAnimation 1s ease forwards;
-
-  @keyframes titlePostitAnimation {
-    from {
-      transform: translateY(-147px);
-    }
-    to {
-      transform: translateY(0);
-    }
-  }
+  animation: ${titlePostitAnimation} 1s ease forwards;
 `;
 
 const WorksScreen: React.FC = () => {

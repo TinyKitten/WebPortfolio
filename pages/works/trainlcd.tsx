@@ -14,7 +14,12 @@ import Button from '../../components/Button';
 import Link from 'next/link';
 import Image from 'next/image';
 import TrainLCDImage from '../../assets/works/trainlcd.png';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
+import {
+  headingPostitAnimation,
+  imageAnimation,
+  titlePostitAnimation,
+} from '../../constants/keyframets';
 
 const Container = styled.section<{ fullHeight?: boolean }>`
   position: relative;
@@ -60,31 +65,7 @@ const Anchor = styled.a`
 const StyledPostit = styled(Postit)`
   display: block;
   margin-bottom: 32px;
-  animation: headingPostitAnimation 1s ease forwards;
-
-  @keyframes headingPostitAnimation {
-    from {
-      opacity: 0;
-      transform: translateY(-64px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-`;
-
-const imageAnimationKeyframes = css`
-  @keyframes imageAnimation {
-    from {
-      opacity: 0;
-      transform: translateY(-32px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
+  animation: ${headingPostitAnimation} 1s ease forwards;
 `;
 
 const Name = styled.h2`
@@ -100,12 +81,10 @@ const LogoContainer = styled.div`
   width: 320px;
   height: auto;
   filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.16));
-  animation: imageAnimation 1s ease 0.25s forwards;
+  animation: ${imageAnimation} 1s ease 0.25s forwards;
   @media (min-width: 800px) {
     width: 480px;
   }
-
-  ${imageAnimationKeyframes}
 `;
 
 const Bio = styled.p`
@@ -153,8 +132,7 @@ const TechContainer = styled.article`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
   grid-gap: 32px;
-  animation: imageAnimation 1s ease forwards;
-  ${imageAnimationKeyframes}
+  animation: ${imageAnimation} 1s ease forwards;
 `;
 
 const AppStoreButton = styled.a<{ apple?: boolean }>`
@@ -164,16 +142,7 @@ const AppStoreButton = styled.a<{ apple?: boolean }>`
 `;
 
 const StyledTitlePostit = styled(TitlePostit)`
-  animation: titlePostitAnimation 1s ease forwards;
-
-  @keyframes titlePostitAnimation {
-    from {
-      transform: translateY(-147px);
-    }
-    to {
-      transform: translateY(0);
-    }
-  }
+  animation: ${titlePostitAnimation} 1s ease forwards;
 `;
 const FirstSection: React.FC = () => (
   <Container fullHeight>

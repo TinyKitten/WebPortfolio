@@ -6,36 +6,11 @@ import Postit from '../Postit';
 import TitlePostit from '../TitlePostit';
 import Praise from '../Praise';
 import styled from 'styled-components';
-
-/*
-.container {
-}
-.content {
-}
-.logoWrapper {
-  position: relative;
-}
-.logo {
-  width: 120px;
-  height: 120px;
-  filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.16));
-}
-.name {
-  margin-top: 32px;
-  font-size: 2rem;
-  text-align: center;
-  font-weight: bold;
-  color: #707070;
-}
-.postit {
-}
-.links {
-}
-.shareButton {
-}
-.titlePostit {
-}
-*/
+import {
+  fadeAnimation,
+  headingPostitAnimation,
+  titlePostitAnimation,
+} from '../../constants/keyframets';
 
 const Container = styled.section`
   position: relative;
@@ -44,16 +19,7 @@ const Container = styled.section`
 `;
 
 const StyledTitlePostit = styled(TitlePostit)`
-  animation: titlePostitAnimation 1s ease forwards;
-
-  @keyframes titlePostitAnimation {
-    from {
-      transform: translateY(-147px);
-    }
-    to {
-      transform: translateY(0);
-    }
-  }
+  animation: ${titlePostitAnimation} 1s ease forwards;
 `;
 
 const ContentContainer = styled.div`
@@ -64,18 +30,7 @@ const ContentContainer = styled.div`
 `;
 
 const StyledPostit = styled(Postit)`
-  animation: headingPostitAnimation 1s ease forwards;
-
-  @keyframes headingPostitAnimation {
-    from {
-      opacity: 0;
-      transform: translateY(-64px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0) rotate(-5deg);
-    }
-  }
+  animation: ${headingPostitAnimation} 1s ease forwards;
 `;
 
 const LinksContainer = styled.div`
@@ -84,16 +39,7 @@ const LinksContainer = styled.div`
   flex-direction: column;
   margin-top: 32px;
   opacity: 0;
-  animation: shareButtonAnimation 1s ease 0.25s forwards;
-
-  @keyframes shareButtonAnimation {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
+  animation: ${fadeAnimation} 1s ease 0.25s forwards;
 `;
 
 const ShareButton = styled(Button)`

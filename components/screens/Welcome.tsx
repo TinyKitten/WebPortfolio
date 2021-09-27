@@ -2,7 +2,7 @@ import { MutableRefObject, useCallback } from 'react';
 import TinyKittenIcon from '../TinyKittenIcon';
 import ArrowIcon from '../ArrowIcon';
 import Postit from '../Postit';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 type Props = {
   aboutScreenRef: MutableRefObject<HTMLDivElement | null>;
@@ -21,23 +21,24 @@ const LogoWrapper = styled.div`
   position: relative;
 `;
 
+const headingPostitAnimation = keyframes({
+  from: {
+    opacity: 0,
+    transform: 'translateY(-64px) rotate(0deg)',
+  },
+  to: {
+    opacity: 1,
+    transform: 'translateY(0) rotate(5deg)',
+  },
+});
+
 const StyledPostit = styled(Postit)`
   position: absolute;
-  transform: rotate(5deg);
+  transform: translateY(0) rotate(5deg);
   left: -44px;
   top: -24px;
   z-index: 1;
-  animation: headingPostitAnimation 1s ease forwards;
-  @keyframes headingPostitAnimation {
-    from {
-      opacity: 0;
-      transform: translateY(-64px) rotate(0deg);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0) rotate(5deg);
-    }
-  }
+  animation: ${headingPostitAnimation} 1s ease forwards;
 `;
 
 const Logo = styled(TinyKittenIcon)`
@@ -54,22 +55,23 @@ const MyName = styled.h1`
   color: ${({ theme }) => theme.headingText};
 `;
 
+const arrowAnimation = keyframes({
+  from: {
+    opacity: 0,
+    transform: 'translate3d(0, -32px, 0)',
+  },
+  to: {
+    opacity: 1,
+    transform: 'translate3d(0, 0, 0)',
+  },
+});
+
 const ArrowLink = styled(ArrowIcon)`
   position: absolute;
   width: 64px;
   height: auto;
   bottom: 32px;
-  animation: arrow 1s forwards;
-  @keyframes arrow {
-    from {
-      opacity: 0;
-      transform: translate3d(0, -32px, 0);
-    }
-    to {
-      opacity: 1;
-      transform: translate3d(0, 0, 0);
-    }
-  }
+  animation: ${arrowAnimation} 1s forwards;
 `;
 
 const WelcomeScreen: React.FC<Props> = ({ aboutScreenRef }: Props) => {

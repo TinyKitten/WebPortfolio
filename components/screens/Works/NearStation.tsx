@@ -5,7 +5,11 @@ import ScreenVisibleProvider from '../../../providers/ScreenVisibleProvider';
 import Button from '../../Button';
 import Postit from '../../Postit';
 import NearStationImage from '../../../assets/works/nearstation.png';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
+import {
+  headingPostitAnimation,
+  imageAnimation,
+} from '../../../constants/keyframets';
 
 const ContentContainer = styled.div`
   display: flex;
@@ -15,27 +19,13 @@ const ContentContainer = styled.div`
   min-height: calc(100vh - 48px);
 `;
 
-const imageAnimationKeyframe = css`
-  @keyframes imageAnimation {
-    from {
-      opacity: 0;
-      transform: translateY(-32px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-`;
-
 const Description = styled.p`
   text-align: center;
   max-width: calc(100% - 64px);
   line-height: 1.75;
   margin-top: 48px;
   color: ${({ theme }) => theme.headingText};
-  animation: imageAnimation 1s ease forwards;
-  ${imageAnimationKeyframe}
+  animation: ${imageAnimation} 1s ease forwards;
 `;
 
 const LogoContainer = styled.div`
@@ -52,18 +42,8 @@ const StyledPostit = styled(Postit)`
   right: auto;
   bottom: -24px;
   z-index: 1;
-  animation: headingPostitAnimation 1s ease 0.25s forwards;
+  animation: ${headingPostitAnimation} 1s ease 0.25s forwards;
   opacity: 0;
-  @keyframes headingPostitAnimation {
-    from {
-      opacity: 0;
-      transform: translateY(-64px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0) rotate(5deg);
-    }
-  }
 `;
 
 const ImageContainer = styled.div`
@@ -71,14 +51,12 @@ const ImageContainer = styled.div`
   max-width: 75%;
   height: auto;
   filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.16));
-  animation: imageAnimation 1s ease forwards;
-  ${imageAnimationKeyframe}
+  animation: ${imageAnimation} 1s ease forwards;
 `;
 
 const LearnMoreButton = styled(Button)`
   margin: 32px 0;
-  animation: imageAnimation 1s ease forwards;
-  ${imageAnimationKeyframe}
+  animation: ${imageAnimation} 1s ease forwards;
 `;
 
 const WorksNearStation: React.FC = () => {

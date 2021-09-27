@@ -2,6 +2,7 @@ import Link from 'next/link';
 import styled from 'styled-components';
 import Button from '../components/Button';
 import Postit from '../components/Postit';
+import { headingPostitAnimation } from '../constants/keyframets';
 
 const Container = styled.div`
   height: calc(100vh - 48px);
@@ -15,18 +16,7 @@ const Container = styled.div`
 
 const StyledPostit = styled(Postit)`
   position: relative;
-  animation: headingPostitAnimation 1s ease forwards;
-
-  @keyframes headingPostitAnimation {
-    from {
-      opacity: 0;
-      transform: translateY(-64px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0) rotate(5deg);
-    }
-  }
+  animation: ${headingPostitAnimation} 1s ease forwards;
 `;
 
 const Message = styled.p`
