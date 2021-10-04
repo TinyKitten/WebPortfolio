@@ -108,7 +108,7 @@ const AboutScreen: ForwardRefRenderFunction<HTMLDivElement> = (
               <br />
               Reactの案件を基本的に引き受けています。
               <br />
-              デザインとネイティブアプリの知識があることが強みです。
+              デザインとネイティブアプリ開発の知識があることが強みです。
             </BioText>
           </ContentContainer>
         </Container>
