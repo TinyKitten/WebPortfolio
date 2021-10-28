@@ -30,7 +30,7 @@ const Message = styled.p`
 const ErrorPage: React.FC<ErrorProps> = ({ statusCode }: ErrorProps) => (
   <Container>
     <StyledPostit>
-      {statusCode === 404 ? 'Not Found' : 'Internal Server Error'}
+      {statusCode === 404 ? 'Not Found' : 'Server Error'}
     </StyledPostit>
     <Message>
       {statusCode === 404
