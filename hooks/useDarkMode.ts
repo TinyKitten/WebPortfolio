@@ -10,11 +10,12 @@ const useDarkMode = (): {
   const [theme, setTheme] = useState<ThemeMode>('light');
   const [themeReady, setThemeReady] = useState(false);
   const setMode = (mode: ThemeMode) => {
-    process.browser && window.localStorage.setItem('theme', mode);
+    typeof window !== 'undefined' && window.localStorage.setItem('theme', mode);
     setTheme(mode);
   };
 
-  const localTheme = process.browser && window.localStorage.getItem('theme');
+  const localTheme =
+    typeof window !== 'undefined' && window.localStorage.getItem('theme');
 
   const toggleTheme = () => {
     if (theme === 'light') {
@@ -28,7 +29,7 @@ const useDarkMode = (): {
     if (localTheme) {
       setTheme(localTheme as ThemeMode);
     } else if (
-      process.browser &&
+      typeof window !== 'undefined' &&
       window.matchMedia &&
       window.matchMedia('(prefers-color-scheme: dark)').matches &&
       !localTheme

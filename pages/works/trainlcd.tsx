@@ -1,7 +1,12 @@
 import Head from 'next/head';
+import Image from 'next/image';
+import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
-import GooglePlayIcon from '../../components/appstores/GooglePlayIcon';
+import styled from 'styled-components';
+import TrainLCDImage from '../../assets/works/trainlcd.png';
 import AppStoreIcon from '../../components/appstores/AppStoreIcon';
+import GooglePlayIcon from '../../components/appstores/GooglePlayIcon';
+import Button from '../../components/Button';
 import MySQLIcon from '../../components/marks/MySQLIcon';
 import NestJSIcon from '../../components/marks/NestJSIcon';
 import ReactIcon from '../../components/marks/ReactIcon';
@@ -9,17 +14,12 @@ import TSIcon from '../../components/marks/TSIcon';
 import Postit from '../../components/Postit';
 import SkillsCircle from '../../components/SkillsCircle';
 import TitlePostit from '../../components/TitlePostit';
-import ScreenVisibleProvider from '../../providers/ScreenVisibleProvider';
-import Button from '../../components/Button';
-import Link from 'next/link';
-import Image from 'next/image';
-import TrainLCDImage from '../../assets/works/trainlcd.png';
-import styled from 'styled-components';
 import {
-  headingPostitAnimation,
   imageAnimation,
+  singleHeadingPostitAnimation,
   titlePostitAnimation,
 } from '../../constants/keyframets';
+import ScreenVisibleProvider from '../../providers/ScreenVisibleProvider';
 
 const Container = styled.section<{ fullHeight?: boolean }>`
   position: relative;
@@ -65,7 +65,7 @@ const Anchor = styled.a`
 const StyledPostit = styled(Postit)`
   display: block;
   margin-bottom: 32px;
-  animation: ${headingPostitAnimation} 1s ease forwards;
+  animation: ${singleHeadingPostitAnimation} 1s ease forwards;
 `;
 
 const Name = styled.h2`

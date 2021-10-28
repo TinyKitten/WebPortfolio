@@ -20,6 +20,17 @@ export const headingPostitAnimation = keyframes({
   },
 });
 
+export const singleHeadingPostitAnimation = keyframes({
+  from: {
+    opacity: 0,
+    transform: 'translateY(-64px)',
+  },
+  to: {
+    opacity: 1,
+    transform: 'translateY(0)',
+  },
+});
+
 export const fadeAnimation = keyframes({
   from: {
     opacity: 0,

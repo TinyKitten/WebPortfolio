@@ -1,23 +1,23 @@
-import { useEffect, useRef, useState } from 'react';
 import Head from 'next/head';
-import Postit from '../../components/Postit';
-import TitlePostit from '../../components/TitlePostit';
-import ScreenVisibleProvider from '../../providers/ScreenVisibleProvider';
-import SkillsCircle from '../../components/SkillsCircle';
-import TSIcon from '../../components/marks/TSIcon';
-import ReactIcon from '../../components/marks/ReactIcon';
-import NestJSIcon from '../../components/marks/NestJSIcon';
-import MySQLIcon from '../../components/marks/MySQLIcon';
-import Button from '../../components/Button';
-import Link from 'next/link';
 import Image from 'next/image';
-import NearStationPic from '../../assets/works/nearstation.png';
+import Link from 'next/link';
+import { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
+import NearStationPic from '../../assets/works/nearstation.png';
+import Button from '../../components/Button';
+import MySQLIcon from '../../components/marks/MySQLIcon';
+import NestJSIcon from '../../components/marks/NestJSIcon';
+import ReactIcon from '../../components/marks/ReactIcon';
+import TSIcon from '../../components/marks/TSIcon';
+import Postit from '../../components/Postit';
+import SkillsCircle from '../../components/SkillsCircle';
+import TitlePostit from '../../components/TitlePostit';
 import {
-  headingPostitAnimation,
   imageAnimation,
+  singleHeadingPostitAnimation,
   titlePostitAnimation,
 } from '../../constants/keyframets';
+import ScreenVisibleProvider from '../../providers/ScreenVisibleProvider';
 
 const Container = styled.section<{ fullHeight?: boolean }>`
   position: relative;
@@ -63,7 +63,7 @@ const Anchor = styled.a`
 const StyledPostit = styled(Postit)`
   display: block;
   margin-bottom: 32px;
-  animation: ${headingPostitAnimation} 1s ease forwards;
+  animation: ${singleHeadingPostitAnimation} 1s ease forwards;
 `;
 
 const Name = styled.h2`
