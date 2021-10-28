@@ -1,3 +1,4 @@
+import type { ErrorProps } from 'next/error';
 import Link from 'next/link';
 import styled from 'styled-components';
 import Button from '../components/Button';
@@ -26,10 +27,16 @@ const Message = styled.p`
   margin-bottom: 24px;
 `;
 
-const NoMatchPage: React.FC = () => (
+const ErrorPage: React.FC<ErrorProps> = ({ statusCode }: ErrorProps) => (
   <Container>
-    <StyledPostit>Not Found</StyledPostit>
-    <Message>お探しのページは見つかりませんでした。</Message>
+    <StyledPostit>
+      {statusCode === 404 ? 'Not Found' : 'Internal Server Error'}
+    </StyledPostit>
+    <Message>
+      {statusCode === 404
+        ? 'お探しのページは見つかりませんでした。'
+        : '内部サーバーエラーが発生しました。しばらくしてからもう一度アクセスしてください。'}
+    </Message>
     <Link href="/" passHref>
       <div>
         <Button>トップ</Button>
@@ -38,4 +45,4 @@ const NoMatchPage: React.FC = () => (
   </Container>
 );
 
-export default NoMatchPage;
+export default ErrorPage;
