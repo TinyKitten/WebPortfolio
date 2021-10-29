@@ -1,38 +1,31 @@
 import type { AppProps } from 'next/app';
-import Header from '../components/Header';
 import Head from 'next/head';
-import { existsGaId, GA_ID, recordPV } from '../lib/gtag';
-import React, { useEffect } from 'react';
 import { useRouter } from 'next/router';
-import useDarkMode from '../hooks/useDarkMode';
-import {
-  // darkTheme,
-  halloweenDarkTheme,
-  halloweenLightTheme,
-  // lightTheme,
-} from '../constants/theme';
+import React, { useEffect } from 'react';
 import { ThemeProvider } from 'styled-components';
+import Header from '../components/Header';
 import GlobalStyles from '../constants/globalStyle';
+import { halloweenDarkTheme, halloweenLightTheme } from '../constants/theme';
+import useAnalytics from '../hooks/useAnalytics';
+import useDarkMode from '../hooks/useDarkMode';
 
 function MyApp({ Component, pageProps }: AppProps): React.ReactElement {
   const { NEXT_PUBLIC_URL } = process.env;
   const { theme, themeReady } = useDarkMode();
   const router = useRouter();
 
-  useEffect(() => {
-    if (!existsGaId) {
-      return;
-    }
+  const { recordPV } = useAnalytics();
 
-    const handleRouteChange = (path) => {
-      recordPV(path);
+  useEffect(() => {
+    const handleRouteChange = () => {
+      recordPV();
     };
 
     router.events.on('routeChangeComplete', handleRouteChange);
     return () => {
       router.events.off('routeChangeComplete', handleRouteChange);
     };
-  }, [router.events]);
+  }, [recordPV, router.events]);
 
   if (!themeReady) {
     return null;
@@ -88,26 +81,6 @@ function MyApp({ Component, pageProps }: AppProps): React.ReactElement {
         <title>TinyKitten</title>
         <link rel="preconnect" href="https://www.google-analytics.com" />
         <link rel="preconnect" href="https://firestore.googleapis.com" />
-
-        {existsGaId && (
-          <>
-            <script
-              async
-              src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
-            />
-            <script
-              dangerouslySetInnerHTML={{
-                __html: `
-                  window.dataLayer = window.dataLayer || [];
-                  function gtag(){dataLayer.push(arguments);}
-                  gtag('js', new Date());
-                  gtag('config', '${GA_ID}', {
-                    page_path: window.location.pathname,
-                  });`,
-              }}
-            />
-          </>
-        )}
       </Head>
       <Header />
       <Component {...pageProps} />
