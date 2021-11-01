@@ -5,12 +5,12 @@ import {
   useRef,
   useState,
 } from 'react';
-import TitlePostit from '../TitlePostit';
-import Postit from '../Postit';
-import TinyKittenIcon from '../TinyKittenIcon';
-import ScreenVisibleProvider from '../../providers/ScreenVisibleProvider';
 import styled, { keyframes } from 'styled-components';
 import { titlePostitAnimation } from '../../constants/keyframets';
+import ScreenVisibleProvider from '../../providers/ScreenVisibleProvider';
+import Postit from '../Postit';
+import TinyKittenIcon from '../TinyKittenIcon';
+import TitlePostit from '../TitlePostit';
 
 const Container = styled.section`
   position: relative;
@@ -95,7 +95,7 @@ const AboutScreen: ForwardRefRenderFunction<HTMLDivElement> = (
           <ContentContainer>
             <LogoWrapper>
               {/*visible && <StyledPostit>デザインもできます</StyledPostit>*/}
-              {visible && <StyledPostit>Happy Halloween!</StyledPostit>}
+              {visible && <StyledPostit>Happy Christmas!</StyledPostit>}
               <Logo />
             </LogoWrapper>
             <NameText>TinyKitten</NameText>

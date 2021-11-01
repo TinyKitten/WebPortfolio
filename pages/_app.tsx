@@ -5,7 +5,7 @@ import React, { useEffect } from 'react';
 import { ThemeProvider } from 'styled-components';
 import Header from '../components/Header';
 import GlobalStyles from '../constants/globalStyle';
-import { halloweenDarkTheme, halloweenLightTheme } from '../constants/theme';
+import { christmasDarkTheme, christmasLightTheme } from '../constants/theme';
 import useAnalytics from '../hooks/useAnalytics';
 import useDarkMode from '../hooks/useDarkMode';
 
@@ -33,7 +33,7 @@ function MyApp({ Component, pageProps }: AppProps): React.ReactElement {
   return (
     // <ThemeProvider theme={theme === 'dark' ? darkTheme : lightTheme}>
     <ThemeProvider
-      theme={theme === 'dark' ? halloweenDarkTheme : halloweenLightTheme}
+      theme={theme === 'dark' ? christmasDarkTheme : christmasLightTheme}
     >
       <GlobalStyles />
       <Head>
