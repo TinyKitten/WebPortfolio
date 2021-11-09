@@ -38,6 +38,7 @@ function MyApp({ Component, pageProps }: AppProps): React.ReactElement {
       <GlobalStyles />
       <Head>
         <title>TinyKitten</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <Header />
       <Component {...pageProps} />
