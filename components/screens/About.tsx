@@ -16,6 +16,10 @@ const Container = styled.section`
   position: relative;
   min-height: calc(100vh - 48px);
   overflow: hidden;
+  padding-bottom: 48px;
+  @media (min-width: 800px) {
+    padding-bottom: 0px;
+  }
 `;
 
 const StyledTitlePostit = styled(TitlePostit)`

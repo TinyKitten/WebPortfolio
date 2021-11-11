@@ -46,9 +46,11 @@ const SkillsContainer = styled.div`
   grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
   grid-gap: 32px;
   animation: ${tipsPostitAnimation} 1s ease forwards;
-  margin-top: 144px;
+  margin-top: calc(144px + 32px);
+  margin-bottom: 32px;
   @media (min-width: 800px) {
     margin-top: 0px;
+    margin-bottom: 0px;
   }
 `;
 
