@@ -1,15 +1,15 @@
-import { useRef, useState } from 'react';
-import Button from '../../Button';
-import Postit from '../../Postit';
-import ScreenVisibleProvider from '../../../providers/ScreenVisibleProvider';
-import Link from 'next/link';
 import Image from 'next/image';
-import TrainLCDImage from '../../../assets/works/trainlcd.png';
+import Link from 'next/link';
+import { useRef, useState } from 'react';
 import styled from 'styled-components';
+import TrainLCDImage from '../../../assets/works/trainlcd.png';
 import {
   headingPostitAnimation,
   imageAnimation,
 } from '../../../constants/keyframets';
+import ScreenVisibleProvider from '../../../providers/ScreenVisibleProvider';
+import Button from '../../Button';
+import Postit from '../../Postit';
 
 const ContentContainer = styled.div`
   display: flex;

@@ -1,13 +1,13 @@
 import { useRef, useState } from 'react';
-import ScreenVisibleProvider from '../../providers/ScreenVisibleProvider';
-import TitlePostit from '../TitlePostit';
-import SkillsCircle from '../SkillsCircle';
-import JSIcon from '../marks/JSIcon';
-import TSIcon from '../marks/TSIcon';
-import VueJSIcon from '../marks/VueJSIcon';
-import ReactIcon from '../marks/ReactIcon';
 import styled, { keyframes } from 'styled-components';
 import { titlePostitAnimation } from '../../constants/keyframets';
+import ScreenVisibleProvider from '../../providers/ScreenVisibleProvider';
+import JSIcon from '../marks/JSIcon';
+import ReactIcon from '../marks/ReactIcon';
+import TSIcon from '../marks/TSIcon';
+import VueJSIcon from '../marks/VueJSIcon';
+import SkillsCircle from '../SkillsCircle';
+import TitlePostit from '../TitlePostit';
 
 const Container = styled.section`
   position: relative;
@@ -46,6 +46,10 @@ const SkillsContainer = styled.div`
   grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
   grid-gap: 32px;
   animation: ${tipsPostitAnimation} 1s ease forwards;
+  margin-top: 144px;
+  @media (min-width: 800px) {
+    margin-top: 0px;
+  }
 `;
 
 const SkillsScreen: React.FC = () => {

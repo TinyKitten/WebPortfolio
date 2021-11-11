@@ -1,15 +1,22 @@
 import { useRef, useState } from 'react';
-import ScreenVisibleProvider from '../../../providers/ScreenVisibleProvider';
-import TitlePostit from '../../TitlePostit';
-import WorksTrainLCD from './TrainLCD';
-import WorksNearStation from './NearStation';
 import styled from 'styled-components';
 import { titlePostitAnimation } from '../../../constants/keyframets';
+import ScreenVisibleProvider from '../../../providers/ScreenVisibleProvider';
+import TitlePostit from '../../TitlePostit';
+import WorksNearStation from './NearStation';
+import WorksTrainLCD from './TrainLCD';
 
 const Container = styled.section`
   overflow: hidden;
   position: relative;
   min-height: calc(100vh - 48px);
+`;
+
+const WorksContainer = styled.div`
+  margin-top: 144px;
+  @media (min-width: 800px) {
+    margin-top: 0px;
+  }
 `;
 
 const StyledTitlePostit = styled(TitlePostit)`
@@ -26,8 +33,10 @@ const WorksScreen: React.FC = () => {
         {visible && (
           <StyledTitlePostit title="TinyKitten" subtitle="が作ったよ" />
         )}
-        <WorksTrainLCD />
-        <WorksNearStation />
+        <WorksContainer>
+          <WorksTrainLCD />
+          <WorksNearStation />
+        </WorksContainer>
       </Container>
     </ScreenVisibleProvider>
   );
