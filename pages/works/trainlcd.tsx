@@ -301,7 +301,7 @@ export async function getStaticProps(): Promise<{
 }> {
   return {
     props: {},
-    revalidate: 10,
+    revalidate: 60,
   };
 }
 
