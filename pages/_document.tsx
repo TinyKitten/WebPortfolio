@@ -31,7 +31,6 @@ export default function Document(): React.ReactElement {
         />
         <meta name="msapplication-TileColor" content="#008ffe" />
         <meta name="theme-color" content="#ffffff" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta
           name="description"
           content="フロントエンドエンジニア TinyKittenのポートフォリオです。"

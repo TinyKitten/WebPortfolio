@@ -1,11 +1,11 @@
 import { useRef } from 'react';
-import WelcomeScreen from '../components/screens/Welcome';
-import AboutScreen from '../components/screens/About';
-import SkillsScreen from '../components/screens/Skills';
-import WorksScreen from '../components/screens/Works';
-import ShareScreen from '../components/screens/Share';
-import ResumeScreen from '../components/screens/Resume';
 import styled from 'styled-components';
+import AboutScreen from '../components/screens/About';
+import ResumeScreen from '../components/screens/Resume';
+import ShareScreen from '../components/screens/Share';
+import SkillsScreen from '../components/screens/Skills';
+import WelcomeScreen from '../components/screens/Welcome';
+import WorksScreen from '../components/screens/Works';
 
 const SectionContainer = styled.div`
   :nth-child(even) {
@@ -41,4 +41,13 @@ export default function Home(): React.ReactElement {
       </SectionContainer>
     </>
   );
+}
+export async function getStaticProps(): Promise<{
+  props: unknown;
+  revalidate: number;
+}> {
+  return {
+    props: {},
+    revalidate: 10,
+  };
 }

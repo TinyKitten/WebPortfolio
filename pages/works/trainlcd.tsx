@@ -295,4 +295,14 @@ const WorksTrainLCDPage: React.FC = () => {
   );
 };
 
+export async function getStaticProps(): Promise<{
+  props: unknown;
+  revalidate: number;
+}> {
+  return {
+    props: {},
+    revalidate: 10,
+  };
+}
+
 export default WorksTrainLCDPage;
