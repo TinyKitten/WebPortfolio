@@ -77,7 +77,7 @@ const WorksTrainLCD: React.FC = () => {
 
         {visible && (
           <Description>
-            電車のLCDを再現したスマホアプリです。
+            日本全国の鉄道路線で使える新感覚のナビゲーションアプリです。
             <br />
             現在App Store、Google Play Storeにて配信中。
           </Description>

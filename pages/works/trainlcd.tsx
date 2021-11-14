@@ -152,7 +152,7 @@ const FirstSection: React.FC = () => (
         <Image src={TrainLCDImage} alt="TrainLCD" />
       </LogoContainer>
       <Name>TrainLCD</Name>
-      <Bio>電車のLCDをスマホで</Bio>
+      <Bio>日本全国の鉄道路線で使える新感覚のナビゲーションアプリ</Bio>
     </ContentContainer>
   </Container>
 );
@@ -276,7 +276,10 @@ const WorksTrainLCDPage: React.FC = () => {
     <div ref={ref}>
       <Head>
         <title>TrainLCD</title>
-        <meta name="description" content="電車のLCDをスマホで" />
+        <meta
+          name="description"
+          content="日本全国の鉄道路線で使える新感覚のナビゲーションアプリ"
+        />
         <meta property="og:site_name" content="TinyKitten" />
         <meta property="og:type" content="article" />
         <meta
@@ -284,7 +287,10 @@ const WorksTrainLCDPage: React.FC = () => {
           content={`${process.env.PUBLIC_URL}/works/trainlcd`}
         />
         <meta property="og:title" content="TrainLCD" />
-        <meta property="og:description" content="電車のLCDをスマホで" />
+        <meta
+          property="og:description"
+          content="日本全国の鉄道路線で使える新感覚のナビゲーションアプリ"
+        />
         <meta property="og:image" content="/works/trainlcd.png" />
       </Head>
       <FirstSection />
