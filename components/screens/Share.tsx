@@ -1,16 +1,16 @@
 import { useRef, useState } from 'react';
-import usePraise from '../../hooks/usePraise';
-import ScreenVisibleProvider from '../../providers/ScreenVisibleProvider';
-import Button from '../Button';
-import Postit from '../Postit';
-import TitlePostit from '../TitlePostit';
-import Praise from '../Praise';
 import styled from 'styled-components';
 import {
   fadeAnimation,
   headingPostitAnimation,
   titlePostitAnimation,
 } from '../../constants/keyframets';
+import usePraise from '../../hooks/usePraise';
+import ScreenVisibleProvider from '../../providers/ScreenVisibleProvider';
+import Button from '../Button';
+import Postit from '../Postit';
+import Praise from '../Praise';
+import TitlePostit from '../TitlePostit';
 
 const Container = styled.section`
   position: relative;
@@ -50,6 +50,12 @@ const StyledPraise = styled(Praise)`
   margin: 12px 0;
 `;
 
+const CautionText = styled.p`
+  color: ${({ theme }) => theme.text};
+  font-weight: bold;
+  margin-top: 24px;
+`;
+
 const ShareScreen: React.FC = () => {
   const [visible, setVisible] = useState(false);
   const ref = useRef(null);
@@ -82,6 +88,9 @@ const ShareScreen: React.FC = () => {
               <StyledPraise count={count} onIncrement={incrementCount} />
             </LinksContainer>
           )}
+          <CautionText>
+            お気持ち以上の連打や自動化ツールを使用しての連打はご遠慮ください。
+          </CautionText>
         </ContentContainer>
       </Container>
     </ScreenVisibleProvider>
