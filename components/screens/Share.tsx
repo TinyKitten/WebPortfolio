@@ -10,6 +10,7 @@ import ScreenVisibleProvider from '../../providers/ScreenVisibleProvider';
 import Button from '../Button';
 import Postit from '../Postit';
 import Praise from '../Praise';
+import ShareModal from '../ShareModal';
 import TitlePostit from '../TitlePostit';
 
 const Container = styled.section`
@@ -50,16 +51,10 @@ const StyledPraise = styled(Praise)`
   margin: 12px 0;
 `;
 
-const CautionText = styled.p`
-  color: ${({ theme }) => theme.text};
-  font-weight: bold;
-  margin-top: 24px;
-`;
-
 const ShareScreen: React.FC = () => {
   const [visible, setVisible] = useState(false);
   const ref = useRef(null);
-  const { count, incrementCount } = usePraise(visible);
+  const { count, incrementCount, exceeded, resetExceeded } = usePraise(visible);
 
   return (
     <ScreenVisibleProvider contentRef={ref} onVisibleChange={setVisible}>
@@ -88,11 +83,9 @@ const ShareScreen: React.FC = () => {
               <StyledPraise count={count} onIncrement={incrementCount} />
             </LinksContainer>
           )}
-          <CautionText>
-            お気持ち以上の連打や自動化ツールを使用しての連打はご遠慮ください。
-          </CautionText>
         </ContentContainer>
       </Container>
+      <ShareModal isOpen={exceeded} onRequestClose={resetExceeded} />
     </ScreenVisibleProvider>
   );
 };

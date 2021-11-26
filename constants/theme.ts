@@ -5,6 +5,7 @@ export type AppPalette = {
   boxBg: string;
   headingText: string;
   text: string;
+  cancelBg: string;
 };
 
 export const lightTheme: AppPalette = {
@@ -14,6 +15,7 @@ export const lightTheme: AppPalette = {
   boxBg: '#fff',
   headingText: '#707070',
   text: '#555',
+  cancelBg: '#252525',
 };
 
 export const darkTheme: AppPalette = {
@@ -23,6 +25,7 @@ export const darkTheme: AppPalette = {
   boxBg: '#333',
   headingText: '#eee',
   text: '#eee',
+  cancelBg: '#252525',
 };
 
 export const halloweenLightTheme: AppPalette = {
@@ -32,6 +35,7 @@ export const halloweenLightTheme: AppPalette = {
   boxBg: '#fff',
   headingText: '#707070',
   text: '#555',
+  cancelBg: '#252525',
 };
 
 export const halloweenDarkTheme: AppPalette = {
@@ -41,6 +45,7 @@ export const halloweenDarkTheme: AppPalette = {
   boxBg: '#333',
   headingText: '#eee',
   text: '#eee',
+  cancelBg: '#252525',
 };
 
 export const christmasLightTheme: AppPalette = {
@@ -50,6 +55,7 @@ export const christmasLightTheme: AppPalette = {
   boxBg: '#fff',
   headingText: '#707070',
   text: '#555',
+  cancelBg: '#252525',
 };
 
 export const christmasDarkTheme: AppPalette = {
@@ -59,4 +65,5 @@ export const christmasDarkTheme: AppPalette = {
   boxBg: '#333',
   headingText: '#eee',
   text: '#eee',
+  cancelBg: '#252525',
 };

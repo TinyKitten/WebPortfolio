@@ -1,7 +1,7 @@
 import Link from 'next/link';
-import TinyKittenIcon from './TinyKittenIcon';
 import { forwardRef } from 'react';
 import styled from 'styled-components';
+import TinyKittenIcon from './TinyKittenIcon';
 
 const ForwardedIcon = forwardRef(() => (
   <TinyKittenIcon width={32} height={32} />
