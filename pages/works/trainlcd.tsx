@@ -4,8 +4,6 @@ import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import TrainLCDImage from '../../assets/works/trainlcd.png';
-import AppStoreIcon from '../../components/appstores/AppStoreIcon';
-import GooglePlayIcon from '../../components/appstores/GooglePlayIcon';
 import Button from '../../components/Button';
 import MySQLIcon from '../../components/marks/MySQLIcon';
 import NestJSIcon from '../../components/marks/NestJSIcon';
@@ -135,19 +133,13 @@ const TechContainer = styled.article`
   animation: ${imageAnimation} 1s ease forwards;
 `;
 
-const AppStoreButton = styled.a<{ apple?: boolean }>`
-  height: auto;
-  overflow: hidden;
-  margin-bottom: ${({ apple }) => (apple ? '32px' : '12px')};
-`;
-
 const StyledTitlePostit = styled(TitlePostit)`
   animation: ${titlePostitAnimation} 1s ease forwards;
 `;
 const FirstSection: React.FC = () => (
   <Container fullHeight>
     <ContentContainer>
-      <StyledPostit>Dev/WebApp</StyledPostit>
+      <StyledPostit>Dev/MobileApp</StyledPostit>
       <LogoContainer>
         <Image src={TrainLCDImage} alt="TrainLCD" />
       </LogoContainer>
@@ -229,24 +221,15 @@ const AccessSection: React.FC = () => {
       <Container ref={ref}>
         {visible && <StyledTitlePostit title="TrainLCD" subtitle="リンク" />}
         <ContentContainer>
-          <AppStoreButton href="https://play.google.com/store/apps/details?id=me.tinykitten.trainlcd&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1">
-            <GooglePlayIcon width={180} />
-          </AppStoreButton>
-          <AppStoreButton
-            apple
-            href="https://apps.apple.com/jp/app/trainlcd/id1486355943"
-          >
-            <AppStoreIcon width={180} />
-          </AppStoreButton>
           <Anchor
-            href="https://trainlcd.tinykitten.me"
+            href="https://trainlcd.app"
             target="_blank"
             rel="noopener noreferrer"
           >
             <Button>公式サイト</Button>
           </Anchor>
           <Anchor
-            href="https://github.com/TinyKitten/TrainLCD"
+            href="https://github.com/TrainLCD/MobileApp"
             target="_blank"
             rel="noopener noreferrer"
           >

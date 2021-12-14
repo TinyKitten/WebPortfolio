@@ -79,7 +79,7 @@ const WorksTrainLCD: React.FC = () => {
           <Description>
             日本全国の鉄道路線で使える新感覚のナビゲーションアプリです。
             <br />
-            現在App Store、Google Play Storeにて配信中。
+            現在アプリストア配信はお休みしています。
           </Description>
         )}
         <Link href="/works/trainlcd" passHref>
