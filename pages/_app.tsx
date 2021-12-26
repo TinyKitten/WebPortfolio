@@ -6,7 +6,7 @@ import ReactModal from 'react-modal';
 import { ThemeProvider } from 'styled-components';
 import Header from '../components/Header';
 import GlobalStyles from '../constants/globalStyle';
-import { christmasDarkTheme, christmasLightTheme } from '../constants/theme';
+import { darkTheme, lightTheme } from '../constants/theme';
 import useAnalytics from '../hooks/useAnalytics';
 import useDarkMode from '../hooks/useDarkMode';
 import '../styles/Modal.css';
@@ -35,10 +35,7 @@ function MyApp({ Component, pageProps }: AppProps): React.ReactElement {
   }
 
   return (
-    // <ThemeProvider theme={theme === 'dark' ? darkTheme : lightTheme}>
-    <ThemeProvider
-      theme={theme === 'dark' ? christmasDarkTheme : christmasLightTheme}
-    >
+    <ThemeProvider theme={theme === 'dark' ? darkTheme : lightTheme}>
       <GlobalStyles />
       <Head>
         <title>TinyKitten</title>

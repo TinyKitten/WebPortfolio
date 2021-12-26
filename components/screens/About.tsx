@@ -98,8 +98,7 @@ const AboutScreen: ForwardRefRenderFunction<HTMLDivElement> = (
           )}
           <ContentContainer>
             <LogoWrapper>
-              {/*visible && <StyledPostit>デザインもできます</StyledPostit>*/}
-              {visible && <StyledPostit>Happy Christmas!</StyledPostit>}
+              {visible && <StyledPostit>デザインもできます</StyledPostit>}
               <Logo />
             </LogoWrapper>
             <NameText>TinyKitten</NameText>
