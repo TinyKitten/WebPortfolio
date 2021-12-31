@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import styled from 'styled-components';
 import { Resume } from '../models/Resume';
 
@@ -50,10 +51,17 @@ const DescriptionText = styled.p`
 `;
 
 const ResumeItem: React.FC<Props> = ({ resume }: Props) => {
-  const period =
-    resume.startAtFullYear === resume.endAtFullYear
-      ? `${resume.startAtFullYear}`
-      : `${resume.startAtFullYear}-${resume.endAtFullYear}`;
+  const period = useMemo(() => {
+    if (resume.startAtFullYear === resume.endAtFullYear) {
+      return `${resume.startAtFullYear}`;
+    }
+    if (!resume.endAtFullYear) {
+      return `${resume.startAtFullYear}-`;
+    }
+
+    return `${resume.startAtFullYear}-${resume.endAtFullYear}`;
+  }, [resume.endAtFullYear, resume.startAtFullYear]);
+
   return (
     <Container>
       <PeriodText>{period}</PeriodText>
