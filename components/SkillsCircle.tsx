@@ -36,8 +36,8 @@ const SkillName = styled.p`
 
 const SkillsCircle: React.FC<Props> = ({ name, icon: Icon }: Props) => {
   const SkillImage = styled(Icon)`
-    width: 50%;
-    height: auto;
+    width: auto;
+    height: 64px;
   `;
 
   return (

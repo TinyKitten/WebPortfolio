@@ -2,10 +2,10 @@ import { useRef, useState } from 'react';
 import styled, { keyframes } from 'styled-components';
 import { titlePostitAnimation } from '../../constants/keyframets';
 import ScreenVisibleProvider from '../../providers/ScreenVisibleProvider';
+import FigmaIcon from '../marks/FigmaIcon';
 import JSIcon from '../marks/JSIcon';
 import ReactIcon from '../marks/ReactIcon';
 import TSIcon from '../marks/TSIcon';
-import VueJSIcon from '../marks/VueJSIcon';
 import SkillsCircle from '../SkillsCircle';
 import TitlePostit from '../TitlePostit';
 
@@ -69,8 +69,8 @@ const SkillsScreen: React.FC = () => {
             <SkillsContainer>
               <SkillsCircle icon={JSIcon} name="JavaScript" />
               <SkillsCircle icon={TSIcon} name="TypeScript" />
-              <SkillsCircle icon={VueJSIcon} name="Vue.js" />
               <SkillsCircle icon={ReactIcon} name="React (Native)" />
+              <SkillsCircle icon={FigmaIcon} name="Figma" />
             </SkillsContainer>
           )}
         </ContentContainer>
