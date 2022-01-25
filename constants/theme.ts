@@ -14,8 +14,8 @@ export const lightTheme: AppPalette = {
   subBg: '#fafafa',
   boxBg: '#fff',
   headingText: '#707070',
-  text: '#555',
-  cancelBg: '#252525',
+  text: '#666',
+  cancelBg: '#666',
 };
 
 export const darkTheme: AppPalette = {
@@ -25,7 +25,7 @@ export const darkTheme: AppPalette = {
   boxBg: '#333',
   headingText: '#eee',
   text: '#eee',
-  cancelBg: '#252525',
+  cancelBg: '#666',
 };
 
 export const halloweenLightTheme: AppPalette = {
@@ -34,8 +34,8 @@ export const halloweenLightTheme: AppPalette = {
   subBg: '#fafafa',
   boxBg: '#fff',
   headingText: '#707070',
-  text: '#555',
-  cancelBg: '#252525',
+  text: '#666',
+  cancelBg: '#666',
 };
 
 export const halloweenDarkTheme: AppPalette = {
@@ -45,7 +45,7 @@ export const halloweenDarkTheme: AppPalette = {
   boxBg: '#333',
   headingText: '#eee',
   text: '#eee',
-  cancelBg: '#252525',
+  cancelBg: '#666',
 };
 
 export const christmasLightTheme: AppPalette = {
@@ -54,8 +54,8 @@ export const christmasLightTheme: AppPalette = {
   subBg: '#fafafa',
   boxBg: '#fff',
   headingText: '#707070',
-  text: '#555',
-  cancelBg: '#252525',
+  text: '#666',
+  cancelBg: '#666',
 };
 
 export const christmasDarkTheme: AppPalette = {
@@ -65,5 +65,5 @@ export const christmasDarkTheme: AppPalette = {
   boxBg: '#333',
   headingText: '#eee',
   text: '#eee',
-  cancelBg: '#252525',
+  cancelBg: '#666',
 };

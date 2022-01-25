@@ -1,5 +1,6 @@
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import Modal from 'react-modal';
+import { animated, useSpring } from 'react-spring';
 import styled, { ThemeContext } from 'styled-components';
 import Button from './Button';
 
@@ -60,10 +61,59 @@ const LinksContainer = styled.div`
 
 const ShareButton = styled(Button)`
   margin: 8px 0;
+  position: relative;
 `;
+
+const ButtonProgressBar = styled(animated.div)`
+  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+`;
+
+const CancelButtonText = styled.span`
+  position: relative;
+  z-index: 1;
+`;
+
+const CANCEL_DISABLED_DURATION = parseInt(
+  process.env.NEXT_PUBLIC_CANCEL_DISABLED_DURATION,
+  10
+);
 
 const ShareModal = ({ isOpen, onRequestClose }: Props): React.ReactElement => {
   const themeContext = useContext(ThemeContext);
+  const [cancelStyles, cancelStylesApi] = useSpring(() => ({
+    width: '0%',
+    config: { duration: CANCEL_DISABLED_DURATION },
+  }));
+  const [closable, setClosable] = useState(false);
+
+  useEffect(() => {
+    if (isOpen) {
+      cancelStylesApi({ width: '100%' });
+    } else {
+      cancelStylesApi.stop();
+      cancelStylesApi.set({ width: '0%' });
+    }
+  }, [cancelStylesApi, isOpen]);
+
+  useEffect(() => {
+    let timer: NodeJS.Timeout;
+    if (isOpen) {
+      timer = setTimeout(() => {
+        setClosable(true);
+      }, CANCEL_DISABLED_DURATION);
+    }
+    return () => {
+      setClosable(false);
+      clearTimeout(timer);
+    };
+  }, [isOpen]);
+
+  const noop = () => undefined;
 
   return (
     <Modal
@@ -97,8 +147,12 @@ const ShareModal = ({ isOpen, onRequestClose }: Props): React.ReactElement => {
           >
             <ShareButton color="#3E54A4">Facebook</ShareButton>
           </a>
-          <ShareButton onClick={onRequestClose} color={themeContext.cancelBg}>
-            シェアしない
+          <ShareButton
+            onClick={closable ? onRequestClose : noop}
+            color={themeContext.cancelBg}
+          >
+            <ButtonProgressBar style={cancelStyles} />
+            <CancelButtonText>シェアしない</CancelButtonText>
           </ShareButton>
         </LinksContainer>
       </Container>
