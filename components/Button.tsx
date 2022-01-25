@@ -6,6 +6,7 @@ type Props = {
   children: React.ReactNode;
   className?: string;
   onClick?: (event: SyntheticEvent<HTMLButtonElement>) => void;
+  disabled?: boolean;
 };
 
 const ButtonBase = styled.button`
@@ -33,6 +34,7 @@ const Button: React.FC<Props> = ({
   children,
   className,
   onClick,
+  disabled,
 }: Props) => {
   const themeContext = useContext(ThemeContext);
   return (
@@ -40,6 +42,7 @@ const Button: React.FC<Props> = ({
       style={{ backgroundColor: color || themeContext.primary }}
       className={className}
       onClick={onClick}
+      disabled={disabled}
     >
       {children}
     </ButtonBase>

@@ -150,6 +150,7 @@ const ShareModal = ({ isOpen, onRequestClose }: Props): React.ReactElement => {
           <ShareButton
             onClick={closable ? onRequestClose : noop}
             color={themeContext.cancelBg}
+            disabled={!closable}
           >
             <ButtonProgressBar style={cancelStyles} />
             <CancelButtonText>シェアしない</CancelButtonText>
