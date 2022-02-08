@@ -72,11 +72,14 @@ const NameText = styled.h2`
 `;
 
 const BioText = styled.p`
-  text-align: center;
+  text-align: left;
   max-width: calc(100% - 64px);
   line-height: 1.75;
   margin-top: 12px;
   color: ${({ theme }) => theme.text};
+  @media (min-width: 800px) {
+    text-align: center;
+  }
 `;
 
 const AboutScreen: ForwardRefRenderFunction<HTMLDivElement> = (

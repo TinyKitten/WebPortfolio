@@ -102,11 +102,14 @@ const Concept = styled.h2`
   max-width: 90%;
 `;
 const ConceptDescription = styled.p`
-  text-align: center;
+  text-align: left;
   max-width: 90%;
   margin-top: 32px;
   line-height: 2;
   color: ${({ theme }) => theme.text};
+  @media (min-width: 800px) {
+    text-align: center;
+  }
 `;
 const ConceptDescriptionAnchor = styled.a`
   color: ${({ theme }) => theme.text};
@@ -115,13 +118,17 @@ const ConceptDescriptionAnchor = styled.a`
 `;
 
 const SmallCaption = styled.small`
-  text-align: center;
+  text-align: left;
   max-width: 90%;
   margin-top: 32px;
   line-height: 2;
   color: ${({ theme }) => theme.text};
   font-size: 0.8rem;
   margin-top: 0;
+  width: 100%;
+  @media (min-width: 800px) {
+    text-align: center;
+  }
 `;
 
 const TechContainer = styled.article`

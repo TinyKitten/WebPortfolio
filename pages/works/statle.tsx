@@ -98,11 +98,14 @@ const Concept = styled.h2`
   max-width: 90%;
 `;
 const ConceptDescription = styled.p`
-  text-align: center;
+  text-align: left;
   max-width: 90%;
   margin-top: 32px;
   line-height: 2;
   color: ${({ theme }) => theme.text};
+  @media (min-width: 800px) {
+    text-align: center;
+  }
 `;
 
 const TechContainer = styled.article`
