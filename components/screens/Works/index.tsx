@@ -4,6 +4,7 @@ import { titlePostitAnimation } from '../../../constants/keyframets';
 import ScreenVisibleProvider from '../../../providers/ScreenVisibleProvider';
 import TitlePostit from '../../TitlePostit';
 import WorksNearStation from './NearStation';
+import WorksSTATLE from './STATLE';
 import WorksTrainLCD from './TrainLCD';
 
 const Container = styled.section`
@@ -36,6 +37,7 @@ const WorksScreen: React.FC = () => {
         <WorksContainer>
           <WorksTrainLCD />
           <WorksNearStation />
+          <WorksSTATLE />
         </WorksContainer>
       </Container>
     </ScreenVisibleProvider>
