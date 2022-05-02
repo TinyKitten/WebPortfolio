@@ -7,7 +7,7 @@ import {
   updateDoc,
 } from 'firebase/firestore';
 import { useCallback, useEffect, useState } from 'react';
-import firebase from '../utils/firebase';
+import getFirebaseApp from '../utils/firebase';
 import useAnonymousAuth from './useAnonymousAuth';
 
 const usePraise = (
@@ -23,10 +23,11 @@ const usePraise = (
   const [repeatTimes, setRepeatTimes] = useState(0);
 
   const fbUser = useAnonymousAuth();
-  const db = getFirestore(firebase);
 
   useEffect(() => {
     const fetchAsync = async () => {
+      const firebase = await getFirebaseApp();
+      const db = getFirestore(firebase);
       const countDocRef = doc(db, 'public/praise');
       const countDocSnap = await getDoc(countDocRef);
       const data = countDocSnap.data();
@@ -41,11 +42,12 @@ const usePraise = (
     if (ready && !firstLoaded) {
       fetchAsync();
     }
-  }, [db, firstLoaded, ready]);
+  }, [firstLoaded, ready]);
 
   const incrementCount = useCallback(async () => {
     setRepeatTimes((prev) => prev + 1);
-    await import('firebase/auth');
+    const firebase = await getFirebaseApp();
+    const db = getFirestore(firebase);
 
     if (!fbUser) {
       return;
@@ -55,7 +57,7 @@ const usePraise = (
     await updateDoc(countDocRef, {
       count: increment(1),
     });
-  }, [db, fbUser]);
+  }, [fbUser]);
 
   const resetExceeded = () => setRepeatTimes(0);
 
