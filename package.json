@@ -9,7 +9,7 @@
     "lint": "eslint './**/*.ts{,x}'"
   },
   "dependencies": {
-    "firebase": "^8.2.4",
+    "firebase": "^9.7.0",
     "ga-lite": "^2.1.0",
     "next": "^12.1.0",
     "react": "^17.0.2",
