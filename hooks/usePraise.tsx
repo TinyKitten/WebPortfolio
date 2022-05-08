@@ -1,13 +1,4 @@
-import {
-  doc,
-  getDoc,
-  getFirestore,
-  increment,
-  onSnapshot,
-  updateDoc,
-} from 'firebase/firestore';
 import { useCallback, useEffect, useState } from 'react';
-import getFirebaseApp from '../utils/firebase';
 import useAnonymousAuth from './useAnonymousAuth';
 
 const usePraise = (
@@ -26,6 +17,11 @@ const usePraise = (
 
   useEffect(() => {
     const fetchAsync = async () => {
+      const { doc, getDoc, getFirestore, onSnapshot } = await import(
+        'firebase/firestore'
+      );
+      const { getFirebaseApp } = await import('../utils/firebase');
+
       const firebase = await getFirebaseApp();
       const db = getFirestore(firebase);
       const countDocRef = doc(db, 'public/praise');
@@ -45,6 +41,10 @@ const usePraise = (
   }, [firstLoaded, ready]);
 
   const incrementCount = useCallback(async () => {
+    const { doc, getFirestore, updateDoc, increment } = await import(
+      'firebase/firestore'
+    );
+    const { getFirebaseApp } = await import('../utils/firebase');
     setRepeatTimes((prev) => prev + 1);
     const firebase = await getFirebaseApp();
     const db = getFirestore(firebase);

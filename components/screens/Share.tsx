@@ -1,3 +1,4 @@
+import dynamic from 'next/dynamic';
 import { useRef, useState } from 'react';
 import styled from 'styled-components';
 import {
@@ -10,8 +11,9 @@ import ScreenVisibleProvider from '../../providers/ScreenVisibleProvider';
 import Button from '../Button';
 import Postit from '../Postit';
 import Praise from '../Praise';
-import ShareModal from '../ShareModal';
 import TitlePostit from '../TitlePostit';
+
+const ShareModal = dynamic(() => import('../ShareModal'));
 
 const Container = styled.section`
   position: relative;

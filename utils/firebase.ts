@@ -1,6 +1,6 @@
 import type { FirebaseApp } from 'firebase/app';
 
-const getFirebaseApp = async (): Promise<FirebaseApp> => {
+export const getFirebaseApp = async (): Promise<FirebaseApp> => {
   const initializeApp = (await import('firebase/app')).initializeApp;
   return initializeApp({
     apiKey: process.env.NEXT_PUBLIC_FIR_API_KEY,
@@ -12,5 +12,3 @@ const getFirebaseApp = async (): Promise<FirebaseApp> => {
     appId: process.env.NEXT_PUBLIC_FIR_APP_ID,
   });
 };
-
-export default getFirebaseApp;

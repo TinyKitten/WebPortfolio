@@ -1,11 +1,29 @@
+import dynamic from 'next/dynamic';
 import { useRef } from 'react';
 import styled from 'styled-components';
-import AboutScreen from '../components/screens/About';
-import ResumeScreen from '../components/screens/Resume';
-import ShareScreen from '../components/screens/Share';
-import SkillsScreen from '../components/screens/Skills';
 import WelcomeScreen from '../components/screens/Welcome';
-import WorksScreen from '../components/screens/Works';
+
+const CustomDynamicLoading = styled.div`
+  background-color: ${({ theme }) => theme.bg};
+  height: 100vh;
+  width: 100vw;
+`;
+
+const AboutScreen = dynamic(() => import('../components/screens/About'), {
+  loading: CustomDynamicLoading,
+});
+const ResumeScreen = dynamic(() => import('../components/screens/Resume'), {
+  loading: CustomDynamicLoading,
+});
+const ShareScreen = dynamic(() => import('../components/screens/Share'), {
+  loading: CustomDynamicLoading,
+});
+const SkillsScreen = dynamic(() => import('../components/screens/Skills'), {
+  loading: CustomDynamicLoading,
+});
+const WorksScreen = dynamic(() => import('../components/screens/Works'), {
+  loading: CustomDynamicLoading,
+});
 
 const SectionContainer = styled.div`
   :nth-child(even) {
@@ -42,10 +60,10 @@ export default function Home(): React.ReactElement {
     </>
   );
 }
-export async function getStaticProps(): Promise<{
+export function getStaticProps(): {
   props: unknown;
   revalidate: number;
-}> {
+} {
   return {
     props: {},
     revalidate: 60,

@@ -1,8 +1,10 @@
+import dynamic from 'next/dynamic';
 import { MutableRefObject, useCallback } from 'react';
-import TinyKittenIcon from '../TinyKittenIcon';
-import ArrowIcon from '../ArrowIcon';
-import Postit from '../Postit';
 import styled, { keyframes } from 'styled-components';
+import Postit from '../Postit';
+import TinyKittenIcon from '../TinyKittenIcon';
+
+const ArrowIcon = dynamic(() => import('../ArrowIcon'));
 
 type Props = {
   aboutScreenRef: MutableRefObject<HTMLDivElement | null>;
