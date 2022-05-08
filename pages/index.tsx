@@ -1,6 +1,7 @@
 import dynamic from 'next/dynamic';
 import { useRef } from 'react';
 import styled from 'styled-components';
+import WelcomeScreen from '../components/screens/Welcome';
 
 const CustomDynamicLoading = styled.div`
   background-color: ${({ theme }) => theme.bg};
@@ -12,10 +13,6 @@ const dynamicOptions = {
   loading: CustomDynamicLoading,
 };
 
-const WelcomeScreen = dynamic(
-  () => import('../components/screens/Welcome'),
-  dynamicOptions
-);
 const AboutScreen = dynamic(
   () => import('../components/screens/About'),
   dynamicOptions
@@ -72,7 +69,6 @@ export default function Home(): React.ReactElement {
     </>
   );
 }
-
 export async function getStaticProps(): Promise<{
   props: unknown;
   revalidate: number;
