@@ -9,30 +9,21 @@ const CustomDynamicLoading = styled.div`
   width: 100vw;
 `;
 
-const dynamicOptions = {
+const AboutScreen = dynamic(() => import('../components/screens/About'), {
   loading: CustomDynamicLoading,
-};
-
-const AboutScreen = dynamic(
-  () => import('../components/screens/About'),
-  dynamicOptions
-);
-const ResumeScreen = dynamic(
-  () => import('../components/screens/Resume'),
-  dynamicOptions
-);
-const ShareScreen = dynamic(
-  () => import('../components/screens/Share'),
-  dynamicOptions
-);
-const SkillsScreen = dynamic(
-  () => import('../components/screens/Skills'),
-  dynamicOptions
-);
-const WorksScreen = dynamic(
-  () => import('../components/screens/Works'),
-  dynamicOptions
-);
+});
+const ResumeScreen = dynamic(() => import('../components/screens/Resume'), {
+  loading: CustomDynamicLoading,
+});
+const ShareScreen = dynamic(() => import('../components/screens/Share'), {
+  loading: CustomDynamicLoading,
+});
+const SkillsScreen = dynamic(() => import('../components/screens/Skills'), {
+  loading: CustomDynamicLoading,
+});
+const WorksScreen = dynamic(() => import('../components/screens/Works'), {
+  loading: CustomDynamicLoading,
+});
 
 const SectionContainer = styled.div`
   :nth-child(even) {
