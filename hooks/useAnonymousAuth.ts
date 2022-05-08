@@ -8,14 +8,13 @@ const useAnonymousAuth = (): User | null => {
     const { getFirebaseApp } = await import('../utils/firebase');
     const firebase = await getFirebaseApp();
     const {
-      indexedDBLocalPersistence,
       browserLocalPersistence,
       onAuthStateChanged,
       signInAnonymously,
       initializeAuth,
     } = await import('firebase/auth');
     const auth = initializeAuth(firebase, {
-      persistence: [indexedDBLocalPersistence, browserLocalPersistence],
+      persistence: browserLocalPersistence,
     });
     onAuthStateChanged(auth, async (authUser) => {
       if (authUser) {
