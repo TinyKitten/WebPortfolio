@@ -1,11 +1,13 @@
+import dynamic from 'next/dynamic';
 import { useRef } from 'react';
 import styled from 'styled-components';
-import AboutScreen from '../components/screens/About';
-import ResumeScreen from '../components/screens/Resume';
-import ShareScreen from '../components/screens/Share';
-import SkillsScreen from '../components/screens/Skills';
 import WelcomeScreen from '../components/screens/Welcome';
-import WorksScreen from '../components/screens/Works';
+
+const AboutScreen = dynamic(() => import('../components/screens/About'));
+const ResumeScreen = dynamic(() => import('../components/screens/Resume'));
+const ShareScreen = dynamic(() => import('../components/screens/Share'));
+const SkillsScreen = dynamic(() => import('../components/screens/Skills'));
+const WorksScreen = dynamic(() => import('../components/screens/Works'));
 
 const SectionContainer = styled.div`
   :nth-child(even) {
