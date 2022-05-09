@@ -46,5 +46,11 @@
     "endAtFullYear": null,
     "companyName": "ドリームチームズ株式会社",
     "description": "フリーランスとして携わっています。完全リモートでReact Nativeを用いてスポーツ試合結果予想アプリを開発しています。\n夜間・休日に稼働しており、基本的にReact Native開発は自分一人で実装を行っています。"
+  },
+  {
+    "startAtFullYear": 2022,
+    "endAtFullYear": null,
+    "companyName": "キッズコネクト株式会社",
+    "description": "フリーランスとして携わっています。完全リモートでReact.jsを用いて保育所向けのWebアプリケーションの開発を行っています。"
   }
 ]
