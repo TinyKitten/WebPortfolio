@@ -41,11 +41,11 @@ const usePraise = (
   }, [firstLoaded, ready]);
 
   const incrementCount = useCallback(async () => {
+    setRepeatTimes((prev) => prev + 1);
     const { doc, getFirestore, updateDoc, increment } = await import(
       'firebase/firestore'
     );
     const { getFirebaseApp } = await import('../utils/firebase');
-    setRepeatTimes((prev) => prev + 1);
     const firebase = await getFirebaseApp();
     const db = getFirestore(firebase);
 
