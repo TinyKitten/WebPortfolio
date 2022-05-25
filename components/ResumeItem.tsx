@@ -46,7 +46,7 @@ const CompanyNameText = styled.h3`
 const DescriptionText = styled.p`
   margin-top: 16px;
   color: ${({ theme }) => theme.headingText};
-  line-height: 1.5;
+  line-height: 1.75;
   white-space: pre-wrap;
 `;
 
