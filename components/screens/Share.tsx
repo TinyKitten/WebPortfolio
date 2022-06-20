@@ -55,8 +55,25 @@ const StyledPraise = styled(Praise)`
 
 const ShareScreen: React.FC = () => {
   const [visible, setVisible] = useState(false);
+  const [isModalShow, setIsModalShow] = useState(false);
   const ref = useRef(null);
-  const { count, incrementCount, exceeded, resetExceeded } = usePraise(visible);
+
+  const handleExceeded = () => setIsModalShow(true);
+
+  const { count, incrementCount, exceeded } = usePraise(
+    visible,
+    handleExceeded
+  );
+
+  const closeModal = () => setIsModalShow(false);
+
+  const handleIncrement = () => {
+    if (exceeded) {
+      setIsModalShow(true);
+      return;
+    }
+    incrementCount();
+  };
 
   return (
     <ScreenVisibleProvider contentRef={ref} onVisibleChange={setVisible}>
@@ -82,12 +99,12 @@ const ShareScreen: React.FC = () => {
               >
                 <ShareButton color="#3E54A4">Facebook</ShareButton>
               </a>
-              <StyledPraise count={count} onIncrement={incrementCount} />
+              <StyledPraise count={count} onIncrement={handleIncrement} />
             </LinksContainer>
           )}
         </ContentContainer>
       </Container>
-      <ShareModal isOpen={exceeded} onRequestClose={resetExceeded} />
+      <ShareModal isOpen={isModalShow} onRequestClose={closeModal} />
     </ScreenVisibleProvider>
   );
 };
