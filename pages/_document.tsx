@@ -45,7 +45,6 @@ export default function Document(): React.ReactElement {
           content="フロントエンドエンジニア TinyKittenのポートフォリオです。"
         />
         <meta property="og:image" content={`${NEXT_PUBLIC_URL}/ogp.png`} />
-        <link rel="preconnect" href="https://www.google-analytics.com" />
         <link rel="preconnect" href="https://firestore.googleapis.com" />
       </Head>
       <body>
