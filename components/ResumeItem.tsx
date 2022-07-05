@@ -1,12 +1,29 @@
-import { useMemo } from 'react';
-import styled from 'styled-components';
+import { useMemo, useRef, useState } from 'react';
+import styled, { keyframes } from 'styled-components';
 import { Resume } from '../models/Resume';
+import ScreenVisibleProvider from '../providers/ScreenVisibleProvider';
 
 type Props = {
   resume: Resume;
 };
 
+export const containerSlideAnimation = keyframes({
+  from: {
+    transform: 'translateX(-480px)',
+  },
+  to: {
+    transform: 'translateX(0)',
+  },
+});
+
+const Root = styled.div`
+  overflow: hidden;
+  position: relative;
+  margin-left: -6px;
+`;
+
 const Container = styled.div`
+  animation: ${containerSlideAnimation} 1s ease-out forwards;
   color: ${({ theme }) => theme.boxBg};
   margin-bottom: 32px;
   position: relative;
@@ -51,6 +68,9 @@ const DescriptionText = styled.p`
 `;
 
 const ResumeItem: React.FC<Props> = ({ resume }: Props) => {
+  const ref = useRef(null);
+  const [visible, setVisible] = useState(false);
+
   const period = useMemo(() => {
     if (resume.startAtFullYear === resume.endAtFullYear) {
       return `${resume.startAtFullYear}`;
@@ -63,11 +83,17 @@ const ResumeItem: React.FC<Props> = ({ resume }: Props) => {
   }, [resume.endAtFullYear, resume.startAtFullYear]);
 
   return (
-    <Container>
-      <PeriodText>{period}</PeriodText>
-      <CompanyNameText>{resume.companyName}</CompanyNameText>
-      <DescriptionText>{resume.description}</DescriptionText>
-    </Container>
+    <ScreenVisibleProvider contentRef={ref} onVisibleChange={setVisible}>
+      <Root ref={ref}>
+        {visible ? (
+          <Container>
+            <PeriodText>{period}</PeriodText>
+            <CompanyNameText>{resume.companyName}</CompanyNameText>
+            <DescriptionText>{resume.description}</DescriptionText>
+          </Container>
+        ) : null}
+      </Root>
+    </ScreenVisibleProvider>
   );
 };
 

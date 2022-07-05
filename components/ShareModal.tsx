@@ -78,10 +78,7 @@ const CancelButtonText = styled.span`
   z-index: 1;
 `;
 
-const CANCEL_DISABLED_DURATION = parseInt(
-  process.env.NEXT_PUBLIC_CANCEL_DISABLED_DURATION,
-  10
-);
+const CANCEL_DISABLED_DURATION = 3000;
 
 const ShareModal = ({ isOpen, onRequestClose }: Props): React.ReactElement => {
   const themeContext = useContext(ThemeContext);
