@@ -90,7 +90,7 @@ const ShareScreen: React.FC = () => {
                 target="_blank"
                 rel="noreferrer noopener"
               >
-                <ShareButton color="#1DA1F2">Twitter</ShareButton>
+                <ShareButton color="#1DA1F2">Twitterでシェア</ShareButton>
               </a>
               <a
                 href="https://social-plugins.line.me/lineit/share?url=https://tinykitten.me"
