@@ -78,7 +78,7 @@ const ResumeScreen: React.FC = () => {
 
   const [treeLeftBarStyles, treeLeftBarlStylesApi] = useSpring(() => ({
     height: '0%',
-    config: { duration: 3000 },
+    config: { duration: 1500 },
   }));
 
   useEffect(() => {
