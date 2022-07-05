@@ -78,7 +78,7 @@ const ResumeScreen: React.FC = () => {
 
   const [treeLeftBarStyles, treeLeftBarlStylesApi] = useSpring(() => ({
     height: '0%',
-    config: { duration: 1500 },
+    config: { duration: resumeFixutre.length * 300 },
   }));
 
   useEffect(() => {
@@ -99,8 +99,13 @@ const ResumeScreen: React.FC = () => {
             <StartItemContainer>
               <p>START</p>
             </StartItemContainer>
-            {resumeFixutre.map((r) => (
-              <ResumeItem key={r.companyName} resume={r} />
+            {resumeFixutre.map((r, i) => (
+              <ResumeItem
+                key={r.companyName}
+                resume={r}
+                index={i}
+                visible={visible}
+              />
             ))}
             <EndItemContainer>
               <p>PRESENT</p>

@@ -1,10 +1,11 @@
-import { useMemo, useRef, useState } from 'react';
+import { useMemo } from 'react';
 import styled, { keyframes } from 'styled-components';
 import { Resume } from '../models/Resume';
-import ScreenVisibleProvider from '../providers/ScreenVisibleProvider';
 
 type Props = {
   resume: Resume;
+  index: number;
+  visible: boolean;
 };
 
 export const containerSlideAnimation = keyframes({
@@ -18,12 +19,12 @@ export const containerSlideAnimation = keyframes({
 
 const Root = styled.div`
   overflow: hidden;
-  position: relative;
-  margin-left: -6px;
+  margin-left: -4px;
 `;
 
-const Container = styled.div`
+const Container = styled.div<{ delay: number }>`
   animation: ${containerSlideAnimation} 1s ease-out forwards;
+  animation-delay: ${({ delay }) => `${delay}ms`};
   color: ${({ theme }) => theme.boxBg};
   margin-bottom: 32px;
   position: relative;
@@ -34,6 +35,7 @@ const Container = styled.div`
   padding: 24px;
   width: 480px;
   max-width: 60vw;
+  transform: translateX(-480px);
   &:before {
     content: '';
     background-color: ${({ theme }) => theme.primary};
@@ -67,10 +69,7 @@ const DescriptionText = styled.p`
   white-space: pre-wrap;
 `;
 
-const ResumeItem: React.FC<Props> = ({ resume }: Props) => {
-  const ref = useRef(null);
-  const [visible, setVisible] = useState(false);
-
+const ResumeItem: React.FC<Props> = ({ resume, index, visible }: Props) => {
   const period = useMemo(() => {
     if (resume.startAtFullYear === resume.endAtFullYear) {
       return `${resume.startAtFullYear}`;
@@ -82,18 +81,18 @@ const ResumeItem: React.FC<Props> = ({ resume }: Props) => {
     return `${resume.startAtFullYear}-${resume.endAtFullYear}`;
   }, [resume.endAtFullYear, resume.startAtFullYear]);
 
+  if (!visible) {
+    return null;
+  }
+
   return (
-    <ScreenVisibleProvider contentRef={ref} onVisibleChange={setVisible}>
-      <Root ref={ref}>
-        {visible ? (
-          <Container>
-            <PeriodText>{period}</PeriodText>
-            <CompanyNameText>{resume.companyName}</CompanyNameText>
-            <DescriptionText>{resume.description}</DescriptionText>
-          </Container>
-        ) : null}
-      </Root>
-    </ScreenVisibleProvider>
+    <Root>
+      <Container delay={index * 150}>
+        <PeriodText>{period}</PeriodText>
+        <CompanyNameText>{resume.companyName}</CompanyNameText>
+        <DescriptionText>{resume.description}</DescriptionText>
+      </Container>
+    </Root>
   );
 };
 
