@@ -1,12 +1,30 @@
 import { useMemo } from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { Resume } from '../models/Resume';
 
 type Props = {
   resume: Resume;
+  index: number;
+  visible: boolean;
 };
 
-const Container = styled.div`
+export const containerSlideAnimation = keyframes({
+  from: {
+    transform: 'translateX(-480px)',
+  },
+  to: {
+    transform: 'translateX(0)',
+  },
+});
+
+const Root = styled.div`
+  overflow: hidden;
+  margin-left: -4px;
+`;
+
+const Container = styled.div<{ delay: number }>`
+  animation: ${containerSlideAnimation} 1s ease-out forwards;
+  animation-delay: ${({ delay }) => `${delay}ms`};
   color: ${({ theme }) => theme.boxBg};
   margin-bottom: 32px;
   position: relative;
@@ -17,6 +35,7 @@ const Container = styled.div`
   padding: 24px;
   width: 480px;
   max-width: 60vw;
+  transform: translateX(-480px);
   &:before {
     content: '';
     background-color: ${({ theme }) => theme.primary};
@@ -50,7 +69,7 @@ const DescriptionText = styled.p`
   white-space: pre-wrap;
 `;
 
-const ResumeItem: React.FC<Props> = ({ resume }: Props) => {
+const ResumeItem: React.FC<Props> = ({ resume, index, visible }: Props) => {
   const period = useMemo(() => {
     if (resume.startAtFullYear === resume.endAtFullYear) {
       return `${resume.startAtFullYear}`;
@@ -62,12 +81,18 @@ const ResumeItem: React.FC<Props> = ({ resume }: Props) => {
     return `${resume.startAtFullYear}-${resume.endAtFullYear}`;
   }, [resume.endAtFullYear, resume.startAtFullYear]);
 
+  if (!visible) {
+    return null;
+  }
+
   return (
-    <Container>
-      <PeriodText>{period}</PeriodText>
-      <CompanyNameText>{resume.companyName}</CompanyNameText>
-      <DescriptionText>{resume.description}</DescriptionText>
-    </Container>
+    <Root>
+      <Container delay={index * 150}>
+        <PeriodText>{period}</PeriodText>
+        <CompanyNameText>{resume.companyName}</CompanyNameText>
+        <DescriptionText>{resume.description}</DescriptionText>
+      </Container>
+    </Root>
   );
 };
 
