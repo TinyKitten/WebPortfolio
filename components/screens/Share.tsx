@@ -60,18 +60,11 @@ const ShareScreen: React.FC = () => {
 
   const handleExceeded = () => setIsModalShow(true);
 
-  const { count, incrementCount, exceeded } = usePraise(
-    visible,
-    handleExceeded
-  );
+  const { count, incrementCount } = usePraise(visible, handleExceeded);
 
   const closeModal = () => setIsModalShow(false);
 
   const handleIncrement = () => {
-    if (exceeded) {
-      setIsModalShow(true);
-      return;
-    }
     incrementCount();
   };
 
