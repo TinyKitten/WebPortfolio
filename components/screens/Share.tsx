@@ -7,7 +7,7 @@ import {
   titlePostitAnimation,
 } from '../../constants/keyframets';
 import usePraise from '../../hooks/usePraise';
-import ScreenVisibleProvider from '../../providers/ScreenVisibleProvider';
+import useScreenVisibility from '../../hooks/useScreenVisibility';
 import Button from '../Button';
 import Postit from '../Postit';
 import Praise from '../Praise';
@@ -54,9 +54,10 @@ const StyledPraise = styled(Praise)`
 `;
 
 const ShareScreen: React.FC = () => {
-  const [visible, setVisible] = useState(false);
-  const [isModalShow, setIsModalShow] = useState(false);
   const ref = useRef(null);
+  const [isModalShow, setIsModalShow] = useState(false);
+
+  const visible = useScreenVisibility(ref);
 
   const handleExceeded = () => setIsModalShow(true);
 
@@ -69,7 +70,7 @@ const ShareScreen: React.FC = () => {
   };
 
   return (
-    <ScreenVisibleProvider contentRef={ref} onVisibleChange={setVisible}>
+    <>
       <Container ref={ref}>
         {visible && (
           <StyledTitlePostit title="TinyKitten" subtitle="をシェア" />
@@ -98,7 +99,7 @@ const ShareScreen: React.FC = () => {
         </ContentContainer>
       </Container>
       <ShareModal isOpen={isModalShow} onRequestClose={closeModal} />
-    </ScreenVisibleProvider>
+    </>
   );
 };
 

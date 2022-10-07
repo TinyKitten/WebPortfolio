@@ -1,7 +1,7 @@
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
 import styled from 'styled-components';
 import { titlePostitAnimation } from '../../../constants/keyframets';
-import ScreenVisibleProvider from '../../../providers/ScreenVisibleProvider';
+import useScreenVisibility from '../../../hooks/useScreenVisibility';
 import TitlePostit from '../../TitlePostit';
 import WorksNearStation from './NearStation';
 import WorksTrainLCD from './TrainLCD';
@@ -25,20 +25,18 @@ const StyledTitlePostit = styled(TitlePostit)`
 
 const WorksScreen: React.FC = () => {
   const ref = useRef(null);
-  const [visible, setVisible] = useState(false);
+  const visible = useScreenVisibility(ref);
 
   return (
-    <ScreenVisibleProvider contentRef={ref} onVisibleChange={setVisible}>
-      <Container ref={ref}>
-        {visible && (
-          <StyledTitlePostit title="TinyKitten" subtitle="が作ったよ" />
-        )}
-        <WorksContainer>
-          <WorksTrainLCD />
-          <WorksNearStation />
-        </WorksContainer>
-      </Container>
-    </ScreenVisibleProvider>
+    <Container ref={ref}>
+      {visible && (
+        <StyledTitlePostit title="TinyKitten" subtitle="が作ったよ" />
+      )}
+      <WorksContainer>
+        <WorksTrainLCD />
+        <WorksNearStation />
+      </WorksContainer>
+    </Container>
   );
 };
 

@@ -1,15 +1,15 @@
-import Link from 'next/link';
 import Image from 'next/image';
-import { useRef, useState } from 'react';
-import ScreenVisibleProvider from '../../../providers/ScreenVisibleProvider';
-import Button from '../../Button';
-import Postit from '../../Postit';
-import NearStationImage from '../../../assets/works/nearstation.png';
+import Link from 'next/link';
+import { useRef } from 'react';
 import styled from 'styled-components';
+import NearStationImage from '../../../assets/works/nearstation.png';
 import {
   headingPostitAnimation,
   imageAnimation,
 } from '../../../constants/keyframets';
+import useScreenVisibility from '../../../hooks/useScreenVisibility';
+import Button from '../../Button';
+import Postit from '../../Postit';
 
 const ContentContainer = styled.div`
   display: flex;
@@ -60,30 +60,26 @@ const LearnMoreButton = styled(Button)`
 `;
 
 const WorksNearStation: React.FC = () => {
-  const [visible, setVisible] = useState(false);
   const ref = useRef(null);
+  const visible = useScreenVisibility(ref);
 
   return (
-    <ScreenVisibleProvider contentRef={ref} onVisibleChange={setVisible}>
-      <ContentContainer ref={ref}>
-        {visible && (
-          <LogoContainer>
-            <StyledPostit>NearStation</StyledPostit>
-            <ImageContainer>
-              <Image src={NearStationImage} alt="NearStation" />
-            </ImageContainer>
-          </LogoContainer>
-        )}
-        {visible && (
-          <Description>最寄り駅とその路線をすぐに知れるWebアプリ</Description>
-        )}
-        <Link href="/works/nearstation" passHref>
-          <div>
-            {visible && <LearnMoreButton>さらに詳しく</LearnMoreButton>}
-          </div>
-        </Link>
-      </ContentContainer>
-    </ScreenVisibleProvider>
+    <ContentContainer ref={ref}>
+      {visible && (
+        <LogoContainer>
+          <StyledPostit>NearStation</StyledPostit>
+          <ImageContainer>
+            <Image src={NearStationImage} alt="NearStation" />
+          </ImageContainer>
+        </LogoContainer>
+      )}
+      {visible && (
+        <Description>最寄り駅とその路線をすぐに知れるWebアプリ</Description>
+      )}
+      <Link href="/works/nearstation" passHref>
+        <div>{visible && <LearnMoreButton>さらに詳しく</LearnMoreButton>}</div>
+      </Link>
+    </ContentContainer>
   );
 };
 

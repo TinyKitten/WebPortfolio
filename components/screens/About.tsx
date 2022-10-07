@@ -3,11 +3,10 @@ import {
   ForwardRefRenderFunction,
   MutableRefObject,
   useRef,
-  useState,
 } from 'react';
 import styled, { keyframes } from 'styled-components';
 import { titlePostitAnimation } from '../../constants/keyframets';
-import ScreenVisibleProvider from '../../providers/ScreenVisibleProvider';
+import useScreenVisibility from '../../hooks/useScreenVisibility';
 import Postit from '../Postit';
 import TinyKittenIcon from '../TinyKittenIcon';
 import TitlePostit from '../TitlePostit';
@@ -90,36 +89,34 @@ const AboutScreen: ForwardRefRenderFunction<HTMLDivElement> = (
     | null
 ) => {
   const ref = useRef(null);
-  const [visible, setVisible] = useState(false);
+  const visible = useScreenVisibility(ref);
 
   return (
-    <ScreenVisibleProvider contentRef={ref} onVisibleChange={setVisible}>
-      <div ref={ref}>
-        <Container ref={forwardefRef}>
-          {visible && (
-            <StyledTitlePostit title="TinyKitten" subtitle="って誰？" />
-          )}
-          <ContentContainer>
-            <LogoWrapper>
-              {visible && <StyledPostit>Happy Halloween!</StyledPostit>}
-              <Logo />
-            </LogoWrapper>
-            <NameText>TinyKitten</NameText>
-            <BioText>
-              東京都練馬区在住のフリーのフロントエンドエンジニア。
-              <br />
-              タイニーキトゥンと読みます。
-              <br />
-              でも、「きったん」と呼ばれることが多いです。
-              <br />
-              Reactの案件を基本的に引き受けています。
-              <br />
-              デザインとネイティブアプリ開発の知識があることが強みです。
-            </BioText>
-          </ContentContainer>
-        </Container>
-      </div>
-    </ScreenVisibleProvider>
+    <div ref={ref}>
+      <Container ref={forwardefRef}>
+        {visible && (
+          <StyledTitlePostit title="TinyKitten" subtitle="って誰？" />
+        )}
+        <ContentContainer>
+          <LogoWrapper>
+            {visible && <StyledPostit>Happy Halloween!</StyledPostit>}
+            <Logo />
+          </LogoWrapper>
+          <NameText>TinyKitten</NameText>
+          <BioText>
+            東京都練馬区在住のフリーのフロントエンドエンジニア。
+            <br />
+            タイニーキトゥンと読みます。
+            <br />
+            でも、「きったん」と呼ばれることが多いです。
+            <br />
+            Reactの案件を基本的に引き受けています。
+            <br />
+            デザインとネイティブアプリ開発の知識があることが強みです。
+          </BioText>
+        </ContentContainer>
+      </Container>
+    </div>
   );
 };
 

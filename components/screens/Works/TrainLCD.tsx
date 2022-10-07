@@ -1,13 +1,13 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
 import styled from 'styled-components';
 import TrainLCDImage from '../../../assets/works/trainlcd.png';
 import {
   headingPostitAnimation,
   imageAnimation,
 } from '../../../constants/keyframets';
-import ScreenVisibleProvider from '../../../providers/ScreenVisibleProvider';
+import useScreenVisibility from '../../../hooks/useScreenVisibility';
 import Button from '../../Button';
 import Postit from '../../Postit';
 
@@ -60,33 +60,29 @@ const LearnMoreButton = styled(Button)`
 `;
 
 const WorksTrainLCD: React.FC = () => {
-  const [visible, setVisible] = useState(false);
   const ref = useRef(null);
+  const visible = useScreenVisibility(ref);
 
   return (
-    <ScreenVisibleProvider contentRef={ref} onVisibleChange={setVisible}>
-      <ContentContainer ref={ref}>
-        {visible && (
-          <LogoContainer>
-            <StyledPostit>TrainLCD</StyledPostit>
-            <ImageContainer>
-              <Image src={TrainLCDImage} alt="TrainLCD" />
-            </ImageContainer>
-          </LogoContainer>
-        )}
+    <ContentContainer ref={ref}>
+      {visible && (
+        <LogoContainer>
+          <StyledPostit>TrainLCD</StyledPostit>
+          <ImageContainer>
+            <Image src={TrainLCDImage} alt="TrainLCD" />
+          </ImageContainer>
+        </LogoContainer>
+      )}
 
-        {visible && (
-          <Description>
-            日本全国の鉄道路線で使える新感覚のナビゲーションアプリです。
-          </Description>
-        )}
-        <Link href="/works/trainlcd" passHref>
-          <div>
-            {visible && <LearnMoreButton>さらに詳しく</LearnMoreButton>}
-          </div>
-        </Link>
-      </ContentContainer>
-    </ScreenVisibleProvider>
+      {visible && (
+        <Description>
+          日本全国の鉄道路線で使える新感覚のナビゲーションアプリです。
+        </Description>
+      )}
+      <Link href="/works/trainlcd" passHref>
+        <div>{visible && <LearnMoreButton>さらに詳しく</LearnMoreButton>}</div>
+      </Link>
+    </ContentContainer>
   );
 };
 

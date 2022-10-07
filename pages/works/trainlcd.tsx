@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import TrainLCDImage from '../../assets/works/trainlcd.png';
 import Button from '../../components/Button';
@@ -17,7 +17,7 @@ import {
   singleHeadingPostitAnimation,
   titlePostitAnimation,
 } from '../../constants/keyframets';
-import ScreenVisibleProvider from '../../providers/ScreenVisibleProvider';
+import useScreenVisibility from '../../hooks/useScreenVisibility';
 
 const Container = styled.section<{ fullHeight?: boolean }>`
   position: relative;
@@ -157,101 +157,93 @@ const FirstSection: React.FC = () => (
 );
 
 const ConceptSection: React.FC = () => {
-  const [visible, setVisible] = useState(false);
   const ref = useRef(null);
+  const visible = useScreenVisibility(ref);
 
   return (
-    <ScreenVisibleProvider contentRef={ref} onVisibleChange={setVisible}>
-      <Container ref={ref}>
-        {visible && (
-          <StyledTitlePostit title="TrainLCD" subtitle="コンセプト" />
-        )}
-        <ContentContainer>
-          <Concept>StationAPIで電車のLCDを再現したい</Concept>
-          <ConceptDescription>
-            <ConceptDescriptionAnchor
-              href="https://github.com/TinyKitten/StationAPI"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              StationAPI
-            </ConceptDescriptionAnchor>
-            の応用例の一つです。 <br />
-            前から電車のLCDを再現したいと思っていて、
-            <ConceptDescriptionAnchor
-              href="https://github.com/TinyKitten/StationAPI"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              StationAPI
-            </ConceptDescriptionAnchor>
-            の大型アップデートで色々取れるようにした影響で作ろうと思いました。
-            <br />
-            満員電車、LCDのない路線など、現在どこにいるか、どの駅を通るのかひと目で分かります。
-            <br />
-            ぜひお試しください。
-          </ConceptDescription>
-          <SmallCaption>※地下区間は非対応です</SmallCaption>
-        </ContentContainer>
-      </Container>
-    </ScreenVisibleProvider>
+    <Container ref={ref}>
+      {visible && <StyledTitlePostit title="TrainLCD" subtitle="コンセプト" />}
+      <ContentContainer>
+        <Concept>StationAPIで電車のLCDを再現したい</Concept>
+        <ConceptDescription>
+          <ConceptDescriptionAnchor
+            href="https://github.com/TinyKitten/StationAPI"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            StationAPI
+          </ConceptDescriptionAnchor>
+          の応用例の一つです。 <br />
+          前から電車のLCDを再現したいと思っていて、
+          <ConceptDescriptionAnchor
+            href="https://github.com/TinyKitten/StationAPI"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            StationAPI
+          </ConceptDescriptionAnchor>
+          の大型アップデートで色々取れるようにした影響で作ろうと思いました。
+          <br />
+          満員電車、LCDのない路線など、現在どこにいるか、どの駅を通るのかひと目で分かります。
+          <br />
+          ぜひお試しください。
+        </ConceptDescription>
+        <SmallCaption>※地下区間は非対応です</SmallCaption>
+      </ContentContainer>
+    </Container>
   );
 };
 
 const TechnologySection: React.FC = () => {
-  const [visible, setVisible] = useState(false);
   const ref = useRef(null);
+  const visible = useScreenVisibility(ref);
 
   return (
-    <ScreenVisibleProvider contentRef={ref} onVisibleChange={setVisible}>
-      <Container ref={ref}>
-        {visible && <StyledTitlePostit title="TrainLCD" subtitle="使用技術" />}
-        {visible && (
-          <TechContainer>
-            <SkillsCircle icon={TSIcon} name="TypeScript" />
-            <SkillsCircle icon={ReactIcon} name="React Native" />
-            <SkillsCircle icon={NestJSIcon} name="NestJS" />
-            <SkillsCircle icon={MySQLIcon} name="MySQL" />
-          </TechContainer>
-        )}
-      </Container>
-    </ScreenVisibleProvider>
+    <Container ref={ref}>
+      {visible && <StyledTitlePostit title="TrainLCD" subtitle="使用技術" />}
+      {visible && (
+        <TechContainer>
+          <SkillsCircle icon={TSIcon} name="TypeScript" />
+          <SkillsCircle icon={ReactIcon} name="React Native" />
+          <SkillsCircle icon={NestJSIcon} name="NestJS" />
+          <SkillsCircle icon={MySQLIcon} name="MySQL" />
+        </TechContainer>
+      )}
+    </Container>
   );
 };
 
 const AccessSection: React.FC = () => {
-  const [visible, setVisible] = useState(false);
   const ref = useRef(null);
+  const visible = useScreenVisibility(ref);
 
   return (
-    <ScreenVisibleProvider contentRef={ref} onVisibleChange={setVisible}>
-      <Container ref={ref}>
-        {visible && <StyledTitlePostit title="TrainLCD" subtitle="リンク" />}
-        <ContentContainer>
-          <Anchor
-            href="https://trainlcd.app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Button>公式サイト</Button>
-          </Anchor>
-          <Anchor
-            href="https://github.com/TrainLCD/MobileApp"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Button>リポジトリ</Button>
-          </Anchor>
-          <Anchor>
-            <Link href="/" passHref>
-              <div>
-                <Button color="#555">戻る</Button>
-              </div>
-            </Link>
-          </Anchor>
-        </ContentContainer>
-      </Container>
-    </ScreenVisibleProvider>
+    <Container ref={ref}>
+      {visible && <StyledTitlePostit title="TrainLCD" subtitle="リンク" />}
+      <ContentContainer>
+        <Anchor
+          href="https://trainlcd.app"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Button>公式サイト</Button>
+        </Anchor>
+        <Anchor
+          href="https://github.com/TrainLCD/MobileApp"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Button>リポジトリ</Button>
+        </Anchor>
+        <Anchor>
+          <Link href="/" passHref>
+            <div>
+              <Button color="#555">戻る</Button>
+            </div>
+          </Link>
+        </Anchor>
+      </ContentContainer>
+    </Container>
   );
 };
 

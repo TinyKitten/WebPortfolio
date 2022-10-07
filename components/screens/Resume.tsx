@@ -1,9 +1,9 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { animated, useSpring } from 'react-spring';
 import styled from 'styled-components';
 import { titlePostitAnimation } from '../../constants/keyframets';
 import resumeFixutre from '../../fixtures/resume.json';
-import ScreenVisibleProvider from '../../providers/ScreenVisibleProvider';
+import useScreenVisibility from '../../hooks/useScreenVisibility';
 import ResumeItem from '../ResumeItem';
 import TitlePostit from '../TitlePostit';
 
@@ -74,7 +74,7 @@ const EndItemContainer = styled.div`
 
 const ResumeScreen: React.FC = () => {
   const ref = useRef<HTMLDivElement>(null);
-  const [visible, setVisible] = useState(false);
+  const visible = useScreenVisibility(ref);
 
   const [treeLeftBarStyles, treeLeftBarlStylesApi] = useSpring(() => ({
     height: '0%',
@@ -90,30 +90,28 @@ const ResumeScreen: React.FC = () => {
     }
   }, [treeLeftBarlStylesApi, visible]);
   return (
-    <ScreenVisibleProvider contentRef={ref} onVisibleChange={setVisible}>
-      <Container ref={ref}>
-        {visible && <StyledTitlePostit title="TinyKitten" subtitle="の職歴" />}
-        <ContentContainer>
-          <Tree visible={visible}>
-            <TreeBar style={treeLeftBarStyles} />
-            <StartItemContainer>
-              <p>START</p>
-            </StartItemContainer>
-            {resumeFixutre.map((r, i) => (
-              <ResumeItem
-                key={r.companyName}
-                resume={r}
-                index={i}
-                visible={visible}
-              />
-            ))}
-            <EndItemContainer>
-              <p>PRESENT</p>
-            </EndItemContainer>
-          </Tree>
-        </ContentContainer>
-      </Container>
-    </ScreenVisibleProvider>
+    <Container ref={ref}>
+      {visible && <StyledTitlePostit title="TinyKitten" subtitle="の職歴" />}
+      <ContentContainer>
+        <Tree visible={visible}>
+          <TreeBar style={treeLeftBarStyles} />
+          <StartItemContainer>
+            <p>START</p>
+          </StartItemContainer>
+          {resumeFixutre.map((r, i) => (
+            <ResumeItem
+              key={r.companyName}
+              resume={r}
+              index={i}
+              visible={visible}
+            />
+          ))}
+          <EndItemContainer>
+            <p>PRESENT</p>
+          </EndItemContainer>
+        </Tree>
+      </ContentContainer>
+    </Container>
   );
 };
 

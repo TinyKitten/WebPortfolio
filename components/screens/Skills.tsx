@@ -1,7 +1,7 @@
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
 import styled, { css, keyframes } from 'styled-components';
 import { titlePostitAnimation } from '../../constants/keyframets';
-import ScreenVisibleProvider from '../../providers/ScreenVisibleProvider';
+import useScreenVisibility from '../../hooks/useScreenVisibility';
 import FigmaIcon from '../marks/FigmaIcon';
 import JSIcon from '../marks/JSIcon';
 import ReactIcon from '../marks/ReactIcon';
@@ -74,26 +74,22 @@ const StyledFigmaIcon = styled(FigmaIcon)`
 
 const SkillsScreen: React.FC = () => {
   const ref = useRef(null);
-  const [visible, setVisible] = useState(false);
+  const visible = useScreenVisibility(ref);
 
   return (
-    <ScreenVisibleProvider contentRef={ref} onVisibleChange={setVisible}>
-      <Container ref={ref}>
+    <Container ref={ref}>
+      {visible && <StyledTitlePostit title="TinyKitten" subtitle="のスキル" />}
+      <ContentContainer>
         {visible && (
-          <StyledTitlePostit title="TinyKitten" subtitle="のスキル" />
+          <SkillsContainer>
+            <SkillsCircle icon={StyledJSIcon} name="JavaScript" />
+            <SkillsCircle icon={StyledTSIcon} name="TypeScript" />
+            <SkillsCircle icon={StyledReactIcon} name="React (Native)" />
+            <SkillsCircle icon={StyledFigmaIcon} name="Figma" />
+          </SkillsContainer>
         )}
-        <ContentContainer>
-          {visible && (
-            <SkillsContainer>
-              <SkillsCircle icon={StyledJSIcon} name="JavaScript" />
-              <SkillsCircle icon={StyledTSIcon} name="TypeScript" />
-              <SkillsCircle icon={StyledReactIcon} name="React (Native)" />
-              <SkillsCircle icon={StyledFigmaIcon} name="Figma" />
-            </SkillsContainer>
-          )}
-        </ContentContainer>
-      </Container>
-    </ScreenVisibleProvider>
+      </ContentContainer>
+    </Container>
   );
 };
 

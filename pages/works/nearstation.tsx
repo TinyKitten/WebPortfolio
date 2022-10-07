@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import NearStationPic from '../../assets/works/nearstation.png';
 import Button from '../../components/Button';
@@ -17,7 +17,7 @@ import {
   singleHeadingPostitAnimation,
   titlePostitAnimation,
 } from '../../constants/keyframets';
-import ScreenVisibleProvider from '../../providers/ScreenVisibleProvider';
+import useScreenVisibility from '../../hooks/useScreenVisibility';
 
 const Container = styled.section<{ fullHeight?: boolean }>`
   position: relative;
@@ -135,86 +135,78 @@ const FirstSection: React.FC = () => (
 );
 
 const ConceptSection: React.FC = () => {
-  const [visible, setVisible] = useState(false);
   const ref = useRef(null);
+  const visible = useScreenVisibility(ref);
 
   return (
-    <ScreenVisibleProvider contentRef={ref} onVisibleChange={setVisible}>
-      <Container ref={ref}>
-        {visible && <TitlePostit title="NearStation" subtitle="コンセプト" />}
-        <ContentContainer>
-          <Concept>今いる場所の最寄り駅と路線を知りたい</Concept>
-          <ConceptDescription>
-            StationAPIの応用例の一つです。
-            <br />
-            シンプルに今いる場所の最寄り駅の名前と
-            <br />
-            駅の路線の停車駅を知りたいときに役に立つと思い、開発しました。
-            <br />
-            今いる駅の路線がどこに行くのか知りたいときなどにお役に立つかと思います。
-          </ConceptDescription>
-        </ContentContainer>
-      </Container>
-    </ScreenVisibleProvider>
+    <Container ref={ref}>
+      {visible && <TitlePostit title="NearStation" subtitle="コンセプト" />}
+      <ContentContainer>
+        <Concept>今いる場所の最寄り駅と路線を知りたい</Concept>
+        <ConceptDescription>
+          StationAPIの応用例の一つです。
+          <br />
+          シンプルに今いる場所の最寄り駅の名前と
+          <br />
+          駅の路線の停車駅を知りたいときに役に立つと思い、開発しました。
+          <br />
+          今いる駅の路線がどこに行くのか知りたいときなどにお役に立つかと思います。
+        </ConceptDescription>
+      </ContentContainer>
+    </Container>
   );
 };
 
 const TechnologySection: React.FC = () => {
-  const [visible, setVisible] = useState(false);
   const ref = useRef(null);
+  const visible = useScreenVisibility(ref);
 
   return (
-    <ScreenVisibleProvider contentRef={ref} onVisibleChange={setVisible}>
-      <Container ref={ref}>
-        {visible && (
-          <StyledTitlePostit title="NearStation" subtitle="使用技術" />
-        )}
-        {visible && (
-          <TechContainer>
-            <SkillsCircle icon={TSIcon} name="TypeScript" />
-            <SkillsCircle icon={ReactIcon} name="React.js" />
-            <SkillsCircle icon={NestJSIcon} name="NestJS" />
-            <SkillsCircle icon={MySQLIcon} name="MySQL" />
-          </TechContainer>
-        )}
-      </Container>
-    </ScreenVisibleProvider>
+    <Container ref={ref}>
+      {visible && <StyledTitlePostit title="NearStation" subtitle="使用技術" />}
+      {visible && (
+        <TechContainer>
+          <SkillsCircle icon={TSIcon} name="TypeScript" />
+          <SkillsCircle icon={ReactIcon} name="React.js" />
+          <SkillsCircle icon={NestJSIcon} name="NestJS" />
+          <SkillsCircle icon={MySQLIcon} name="MySQL" />
+        </TechContainer>
+      )}
+    </Container>
   );
 };
 
 const AccessSection: React.FC = () => {
-  const [visible, setVisible] = useState(false);
   const ref = useRef(null);
+  const visible = useScreenVisibility(ref);
 
   return (
-    <ScreenVisibleProvider contentRef={ref} onVisibleChange={setVisible}>
-      <Container ref={ref}>
-        {visible && <StyledTitlePostit title="NearStation" subtitle="リンク" />}
-        <ContentContainer>
-          <Anchor
-            href="https://near.tinykitten.me"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Button>使ってみる</Button>
-          </Anchor>
-          <Anchor
-            href="https://github.com/TinyKitten/NearStation"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Button>リポジトリ</Button>
-          </Anchor>
-          <Anchor>
-            <Link href="/" passHref>
-              <div>
-                <Button color="#555">戻る</Button>
-              </div>
-            </Link>
-          </Anchor>
-        </ContentContainer>
-      </Container>
-    </ScreenVisibleProvider>
+    <Container ref={ref}>
+      {visible && <StyledTitlePostit title="NearStation" subtitle="リンク" />}
+      <ContentContainer>
+        <Anchor
+          href="https://near.tinykitten.me"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Button>使ってみる</Button>
+        </Anchor>
+        <Anchor
+          href="https://github.com/TinyKitten/NearStation"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Button>リポジトリ</Button>
+        </Anchor>
+        <Anchor>
+          <Link href="/" passHref>
+            <div>
+              <Button color="#555">戻る</Button>
+            </div>
+          </Link>
+        </Anchor>
+      </ContentContainer>
+    </Container>
   );
 };
 
