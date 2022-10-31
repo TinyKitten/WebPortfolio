@@ -99,7 +99,7 @@ const AboutScreen: ForwardRefRenderFunction<HTMLDivElement> = (
         )}
         <ContentContainer>
           <LogoWrapper>
-            {visible && <StyledPostit>Happy Halloween!</StyledPostit>}
+            {visible && <StyledPostit>はじめまして！</StyledPostit>}
             <Logo />
           </LogoWrapper>
           <NameText>TinyKitten</NameText>
