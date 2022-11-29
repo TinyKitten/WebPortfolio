@@ -138,11 +138,11 @@ const ShareModal = ({ isOpen, onRequestClose }: Props): React.ReactElement => {
             <ShareButton color="#1DA1F2">Twitter</ShareButton>
           </a>
           <a
-            href="https://www.facebook.com/sharer/sharer.php?u=https://tinykitten.me"
+            href="https://social-plugins.line.me/lineit/share?url=https://tinykitten.me"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <ShareButton color="#3E54A4">Facebook</ShareButton>
+            <ShareButton color="#00b900">LINEで送る</ShareButton>
           </a>
           <ShareButton
             onClick={closable ? onRequestClose : noop}
