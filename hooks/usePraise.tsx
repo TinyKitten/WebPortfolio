@@ -12,7 +12,7 @@ const usePraise = (
   const [firstLoaded, setFirstLoaded] = useState(false);
   const [repeatTimes, setRepeatTimes] = useState(0);
 
-  const fbUser = useAnonymousAuth();
+  const { user } = useAnonymousAuth();
 
   useEffect(() => {
     const fetchAsync = async () => {
@@ -40,7 +40,7 @@ const usePraise = (
   }, [firstLoaded, ready]);
 
   const incrementCount = useCallback(async () => {
-    if (!fbUser) {
+    if (!user) {
       return;
     }
 
@@ -59,7 +59,7 @@ const usePraise = (
     if (repeatTimes >= Number(process.env.NEXT_PUBLIC_MAX_REPEAT_COUNT) - 1) {
       onExceeded();
     }
-  }, [fbUser, onExceeded, repeatTimes]);
+  }, [user, onExceeded, repeatTimes]);
 
   return {
     count,

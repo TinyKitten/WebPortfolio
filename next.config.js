@@ -12,6 +12,6 @@ module.exports = withBundleAnalyzer({
   compiler: {
     styledComponents: true,
     reactRemoveProperties: true,
-    removeConsole: true,
+    removeConsole: process.env.NODE_ENV === 'production',
   },
 });

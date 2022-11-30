@@ -1,8 +1,16 @@
 import type { User } from 'firebase/auth';
-import { useCallback, useEffect, useState } from 'react';
+import { useAtom } from 'jotai';
+import { useCallback, useEffect } from 'react';
+import { visitorAtom } from '../atoms/visitor';
 
-const useAnonymousAuth = (): User | null => {
-  const [user, setUser] = useState<User | null>(null);
+const useAnonymousAuth = (): {
+  user: User | null;
+  isReturningVisitor: boolean;
+  initialized: boolean;
+} => {
+  const [{ isReturningVisitor, user, initialized }, setVisitor] = useAtom(
+    visitorAtom
+  );
 
   const updateUserState = useCallback(async () => {
     const { getFirebaseApp } = await import('../utils/firebase');
@@ -17,20 +25,34 @@ const useAnonymousAuth = (): User | null => {
       persistence: browserLocalPersistence,
     });
     onAuthStateChanged(auth, async (authUser) => {
-      if (authUser) {
-        setUser(authUser);
-      } else {
+      if (!authUser) {
+        setVisitor((prev) => ({
+          ...prev,
+          isReturningVisitor: false,
+          initialized: true,
+        }));
+
         const credential = await signInAnonymously(auth);
-        setUser(credential.user);
+        setVisitor((prev) => ({ ...prev, user: credential.user }));
+        return;
       }
+      setVisitor((prev) =>
+        prev.initialized
+          ? prev
+          : {
+              isReturningVisitor: true,
+              user: authUser,
+              initialized: true,
+            }
+      );
     });
-  }, []);
+  }, [setVisitor]);
 
   useEffect(() => {
     updateUserState();
   }, [updateUserState]);
 
-  return user;
+  return { isReturningVisitor, user, initialized };
 };
 
 export default useAnonymousAuth;

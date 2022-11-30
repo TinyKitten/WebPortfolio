@@ -6,6 +6,7 @@ import {
 } from 'react';
 import styled, { keyframes } from 'styled-components';
 import { titlePostitAnimation } from '../../constants/keyframets';
+import useAnonymousAuth from '../../hooks/useAnonymousAuth';
 import useScreenVisibility from '../../hooks/useScreenVisibility';
 import Postit from '../Postit';
 import TinyKittenIcon from '../TinyKittenIcon';
@@ -90,6 +91,7 @@ const AboutScreen: ForwardRefRenderFunction<HTMLDivElement> = (
 ) => {
   const ref = useRef(null);
   const visible = useScreenVisibility(ref);
+  const { isReturningVisitor, initialized } = useAnonymousAuth();
 
   return (
     <div ref={ref}>
@@ -99,7 +101,11 @@ const AboutScreen: ForwardRefRenderFunction<HTMLDivElement> = (
         )}
         <ContentContainer>
           <LogoWrapper>
-            {visible && <StyledPostit>はじめまして！</StyledPostit>}
+            {visible && initialized && (
+              <StyledPostit>
+                {!isReturningVisitor ? 'はじめまして！' : 'また会いましたね'}
+              </StyledPostit>
+            )}
             <Logo />
           </LogoWrapper>
           <NameText>TinyKitten</NameText>
