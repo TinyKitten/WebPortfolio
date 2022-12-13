@@ -11,11 +11,11 @@ const Container = styled.div`
   position: absolute;
   top: 0;
   left: 32px;
+  filter: drop-shadow(0 3px 3px rgba(0, 0, 0, 0.16));
 `;
 
 const VerticalPostit = styled(VerticalPostitIcon)`
   position: relative;
-  filter: drop-shadow(0 3px 3px rgba(0, 0, 0, 0.16));
 `;
 
 const TitleTextContainer = styled.div`
@@ -26,19 +26,28 @@ const TitleTextContainer = styled.div`
   bottom: calc(50% - 10.5px);
   width: 100%;
   text-align: center;
-  line-height: 1.2;
 `;
 
 const TitleText = styled.p`
   font-weight: bold;
   color: ${({ theme }) => theme.primary};
-  font-size: 1.25rem;
+  font-size: 1rem;
+  line-height: 1.5;
+
+  @media (min-width: 800px) {
+    font-size: 1.25rem;
+  }
 `;
 
 const SubtitleText = styled.p`
   color: ${({ theme }) => theme.text};
   font-weight: bold;
-  font-size: 1rem;
+  font-size: 0.75rem;
+  line-height: 1.5;
+
+  @media (min-width: 800px) {
+    font-size: 1rem;
+  }
 `;
 
 const TitlePostit: React.FC<Props> = ({

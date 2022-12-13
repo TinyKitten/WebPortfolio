@@ -46,12 +46,7 @@ const ContentContainer = styled.article`
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  margin-top: 144px;
-  padding-bottom: 32px;
-
-  @media (min-width: 800px) {
-    padding-bottom: 64px;
-  }
+  margin-top: 48px;
 `;
 
 const Anchor = styled.a`
