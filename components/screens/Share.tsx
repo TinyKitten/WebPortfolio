@@ -16,12 +16,12 @@ const ShareModal = dynamic(() => import('../ShareModal'));
 
 const Container = styled.section`
   position: relative;
-  min-height: 100vh;
+  min-height: calc(100vh - 48px);
   overflow: hidden;
 `;
 
 const ContentContainer = styled.div`
-  padding-top: 210px;
+  margin-top: 210px;
   display: flex;
   align-items: center;
   flex-direction: column;
