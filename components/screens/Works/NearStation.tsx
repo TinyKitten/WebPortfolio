@@ -16,12 +16,12 @@ const ContentContainer = styled.div`
   align-items: center;
   flex-direction: column;
   justify-content: center;
-  min-height: calc(100vh - 48px);
+  min-height: 100vh;
 `;
 
 const Description = styled.p`
   text-align: center;
-  max-width: calc(100% - 64px);
+  max-width: 100%;
   line-height: 1.75;
   margin-top: 48px;
   color: ${({ theme }) => theme.headingText};

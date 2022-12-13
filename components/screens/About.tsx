@@ -14,12 +14,8 @@ import TitlePostit from '../TitlePostit';
 
 const Container = styled.section`
   position: relative;
-  min-height: calc(100vh - 48px);
+  min-height: 100vh;
   overflow: hidden;
-  padding-bottom: 48px;
-  @media (min-width: 800px) {
-    padding-bottom: 0px;
-  }
 `;
 
 const StyledTitlePostit = styled(TitlePostit)`
@@ -94,8 +90,8 @@ const AboutScreen: ForwardRefRenderFunction<HTMLDivElement> = (
   const { isReturningVisitor, initialized } = useAnonymousAuth();
 
   return (
-    <div ref={ref}>
-      <Container ref={forwardefRef}>
+    <div ref={forwardefRef}>
+      <Container ref={ref}>
         {visible && (
           <StyledTitlePostit title="TinyKitten" subtitle="って誰？" />
         )}

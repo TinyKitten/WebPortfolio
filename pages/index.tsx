@@ -1,17 +1,14 @@
 import dynamic from 'next/dynamic';
 import { useRef } from 'react';
 import styled from 'styled-components';
+import AboutScreen from '../components/screens/About';
 import WelcomeScreen from '../components/screens/Welcome';
-
 const CustomDynamicLoading = styled.div`
   background-color: ${({ theme }) => theme.bg};
   height: 100vh;
   width: 100vw;
 `;
 
-const AboutScreen = dynamic(() => import('../components/screens/About'), {
-  loading: CustomDynamicLoading,
-});
 const ResumeScreen = dynamic(() => import('../components/screens/Resume'), {
   loading: CustomDynamicLoading,
 });

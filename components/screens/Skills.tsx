@@ -11,7 +11,7 @@ import TitlePostit from '../TitlePostit';
 
 const Container = styled.section`
   position: relative;
-  min-height: calc(100vh - 48px);
+  min-height: 100vh;
   overflow: hidden;
   display: flex;
   justify-content: center;

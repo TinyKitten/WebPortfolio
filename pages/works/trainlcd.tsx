@@ -21,7 +21,7 @@ import useScreenVisibility from '../../hooks/useScreenVisibility';
 
 const Container = styled.section<{ fullHeight?: boolean }>`
   position: relative;
-  min-height: calc(100vh - 48px);
+  min-height: 100vh;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -33,6 +33,7 @@ const Container = styled.section<{ fullHeight?: boolean }>`
   }
   &:first-child {
     min-height: 100vh;
+    margin-top: -48px;
   }
 
   min-height: ${({ fullHeight }) => (fullHeight ? '100vh' : undefined)};

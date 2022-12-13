@@ -16,7 +16,7 @@ const ContentContainer = styled.div`
   align-items: center;
   flex-direction: column;
   justify-content: center;
-  min-height: calc(100vh - 48px);
+  min-height: 100vh;
 `;
 
 const LogoContainer = styled.div`

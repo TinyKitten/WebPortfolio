@@ -9,7 +9,7 @@ import WorksTrainLCD from './TrainLCD';
 const Container = styled.section`
   overflow: hidden;
   position: relative;
-  min-height: calc(100vh - 48px);
+  min-height: 100vh;
 `;
 
 const WorksContainer = styled.div`

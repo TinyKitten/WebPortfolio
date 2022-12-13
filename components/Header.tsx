@@ -10,7 +10,7 @@ const ForwardedIcon = forwardRef(() => (
 ForwardedIcon.displayName = 'TinyKittenIcon';
 
 const Root = styled.header`
-  position: fixed;
+  position: sticky;
   left: 0;
   top: 0;
   height: 48px;

@@ -6,8 +6,7 @@ import Postit from '../components/Postit';
 import { headingPostitAnimation } from '../constants/keyframets';
 
 const Container = styled.div`
-  height: calc(100vh - 48px);
-  padding-top: 48px;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -24,7 +23,7 @@ const Message = styled.p`
   margin-top: 48px;
   color: ${({ theme }) => theme.text};
   font-weight: bold;
-  margin-bottom: 24px;
+  margin-bottom: 32px;
 `;
 
 const ErrorPage: React.FC<ErrorProps> = ({ statusCode }: ErrorProps) => (

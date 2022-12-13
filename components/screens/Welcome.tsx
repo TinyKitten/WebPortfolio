@@ -13,6 +13,7 @@ type Props = {
 const Container = styled.section`
   position: relative;
   min-height: 100vh;
+  margin-top: -48px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -80,7 +81,8 @@ const ArrowLink = styled(ArrowIcon)`
 const WelcomeScreen: React.FC<Props> = ({ aboutScreenRef }: Props) => {
   const handleArrowClick = useCallback(
     () =>
-      aboutScreenRef.current?.scrollIntoView({
+      window.scroll({
+        top: aboutScreenRef.current?.getBoundingClientRect().top - 48,
         behavior: 'smooth',
       }),
     [aboutScreenRef]
