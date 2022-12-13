@@ -1,6 +1,5 @@
 import { useRef } from 'react';
 import styled, { css, keyframes } from 'styled-components';
-import { titlePostitAnimation } from '../../constants/keyframets';
 import useScreenVisibility from '../../hooks/useScreenVisibility';
 import FigmaIcon from '../marks/FigmaIcon';
 import JSIcon from '../marks/JSIcon';
@@ -17,11 +16,6 @@ const Container = styled.section`
   justify-content: center;
   align-items: center;
 `;
-
-const StyledTitlePostit = styled(TitlePostit)`
-  animation: ${titlePostitAnimation} 1s ease forwards;
-`;
-
 const ContentContainer = styled.div`
   width: 100%;
   display: flex;
@@ -78,7 +72,7 @@ const SkillsScreen: React.FC = () => {
 
   return (
     <Container ref={ref}>
-      {visible && <StyledTitlePostit title="TinyKitten" subtitle="のスキル" />}
+      {visible && <TitlePostit title="TinyKitten" subtitle="のスキル" />}
       <ContentContainer>
         {visible && (
           <SkillsContainer>

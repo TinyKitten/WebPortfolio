@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { animated, useSpring } from 'react-spring';
 import styled from 'styled-components';
-import { titlePostitAnimation } from '../../constants/keyframets';
 import resumeFixutre from '../../fixtures/resume.json';
 import useScreenVisibility from '../../hooks/useScreenVisibility';
 import ResumeItem from '../ResumeItem';
@@ -11,10 +10,6 @@ const Container = styled.section`
   position: relative;
   min-height: 100vh;
   overflow: hidden;
-`;
-
-const StyledTitlePostit = styled(TitlePostit)`
-  animation: ${titlePostitAnimation} 1s ease forwards;
 `;
 
 const ContentContainer = styled.div`
@@ -91,7 +86,7 @@ const ResumeScreen: React.FC = () => {
   }, [treeLeftBarlStylesApi, visible]);
   return (
     <Container ref={ref}>
-      {visible && <StyledTitlePostit title="TinyKitten" subtitle="の職歴" />}
+      {visible && <TitlePostit title="TinyKitten" subtitle="の職歴" />}
       <ContentContainer>
         <Tree visible={visible}>
           <TreeBar style={treeLeftBarStyles} />

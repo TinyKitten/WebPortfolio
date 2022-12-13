@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { titlePostitAnimation } from '../constants/keyframets';
 import VerticalPostitIcon from './VerticalPostitIcon';
 
 type Props = {
@@ -12,6 +13,8 @@ const Container = styled.div`
   top: 0;
   left: 32px;
   filter: drop-shadow(0 3px 3px rgba(0, 0, 0, 0.16));
+  transform: 'translateY(-147px)';
+  animation: ${titlePostitAnimation} 1s ease forwards;
 `;
 
 const VerticalPostit = styled(VerticalPostitIcon)`

@@ -1,6 +1,5 @@
 import { useRef } from 'react';
 import styled from 'styled-components';
-import { titlePostitAnimation } from '../../../constants/keyframets';
 import useScreenVisibility from '../../../hooks/useScreenVisibility';
 import TitlePostit from '../../TitlePostit';
 import WorksNearStation from './NearStation';
@@ -19,19 +18,13 @@ const WorksContainer = styled.div`
   }
 `;
 
-const StyledTitlePostit = styled(TitlePostit)`
-  animation: ${titlePostitAnimation} 1s ease forwards;
-`;
-
 const WorksScreen: React.FC = () => {
   const ref = useRef(null);
   const visible = useScreenVisibility(ref);
 
   return (
     <Container ref={ref}>
-      {visible && (
-        <StyledTitlePostit title="TinyKitten" subtitle="が作ったよ" />
-      )}
+      {visible && <TitlePostit title="TinyKitten" subtitle="が作ったよ" />}
       <WorksContainer>
         <WorksTrainLCD />
         <WorksNearStation />

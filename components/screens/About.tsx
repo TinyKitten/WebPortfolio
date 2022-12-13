@@ -5,7 +5,6 @@ import {
   useRef,
 } from 'react';
 import styled, { keyframes } from 'styled-components';
-import { titlePostitAnimation } from '../../constants/keyframets';
 import useAnonymousAuth from '../../hooks/useAnonymousAuth';
 import useScreenVisibility from '../../hooks/useScreenVisibility';
 import Postit from '../Postit';
@@ -16,10 +15,6 @@ const Container = styled.section`
   position: relative;
   min-height: 100vh;
   overflow: hidden;
-`;
-
-const StyledTitlePostit = styled(TitlePostit)`
-  animation: ${titlePostitAnimation} 1s ease forwards;
 `;
 
 const ContentContainer = styled.div`
@@ -92,9 +87,7 @@ const AboutScreen: ForwardRefRenderFunction<HTMLDivElement> = (
   return (
     <div ref={forwardefRef}>
       <Container ref={ref}>
-        {visible && (
-          <StyledTitlePostit title="TinyKitten" subtitle="って誰？" />
-        )}
+        {visible && <TitlePostit title="TinyKitten" subtitle="って誰？" />}
         <ContentContainer>
           <LogoWrapper>
             {visible && initialized && (

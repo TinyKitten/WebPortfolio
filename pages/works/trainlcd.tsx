@@ -15,7 +15,6 @@ import TitlePostit from '../../components/TitlePostit';
 import {
   imageAnimation,
   singleHeadingPostitAnimation,
-  titlePostitAnimation,
 } from '../../constants/keyframets';
 import useScreenVisibility from '../../hooks/useScreenVisibility';
 
@@ -133,9 +132,6 @@ const TechContainer = styled.article`
   animation: ${imageAnimation} 1s ease forwards;
 `;
 
-const StyledTitlePostit = styled(TitlePostit)`
-  animation: ${titlePostitAnimation} 1s ease forwards;
-`;
 const FirstSection: React.FC = () => (
   <Container fullHeight>
     <ContentContainer>
@@ -155,7 +151,7 @@ const ConceptSection: React.FC = () => {
 
   return (
     <Container ref={ref}>
-      {visible && <StyledTitlePostit title="TrainLCD" subtitle="コンセプト" />}
+      {visible && <TitlePostit title="TrainLCD" subtitle="コンセプト" />}
       <ContentContainer>
         <Concept>StationAPIで電車のLCDを再現したい</Concept>
         <ConceptDescription>
@@ -193,7 +189,7 @@ const TechnologySection: React.FC = () => {
 
   return (
     <Container ref={ref}>
-      {visible && <StyledTitlePostit title="TrainLCD" subtitle="使用技術" />}
+      {visible && <TitlePostit title="TrainLCD" subtitle="使用技術" />}
       {visible && (
         <TechContainer>
           <SkillsCircle icon={TSIcon} name="TypeScript" />
@@ -212,7 +208,7 @@ const AccessSection: React.FC = () => {
 
   return (
     <Container ref={ref}>
-      {visible && <StyledTitlePostit title="TrainLCD" subtitle="リンク" />}
+      {visible && <TitlePostit title="TrainLCD" subtitle="リンク" />}
       <ContentContainer>
         <Anchor
           href="https://trainlcd.app"

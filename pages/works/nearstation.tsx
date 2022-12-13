@@ -15,7 +15,6 @@ import TitlePostit from '../../components/TitlePostit';
 import {
   imageAnimation,
   singleHeadingPostitAnimation,
-  titlePostitAnimation,
 } from '../../constants/keyframets';
 import useScreenVisibility from '../../hooks/useScreenVisibility';
 
@@ -111,9 +110,6 @@ const TechContainer = styled.article`
   animation: ${imageAnimation} 1s ease forwards;
 `;
 
-const StyledTitlePostit = styled(TitlePostit)`
-  animation: ${titlePostitAnimation} 1s ease forwards;
-`;
 const FirstSection: React.FC = () => (
   <Container fullHeight>
     <ContentContainer>
@@ -156,7 +152,7 @@ const TechnologySection: React.FC = () => {
 
   return (
     <Container ref={ref}>
-      {visible && <StyledTitlePostit title="NearStation" subtitle="使用技術" />}
+      {visible && <TitlePostit title="NearStation" subtitle="使用技術" />}
       {visible && (
         <TechContainer>
           <SkillsCircle icon={TSIcon} name="TypeScript" />
@@ -175,7 +171,7 @@ const AccessSection: React.FC = () => {
 
   return (
     <Container ref={ref}>
-      {visible && <StyledTitlePostit title="NearStation" subtitle="リンク" />}
+      {visible && <TitlePostit title="NearStation" subtitle="リンク" />}
       <ContentContainer>
         <Anchor
           href="https://near.tinykitten.me"

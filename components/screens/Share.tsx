@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import {
   fadeAnimation,
   headingPostitAnimation,
-  titlePostitAnimation,
 } from '../../constants/keyframets';
 import usePraise from '../../hooks/usePraise';
 import useScreenVisibility from '../../hooks/useScreenVisibility';
@@ -19,10 +18,6 @@ const Container = styled.section`
   position: relative;
   min-height: 100vh;
   overflow: hidden;
-`;
-
-const StyledTitlePostit = styled(TitlePostit)`
-  animation: ${titlePostitAnimation} 1s ease forwards;
 `;
 
 const ContentContainer = styled.div`
@@ -72,9 +67,7 @@ const ShareScreen: React.FC = () => {
   return (
     <>
       <Container ref={ref}>
-        {visible && (
-          <StyledTitlePostit title="TinyKitten" subtitle="をシェア" />
-        )}
+        {visible && <TitlePostit title="TinyKitten" subtitle="をシェア" />}
         <ContentContainer>
           {visible && <StyledPostit>シェアしよう！</StyledPostit>}
           {visible && (
