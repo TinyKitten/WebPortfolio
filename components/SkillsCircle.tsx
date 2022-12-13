@@ -34,11 +34,20 @@ const SkillName = styled.p`
   text-align: center;
 `;
 
+const IconContainer = styled.div`
+  > svg {
+    width: auto;
+    height: 64px;
+  }
+`;
+
 const SkillsCircle: React.FC<Props> = ({ name, icon: Icon }: Props) => {
   return (
     <Container>
       <SkillImageWrapper>
-        <Icon />
+        <IconContainer>
+          <Icon />
+        </IconContainer>
       </SkillImageWrapper>
       <SkillName>{name}</SkillName>
     </Container>
