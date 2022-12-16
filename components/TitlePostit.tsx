@@ -35,7 +35,7 @@ const TitleText = styled.p`
   font-weight: bold;
   color: ${({ theme }) => theme.primary};
   font-size: 1rem;
-  line-height: 1.5;
+  white-space: pre-wrap;
 
   @media (min-width: 800px) {
     font-size: 1.25rem;

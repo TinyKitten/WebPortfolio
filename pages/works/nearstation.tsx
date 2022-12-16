@@ -129,7 +129,7 @@ const ConceptSection: React.FC = () => {
 
   return (
     <Container ref={ref}>
-      {visible && <TitlePostit title="NearStation" subtitle="コンセプト" />}
+      {visible && <TitlePostit title={'Near\nStation'} subtitle="コンセプト" />}
       <ContentContainer>
         <Concept>今いる場所の最寄り駅と路線を知りたい</Concept>
         <ConceptDescription>
@@ -152,7 +152,7 @@ const TechnologySection: React.FC = () => {
 
   return (
     <Container ref={ref}>
-      {visible && <TitlePostit title="NearStation" subtitle="使用技術" />}
+      {visible && <TitlePostit title={'Near\nStation'} subtitle="使用技術" />}
       {visible && (
         <TechContainer>
           <SkillsCircle icon={TSIcon} name="TypeScript" />
@@ -171,7 +171,7 @@ const AccessSection: React.FC = () => {
 
   return (
     <Container ref={ref}>
-      {visible && <TitlePostit title="NearStation" subtitle="リンク" />}
+      {visible && <TitlePostit title={'Near\nStation'} subtitle="リンク" />}
       <ContentContainer>
         <Anchor
           href="https://near.tinykitten.me"
