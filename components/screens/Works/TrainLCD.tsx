@@ -8,7 +8,7 @@ import {
   imageAnimation,
 } from '../../../constants/keyframets';
 import useScreenVisibility from '../../../hooks/useScreenVisibility';
-import Button from '../../Button';
+import { LearnMoreButton } from '../../LearnMoreButton';
 import Postit from '../../Postit';
 
 const ContentContainer = styled.div`
@@ -51,11 +51,6 @@ const Description = styled.p`
   line-height: 1.75;
   margin-top: 48px;
   color: ${({ theme }) => theme.headingText};
-  animation: ${imageAnimation} 1s ease forwards;
-`;
-
-const LearnMoreButton = styled(Button)`
-  margin: 32px 0;
   animation: ${imageAnimation} 1s ease forwards;
 `;
 

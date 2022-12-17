@@ -8,7 +8,7 @@ import {
   imageAnimation,
 } from '../../../constants/keyframets';
 import useScreenVisibility from '../../../hooks/useScreenVisibility';
-import Button from '../../Button';
+import { LearnMoreButton } from '../../LearnMoreButton';
 import Postit from '../../Postit';
 
 const ContentContainer = styled.div`
@@ -51,11 +51,6 @@ const ImageContainer = styled.div`
   max-width: 75%;
   height: auto;
   filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.16));
-  animation: ${imageAnimation} 1s ease forwards;
-`;
-
-const LearnMoreButton = styled(Button)`
-  margin: 32px 0;
   animation: ${imageAnimation} 1s ease forwards;
 `;
 
