@@ -64,6 +64,13 @@ const ShareButton = styled(Button)`
   position: relative;
 `;
 
+const Divider = styled.div`
+  height: 1px;
+  margin: 12px 0;
+  opacity: 0.5;
+  background-color: ${({ theme }) => theme.text};
+`;
+
 const ButtonProgressBar = styled(animated.div)`
   background-color: rgba(0, 0, 0, 0.5);
   position: absolute;
@@ -144,6 +151,7 @@ const ShareModal = ({ isOpen, onRequestClose }: Props): React.ReactElement => {
           >
             <ShareButton color="#00b900">LINEで送る</ShareButton>
           </a>
+          <Divider />
           <ShareButton
             onClick={closable ? onRequestClose : noop}
             color={themeContext.cancelBg}
