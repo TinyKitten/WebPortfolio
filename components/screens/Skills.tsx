@@ -57,24 +57,9 @@ const SkillsScreen: React.FC = () => {
       <ContentContainer>
         {visible && (
           <SkillsContainer>
-            <SkillsCircle
-              icon={JSIcon}
-              experiencedYears={5}
-              description="foo!"
-              name="JavaScript"
-            />
-            <SkillsCircle
-              icon={TSIcon}
-              experiencedYears={5}
-              description="foo!"
-              name="TypeScript"
-            />
-            <SkillsCircle
-              icon={ReactIcon}
-              experiencedYears={2}
-              description="foo1"
-              name="React (Native)"
-            />
+            <SkillsCircle icon={JSIcon} name="JavaScript" />
+            <SkillsCircle icon={TSIcon} name="TypeScript" />
+            <SkillsCircle icon={ReactIcon} name="React (Native)" />
           </SkillsContainer>
         )}
       </ContentContainer>
