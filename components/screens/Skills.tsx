@@ -1,7 +1,6 @@
 import { useRef } from 'react';
 import styled, { keyframes } from 'styled-components';
 import useScreenVisibility from '../../hooks/useScreenVisibility';
-import FigmaIcon from '../marks/FigmaIcon';
 import JSIcon from '../marks/JSIcon';
 import ReactIcon from '../marks/ReactIcon';
 import TSIcon from '../marks/TSIcon';
@@ -58,10 +57,24 @@ const SkillsScreen: React.FC = () => {
       <ContentContainer>
         {visible && (
           <SkillsContainer>
-            <SkillsCircle icon={JSIcon} name="JavaScript" />
-            <SkillsCircle icon={TSIcon} name="TypeScript" />
-            <SkillsCircle icon={ReactIcon} name="React (Native)" />
-            <SkillsCircle icon={FigmaIcon} name="Figma" />
+            <SkillsCircle
+              icon={JSIcon}
+              experiencedYears={5}
+              description="foo!"
+              name="JavaScript"
+            />
+            <SkillsCircle
+              icon={TSIcon}
+              experiencedYears={5}
+              description="foo!"
+              name="TypeScript"
+            />
+            <SkillsCircle
+              icon={ReactIcon}
+              experiencedYears={2}
+              description="foo1"
+              name="React (Native)"
+            />
           </SkillsContainer>
         )}
       </ContentContainer>
