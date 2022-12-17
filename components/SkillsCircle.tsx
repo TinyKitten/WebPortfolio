@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { skillCircleAnimation } from '../constants/keyframets';
 
 type Props = {
   name: string;
@@ -19,12 +20,12 @@ const SkillImageWrapper = styled.div`
   background: ${({ theme }) => theme.boxBg};
   width: 120px;
   height: 120px;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
   border-radius: 60px;
   display: flex;
   justify-content: center;
   align-items: center;
   margin-bottom: 18px;
+  animation: ${skillCircleAnimation} 1s ease forwards;
 `;
 
 const SkillName = styled.p`

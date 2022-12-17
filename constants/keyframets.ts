@@ -50,3 +50,15 @@ export const imageAnimation = keyframes({
     transform: 'translateY(0)',
   },
 });
+
+export const skillCircleAnimation = keyframes({
+  '0%': {
+    boxShadow: '0 -3px 0 rgba(0, 0, 0, 0)',
+  },
+  '50%': {
+    boxShadow: '0 0 3px rgba(0, 0, 0, 0.16)',
+  },
+  '100%': {
+    boxShadow: '0 3px 6px rgba(0, 0, 0, 0.16)',
+  },
+});
