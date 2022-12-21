@@ -13,6 +13,10 @@ type Props = {
 const Container = styled.section`
   position: relative;
   min-height: 100vh;
+  @supports (-webkit-touch-callout: none) {
+    min-height: -webkit-fill-available;
+  }
+
   margin-top: -48px;
   display: flex;
   justify-content: center;
@@ -58,7 +62,18 @@ const MyName = styled.h1`
   color: ${({ theme }) => theme.headingText};
 `;
 
-const arrowAnimation = keyframes({
+const arrowAnimationSmall = keyframes({
+  from: {
+    opacity: 0,
+    transform: 'translate3d(0, -16px, 0)',
+  },
+  to: {
+    opacity: 1,
+    transform: 'translate3d(0, 0, 0)',
+  },
+});
+
+const arrowAnimationLarge = keyframes({
   from: {
     opacity: 0,
     transform: 'translate3d(0, -32px, 0)',
@@ -73,11 +88,12 @@ const ArrowLink = styled(ArrowIcon)`
   position: absolute;
   width: 64px;
   height: auto;
-  bottom: 128px;
-  animation: ${arrowAnimation} 1s forwards;
+  bottom: 64px;
+  animation: ${arrowAnimationLarge} 1s forwards;
   cursor: pointer;
-  @media (min-width: 800px) {
-    bottom: 64px;
+  @media (max-width: 800px) {
+    bottom: 32px;
+    animation: ${arrowAnimationSmall} 1s forwards;
   }
 `;
 
