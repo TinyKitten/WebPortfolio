@@ -2,10 +2,11 @@ import {
   forwardRef,
   ForwardRefRenderFunction,
   MutableRefObject,
+  useMemo,
   useRef,
 } from 'react';
 import styled, { keyframes } from 'styled-components';
-import useAnonymousAuth from '../../hooks/useAnonymousAuth';
+import { getRandomGreeting } from '../../constants/greeting';
 import useScreenVisibility from '../../hooks/useScreenVisibility';
 import Postit from '../Postit';
 import TinyKittenIcon from '../TinyKittenIcon';
@@ -82,19 +83,14 @@ const AboutScreen: ForwardRefRenderFunction<HTMLDivElement> = (
 ) => {
   const ref = useRef(null);
   const visible = useScreenVisibility(ref);
-  const { isReturningVisitor, initialized } = useAnonymousAuth();
-
+  const greetingMessage = useMemo(() => getRandomGreeting(), []);
   return (
     <div ref={forwardefRef}>
       <Container ref={ref}>
         {visible && <TitlePostit title="TinyKitten" subtitle="って誰？" />}
         <ContentContainer>
           <LogoWrapper>
-            {visible && initialized && (
-              <StyledPostit>
-                {!isReturningVisitor ? 'はじめまして！' : 'また会いましたね'}
-              </StyledPostit>
-            )}
+            {visible && <StyledPostit>{greetingMessage}</StyledPostit>}
             <Logo />
           </LogoWrapper>
           <NameText>TinyKitten</NameText>

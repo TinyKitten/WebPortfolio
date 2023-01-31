@@ -12,7 +12,7 @@ const usePraise = (
   const [firstLoaded, setFirstLoaded] = useState(false);
   const [repeatTimes, setRepeatTimes] = useState(0);
 
-  const { user } = useAnonymousAuth();
+  const user = useAnonymousAuth();
 
   useEffect(() => {
     const fetchAsync = async () => {
