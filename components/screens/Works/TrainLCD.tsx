@@ -74,7 +74,7 @@ const WorksTrainLCD: React.FC = () => {
           日本全国の鉄道路線で使える新感覚のナビゲーションアプリです。
         </Description>
       )}
-      <Link href="/works/trainlcd" passHref>
+      <Link href="/works/trainlcd" passHref aria-label="TrainLCD">
         <div>{visible && <LearnMoreButton>さらに詳しく</LearnMoreButton>}</div>
       </Link>
     </ContentContainer>

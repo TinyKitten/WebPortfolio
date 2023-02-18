@@ -71,7 +71,7 @@ const WorksNearStation: React.FC = () => {
       {visible && (
         <Description>最寄り駅とその路線をすぐに知れるWebアプリ</Description>
       )}
-      <Link href="/works/nearstation" passHref>
+      <Link href="/works/nearstation" passHref aria-label="NearStation">
         <div>{visible && <LearnMoreButton>さらに詳しく</LearnMoreButton>}</div>
       </Link>
     </ContentContainer>

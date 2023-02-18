@@ -31,7 +31,7 @@ const Header: React.FC = () => {
   return (
     <Root>
       <Title>
-        <Link href="/" passHref>
+        <Link href="/" aria-label="For top page" passHref>
           <div>
             <ForwardedIcon />
           </div>
