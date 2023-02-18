@@ -1,5 +1,14 @@
+import {
+  doc,
+  getDoc,
+  getFirestore,
+  increment,
+  onSnapshot,
+  updateDoc,
+} from 'firebase/firestore';
 import { useCallback, useEffect, useState } from 'react';
 import useAnonymousAuth from './useAnonymousAuth';
+import { useFirebaseApp } from './useFirebaseApp';
 
 const usePraise = (
   ready: boolean,
@@ -13,15 +22,10 @@ const usePraise = (
   const [repeatTimes, setRepeatTimes] = useState(0);
 
   const user = useAnonymousAuth();
+  const firebase = useFirebaseApp();
 
   useEffect(() => {
     const fetchAsync = async () => {
-      const { doc, getDoc, getFirestore, onSnapshot } = await import(
-        'firebase/firestore'
-      );
-      const { getFirebaseApp } = await import('../utils/firebase');
-
-      const firebase = await getFirebaseApp();
       const db = getFirestore(firebase);
       const countDocRef = doc(db, 'public/praise');
       const countDocSnap = await getDoc(countDocRef);
@@ -37,7 +41,7 @@ const usePraise = (
     if (ready && !firstLoaded) {
       fetchAsync();
     }
-  }, [firstLoaded, ready]);
+  }, [firebase, firstLoaded, ready]);
 
   const incrementCount = useCallback(async () => {
     if (!user) {
@@ -45,11 +49,7 @@ const usePraise = (
     }
 
     setRepeatTimes((prev) => prev + 1);
-    const { doc, getFirestore, updateDoc, increment } = await import(
-      'firebase/firestore'
-    );
-    const { getFirebaseApp } = await import('../utils/firebase');
-    const firebase = await getFirebaseApp();
+
     const db = getFirestore(firebase);
 
     const countDocRef = doc(db, 'public/praise');
@@ -59,7 +59,7 @@ const usePraise = (
     if (repeatTimes >= Number(process.env.NEXT_PUBLIC_MAX_REPEAT_COUNT) - 1) {
       onExceeded();
     }
-  }, [user, onExceeded, repeatTimes]);
+  }, [firebase, onExceeded, repeatTimes, user]);
 
   return {
     count,

@@ -1,18 +1,19 @@
-import type { User } from 'firebase/auth';
+import {
+  browserLocalPersistence,
+  initializeAuth,
+  onAuthStateChanged,
+  signInAnonymously,
+  User,
+} from 'firebase/auth';
 import { useCallback, useEffect, useState } from 'react';
+import { useFirebaseApp } from './useFirebaseApp';
 
 const useAnonymousAuth = (): User | null => {
   const [user, setUser] = useState<User | null>(null);
 
+  const firebase = useFirebaseApp();
+
   const updateUserState = useCallback(async () => {
-    const { getFirebaseApp } = await import('../utils/firebase');
-    const firebase = await getFirebaseApp();
-    const {
-      browserLocalPersistence,
-      onAuthStateChanged,
-      signInAnonymously,
-      initializeAuth,
-    } = await import('firebase/auth');
     const auth = initializeAuth(firebase, {
       persistence: browserLocalPersistence,
     });
@@ -24,7 +25,7 @@ const useAnonymousAuth = (): User | null => {
         setUser(credential.user);
       }
     });
-  }, []);
+  }, [firebase]);
 
   useEffect(() => {
     updateUserState();
