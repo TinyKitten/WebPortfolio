@@ -1,8 +1,8 @@
 import {
   doc,
   getDoc,
-  getFirestore,
   increment,
+  initializeFirestore,
   onSnapshot,
   updateDoc,
 } from 'firebase/firestore';
@@ -26,7 +26,7 @@ const usePraise = (
 
   useEffect(() => {
     const fetchAsync = async () => {
-      const db = getFirestore(firebase);
+      const db = initializeFirestore(firebase, {});
       const countDocRef = doc(db, 'public/praise');
       const countDocSnap = await getDoc(countDocRef);
       const data = countDocSnap.data();
@@ -50,7 +50,7 @@ const usePraise = (
 
     setRepeatTimes((prev) => prev + 1);
 
-    const db = getFirestore(firebase);
+    const db = initializeFirestore(firebase, {});
 
     const countDocRef = doc(db, 'public/praise');
     await updateDoc(countDocRef, {

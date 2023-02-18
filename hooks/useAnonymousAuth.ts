@@ -1,5 +1,4 @@
 import {
-  browserLocalPersistence,
   initializeAuth,
   onAuthStateChanged,
   signInAnonymously,
@@ -14,9 +13,7 @@ const useAnonymousAuth = (): User | null => {
   const firebase = useFirebaseApp();
 
   const updateUserState = useCallback(async () => {
-    const auth = initializeAuth(firebase, {
-      persistence: browserLocalPersistence,
-    });
+    const auth = initializeAuth(firebase, {});
     onAuthStateChanged(auth, async (authUser) => {
       if (authUser) {
         setUser(authUser);
