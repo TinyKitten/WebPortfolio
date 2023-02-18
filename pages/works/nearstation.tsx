@@ -1,5 +1,4 @@
 import Head from 'next/head';
-import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useRef } from 'react';
 import styled from 'styled-components';
@@ -11,6 +10,7 @@ import ReactIcon from '../../components/marks/ReactIcon';
 import TSIcon from '../../components/marks/TSIcon';
 import Postit from '../../components/Postit';
 import SkillsCircle from '../../components/SkillsCircle';
+import StyledImage from '../../components/StyledImage';
 import TitlePostit from '../../components/TitlePostit';
 import {
   imageAnimation,
@@ -115,7 +115,7 @@ const FirstSection: React.FC = () => (
     <ContentContainer>
       <StyledPostit>Dev/WebApp</StyledPostit>
       <LogoContainer>
-        <Image src={NearStationPic} alt="NearStation" />
+        <StyledImage fill src={NearStationPic} alt="NearStation" />
       </LogoContainer>
       <Name>NearStation</Name>
       <Bio>最寄り駅とその路線がひと目で分かるWebアプリ</Bio>

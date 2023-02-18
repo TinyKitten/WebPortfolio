@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import Link from 'next/link';
 import { useRef } from 'react';
 import styled from 'styled-components';
@@ -10,6 +9,7 @@ import {
 import useScreenVisibility from '../../../hooks/useScreenVisibility';
 import { LearnMoreButton } from '../../LearnMoreButton';
 import Postit from '../../Postit';
+import StyledImage from '../../StyledImage';
 
 const ContentContainer = styled.div`
   display: flex;
@@ -64,7 +64,7 @@ const WorksNearStation: React.FC = () => {
         <LogoContainer>
           <StyledPostit>NearStation</StyledPostit>
           <ImageContainer>
-            <Image src={NearStationImage} alt="NearStation" />
+            <StyledImage fill src={NearStationImage} alt="NearStation" />
           </ImageContainer>
         </LogoContainer>
       )}

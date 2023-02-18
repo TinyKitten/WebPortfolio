@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import Link from 'next/link';
 import { useRef } from 'react';
 import styled from 'styled-components';
@@ -10,6 +9,7 @@ import {
 import useScreenVisibility from '../../../hooks/useScreenVisibility';
 import { LearnMoreButton } from '../../LearnMoreButton';
 import Postit from '../../Postit';
+import StyledImage from '../../StyledImage';
 
 const ContentContainer = styled.div`
   display: flex;
@@ -64,7 +64,7 @@ const WorksTrainLCD: React.FC = () => {
         <LogoContainer>
           <StyledPostit>TrainLCD</StyledPostit>
           <ImageContainer>
-            <Image src={TrainLCDImage} alt="TrainLCD" />
+            <StyledImage fill src={TrainLCDImage} alt="TrainLCD" />
           </ImageContainer>
         </LogoContainer>
       )}

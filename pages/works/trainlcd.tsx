@@ -1,5 +1,4 @@
 import Head from 'next/head';
-import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useRef } from 'react';
 import styled from 'styled-components';
@@ -11,6 +10,7 @@ import ReactIcon from '../../components/marks/ReactIcon';
 import TSIcon from '../../components/marks/TSIcon';
 import Postit from '../../components/Postit';
 import SkillsCircle from '../../components/SkillsCircle';
+import StyledImage from '../../components/StyledImage';
 import TitlePostit from '../../components/TitlePostit';
 import {
   imageAnimation,
@@ -137,7 +137,7 @@ const FirstSection: React.FC = () => (
     <ContentContainer>
       <StyledPostit>Dev/MobileApp</StyledPostit>
       <LogoContainer>
-        <Image src={TrainLCDImage} alt="TrainLCD" />
+        <StyledImage fill src={TrainLCDImage} alt="TrainLCD" />
       </LogoContainer>
       <Name>TrainLCD</Name>
       <Bio>日本全国の鉄道路線で使える新感覚のナビゲーションアプリ</Bio>
