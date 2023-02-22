@@ -21,36 +21,36 @@
     "startAtFullYear": 2018,
     "endAtFullYear": 2019,
     "companyName": "株式会社ブレインファーム",
-    "description": "フリーランスとして携わりました。Angular、React、Vueを適材適所に使ったフロントエンド開発・設計や、既存システムのバグ修正などを行っていました。"
+    "description": "Angular、React、Vueを適材適所に使ったフロントエンド開発・設計や、既存システムのバグ修正などを行っていました。"
   },
   {
     "startAtFullYear": 2019,
     "endAtFullYear": 2020,
     "companyName": "サイマックス株式会社",
-    "description": "フリーランスとして携わりました。Angular 7とIonic 4を用いたハイブリッドアプリ開発を主に、\nRails 5を用いたバックエンド開発、Angular 9を用いた社内Webシステムの開発、ReactとStripeを用いた課金システムの構築などを経験しています。\nモバイルアプリ側の開発は、既存の設計を元に一から作り直しました。基本的にプロジェクトの主要エンジニアとして活躍しました。"
+    "description": "Angular 7とIonic 4を用いたハイブリッドアプリ開発を主に、\nRails 5を用いたバックエンド開発、Angular 9を用いた社内Webシステムの開発、ReactとStripeを用いた課金システムの構築などを経験しています。\nモバイルアプリ側の開発は、既存の設計を元に一から作り直しました。基本的にプロジェクトの主要エンジニアとして活躍しました。"
   },
   {
     "startAtFullYear": 2020,
     "endAtFullYear": 2020,
     "companyName": "しくみ製作所株式会社",
-    "description": "フリーランスとして携わりました。React Nativeを用いたファンクラブモバイルアプリ開発に完全リモートで従事していました。\nNotion、ZenHubなどのグループウェアを駆使したスクラム開発です。"
+    "description": "React Nativeを用いたファンクラブモバイルアプリ開発に完全リモートで従事していました。\nNotion、ZenHubなどのグループウェアを駆使したスクラム開発です。"
   },
   {
     "startAtFullYear": 2020,
     "endAtFullYear": 2022,
     "companyName": "外資系経営コンサルティング会社",
-    "description": "フリーランスとして携わりました。守秘義務の兼ね合いで社名は伏せさせていただきます。\nReact NativeとAWS Amplifyを用いたZ世代向けのジャーナルモバイルアプリ開発にローンチ前から従事していました。\n仕様からゼロイチで考える機会が多く、プロジェクトの主要エンジニアとして活躍していました。\nまた、React Native開発ではReact Nativeでの標準機能や既存エコシステムでは対処できない要望の対処のためにJavaやObjective-C、Swiftのコードを書く作業も幅広くこなしました。\nさらに、最終的にははReact.js(Next.js)Webアプリケーション開発にも従事しておりました。\n開発はNotionをカンバンとして用いたスクラム開発です。"
+    "description": "守秘義務の兼ね合いで社名は伏せさせていただきます。\nReact NativeとAWS Amplifyを用いたZ世代向けのジャーナルモバイルアプリ開発にローンチ前から従事していました。\n仕様からゼロイチで考える機会が多く、プロジェクトの主要エンジニアとして活躍していました。\nまた、React Native開発ではReact Nativeでの標準機能や既存エコシステムでは対処できない要望の対処のためにJavaやObjective-C、Swiftのコードを書く作業も幅広くこなしました。\nさらに、最終的にははReact.js(Next.js)Webアプリケーション開発にも従事しておりました。\n開発はNotionをカンバンとして用いたスクラム開発です。"
   },
   {
     "startAtFullYear": 2021,
     "endAtFullYear": 2023,
     "companyName": "ドリームチームズ株式会社",
-    "description": "フリーランスとして携わっています。完全リモートでReact Nativeを用いてスポーツ試合結果予想アプリを開発しています。\n夜間・休日に稼働しており、React Native開発は一時期自分一人で実装を行っていました。"
+    "description": "完全リモートでReact Nativeを用いてスポーツ試合結果予想アプリを開発していました。\n夜間・休日に稼働しており、React Native開発は一時期自分一人で実装を行っていました。"
   },
   {
     "startAtFullYear": 2022,
     "endAtFullYear": 2023,
     "companyName": "キッズコネクト株式会社",
-    "description": "フリーランスとして携わっています。完全リモートでReact.jsを用いて保育所向けのWebアプリケーションの開発を行っています。"
+    "description": "完全リモートでReact.jsを用いて保育所向けのWebアプリケーションの開発を行っていました。"
   }
 ]
