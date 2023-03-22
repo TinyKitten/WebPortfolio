@@ -46,6 +46,16 @@ export default function Document(): React.ReactElement {
         />
         <meta property="og:image" content={`${NEXT_PUBLIC_URL}/ogp.png`} />
         <link rel="preconnect" href="https://firestore.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin=""
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap"
+          rel="stylesheet"
+        />
       </Head>
       <body>
         <Main />
