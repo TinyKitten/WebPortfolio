@@ -34,23 +34,15 @@ const TitleTextContainer = styled.div`
 const TitleText = styled.p`
   font-weight: bold;
   color: ${({ theme }) => theme.primary};
-  font-size: 1rem;
+  font-size: 1.25rem;
   white-space: pre-wrap;
-
-  @media (min-width: 800px) {
-    font-size: 1.25rem;
-  }
 `;
 
 const SubtitleText = styled.p`
   color: ${({ theme }) => theme.text};
   font-weight: bold;
-  font-size: 0.75rem;
+  font-size: 1rem;
   line-height: 1.5;
-
-  @media (min-width: 800px) {
-    font-size: 1rem;
-  }
 `;
 
 const TitlePostit: React.FC<Props> = ({
