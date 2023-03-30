@@ -67,6 +67,7 @@ const Name = styled.h2`
 `;
 
 const LogoContainer = styled.div`
+  position: relative;
   opacity: 0;
   width: 320px;
   height: auto;
@@ -137,7 +138,7 @@ const FirstSection: React.FC = () => (
     <ContentContainer>
       <StyledPostit>Dev/MobileApp</StyledPostit>
       <LogoContainer>
-        <StyledImage fill src={TrainLCDImage} alt="TrainLCD" />
+        <StyledImage fill sizes="320px" src={TrainLCDImage} alt="TrainLCD" />
       </LogoContainer>
       <Name>TrainLCD</Name>
       <Bio>日本全国の鉄道路線で使える新感覚のナビゲーションアプリ</Bio>
@@ -224,13 +225,12 @@ const AccessSection: React.FC = () => {
         >
           <Button>リポジトリ</Button>
         </Anchor>
-        <Anchor>
-          <Link href="/" passHref>
-            <div>
-              <Button color="#555">戻る</Button>
-            </div>
-          </Link>
-        </Anchor>
+
+        <Link href="/" passHref>
+          <div>
+            <Button color="#555">戻る</Button>
+          </div>
+        </Link>
       </ContentContainer>
     </Container>
   );
