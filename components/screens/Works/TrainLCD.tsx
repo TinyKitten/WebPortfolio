@@ -38,6 +38,7 @@ const StyledPostit = styled(Postit)`
 `;
 
 const ImageContainer = styled.div`
+  position: relative;
   width: 480px;
   max-width: 75%;
   height: auto;
@@ -64,7 +65,12 @@ const WorksTrainLCD: React.FC = () => {
         <LogoContainer>
           <StyledPostit>TrainLCD</StyledPostit>
           <ImageContainer>
-            <StyledImage fill src={TrainLCDImage} alt="TrainLCD" />
+            <StyledImage
+              sizes="480px"
+              fill
+              src={TrainLCDImage}
+              alt="TrainLCD"
+            />
           </ImageContainer>
         </LogoContainer>
       )}

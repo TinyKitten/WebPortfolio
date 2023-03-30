@@ -47,6 +47,7 @@ const StyledPostit = styled(Postit)`
 `;
 
 const ImageContainer = styled.div`
+  position: relative;
   width: 320px;
   max-width: 75%;
   height: auto;
@@ -64,7 +65,12 @@ const WorksNearStation: React.FC = () => {
         <LogoContainer>
           <StyledPostit>NearStation</StyledPostit>
           <ImageContainer>
-            <StyledImage fill src={NearStationImage} alt="NearStation" />
+            <StyledImage
+              fill
+              sizes="320px"
+              src={NearStationImage}
+              alt="NearStation"
+            />
           </ImageContainer>
         </LogoContainer>
       )}

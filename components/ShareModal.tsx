@@ -89,7 +89,7 @@ const CANCEL_DISABLED_DURATION = 3000;
 
 const ShareModal = ({ isOpen, onRequestClose }: Props): React.ReactElement => {
   const themeContext = useContext(ThemeContext);
-  const [cancelStyles, cancelStylesApi] = useSpring(() => ({
+  const [animateStyles, animate] = useSpring(() => ({
     width: '0%',
     config: { duration: CANCEL_DISABLED_DURATION },
   }));
@@ -97,12 +97,12 @@ const ShareModal = ({ isOpen, onRequestClose }: Props): React.ReactElement => {
 
   useEffect(() => {
     if (isOpen) {
-      cancelStylesApi({ width: '100%' });
+      animate.start({ width: '100%' });
     } else {
-      cancelStylesApi.stop();
-      cancelStylesApi.set({ width: '0%' });
+      animate.stop();
+      animate.set({ width: '0%' });
     }
-  }, [cancelStylesApi, isOpen]);
+  }, [animate, isOpen]);
 
   useEffect(() => {
     let timer: NodeJS.Timeout;
@@ -157,7 +157,7 @@ const ShareModal = ({ isOpen, onRequestClose }: Props): React.ReactElement => {
             color={themeContext.cancelBg}
             disabled={!closable}
           >
-            <ButtonProgressBar style={cancelStyles} />
+            <ButtonProgressBar style={animateStyles} />
             <CancelButtonText>シェアしない</CancelButtonText>
           </ShareButton>
         </LinksContainer>

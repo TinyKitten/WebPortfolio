@@ -71,25 +71,25 @@ const ResumeScreen: React.FC = () => {
   const ref = useRef<HTMLDivElement>(null);
   const visible = useScreenVisibility(ref);
 
-  const [treeLeftBarStyles, treeLeftBarlStylesApi] = useSpring(() => ({
+  const [animateStyles, animate] = useSpring(() => ({
     height: '0%',
     config: { duration: resumeFixutre.length * 200 },
   }));
 
   useEffect(() => {
     if (visible) {
-      treeLeftBarlStylesApi({ height: `100%` });
+      animate.start({ height: `100%` });
     } else {
-      treeLeftBarlStylesApi.stop();
-      treeLeftBarlStylesApi.set({ height: '0%' });
+      animate.stop();
+      animate.set({ height: '0%' });
     }
-  }, [treeLeftBarlStylesApi, visible]);
+  }, [animate, visible]);
   return (
     <Container ref={ref}>
       {visible && <TitlePostit title="TinyKitten" subtitle="の職歴" />}
       <ContentContainer>
         <Tree visible={visible}>
-          <TreeBar style={treeLeftBarStyles} />
+          <TreeBar style={animateStyles} />
           <StartItemContainer>
             <p>START</p>
           </StartItemContainer>

@@ -67,6 +67,7 @@ const Name = styled.h2`
 `;
 
 const LogoContainer = styled.div`
+  position: relative;
   opacity: 0;
   width: 210px;
   height: auto;
@@ -115,7 +116,12 @@ const FirstSection: React.FC = () => (
     <ContentContainer>
       <StyledPostit>Dev/WebApp</StyledPostit>
       <LogoContainer>
-        <StyledImage fill src={NearStationPic} alt="NearStation" />
+        <StyledImage
+          fill
+          sizes="210px"
+          src={NearStationPic}
+          alt="NearStation"
+        />
       </LogoContainer>
       <Name>NearStation</Name>
       <Bio>最寄り駅とその路線がひと目で分かるWebアプリ</Bio>
@@ -187,13 +193,11 @@ const AccessSection: React.FC = () => {
         >
           <Button>リポジトリ</Button>
         </Anchor>
-        <Anchor>
-          <Link href="/" passHref>
-            <div>
-              <Button color="#555">戻る</Button>
-            </div>
-          </Link>
-        </Anchor>
+        <Link href="/" passHref>
+          <div>
+            <Button color="#555">戻る</Button>
+          </div>
+        </Link>
       </ContentContainer>
     </Container>
   );
