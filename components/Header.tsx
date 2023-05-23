@@ -14,13 +14,14 @@ const Root = styled.header`
   left: 0;
   top: 0;
   height: 48px;
-  background: ${({ theme }) => theme.bg};
+  /* background: ${({ theme }) => theme.bg}; */
   z-index: 9999;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(10px);
 `;
 
 const Title = styled.div`
