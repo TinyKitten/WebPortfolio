@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import styled from 'styled-components';
-import resumeFixutre from '../../fixtures/sections/resume/stories.json';
+import resumeFixutre from '../../fixtures/stories/resume.stories.json';
 import useScreenVisibility from '../../hooks/useScreenVisibility';
 import TitlePostit from '../TitlePostit';
 import Tree from '../Tree';
