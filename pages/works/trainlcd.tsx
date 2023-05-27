@@ -47,7 +47,10 @@ const ContentContainer = styled.article`
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  margin-top: 48px;
+  margin-top: 144px;
+  @media (min-width: 800px) {
+    margin-top: 0;
+  }
 `;
 
 const Anchor = styled.a`
@@ -89,7 +92,6 @@ const Bio = styled.p`
 `;
 
 const Concept = styled.h2`
-  text-align: center;
   line-height: 1.5;
   font-size: 2rem;
   color: ${({ theme }) => theme.text};
@@ -99,7 +101,7 @@ const Concept = styled.h2`
 const ConceptDescription = styled.p`
   text-align: left;
   max-width: 90%;
-  margin-top: 32px;
+  margin-top: 16px;
   line-height: 2;
   color: ${({ theme }) => theme.text};
   @media (min-width: 800px) {

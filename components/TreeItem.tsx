@@ -89,6 +89,7 @@ const TagsContainer = styled.div`
 
 const DescriptionLink = styled.a`
   color: ${({ theme }) => theme.primary};
+  word-wrap: break-word;
 `;
 
 const TreeItemInner: React.FC<TreeResumeItemProps> = ({
