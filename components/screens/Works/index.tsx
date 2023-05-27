@@ -2,7 +2,6 @@ import { useRef } from 'react';
 import styled from 'styled-components';
 import useScreenVisibility from '../../../hooks/useScreenVisibility';
 import TitlePostit from '../../TitlePostit';
-import WorksNearStation from './NearStation';
 import WorksTrainLCD from './TrainLCD';
 
 const Container = styled.section`
@@ -27,7 +26,6 @@ const WorksScreen: React.FC = () => {
       {visible && <TitlePostit title="TinyKitten" subtitle="が作ったよ" />}
       <WorksContainer>
         <WorksTrainLCD />
-        <WorksNearStation />
       </WorksContainer>
     </Container>
   );
