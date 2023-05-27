@@ -1,22 +1,30 @@
 [
   {
     "id": 0,
-    "startAt": "2019/07",
+    "startAt": "2017/02",
     "finishedAt": null,
-    "title": "開発着手開始",
-    "description": "ふと思いつきで開発を開始しました。最初は電車の案内装置の再現というよりかは、「元々近くの駅を返すだけのAPIは実装しているし、再現しなくてもいいけどざっと同じような見た目のナビゲーションアプリがあったら面白いかな」と軽い気持ちで始めました。\n当時のスタックはフロントエンドはAngular\nバックエンドはElixir + Phoenix Frameworkで開発したREST APIでした。",
-    "tags": ["Angular", "Elixir", "Phoenix"]
+    "title": "TrainLCDの原型となったアプリを開発した時のセッション🎤",
+    "description": "都内で開催された「プログラミング生放送」というイベントでTrainLCDの原型となったアプリを開発したというセッションをさせていただきました🙏\n当時のアプリのコンセプトはまた違ったものですが、技術的にはほぼ同じものでした。\nhttps://www.youtube.com/watch?v=zJ92TUjhdEw&t=15820s",
+    "tags": ["プロ生", "Swift", "登壇"]
   },
   {
     "id": 1,
+    "startAt": "2019/07",
+    "finishedAt": null,
+    "title": "TrainLCD開発着手開始🎉",
+    "description": "ふと思いつきで開発を開始しました。最初は電車の案内装置の再現というよりかは、「元々近くの駅を返すだけのAPIは実装しているし、再現しなくてもいいけどざっと同じような見た目のナビゲーションアプリがあったら面白いかな」と軽い気持ちで始めました。\n当時のスタックはフロントエンドはAngularで、\nバックエンドはElixir + Phoenix Frameworkで開発したREST APIでした。",
+    "tags": ["Angular", "Elixir", "Phoenix"]
+  },
+  {
+    "id": 2,
     "startAt": "2019/11",
     "finishedAt": null,
-    "title": "React Nativeでフルスクラッチで書き換え、アプリストアに配信開始",
+    "title": "React Nativeでフルスクラッチで書き換え、アプリストアに配信開始😋",
     "description": "アプリストアに公開したらもっと色んな人に使ってもらえるのではないかと思いAngularで書いていたものをReact Nativeで書き換えてApp Store, Google Playにて公開を開始しました。\n当時のフロントエンドスタックはReact Native + TypeScript + Expoでした。バックエンドは引き続きElixir + Phoenix Frameworkです。",
     "tags": ["ReactNative", "AppStore", "GooglePlay", "フルスクラッチ"]
   },
   {
-    "id": 2,
+    "id": 3,
     "startAt": "2019/11",
     "finishedAt": null,
     "title": "Apple Watch対応⌚",
@@ -24,7 +32,15 @@
     "tags": ["SwiftUI", "AppleWatch", "ウェアラブル"]
   },
   {
-    "id": 3,
+    "id": 4,
+    "startAt": "2020/12",
+    "finishedAt": null,
+    "title": "APIをGraphQL化📈",
+    "description": "バックエンドの開発言語をTypeScriptに、フレームワークはNestJSに書き換えて、今までのREST APIを撤廃してGraphQLのAPIに置き換わり、今でも同じスタックで稼働しています。",
+    "tags": ["SwiftUI", "AppleWatch", "ウェアラブル"]
+  },
+  {
+    "id": 5,
     "startAt": "2022/09",
     "finishedAt": null,
     "title": "Live Activities対応🏃",
@@ -32,15 +48,15 @@
     "tags": ["SwiftUI", "LiveActivities", "iPhone"]
   },
   {
-    "id": 4,
+    "id": 6,
     "startAt": "2023/05",
     "finishedAt": null,
     "title": "Android版のインストール済みユーザーが1,000デバイス突破",
-    "description": "いつの間にかインストール済みデバイスが1000デバイス超えてました🎉\nTrainLCDを使ってくださっている皆様、開発の手伝いを行ってくれている友人各位に感謝の気持ちを伝えたいです。",
+    "description": "いつの間にかインストール済みデバイスが1,000デバイス超えていました🎉\nTrainLCDを使ってくださっている皆様、開発の手伝いを行ってくれている友人各位に感謝の気持ちを伝えたいです。",
     "tags": ["Android", "GooglePlay"]
   },
   {
-    "id": 5,
+    "id": 7,
     "startAt": "2023/XX",
     "finishedAt": null,
     "title": "Wear OS対応予定⌚",

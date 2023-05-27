@@ -1,4 +1,5 @@
 import { useMemo } from 'react';
+import reactStringReplace from 'react-string-replace';
 import styled, { keyframes } from 'styled-components';
 import { ResumeItemObject, WorksStoryItemObject } from '../models/tree';
 import Tag from './Tag';
@@ -85,17 +86,39 @@ const TagsContainer = styled.div`
   flex-wrap: wrap;
 `;
 
+const DescriptionLink = styled.a`
+  color: ${({ theme }) => theme.primary};
+`;
+
 const TreeItemInner: React.FC<TreeResumeItemProps> = ({
   period,
   title,
   description,
   tags,
 }: TreeResumeItemProps) => {
+  const descriptionParagraph = useMemo(
+    () => (
+      <DescriptionText>
+        {reactStringReplace(description, /(https?:\/\/\S+)/g, (match, i) => (
+          <DescriptionLink
+            key={i}
+            href={match}
+            target="_blank"
+            rel="noreferrer"
+          >
+            {match}
+          </DescriptionLink>
+        ))}
+      </DescriptionText>
+    ),
+    [description]
+  );
+
   return (
     <>
       <PeriodText>{period}</PeriodText>
       <TitleText>{title}</TitleText>
-      <DescriptionText>{description}</DescriptionText>
+      {descriptionParagraph}
       {tags.length > 0 && (
         <TagsContainer>
           {tags.map((tag) => (
