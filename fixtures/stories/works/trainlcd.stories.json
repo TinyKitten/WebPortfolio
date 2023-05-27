@@ -11,7 +11,7 @@
     "id": 1,
     "startAt": "2019/07",
     "finishedAt": null,
-    "title": "TrainLCD開発着手開始🎉",
+    "title": "TrainLCD開発開始🎉",
     "description": "ふと思いつきで開発を開始しました。最初は電車の案内装置の再現というよりかは「元々近くの駅を返すだけのAPIは実装しているし再現しなくてもいいけど、ざっと同じような見た目のナビゲーションアプリがあったら面白いかな」と軽い気持ちで始めました。\n当時のスタックはフロントエンドはAngularで、\nバックエンドはElixir + Phoenix Frameworkで開発したREST APIでした。",
     "tags": ["Angular", "Elixir", "Phoenix"]
   },
@@ -51,7 +51,7 @@
     "id": 6,
     "startAt": "2023/05",
     "finishedAt": null,
-    "title": "Android版のインストール済みユーザーが1,000デバイス突破",
+    "title": "Android版のインストール済みデバイスが1,000デバイス突破",
     "description": "いつの間にかインストール済みデバイスが1,000デバイス超えていました🎉\nTrainLCDを使ってくださっている皆様、開発の手伝いを行ってくれている友人各位に感謝の気持ちを伝えたいです。",
     "tags": ["Android", "GooglePlay"]
   },
