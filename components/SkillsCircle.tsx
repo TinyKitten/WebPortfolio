@@ -10,10 +10,8 @@ type Props = {
 
 const Container = styled.div`
   display: flex;
-
   align-items: center;
   flex-direction: column;
-  height: 200px;
 `;
 
 const SkillImageWrapper = styled.div`
