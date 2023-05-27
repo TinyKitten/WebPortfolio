@@ -37,7 +37,7 @@
     "finishedAt": null,
     "title": "APIをGraphQL化📈",
     "description": "バックエンドの開発言語をTypeScriptに、フレームワークはNestJSに書き換えて、今までのREST APIを撤廃してGraphQLのAPIに置き換わり、今でも同じスタックで稼働しています。",
-    "tags": ["SwiftUI", "AppleWatch", "ウェアラブル"]
+    "tags": ["GraphQL", "NestJS"]
   },
   {
     "id": 5,
