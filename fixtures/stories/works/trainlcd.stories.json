@@ -12,14 +12,14 @@
     "startAt": "2019/07",
     "finishedAt": null,
     "title": "TrainLCD開発着手開始🎉",
-    "description": "ふと思いつきで開発を開始しました。最初は電車の案内装置の再現というよりかは、「元々近くの駅を返すだけのAPIは実装しているし、再現しなくてもいいけどざっと同じような見た目のナビゲーションアプリがあったら面白いかな」と軽い気持ちで始めました。\n当時のスタックはフロントエンドはAngularで、\nバックエンドはElixir + Phoenix Frameworkで開発したREST APIでした。",
+    "description": "ふと思いつきで開発を開始しました。最初は電車の案内装置の再現というよりかは「元々近くの駅を返すだけのAPIは実装しているし再現しなくてもいいけど、ざっと同じような見た目のナビゲーションアプリがあったら面白いかな」と軽い気持ちで始めました。\n当時のスタックはフロントエンドはAngularで、\nバックエンドはElixir + Phoenix Frameworkで開発したREST APIでした。",
     "tags": ["Angular", "Elixir", "Phoenix"]
   },
   {
     "id": 2,
     "startAt": "2019/11",
     "finishedAt": null,
-    "title": "React Nativeでフルスクラッチで書き換え、アプリストアに配信開始😋",
+    "title": "React Nativeでフルスクラッチで書き換え・アプリストアに配信開始😋",
     "description": "アプリストアに公開したらもっと色んな人に使ってもらえるのではないかと思いAngularで書いていたものをReact Nativeで書き換えてApp Store, Google Playにて公開を開始しました。\n当時のフロントエンドスタックはReact Native + TypeScript + Expoで、フロントエンドは今も同じスタックで開発しています。\nバックエンドは引き続きElixir + Phoenix Frameworkです。",
     "tags": ["ReactNative", "AppStore", "GooglePlay", "フルスクラッチ"]
   },
@@ -36,7 +36,7 @@
     "startAt": "2020/12",
     "finishedAt": null,
     "title": "APIをGraphQL化📈",
-    "description": "バックエンドの開発言語をTypeScriptに、フレームワークはNestJSに書き換えて、今までのREST APIを撤廃してGraphQLのAPIに置き換わり、今でも同じスタックで稼働しています。",
+    "description": "バックエンドの開発言語をTypeScriptに、フレームワークはNestJSに書き換えて今までのREST APIを撤廃してGraphQLのAPIに置き換わり、今でも同じスタックで稼働しています。",
     "tags": ["GraphQL", "NestJS"]
   },
   {
