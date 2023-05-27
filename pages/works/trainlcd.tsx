@@ -20,7 +20,7 @@ import {
 import storiesArray from '../../fixtures/stories/works/trainlcd.stories.json';
 import useScreenVisibility from '../../hooks/useScreenVisibility';
 
-const Container = styled.section<{ fullHeight?: boolean }>`
+const Container = styled.section<{ fullHeight?: boolean; padTop?: boolean }>`
   position: relative;
   min-height: 100vh;
   overflow: hidden;
@@ -36,8 +36,8 @@ const Container = styled.section<{ fullHeight?: boolean }>`
     min-height: 100vh;
     margin-top: -48px;
   }
-
   min-height: ${({ fullHeight }) => (fullHeight ? '100vh' : undefined)};
+  padding-top: ${({ padTop }) => (padTop ? '144px' : '0px')};
 `;
 
 const ContentContainer = styled.article`
@@ -196,7 +196,7 @@ const TechnologySection: React.FC = () => {
   const visible = useScreenVisibility(ref);
 
   return (
-    <Container ref={ref}>
+    <Container padTop ref={ref}>
       {visible && <TitlePostit title="TrainLCD" subtitle="使用技術" />}
       {visible && (
         <TechContainer>
@@ -215,7 +215,7 @@ const StoriesSection: React.FC = () => {
   const visible = useScreenVisibility(ref);
 
   return (
-    <Container ref={ref}>
+    <Container padTop ref={ref}>
       {visible && <TitlePostit title="TrainLCD" subtitle="ストーリー" />}
       {visible && (
         <TreeContainer>
