@@ -1,6 +1,7 @@
 import { useMemo } from 'react';
 import styled, { keyframes } from 'styled-components';
 import { ResumeItemObject, WorksStoryItemObject } from '../models/tree';
+import Tag from './Tag';
 
 type Props = {
   experienceType: 'resume' | 'worksStory';
@@ -13,6 +14,7 @@ type TreeResumeItemProps = {
   period: string;
   title: string;
   description: string;
+  tags: string[];
 };
 
 export const containerSlideAnimation = keyframes({
@@ -76,16 +78,31 @@ const DescriptionText = styled.p`
   white-space: pre-wrap;
 `;
 
+const TagsContainer = styled.div`
+  display: flex;
+  gap: 8px;
+  margin-top: 16px;
+  flex-wrap: wrap;
+`;
+
 const TreeItemInner: React.FC<TreeResumeItemProps> = ({
   period,
   title,
   description,
+  tags,
 }: TreeResumeItemProps) => {
   return (
     <>
       <PeriodText>{period}</PeriodText>
       <TitleText>{title}</TitleText>
       <DescriptionText>{description}</DescriptionText>
+      {tags.length > 0 && (
+        <TagsContainer>
+          {tags.map((tag) => (
+            <Tag key={tag} text={tag} />
+          ))}
+        </TagsContainer>
+      )}
     </>
   );
 };
@@ -100,6 +117,7 @@ const TreeItem: React.FC<Props> = ({
     period: string;
     title: string;
     description: string;
+    tags: string[];
   } => {
     switch (experienceType) {
       case 'resume': {
@@ -107,6 +125,7 @@ const TreeItem: React.FC<Props> = ({
         const baseExperienceObject = {
           title: resume.companyName,
           description: resume.description,
+          tags: [],
         };
         if (resume.startAtFullYear === resume.endAtFullYear) {
           return {
@@ -131,18 +150,13 @@ const TreeItem: React.FC<Props> = ({
         const baseExperienceObject = {
           title: story.title,
           description: story.description,
+          tags: story.tags,
         };
 
-        if (story.startAt === story.finishedAt) {
+        if (story.startAt === story.finishedAt || !story.finishedAt) {
           return {
             ...baseExperienceObject,
             period: `${story.startAt}`,
-          };
-        }
-        if (!story.finishedAt) {
-          return {
-            ...baseExperienceObject,
-            period: `${story.startAt}-`,
           };
         }
       }
@@ -153,7 +167,7 @@ const TreeItem: React.FC<Props> = ({
     return null;
   }
 
-  const { period, title, description } = experienceInfo;
+  const { period, title, description, tags } = experienceInfo;
 
   return (
     <Root>
@@ -162,6 +176,7 @@ const TreeItem: React.FC<Props> = ({
           period={period}
           title={title}
           description={description}
+          tags={tags}
         />
       </Container>
     </Root>

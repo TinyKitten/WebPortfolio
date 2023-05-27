@@ -4,18 +4,20 @@ import { useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import TrainLCDImage from '../../assets/works/trainlcd.png';
 import Button from '../../components/Button';
-import MySQLIcon from '../../components/marks/MySQLIcon';
-import NestJSIcon from '../../components/marks/NestJSIcon';
-import ReactIcon from '../../components/marks/ReactIcon';
-import TSIcon from '../../components/marks/TSIcon';
 import Postit from '../../components/Postit';
 import SkillsCircle from '../../components/SkillsCircle';
 import StyledImage from '../../components/StyledImage';
 import TitlePostit from '../../components/TitlePostit';
+import Tree from '../../components/Tree';
+import MySQLIcon from '../../components/marks/MySQLIcon';
+import NestJSIcon from '../../components/marks/NestJSIcon';
+import ReactIcon from '../../components/marks/ReactIcon';
+import TSIcon from '../../components/marks/TSIcon';
 import {
   imageAnimation,
   singleHeadingPostitAnimation,
 } from '../../constants/keyframets';
+import storiesArray from '../../fixtures/stories/works/trainlcd.stories.json';
 import useScreenVisibility from '../../hooks/useScreenVisibility';
 
 const Container = styled.section<{ fullHeight?: boolean }>`
@@ -133,6 +135,10 @@ const TechContainer = styled.article`
   animation: ${imageAnimation} 1s ease forwards;
 `;
 
+const TreeContainer = styled.article`
+  margin: 64px 0;
+`;
+
 const FirstSection: React.FC = () => (
   <Container fullHeight>
     <ContentContainer>
@@ -154,8 +160,9 @@ const ConceptSection: React.FC = () => {
     <Container ref={ref}>
       {visible && <TitlePostit title="TrainLCD" subtitle="コンセプト" />}
       <ContentContainer>
-        <Concept>StationAPIで電車のLCDを再現したい</Concept>
+        <Concept>Webの技術で電車のLCDを再現したい</Concept>
         <ConceptDescription>
+          このアプリの開発を始める前に趣味で作っていた
           <ConceptDescriptionAnchor
             href="https://github.com/TinyKitten/StationAPI"
             target="_blank"
@@ -164,7 +171,7 @@ const ConceptSection: React.FC = () => {
             StationAPI
           </ConceptDescriptionAnchor>
           の応用例の一つです。 <br />
-          前から電車のLCDを再現したいと思っていて、
+          以前より電車のLCDを再現したいと思っていて、
           <ConceptDescriptionAnchor
             href="https://github.com/TinyKitten/StationAPI"
             target="_blank"
@@ -198,6 +205,22 @@ const TechnologySection: React.FC = () => {
           <SkillsCircle icon={NestJSIcon} name="NestJS" />
           <SkillsCircle icon={MySQLIcon} name="MySQL" />
         </TechContainer>
+      )}
+    </Container>
+  );
+};
+
+const StoriesSection: React.FC = () => {
+  const ref = useRef(null);
+  const visible = useScreenVisibility(ref);
+
+  return (
+    <Container ref={ref}>
+      {visible && <TitlePostit title="TrainLCD" subtitle="ストーリー" />}
+      {visible && (
+        <TreeContainer>
+          <Tree experienceType="worksStory" items={storiesArray} visible />
+        </TreeContainer>
       )}
     </Container>
   );
@@ -266,6 +289,7 @@ const WorksTrainLCDPage: React.FC = () => {
       </Head>
       <FirstSection />
       <ConceptSection />
+      <StoriesSection />
       <TechnologySection />
       <AccessSection />
     </div>

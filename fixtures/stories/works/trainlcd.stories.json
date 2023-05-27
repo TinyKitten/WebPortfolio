@@ -1,0 +1,50 @@
+[
+  {
+    "id": 0,
+    "startAt": "2019/07",
+    "finishedAt": null,
+    "title": "開発着手開始",
+    "description": "ふと思いつきで開発を開始しました。最初は電車の案内装置の再現というよりかは、「元々近くの駅を返すだけのAPIは実装しているし、再現しなくてもいいけどざっと同じような見た目のナビゲーションアプリがあったら面白いかな」と軽い気持ちで始めました。\n当時のスタックはフロントエンドはAngular\nバックエンドはElixir + Phoenix Frameworkで開発したREST APIでした。",
+    "tags": ["Angular", "Elixir", "Phoenix"]
+  },
+  {
+    "id": 1,
+    "startAt": "2019/11",
+    "finishedAt": null,
+    "title": "React Nativeでフルスクラッチで書き換え、アプリストアに配信開始",
+    "description": "アプリストアに公開したらもっと色んな人に使ってもらえるのではないかと思いAngularで書いていたものをReact Nativeで書き換えてApp Store, Google Playにて公開を開始しました。\n当時のフロントエンドスタックはReact Native + TypeScript + Expoでした。バックエンドは引き続きElixir + Phoenix Frameworkです。",
+    "tags": ["ReactNative", "AppStore", "GooglePlay", "フルスクラッチ"]
+  },
+  {
+    "id": 2,
+    "startAt": "2019/11",
+    "finishedAt": null,
+    "title": "Apple Watch対応⌚",
+    "description": "SwiftUIを使ってApple Watch対応を行いました。ちらっと腕を見るだけで停車中の駅と次の駅がすぐわかるので、満員電車でも安心だと思います😊",
+    "tags": ["SwiftUI", "AppleWatch", "ウェアラブル"]
+  },
+  {
+    "id": 3,
+    "startAt": "2022/09",
+    "finishedAt": null,
+    "title": "Live Activities対応🏃",
+    "description": "こちらもSwiftUIを使ってLive Activities対応を行いました。アプリを開かなくともロック画面を見るだけで自分が今どこにいるかわかります。iPhone 14 Proを使っている方はもっと便利に...！？",
+    "tags": ["SwiftUI", "LiveActivities", "iPhone"]
+  },
+  {
+    "id": 4,
+    "startAt": "2023/05",
+    "finishedAt": null,
+    "title": "Android版のインストール済みユーザーが1,000デバイス突破",
+    "description": "いつの間にかインストール済みデバイスが1000デバイス超えてました🎉\nTrainLCDを使ってくださっている皆様、開発の手伝いを行ってくれている友人各位に感謝の気持ちを伝えたいです。",
+    "tags": ["Android", "GooglePlay"]
+  },
+  {
+    "id": 5,
+    "startAt": "2023/XX",
+    "finishedAt": null,
+    "title": "Wear OS対応予定⌚",
+    "description": "Wear OSに対応予定です⌚Pixel WatchなどWear OSに対応している機種でTrainLCDを使っていただけるようになります😊(Androidスマホとペアリングしている時のみ使えるようになる予定です)",
+    "tags": ["WearOS", "ウェアラブル"]
+  }
+]
