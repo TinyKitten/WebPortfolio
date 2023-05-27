@@ -20,7 +20,7 @@
     "startAt": "2019/11",
     "finishedAt": null,
     "title": "React Nativeにフルスクラッチで書き換え・アプリストアに配信開始😋",
-    "description": "アプリストアに公開したらもっと色んな人に使ってもらえるのではないかと思いAngularで書いていたものをReact Nativeで書き換えてApp Store, Google Playにて公開を開始しました。\n当時のフロントエンドスタックはReact Native + TypeScript + Expoで、フロントエンドは今も同じスタックで開発しています。\nバックエンドは引き続きElixir + Phoenix Frameworkです。",
+    "description": "アプリストアに公開したらもっと色んな人に使ってもらえるのではないかと思いAngularで書いていたものをReact Nativeに書き換えてApp Store, Google Playにて公開を開始しました。\n当時のフロントエンドスタックはReact Native + TypeScript + Expoで、フロントエンドは今も同じスタックで開発しています。\nバックエンドは引き続きElixir + Phoenix Frameworkです。",
     "tags": ["ReactNative", "AppStore", "GooglePlay", "フルスクラッチ"]
   },
   {
@@ -28,7 +28,7 @@
     "startAt": "2019/11",
     "finishedAt": null,
     "title": "Apple Watch対応⌚",
-    "description": "SwiftUIを使ってApple Watch対応を行いました。ちらっと腕を見るだけで停車中の駅と次の駅がすぐわかるので、満員電車でも安心だと思います😊",
+    "description": "SwiftUIを使ってApple Watch対応を行いました。ちらっと手首を見るだけで停車中の駅と次の駅がすぐわかるので、満員電車でも安心だと思います😊",
     "tags": ["SwiftUI", "AppleWatch", "ウェアラブル"]
   },
   {
