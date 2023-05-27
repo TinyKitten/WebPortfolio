@@ -20,7 +20,7 @@
     "startAt": "2019/11",
     "finishedAt": null,
     "title": "React Nativeでフルスクラッチで書き換え、アプリストアに配信開始😋",
-    "description": "アプリストアに公開したらもっと色んな人に使ってもらえるのではないかと思いAngularで書いていたものをReact Nativeで書き換えてApp Store, Google Playにて公開を開始しました。\n当時のフロントエンドスタックはReact Native + TypeScript + Expoでした。バックエンドは引き続きElixir + Phoenix Frameworkです。",
+    "description": "アプリストアに公開したらもっと色んな人に使ってもらえるのではないかと思いAngularで書いていたものをReact Nativeで書き換えてApp Store, Google Playにて公開を開始しました。\n当時のフロントエンドスタックはReact Native + TypeScript + Expoで、フロントエンドは今も同じスタックで開発しています。\nバックエンドは引き続きElixir + Phoenix Frameworkです。",
     "tags": ["ReactNative", "AppStore", "GooglePlay", "フルスクラッチ"]
   },
   {
