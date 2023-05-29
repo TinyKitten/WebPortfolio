@@ -97,7 +97,7 @@ const DescriptionLink = styled.a`
 
 const LGTMContainer = styled.div`
   width: 120px;
-  margin-top: 16px;
+  margin-top: 32px;
   cursor: pointer;
   text-align: center;
   user-select: none;
