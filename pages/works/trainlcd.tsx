@@ -142,15 +142,13 @@ const TreeContainer = styled.article`
 `;
 
 const FirstSection: React.FC = () => (
-  <Container fullHeight>
-    <ContentContainer>
-      <StyledPostit>Dev/MobileApp</StyledPostit>
-      <LogoContainer>
-        <StyledImage fill sizes="320px" src={TrainLCDImage} alt="TrainLCD" />
-      </LogoContainer>
-      <Name>TrainLCD</Name>
-      <Bio>日本全国の鉄道路線で使える新感覚のナビゲーションアプリ</Bio>
-    </ContentContainer>
+  <Container>
+    <StyledPostit>Dev/MobileApp</StyledPostit>
+    <LogoContainer>
+      <StyledImage fill sizes="320px" src={TrainLCDImage} alt="TrainLCD" />
+    </LogoContainer>
+    <Name>TrainLCD</Name>
+    <Bio>日本全国の鉄道路線で使える新感覚のナビゲーションアプリ</Bio>
   </Container>
 );
 
