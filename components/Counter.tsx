@@ -18,7 +18,7 @@ const CounterSegment = styled.div<{ rightSegment: boolean }>`
   background-color: ${({ rightSegment, theme }) =>
     rightSegment ? theme.bg : theme.primary};
   padding: 8px 0;
-  min-width: ${({ rightSegment }) => (rightSegment ? 50 : 100)}px;
+  width: ${({ rightSegment }) => (rightSegment ? 50 : 100)}px;
   cursor: ${({ rightSegment }) => (rightSegment ? 'default' : 'pointer')};
   user-select: ${({ rightSegment }) => (rightSegment ? 'auto' : 'none')};
 `;
