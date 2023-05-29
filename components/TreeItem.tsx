@@ -61,6 +61,10 @@ const Container = styled.div<{ delay: number }>`
     top: 16px;
     left: -32px;
   }
+
+  @media (max-width: 800px) {
+    max-width: 75vw;
+  }
 `;
 
 const PeriodText = styled.time`
