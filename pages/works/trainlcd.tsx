@@ -20,7 +20,7 @@ import {
 import storiesArray from '../../fixtures/stories/works/trainlcd.stories.json';
 import useScreenVisibility from '../../hooks/useScreenVisibility';
 
-const Container = styled.section<{ fullHeight?: boolean; padTop?: boolean }>`
+const Container = styled.section<{ padTop?: boolean }>`
   position: relative;
   min-height: 100vh;
   overflow: hidden;
@@ -36,7 +36,6 @@ const Container = styled.section<{ fullHeight?: boolean; padTop?: boolean }>`
     min-height: 100vh;
     margin-top: -48px;
   }
-  min-height: ${({ fullHeight }) => (fullHeight ? '100vh' : undefined)};
   padding-top: ${({ padTop }) => (padTop ? '144px' : '0px')};
 `;
 
