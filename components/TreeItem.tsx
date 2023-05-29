@@ -33,8 +33,7 @@ export const containerSlideAnimation = keyframes({
 
 const Root = styled.div`
   overflow: hidden;
-  margin-left: -4px;
-  padding-right: 4px;
+  margin-left: 6px;
 `;
 
 const Container = styled.div<{ delay: number }>`
@@ -55,11 +54,11 @@ const Container = styled.div<{ delay: number }>`
   &:before {
     content: '';
     background-color: ${({ theme }) => theme.primary};
-    width: 32px;
+    width: 28px;
     height: 4px;
     position: absolute;
     top: 16px;
-    left: -32px;
+    left: -28px;
   }
 
   @media (max-width: 800px) {

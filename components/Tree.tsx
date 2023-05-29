@@ -20,7 +20,8 @@ const TreeBar = styled(animated.div)`
   position: absolute;
   width: 4px;
   background-color: ${({ theme }) => theme.primary};
-  left: -6px;
+  margin-left: 6px;
+  z-index: 2;
 `;
 
 const StartItemContainer = styled.div`
@@ -36,9 +37,9 @@ const StartItemContainer = styled.div`
   margin-left: -8px;
   margin-bottom: 32px;
   margin-top: -32px;
-  margin-left: -32px;
+  margin-left: 0px;
   font-size: 1.25rem;
-  z-index: 1;
+  z-index: 3;
 `;
 
 const PresentItemContainer = styled.div`
@@ -53,9 +54,9 @@ const PresentItemContainer = styled.div`
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.25);
   margin-left: -8px;
   margin-top: 32px;
-  margin-left: -32px;
+  margin-left: 0;
   font-size: 1.25rem;
-  z-index: 1;
+  z-index: 3;
 `;
 
 const Tree = ({ experienceType, items, visible, worksName }: Props) => {
@@ -66,7 +67,7 @@ const Tree = ({ experienceType, items, visible, worksName }: Props) => {
 
   useEffect(() => {
     if (visible) {
-      animate.start({ height: `100%` });
+      animate.start({ height: 'calc(100% - 12px)' }); // - 12px: 角丸の裏にバーが表示されないようにしている
     } else {
       animate.stop();
       animate.set({ height: '0%' });
