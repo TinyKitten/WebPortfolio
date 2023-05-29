@@ -3,6 +3,7 @@ import reactStringReplace from 'react-string-replace';
 import styled, { keyframes } from 'styled-components';
 import useLGTM from '../hooks/useLGTM';
 import { ResumeItemObject, WorksStoryItemObject } from '../models/tree';
+import Counter from './Counter';
 import Tag from './Tag';
 
 type Props = {
@@ -167,8 +168,8 @@ const TreeItem: React.FC<Props> = ({
   }, [incrementLGTMCount]);
 
   const lgtmText = useMemo(
-    () => (lgtmClicked ? `わーい！ ${lgtmCount}` : `えらいね ${lgtmCount}`),
-    [lgtmClicked, lgtmCount]
+    () => (lgtmClicked ? `わーい！` : `えらいね `),
+    [lgtmClicked]
   );
 
   const experienceInfo = useMemo((): {
@@ -238,7 +239,7 @@ const TreeItem: React.FC<Props> = ({
         />
         {showLGTM && (
           <LGTMContainer>
-            <Tag text={lgtmText} showHash={false} onClick={handleLGTM} invert />
+            <Counter text={lgtmText} onClick={handleLGTM} count={lgtmCount} />
           </LGTMContainer>
         )}
       </Container>

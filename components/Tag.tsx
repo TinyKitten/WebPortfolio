@@ -3,9 +3,7 @@ import styled from 'styled-components';
 type Props = {
   text: string;
   onClick?: () => void;
-  showHash?: boolean;
   invert?: boolean;
-  withShadow?: boolean;
 };
 
 const Container = styled.div<{ invert: boolean }>`
@@ -15,24 +13,17 @@ const Container = styled.div<{ invert: boolean }>`
     ${({ theme, invert }) => (invert ? theme.bg : theme.primary)}BF;
   padding: 8px 16px;
   border-radius: 32px;
+  display: flex;
 `;
 
 const TagText = styled.span<{ invert: boolean }>`
   color: ${({ theme, invert }) => (invert ? 'white' : theme.headingText)};
 `;
 
-const Tag: React.FC<Props> = ({
-  text,
-  onClick,
-  showHash = true,
-  invert = false,
-}: Props) => {
+const Tag: React.FC<Props> = ({ text, onClick, invert = false }: Props) => {
   return (
     <Container onClick={onClick} invert={invert}>
-      <TagText invert={invert}>
-        {showHash && '#'}
-        {text}
-      </TagText>
+      <TagText invert={invert}>#{text}</TagText>
     </Container>
   );
 };
