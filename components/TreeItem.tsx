@@ -48,6 +48,7 @@ const Container = styled.div<{ delay: number }>`
   border-top: ${({ theme }) => ` 4px solid ${theme.primary}`};
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.25);
   padding: 24px;
+  padding-right: 20px;
   width: 480px;
   max-width: 60vw;
   transform: translateX(-480px);
@@ -75,6 +76,7 @@ const TitleText = styled.h3`
   font-size: 1.25rem;
   color: ${({ theme }) => theme.text};
   line-height: 1.25;
+  white-space: pre-wrap;
 `;
 
 const DescriptionText = styled.p`
@@ -82,6 +84,7 @@ const DescriptionText = styled.p`
   color: ${({ theme }) => theme.headingText};
   line-height: 1.75;
   white-space: pre-wrap;
+  overflow-wrap: break-word;
 `;
 
 const TagsContainer = styled.div`

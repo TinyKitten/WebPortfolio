@@ -3,7 +3,7 @@
     "id": 0,
     "startAt": "2017/02",
     "finishedAt": null,
-    "title": "TrainLCDの原型となったアプリを開発した時のセッション🎤",
+    "title": "TrainLCDの原型となったアプリを開発した時の\nセッション🎤",
     "description": "都内で開催された「プログラミング生放送」というイベントでTrainLCDの原型となったアプリを開発したというセッションをさせていただきました🙏\n当時のアプリのコンセプトはまた違ったものですが、技術的にはほぼ同じものでした。\nhttps://www.youtube.com/watch?v=zJ92TUjhdEw&t=15820s",
     "tags": ["プロ生", "Swift", "登壇"]
   },
@@ -19,7 +19,7 @@
     "id": 2,
     "startAt": "2019/11",
     "finishedAt": null,
-    "title": "React Nativeにフルスクラッチで書き換え・アプリストアに配信開始😋",
+    "title": "React Nativeにフルスクラッチで書き換え\nアプリストアに配信開始😋",
     "description": "アプリストアに公開したらもっと色んな人に使ってもらえるのではないかと思いAngularで書いていたものをReact Nativeに書き換えてApp Store, Google Playにて公開を開始しました。\n当時のフロントエンドスタックはReact Native + TypeScript + Expoで、フロントエンドは今も同じスタックで開発しています。\nバックエンドは引き続きElixir + Phoenix Frameworkです。",
     "tags": ["ReactNative", "AppStore", "GooglePlay", "フルスクラッチ"]
   },
@@ -51,7 +51,7 @@
     "id": 6,
     "startAt": "2023/05",
     "finishedAt": null,
-    "title": "Android版のインストール済みデバイスが1,000デバイス突破🤖",
+    "title": "Android版のインストール済みデバイス\n1,000デバイス突破🤖",
     "description": "いつの間にかインストール済みデバイスが1,000デバイス超えていました🎉\nTrainLCDを使ってくださっている皆様、開発の手伝いを行ってくれている友人各位に感謝の気持ちを伝えたいです。",
     "tags": ["Android", "GooglePlay"]
   },
@@ -60,7 +60,7 @@
     "startAt": "2023/XX",
     "finishedAt": null,
     "title": "Wear OS対応予定⌚",
-    "description": "Wear OSに対応予定です⌚Pixel WatchなどWear OSに対応している機種でTrainLCDを使っていただけるようになります😊(Androidスマホとペアリングしている時のみ使えるようになる予定です)",
+    "description": "Wear OSに対応予定です⌚Pixel WatchなどWear OSに対応している機種でTrainLCDを使っていただけるようになります😊\n(Androidスマホとペアリングしている時のみ使えるようになる予定です)",
     "tags": ["WearOS", "ウェアラブル"]
   }
 ]
