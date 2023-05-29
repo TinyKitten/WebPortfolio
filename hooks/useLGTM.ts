@@ -23,7 +23,7 @@ const useLGTM = (
   const firebase = useFirebaseApp();
 
   const lgtmDBKey = useMemo(
-    () => worksKey && `lgtm/${worksKey}_${workIndex}`,
+    () => worksKey && `lgtm/${worksKey}/${workIndex}`,
     [workIndex, worksKey]
   );
 
