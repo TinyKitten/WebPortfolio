@@ -221,7 +221,12 @@ const StoriesSection: React.FC = () => {
       {visible && <TitlePostit title="TrainLCD" subtitle="ストーリー" />}
       {visible && (
         <TreeContainer>
-          <Tree experienceType="worksStory" items={storiesArray} visible />
+          <Tree
+            experienceType="worksStory"
+            items={storiesArray}
+            visible
+            worksName="trainlcd"
+          />
         </TreeContainer>
       )}
     </Container>

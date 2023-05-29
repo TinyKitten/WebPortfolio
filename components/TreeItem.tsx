@@ -1,6 +1,7 @@
-import { useMemo } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 import reactStringReplace from 'react-string-replace';
 import styled, { keyframes } from 'styled-components';
+import useLGTM from '../hooks/useLGTM';
 import { ResumeItemObject, WorksStoryItemObject } from '../models/tree';
 import Tag from './Tag';
 
@@ -9,6 +10,8 @@ type Props = {
   item: ResumeItemObject | WorksStoryItemObject;
   index: number;
   visible: boolean;
+  showLGTM: boolean;
+  worksName?: string;
 };
 
 type TreeResumeItemProps = {
@@ -92,6 +95,14 @@ const DescriptionLink = styled.a`
   word-wrap: break-word;
 `;
 
+const LGTMContainer = styled.div`
+  width: 120px;
+  margin-top: 16px;
+  cursor: pointer;
+  text-align: center;
+  user-select: none;
+`;
+
 const TreeItemInner: React.FC<TreeResumeItemProps> = ({
   period,
   title,
@@ -137,7 +148,29 @@ const TreeItem: React.FC<Props> = ({
   item,
   index,
   visible,
+  showLGTM = false,
+  worksName = '',
 }: Props) => {
+  const [lgtmClicked, setLGTMClicked] = useState(false);
+
+  const { count: lgtmCount, incrementCount: incrementLGTMCount } = useLGTM(
+    worksName,
+    index
+  );
+
+  const handleLGTM = useCallback(() => {
+    incrementLGTMCount();
+    setLGTMClicked(true);
+    setTimeout(() => {
+      setLGTMClicked(false);
+    }, 1500);
+  }, [incrementLGTMCount]);
+
+  const lgtmText = useMemo(
+    () => (lgtmClicked ? `わーい！ ${lgtmCount}` : `えらいね ${lgtmCount}`),
+    [lgtmClicked, lgtmCount]
+  );
+
   const experienceInfo = useMemo((): {
     period: string;
     title: string;
@@ -203,6 +236,11 @@ const TreeItem: React.FC<Props> = ({
           description={description}
           tags={tags}
         />
+        {showLGTM && (
+          <LGTMContainer>
+            <Tag text={lgtmText} showHash={false} onClick={handleLGTM} />
+          </LGTMContainer>
+        )}
       </Container>
     </Root>
   );

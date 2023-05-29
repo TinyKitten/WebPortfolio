@@ -4,12 +4,13 @@ import {
   signInAnonymously,
   User,
 } from 'firebase/auth';
-import { useCallback, useEffect, useState } from 'react';
+import { useAtom } from 'jotai';
+import { useCallback, useEffect } from 'react';
+import { anonymousUserAtom } from '../state/anonUser';
 import { useFirebaseApp } from './useFirebaseApp';
 
 const useAnonymousAuth = (): User | null => {
-  const [user, setUser] = useState<User | null>(null);
-
+  const [user, setUser] = useAtom(anonymousUserAtom);
   const firebase = useFirebaseApp();
 
   const updateUserState = useCallback(async () => {
@@ -22,13 +23,13 @@ const useAnonymousAuth = (): User | null => {
         setUser(credential.user);
       }
     });
-  }, [firebase]);
+  }, [firebase, setUser]);
 
   useEffect(() => {
     updateUserState();
   }, [updateUserState]);
 
-  return user;
+  return user || null;
 };
 
 export default useAnonymousAuth;

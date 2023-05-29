@@ -8,6 +8,8 @@ type Props = {
   experienceType: 'resume' | 'worksStory';
   items: unknown[];
   visible: boolean;
+  showLGTM?: boolean;
+  worksName?: string;
 };
 
 const TreeRoot = styled.div<{ visible: boolean }>`
@@ -56,7 +58,7 @@ const PresentItemContainer = styled.div`
   z-index: 1;
 `;
 
-const Tree = ({ experienceType, items, visible }: Props) => {
+const Tree = ({ experienceType, items, visible, worksName }: Props) => {
   const [animateStyles, animate] = useSpring(() => ({
     height: '0%',
     config: { duration: items.length * 200 },
@@ -83,6 +85,7 @@ const Tree = ({ experienceType, items, visible }: Props) => {
               experienceType={experienceType}
               index={index}
               visible={visible}
+              showLGTM={false}
             />
           );
         }
@@ -95,6 +98,8 @@ const Tree = ({ experienceType, items, visible }: Props) => {
               experienceType={experienceType}
               index={index}
               visible={visible}
+              showLGTM
+              worksName={worksName}
             />
           );
         }
@@ -102,7 +107,7 @@ const Tree = ({ experienceType, items, visible }: Props) => {
           return <></>;
       }
     },
-    [experienceType, visible]
+    [experienceType, visible, worksName]
   );
 
   return (

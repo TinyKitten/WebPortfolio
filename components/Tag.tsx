@@ -1,9 +1,13 @@
 import styled from 'styled-components';
 
-type Props = { text: string };
+type Props = {
+  text: string;
+  onClick?: () => void;
+  showHash?: boolean;
+};
 
 const Container = styled.div`
-  background-color: ${({ theme }) => theme.boxBg};
+  background-color: ${({ theme }) => theme.bg};
   border: 1.5px solid ${({ theme }) => theme.primary}BF;
   padding: 8px 16px;
   border-radius: 32px;
@@ -14,10 +18,13 @@ const TagText = styled.span`
   color: ${({ theme }) => theme.headingText};
 `;
 
-const Tag: React.FC<Props> = ({ text }: Props) => {
+const Tag: React.FC<Props> = ({ text, onClick, showHash = true }: Props) => {
   return (
-    <Container>
-      <TagText>#{text}</TagText>
+    <Container onClick={onClick}>
+      <TagText>
+        {showHash && '#'}
+        {text}
+      </TagText>
     </Container>
   );
 };
