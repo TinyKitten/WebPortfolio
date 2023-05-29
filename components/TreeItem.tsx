@@ -97,7 +97,7 @@ const DescriptionLink = styled.a`
 
 const LGTMContainer = styled.div`
   width: 120px;
-  margin-top: 32px;
+  margin-top: 24px;
   cursor: pointer;
   text-align: center;
   user-select: none;
@@ -238,7 +238,7 @@ const TreeItem: React.FC<Props> = ({
         />
         {showLGTM && (
           <LGTMContainer>
-            <Tag text={lgtmText} showHash={false} onClick={handleLGTM} />
+            <Tag text={lgtmText} showHash={false} onClick={handleLGTM} invert />
           </LGTMContainer>
         )}
       </Container>
