@@ -34,6 +34,7 @@ export const containerSlideAnimation = keyframes({
 const Root = styled.div`
   overflow: hidden;
   margin-left: 6px;
+  padding-right: 4px;
 `;
 
 const Container = styled.div<{ delay: number }>`
