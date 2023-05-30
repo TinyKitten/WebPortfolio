@@ -3,7 +3,7 @@
     "id": 0,
     "startAt": "2017/02",
     "finishedAt": null,
-    "title": "TrainLCDの原型となったアプリを開発した時の\nセッション🎤",
+    "title": "TrainLCDの原型となった\nアプリを開発した時のセッション🎤",
     "description": "都内で開催された「プログラミング生放送」というイベントでTrainLCDの原型となったアプリを開発したというセッションをさせていただきました🙏\n当時のアプリのコンセプトはまた違ったものですが、技術的にはほぼ同じものでした。\nhttps://www.youtube.com/watch?v=zJ92TUjhdEw&t=15820s",
     "tags": ["プロ生", "Swift", "登壇"]
   },
