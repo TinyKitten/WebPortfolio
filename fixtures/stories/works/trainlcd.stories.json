@@ -60,7 +60,7 @@
     "startAt": "2023/XX",
     "finishedAt": null,
     "title": "Wear OS対応予定⌚",
-    "description": "Wear OSに対応予定です⌚Pixel WatchなどWear OSに対応している機種でTrainLCDを使っていただけるようになります😊\n(Androidスマホとペアリングしている時のみ使えるようになる予定です)",
+    "description": "Wear OSに対応予定です⌚Pixel WatchなどWear OSに対応している機種でTrainLCDを使っていただけるようになります😊",
     "tags": ["WearOS", "ウェアラブル"]
   }
 ]
