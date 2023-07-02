@@ -25,7 +25,7 @@
   },
   {
     "id": 3,
-    "startAt": "2019/11",
+    "startAt": "2020/12",
     "finishedAt": null,
     "title": "Apple Watch対応⌚",
     "description": "SwiftUIを使ってApple Watch対応を行いました。ちらっと手首を見るだけで停車中の駅と次の駅がすぐわかるので、満員電車でも安心だと思います😊",
