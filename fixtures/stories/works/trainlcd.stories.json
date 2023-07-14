@@ -56,11 +56,11 @@
     "tags": ["Android", "GooglePlay"]
   },
   {
-    "id": 7,
-    "startAt": "2023/06",
+    "id": 8,
+    "startAt": "2023/07",
     "finishedAt": null,
-    "title": "Wear OS対応⌚",
-    "description": "Wear OSに対応しました⌚Pixel WatchなどWear OSに対応している機種でTrainLCDを使っていただけるようになります😊",
-    "tags": ["WearOS", "ウェアラブル"]
+    "title": "Web APIの設計を一新します😲",
+    "description": "2020年12月よりNestJSを使ったGraphQL APIでTrainLCDサービスを提供していましたが、今回は思い切ってRust(プログラミング言語)でgRPC(-Web) APIを試験的に開発しています👨‍💻\nこの再設計により、駅検索・方面選択のパフォーマンスが飛躍的に向上し、APIと端末の間の通信容量も減る見込みです🚀\nナビゲーションアプリのためにギガを消費する時代は終わりを告げます...!!\ngRPCについては地元の勉強会で発表したスライドを見てみてください👀\nhttps://speakerdeck.com/tinykitten/grpcdeshi-meru-haipahuomansu-taipusehuuebukai-fa",
+    "tags": ["Rust", "gRPC"]
   }
 ]
