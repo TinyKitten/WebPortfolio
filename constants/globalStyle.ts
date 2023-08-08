@@ -104,7 +104,7 @@ const GlobalStyles = createGlobalStyle`
     }
     body {
     line-height: 1;
-    font-family: 'Raleway', sans-serif;
+    font-family: 'LINE Seed JP', sans-serif;
     }
     ol,
     ul {

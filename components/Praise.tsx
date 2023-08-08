@@ -46,8 +46,6 @@ const Balloon = styled.div`
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
   padding: 14px 0;
   font-size: 1.2rem;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   border-radius: 8px;
   color: ${({ theme }) => theme.text};
   margin-top: 14px;
