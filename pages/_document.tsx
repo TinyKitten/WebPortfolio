@@ -53,7 +53,7 @@ export default function Document(): React.ReactElement {
           crossOrigin=""
         />
         <link
-          href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap"
+          href="https://nectarition.github.io/LINE-Seed-JP/css/line-seed-jp.css"
           rel="stylesheet"
         />
       </Head>
