@@ -26,6 +26,8 @@ const CounterSegment = styled.div<{ rightSegment: boolean }>`
 const Text = styled.span<{ rightSegment: boolean }>`
   color: ${({ theme, rightSegment }) =>
     rightSegment ? theme.headingText : 'white'};
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 `;
 
 const Counter: React.FC<Props> = ({ text, onClick, count }: Props) => {
