@@ -26,8 +26,10 @@ const useAnonymousAuth = (): User | null => {
   }, [firebase, setUser]);
 
   useEffect(() => {
-    updateUserState();
-  }, [updateUserState]);
+    if (!user) {
+      updateUserState();
+    }
+  }, [updateUserState, user]);
 
   return user || null;
 };
