@@ -15,7 +15,7 @@ const useAnonymousAuth = (): User | null => {
 
   const updateUserState = useCallback(async () => {
     const auth = initializeAuth(firebase, {});
-    onAuthStateChanged(auth, async (authUser) => {
+    const unsubscribe = onAuthStateChanged(auth, async (authUser) => {
       if (authUser) {
         setUser(authUser);
       } else {
@@ -23,6 +23,7 @@ const useAnonymousAuth = (): User | null => {
         setUser(credential.user);
       }
     });
+    return unsubscribe;
   }, [firebase, setUser]);
 
   useEffect(() => {
