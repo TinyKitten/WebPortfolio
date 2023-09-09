@@ -52,10 +52,6 @@ export default function Document(): React.ReactElement {
           href="https://fonts.gstatic.com"
           crossOrigin=""
         />
-        <link
-          href="https://nectarition.github.io/LINE-Seed-JP/css/line-seed-jp.css"
-          rel="stylesheet"
-        />
       </Head>
       <body>
         <Main />

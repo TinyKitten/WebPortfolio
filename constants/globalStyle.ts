@@ -1,6 +1,18 @@
 import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyles = createGlobalStyle`
+    @font-face {
+        font-family: 'LINE Seed JP';
+        src: url('/fonts/WOFF2/LINESeedJP_OTF_Rg.woff2') format('woff2'), url('/fonts/WOFF/LINESeedJP_OTF_Rg.woff') format('woff'), url('/fonts/EOT/LINESeedJP_TTF_Rg.eot') format('embedded-opentype');
+        font-weight: 400;
+    }
+    
+    @font-face {
+        font-family: 'LINE Seed JP';
+        src: url('/fonts/WOFF2/LINESeedJP_OTF_Bd.woff2') format('woff2'), url('/fonts/WOFF/LINESeedJP_OTF_Bd.woff') format('woff'), url('/fonts/EOT/LINESeedJP_TTF_Bd.eot') format('embedded-opentype');
+        font-weight: 700;
+    }
+
     html,
     body,
     div,
