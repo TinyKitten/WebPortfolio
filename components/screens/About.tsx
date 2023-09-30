@@ -83,7 +83,12 @@ const AboutScreen: ForwardRefRenderFunction<HTMLDivElement> = (
 ) => {
   const ref = useRef(null);
   const visible = useScreenVisibility(ref);
-  const greetingMessage = useMemo(() => getRandomGreeting(), []);
+  const greetingMessage = useMemo(() => {
+    if (visible) {
+      return getRandomGreeting();
+    }
+    return '';
+  }, [visible]);
   return (
     <div ref={forwardefRef}>
       <Container ref={ref}>
