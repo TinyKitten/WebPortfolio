@@ -10,9 +10,10 @@ import StyledImage from '../../components/StyledImage';
 import TitlePostit from '../../components/TitlePostit';
 import Tree from '../../components/Tree';
 import MySQLIcon from '../../components/marks/MySQLIcon';
-import NestJSIcon from '../../components/marks/NestJSIcon';
 import ReactIcon from '../../components/marks/ReactIcon';
+import RustIcon from '../../components/marks/RustIcon';
 import TSIcon from '../../components/marks/TSIcon';
+import TonicIcon from '../../components/marks/TonicIcon';
 import {
   imageAnimation,
   singleHeadingPostitAnimation,
@@ -201,7 +202,8 @@ const TechnologySection: React.FC = () => {
         <TechContainer>
           <SkillsCircle icon={TSIcon} name="TypeScript" />
           <SkillsCircle icon={ReactIcon} name="React Native" />
-          <SkillsCircle icon={NestJSIcon} name="NestJS" />
+          <SkillsCircle icon={RustIcon} name="Rust" />
+          <SkillsCircle icon={TonicIcon} name="Tonic" />
           <SkillsCircle icon={MySQLIcon} name="MySQL" />
         </TechContainer>
       )}
