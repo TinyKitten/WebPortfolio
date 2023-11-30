@@ -72,7 +72,7 @@
   {
     "id": 10,
     "startAtFullYear": 2023,
-    "endAtFullYear": null,
+    "endAtFullYear": 2023,
     "companyName": "株式会社インパクトブルー",
     "description": "完全リモートでReact.jsを用いてコンテンツ管理システムのWebアプリケーションの開発を行っています。"
   }
