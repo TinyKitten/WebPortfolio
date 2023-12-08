@@ -74,6 +74,13 @@
     "startAtFullYear": 2023,
     "endAtFullYear": 2023,
     "companyName": "株式会社インパクトブルー",
-    "description": "完全リモートでReact.jsを用いてコンテンツ管理システムのWebアプリケーションの開発を行っています。"
+    "description": "完全リモートでReact.jsを用いてコンテンツ管理システムのWebアプリケーションの開発を行っていました。"
+  },
+  {
+    "id": 11,
+    "startAtFullYear": 2023,
+    "endAtFullYear": null,
+    "companyName": "JAPAN AI株式会社",
+    "description": "一部リモートでReact.jsでのWebアプリケーションの開発を行っています。"
   }
 ]
