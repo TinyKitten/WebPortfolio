@@ -19,9 +19,7 @@ function MyApp({ Component, pageProps }: AppProps): React.ReactElement {
   }
 
   return (
-    <ThemeProvider
-      theme={theme === 'dark' ? darkTheme : lightTheme}
-    >
+    <ThemeProvider theme={theme === 'dark' ? darkTheme : lightTheme}>
       <GlobalStyles />
       <Head>
         <title>TinyKitten</title>
