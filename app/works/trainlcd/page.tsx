@@ -2,24 +2,24 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { useEffect, useRef } from 'react';
 import styled from 'styled-components';
-import TrainLCDImage from '../../assets/works/trainlcd.png';
-import Button from '../../components/Button';
-import Postit from '../../components/Postit';
-import SkillsCircle from '../../components/SkillsCircle';
-import StyledImage from '../../components/StyledImage';
-import TitlePostit from '../../components/TitlePostit';
-import Tree from '../../components/Tree';
-import MySQLIcon from '../../components/marks/MySQLIcon';
-import ReactIcon from '../../components/marks/ReactIcon';
-import RustIcon from '../../components/marks/RustIcon';
-import TSIcon from '../../components/marks/TSIcon';
-import TonicIcon from '../../components/marks/TonicIcon';
+import Button from '../../../components/Button';
+import Postit from '../../../components/Postit';
+import SkillsCircle from '../../../components/SkillsCircle';
+import StyledImage from '../../../components/StyledImage';
+import TitlePostit from '../../../components/TitlePostit';
+import Tree from '../../../components/Tree';
+import MySQLIcon from '../../../components/marks/MySQLIcon';
+import ReactIcon from '../../../components/marks/ReactIcon';
+import RustIcon from '../../../components/marks/RustIcon';
+import TSIcon from '../../../components/marks/TSIcon';
+import TonicIcon from '../../../components/marks/TonicIcon';
 import {
   imageAnimation,
   singleHeadingPostitAnimation,
-} from '../../constants/keyframets';
-import storiesArray from '../../fixtures/stories/works/trainlcd.stories.json';
-import useScreenVisibility from '../../hooks/useScreenVisibility';
+} from '../../../constants/keyframets';
+import storiesArray from '../../../fixtures/stories/works/trainlcd.stories.json';
+import useScreenVisibility from '../../../hooks/useScreenVisibility';
+import TrainLCDImage from '../../assets/works/trainlcd.png';
 
 const Container = styled.section<{ padTop?: boolean }>`
   position: relative;
@@ -265,7 +265,7 @@ const AccessSection: React.FC = () => {
   );
 };
 
-const WorksTrainLCDPage: React.FC = () => {
+const WorksTrainLCDPage = () => {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -301,15 +301,5 @@ const WorksTrainLCDPage: React.FC = () => {
     </div>
   );
 };
-
-export function getStaticProps(): {
-  props: unknown;
-  revalidate: number;
-} {
-  return {
-    props: {},
-    revalidate: 60,
-  };
-}
 
 export default WorksTrainLCDPage;

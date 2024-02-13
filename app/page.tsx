@@ -31,7 +31,7 @@ const SectionContainer = styled.div`
   }
 `;
 
-export default function Home(): React.ReactElement {
+export default function Page(): React.ReactElement {
   const aboutScreenRef = useRef<HTMLDivElement | null>(null);
 
   return (
@@ -56,13 +56,4 @@ export default function Home(): React.ReactElement {
       </SectionContainer>
     </>
   );
-}
-export function getStaticProps(): {
-  props: unknown;
-  revalidate: number;
-} {
-  return {
-    props: {},
-    revalidate: 60,
-  };
 }
