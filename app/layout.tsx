@@ -1,7 +1,13 @@
 import { Metadata } from 'next';
+import { Raleway } from 'next/font/google';
 import React from 'react';
 import './global.css';
 import { Provider } from './provider';
+
+const raleway = Raleway({
+  subsets: ['latin'],
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
   title: 'TinyKitten',
@@ -15,7 +21,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="ja">
+    <html lang="ja" className={raleway.className}>
       <body>
         <Provider>{children}</Provider>
       </body>
