@@ -101,7 +101,7 @@ const WelcomeScreen: React.FC<Props> = ({ aboutScreenRef }: Props) => {
   const handleArrowClick = useCallback(
     () =>
       window.scroll({
-        top: aboutScreenRef.current?.getBoundingClientRect().top - 48,
+        top: aboutScreenRef.current?.getBoundingClientRect().top ?? 0 - 48,
         behavior: 'smooth',
       }),
     [aboutScreenRef]

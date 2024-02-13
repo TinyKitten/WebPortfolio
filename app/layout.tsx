@@ -6,6 +6,7 @@ import { Provider } from './provider';
 export const metadata: Metadata = {
   title: 'TinyKitten',
   description: 'フロントエンドエンジニア TinyKittenのポートフォリオです。',
+  metadataBase: new URL(process.env.NEXT_PUBLIC_URL ?? ''),
 };
 
 export default function RootLayout({

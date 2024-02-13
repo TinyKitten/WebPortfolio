@@ -1,3 +1,4 @@
+'use client';
 import { ThemeProvider } from 'styled-components';
 import Header from '../components/Header';
 import { darkTheme, lightTheme } from '../constants/theme';
