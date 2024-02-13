@@ -177,12 +177,12 @@ const TreeItem: React.FC<Props> = ({
     [lgtmClicked]
   );
 
-  const experienceInfo = useMemo((): {
+  const experienceInfo = useMemo<{
     period: string;
     title: string;
     description: string;
     tags: string[];
-  } => {
+  } | null>(() => {
     switch (experienceType) {
       case 'resume': {
         const resume = item as ResumeItemObject;
@@ -209,25 +209,34 @@ const TreeItem: React.FC<Props> = ({
           period: `${resume.startAtFullYear}-${resume.endAtFullYear}`,
         };
       }
-      case 'worksStory': {
-        const story = item as WorksStoryItemObject;
-        const baseExperienceObject = {
-          title: story.title,
-          description: story.description,
-          tags: story.tags,
-        };
-
-        if (story.startAt === story.finishedAt || !story.finishedAt) {
-          return {
-            ...baseExperienceObject,
-            period: `${story.startAt}`,
+      case 'worksStory':
+        {
+          const story = item as WorksStoryItemObject;
+          const baseExperienceObject = {
+            title: story.title,
+            description: story.description,
+            tags: story.tags,
           };
+
+          if (story.startAt === story.finishedAt || !story.finishedAt) {
+            return {
+              ...baseExperienceObject,
+              period: `${story.startAt}`,
+            };
+          }
+          return null;
         }
-      }
+        break;
+      default:
+        return null;
     }
   }, [experienceType, item]);
 
   if (!visible) {
+    return null;
+  }
+
+  if (!experienceInfo) {
     return null;
   }
 

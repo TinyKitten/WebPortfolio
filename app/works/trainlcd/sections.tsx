@@ -1,25 +1,25 @@
-import Head from 'next/head';
+'use client';
 import Link from 'next/link';
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
 import styled from 'styled-components';
-import TrainLCDImage from '../../assets/works/trainlcd.png';
-import Button from '../../components/Button';
-import Postit from '../../components/Postit';
-import SkillsCircle from '../../components/SkillsCircle';
-import StyledImage from '../../components/StyledImage';
-import TitlePostit from '../../components/TitlePostit';
-import Tree from '../../components/Tree';
-import MySQLIcon from '../../components/marks/MySQLIcon';
-import ReactIcon from '../../components/marks/ReactIcon';
-import RustIcon from '../../components/marks/RustIcon';
-import TSIcon from '../../components/marks/TSIcon';
-import TonicIcon from '../../components/marks/TonicIcon';
+import TrainLCDImage from '../../../assets/works/trainlcd.png';
+import Button from '../../../components/Button';
+import Postit from '../../../components/Postit';
+import SkillsCircle from '../../../components/SkillsCircle';
+import StyledImage from '../../../components/StyledImage';
+import TitlePostit from '../../../components/TitlePostit';
+import Tree from '../../../components/Tree';
+import MySQLIcon from '../../../components/marks/MySQLIcon';
+import ReactIcon from '../../../components/marks/ReactIcon';
+import RustIcon from '../../../components/marks/RustIcon';
+import TSIcon from '../../../components/marks/TSIcon';
+import TonicIcon from '../../../components/marks/TonicIcon';
 import {
   imageAnimation,
   singleHeadingPostitAnimation,
-} from '../../constants/keyframets';
-import storiesArray from '../../fixtures/stories/works/trainlcd.stories.json';
-import useScreenVisibility from '../../hooks/useScreenVisibility';
+} from '../../../constants/keyframets';
+import storiesArray from '../../../fixtures/stories/works/trainlcd.stories.json';
+import useScreenVisibility from '../../../hooks/useScreenVisibility';
 
 const Container = styled.section<{ padTop?: boolean }>`
   position: relative;
@@ -141,18 +141,24 @@ const TreeContainer = styled.article`
   margin: 64px 0;
 `;
 
-const FirstSection: React.FC = () => (
+export const FirstSection = () => (
   <Container>
     <StyledPostit>Dev/MobileApp</StyledPostit>
     <LogoContainer>
-      <StyledImage fill sizes="320px" src={TrainLCDImage} alt="TrainLCD" />
+      <StyledImage
+        fill
+        sizes="320px"
+        src={TrainLCDImage}
+        alt="TrainLCD"
+        priority
+      />
     </LogoContainer>
     <Name>TrainLCD</Name>
     <Bio>日本全国の鉄道路線で使える新感覚のナビゲーションアプリ</Bio>
   </Container>
 );
 
-const ConceptSection: React.FC = () => {
+export const ConceptSection = () => {
   const ref = useRef(null);
   const visible = useScreenVisibility(ref);
 
@@ -191,7 +197,7 @@ const ConceptSection: React.FC = () => {
   );
 };
 
-const TechnologySection: React.FC = () => {
+export const TechnologySection = () => {
   const ref = useRef(null);
   const visible = useScreenVisibility(ref);
 
@@ -211,7 +217,7 @@ const TechnologySection: React.FC = () => {
   );
 };
 
-const StoriesSection: React.FC = () => {
+export const StoriesSection = () => {
   const ref = useRef(null);
   const visible = useScreenVisibility(ref);
 
@@ -232,7 +238,7 @@ const StoriesSection: React.FC = () => {
   );
 };
 
-const AccessSection: React.FC = () => {
+export const AccessSection = () => {
   const ref = useRef(null);
   const visible = useScreenVisibility(ref);
 
@@ -264,52 +270,3 @@ const AccessSection: React.FC = () => {
     </Container>
   );
 };
-
-const WorksTrainLCDPage: React.FC = () => {
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    ref.current?.scrollIntoView();
-  }, []);
-
-  return (
-    <div ref={ref}>
-      <Head>
-        <title>TrainLCD</title>
-        <meta
-          name="description"
-          content="日本全国の鉄道路線で使える新感覚のナビゲーションアプリ"
-        />
-        <meta property="og:site_name" content="TinyKitten" />
-        <meta property="og:type" content="article" />
-        <meta
-          property="og:url"
-          content={`${process.env.PUBLIC_URL}/works/trainlcd`}
-        />
-        <meta property="og:title" content="TrainLCD" />
-        <meta
-          property="og:description"
-          content="日本全国の鉄道路線で使える新感覚のナビゲーションアプリ"
-        />
-        <meta property="og:image" content="/works/trainlcd.png" />
-      </Head>
-      <FirstSection />
-      <ConceptSection />
-      <StoriesSection />
-      <TechnologySection />
-      <AccessSection />
-    </div>
-  );
-};
-
-export function getStaticProps(): {
-  props: unknown;
-  revalidate: number;
-} {
-  return {
-    props: {},
-    revalidate: 60,
-  };
-}
-
-export default WorksTrainLCDPage;

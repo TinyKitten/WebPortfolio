@@ -1,3 +1,4 @@
+'use client';
 import type { ErrorProps } from 'next/error';
 import Link from 'next/link';
 import styled from 'styled-components';

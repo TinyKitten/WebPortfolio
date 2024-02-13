@@ -1,3 +1,4 @@
+'use client';
 import dynamic from 'next/dynamic';
 import { useRef } from 'react';
 import styled from 'styled-components';
@@ -31,7 +32,7 @@ const SectionContainer = styled.div`
   }
 `;
 
-export default function Home(): React.ReactElement {
+export default function Page() {
   const aboutScreenRef = useRef<HTMLDivElement | null>(null);
 
   return (
@@ -56,13 +57,4 @@ export default function Home(): React.ReactElement {
       </SectionContainer>
     </>
   );
-}
-export function getStaticProps(): {
-  props: unknown;
-  revalidate: number;
-} {
-  return {
-    props: {},
-    revalidate: 60,
-  };
 }
