@@ -78,7 +78,7 @@ const Praise: React.FC<Props> = ({ onIncrement, count, className }: Props) => {
       <Button onClick={handleClick}>
         {clicked ? 'ありがとう！' : 'ほめる'}
       </Button>
-      <Balloon>{count}</Balloon>
+      <Balloon>{count.toLocaleString()}</Balloon>
     </Container>
   );
 };
