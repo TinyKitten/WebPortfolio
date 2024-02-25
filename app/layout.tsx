@@ -5,6 +5,8 @@ import './global.css';
 import { Provider } from './provider';
 
 const raleway = Raleway({
+  weight: ['400', '700'],
+  style: ['normal'],
   subsets: ['latin'],
   display: 'swap',
 });
