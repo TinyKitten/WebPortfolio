@@ -1,12 +1,5 @@
-import {
-  getDatabase,
-  increment,
-  onValue,
-  ref,
-  update,
-} from 'firebase/database';
 import { useCallback, useEffect, useState } from 'react';
-import useAnonymousAuth from './useAnonymousAuth';
+import { useAnonymousAuthFn } from './useAnonymousAuthFn';
 import { useFirebaseApp } from './useFirebaseApp';
 
 const usePraise = (
@@ -20,11 +13,14 @@ const usePraise = (
   const [firstLoaded, setFirstLoaded] = useState(false);
   const [repeatTimes, setRepeatTimes] = useState(0);
 
-  const user = useAnonymousAuth();
   const firebase = useFirebaseApp();
+  const updateAuth = useAnonymousAuthFn();
 
   useEffect(() => {
     const fetchAsync = async () => {
+      const fbDatabase = await import('firebase/database');
+      const { getDatabase, onValue, ref } = fbDatabase;
+
       const db = getDatabase(firebase);
       const countRef = ref(db, 'praise/count');
       onValue(countRef, (snapshot) => {
@@ -41,14 +37,13 @@ const usePraise = (
   }, [firebase, firstLoaded, ready]);
 
   const incrementCount = useCallback(async () => {
-    if (!user) {
-      return;
-    }
-
     setRepeatTimes((prev) => prev + 1);
 
+    await updateAuth();
+
+    const fbDatabase = await import('firebase/database');
+    const { getDatabase, increment, ref, update } = fbDatabase;
     const db = getDatabase(firebase);
-    // const countRef = ref(db, 'praise/count');
     update(ref(db), {
       'praise/count': increment(1),
     });
@@ -56,7 +51,7 @@ const usePraise = (
     if (repeatTimes >= Number(process.env.NEXT_PUBLIC_MAX_REPEAT_COUNT) - 1) {
       onExceeded();
     }
-  }, [firebase, onExceeded, repeatTimes, user]);
+  }, [firebase, onExceeded, repeatTimes, updateAuth]);
 
   return {
     count,
