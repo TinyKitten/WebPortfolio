@@ -2,25 +2,21 @@
 import dynamic from 'next/dynamic';
 import { useRef } from 'react';
 import styled from 'styled-components';
+import { DynamicLoading } from '../components/DynamicLoading';
 import AboutScreen from '../components/screens/About';
 import WelcomeScreen from '../components/screens/Welcome';
-const CustomDynamicLoading = styled.div`
-  background-color: ${({ theme }) => theme.bg};
-  height: 100vh;
-  width: 100vw;
-`;
 
 const ResumeScreen = dynamic(() => import('../components/screens/Resume'), {
-  loading: CustomDynamicLoading,
+  loading: DynamicLoading,
 });
 const ShareScreen = dynamic(() => import('../components/screens/Share'), {
-  loading: CustomDynamicLoading,
+  loading: DynamicLoading,
 });
 const SkillsScreen = dynamic(() => import('../components/screens/Skills'), {
-  loading: CustomDynamicLoading,
+  loading: DynamicLoading,
 });
 const WorksScreen = dynamic(() => import('../components/screens/Works'), {
-  loading: CustomDynamicLoading,
+  loading: DynamicLoading,
 });
 
 const SectionContainer = styled.div`
