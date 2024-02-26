@@ -1,8 +1,9 @@
+import dynamic from 'next/dynamic';
 import { useCallback, useEffect } from 'react';
 import { animated, useSpring } from 'react-spring';
 import styled from 'styled-components';
 import { ResumeItemObject, WorksStoryItemObject } from '../models/tree';
-import TreeItem from './TreeItem';
+import { DynamicLoading } from './DynamicLoading';
 
 type Props = {
   experienceType: 'resume' | 'worksStory';
@@ -58,6 +59,10 @@ const PresentItemContainer = styled.div`
   font-size: 1.25rem;
   z-index: 3;
 `;
+
+const TreeItem = dynamic(() => import('./TreeItem'), {
+  loading: DynamicLoading,
+});
 
 const Tree = ({ experienceType, items, visible, worksName }: Props) => {
   const [animateStyles, animate] = useSpring(() => ({
