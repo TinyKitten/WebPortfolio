@@ -1,55 +1,14 @@
-import { useRef } from 'react';
-import styled, { keyframes } from 'styled-components';
-import useScreenVisibility from '../../hooks/useScreenVisibility';
+'use client';
+import { useScreenVisibility } from '../../hooks/useScreenVisibility';
+import SkillsCircle from '../SkillsCircle';
+import TitlePostit from '../TitlePostit';
 import JSIcon from '../marks/JSIcon';
 import ReactIcon from '../marks/ReactIcon';
 import TSIcon from '../marks/TSIcon';
-import SkillsCircle from '../SkillsCircle';
-import TitlePostit from '../TitlePostit';
-
-const Container = styled.section`
-  position: relative;
-  min-height: 100vh;
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-const ContentContainer = styled.div`
-  width: 100%;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-`;
-
-const tipsPostitAnimation = keyframes({
-  from: {
-    opacity: 0,
-    transform: 'translateY(-32px)',
-  },
-  to: {
-    opacity: 1,
-    transform: 'translateY(0)',
-  },
-});
-
-const SkillsContainer = styled.div`
-  width: 75%;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  grid-gap: 32px;
-  animation: ${tipsPostitAnimation} 1s ease forwards;
-  margin-top: calc(144px + 32px);
-  margin-bottom: 32px;
-  @media (min-width: 800px) {
-    margin-top: 0px;
-    margin-bottom: 0px;
-  }
-`;
+import { Container, ContentContainer, SkillsContainer } from './Skills.styled';
 
 const SkillsScreen: React.FC = () => {
-  const ref = useRef(null);
-  const visible = useScreenVisibility(ref);
+  const { visible, ref } = useScreenVisibility();
 
   return (
     <Container ref={ref}>

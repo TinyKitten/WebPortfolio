@@ -1,12 +1,11 @@
 import Link from 'next/link';
-import { useRef } from 'react';
 import styled from 'styled-components';
 import TrainLCDImage from '../../../assets/works/trainlcd.png';
 import {
   headingPostitAnimation,
   imageAnimation,
 } from '../../../constants/keyframets';
-import useScreenVisibility from '../../../hooks/useScreenVisibility';
+import { useScreenVisibility } from '../../../hooks/useScreenVisibility';
 import { LearnMoreButton } from '../../LearnMoreButton';
 import Postit from '../../Postit';
 import StyledImage from '../../StyledImage';
@@ -56,8 +55,7 @@ const Description = styled.p`
 `;
 
 const WorksTrainLCD: React.FC = () => {
-  const ref = useRef(null);
-  const visible = useScreenVisibility(ref);
+  const { visible, ref } = useScreenVisibility();
 
   return (
     <ContentContainer ref={ref}>

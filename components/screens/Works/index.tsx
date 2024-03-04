@@ -1,6 +1,6 @@
-import { useRef } from 'react';
+'use client';
 import styled from 'styled-components';
-import useScreenVisibility from '../../../hooks/useScreenVisibility';
+import { useScreenVisibility } from '../../../hooks/useScreenVisibility';
 import TitlePostit from '../../TitlePostit';
 import WorksTrainLCD from './TrainLCD';
 
@@ -18,8 +18,7 @@ const WorksContainer = styled.div`
 `;
 
 const WorksScreen: React.FC = () => {
-  const ref = useRef(null);
-  const visible = useScreenVisibility(ref);
+  const { visible, ref } = useScreenVisibility();
 
   return (
     <Container ref={ref}>

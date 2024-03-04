@@ -1,101 +1,28 @@
-import {
-  forwardRef,
-  ForwardRefRenderFunction,
-  MutableRefObject,
-  useMemo,
-  useRef,
-} from 'react';
-import styled, { keyframes } from 'styled-components';
+'use client';
+import { Element as ScrollElement } from 'react-scroll';
 import { getRandomGreeting } from '../../constants/greeting';
-import useScreenVisibility from '../../hooks/useScreenVisibility';
-import Postit from '../Postit';
-import TinyKittenIcon from '../TinyKittenIcon';
+import { useScreenVisibility } from '../../hooks/useScreenVisibility';
 import TitlePostit from '../TitlePostit';
+import {
+  BioText,
+  Container,
+  ContentContainer,
+  Logo,
+  LogoWrapper,
+  NameText,
+  StyledPostit,
+} from './About.styled';
 
-const Container = styled.section`
-  position: relative;
-  min-height: 100vh;
-  overflow: hidden;
-`;
+const AboutScreen = () => {
+  const { visible, ref } = useScreenVisibility();
 
-const ContentContainer = styled.div`
-  padding-top: 210px;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-`;
-
-const LogoWrapper = styled.div`
-  position: relative;
-`;
-
-const headingPostitAnimation = keyframes({
-  from: {
-    opacity: 0,
-    transform: 'translateY(-64px)',
-  },
-  to: {
-    opacity: 1,
-    transform: 'translateY(0) rotate(-5deg)',
-  },
-});
-
-const StyledPostit = styled(Postit)`
-  position: absolute;
-  transform: rotate(-5deg);
-  left: -44px;
-  top: -24px;
-  z-index: 1;
-  animation: ${headingPostitAnimation} 1s ease forwards;
-`;
-
-const Logo = styled(TinyKittenIcon)`
-  width: 120px;
-  height: 120px;
-  filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.16));
-`;
-
-const NameText = styled.h2`
-  margin-top: 32px;
-  font-size: 2rem;
-  text-align: center;
-  font-weight: bold;
-  color: ${({ theme }) => theme.headingText};
-`;
-
-const BioText = styled.p`
-  text-align: left;
-  max-width: calc(100% - 64px);
-  line-height: 1.75;
-  margin-top: 12px;
-  color: ${({ theme }) => theme.text};
-  @media (min-width: 800px) {
-    text-align: center;
-  }
-`;
-
-const AboutScreen: ForwardRefRenderFunction<HTMLDivElement> = (
-  props,
-  forwardefRef:
-    | ((instance: HTMLDivElement | null) => void)
-    | MutableRefObject<HTMLDivElement | null>
-    | null
-) => {
-  const ref = useRef(null);
-  const visible = useScreenVisibility(ref);
-  const greetingMessage = useMemo(() => {
-    if (visible) {
-      return getRandomGreeting();
-    }
-    return '';
-  }, [visible]);
   return (
-    <div ref={forwardefRef}>
+    <ScrollElement name="about">
       <Container ref={ref}>
         {visible && <TitlePostit title="TinyKitten" subtitle="って誰？" />}
         <ContentContainer>
           <LogoWrapper>
-            {visible && <StyledPostit>{greetingMessage}</StyledPostit>}
+            {visible && <StyledPostit>{getRandomGreeting()}</StyledPostit>}
             <Logo />
           </LogoWrapper>
           <NameText>TinyKitten</NameText>
@@ -112,8 +39,8 @@ const AboutScreen: ForwardRefRenderFunction<HTMLDivElement> = (
           </BioText>
         </ContentContainer>
       </Container>
-    </div>
+    </ScrollElement>
   );
 };
 
-export default forwardRef<HTMLDivElement>(AboutScreen);
+export default AboutScreen;

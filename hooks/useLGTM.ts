@@ -1,3 +1,4 @@
+'use client';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useAnonymousAuthFn } from './useAnonymousAuthFn';
 import { useFirebaseApp } from './useFirebaseApp';
