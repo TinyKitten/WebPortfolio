@@ -1,13 +1,15 @@
 'use client';
+import dynamic from 'next/dynamic';
 import { ScrollLink } from 'react-scroll';
 import styled from 'styled-components';
-import ArrowIcon from './ArrowIcon';
 import {
   arrowAnimationLarge,
   arrowAnimationSmall,
 } from './screens/Welcome.styled';
 
-const StyledArrow = styled(ArrowIcon)`
+const ArrowIcon = dynamic(() => import('./ArrowIcon'));
+
+const StyledArrow = styled(ScrollLink(ArrowIcon))`
   position: absolute;
   width: 64px;
   height: auto;
@@ -20,8 +22,6 @@ const StyledArrow = styled(ArrowIcon)`
   }
 `;
 
-const ScrollableArrow = ScrollLink(StyledArrow);
-
 export const ArrowButton = () => (
-  <ScrollableArrow to="about" smooth="ease" duration={500} offset={-48} />
+  <StyledArrow to="about" smooth="ease" duration={500} offset={-48} />
 );
