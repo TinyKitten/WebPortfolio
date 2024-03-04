@@ -1,10 +1,8 @@
-'use client';
 import dynamic from 'next/dynamic';
-import { useRef } from 'react';
-import styled from 'styled-components';
 import { DynamicLoading } from '../components/DynamicLoading';
 import AboutScreen from '../components/screens/About';
 import WelcomeScreen from '../components/screens/Welcome';
+import { SectionContainer } from './page.styled';
 
 const ResumeScreen = dynamic(() => import('../components/screens/Resume'), {
   loading: DynamicLoading,
@@ -19,25 +17,14 @@ const WorksScreen = dynamic(() => import('../components/screens/Works'), {
   loading: DynamicLoading,
 });
 
-const SectionContainer = styled.div`
-  :nth-child(even) {
-    background-color: ${({ theme }) => theme.bg};
-  }
-  :nth-child(odd) {
-    background-color: ${({ theme }) => theme.subBg};
-  }
-`;
-
 export default function Page() {
-  const aboutScreenRef = useRef<HTMLDivElement | null>(null);
-
   return (
     <>
       <SectionContainer>
-        <WelcomeScreen aboutScreenRef={aboutScreenRef} />
+        <WelcomeScreen />
       </SectionContainer>
       <SectionContainer>
-        <AboutScreen ref={aboutScreenRef} />
+        <AboutScreen />
       </SectionContainer>
       <SectionContainer>
         <SkillsScreen />

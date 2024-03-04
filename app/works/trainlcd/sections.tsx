@@ -1,6 +1,5 @@
 'use client';
 import Link from 'next/link';
-import { useRef } from 'react';
 import styled from 'styled-components';
 import TrainLCDImage from '../../../assets/works/trainlcd.png';
 import Button from '../../../components/Button';
@@ -19,7 +18,7 @@ import {
   singleHeadingPostitAnimation,
 } from '../../../constants/keyframets';
 import storiesArray from '../../../fixtures/stories/works/trainlcd.stories.json';
-import useScreenVisibility from '../../../hooks/useScreenVisibility';
+import { useScreenVisibility } from '../../../hooks/useScreenVisibility';
 
 const Container = styled.section<{ padTop?: boolean }>`
   position: relative;
@@ -159,8 +158,7 @@ export const FirstSection = () => (
 );
 
 export const ConceptSection = () => {
-  const ref = useRef(null);
-  const visible = useScreenVisibility(ref);
+  const { visible, ref } = useScreenVisibility();
 
   return (
     <Container ref={ref}>
@@ -198,8 +196,7 @@ export const ConceptSection = () => {
 };
 
 export const TechnologySection = () => {
-  const ref = useRef(null);
-  const visible = useScreenVisibility(ref);
+  const { visible, ref } = useScreenVisibility();
 
   return (
     <Container padTop ref={ref}>
@@ -218,8 +215,7 @@ export const TechnologySection = () => {
 };
 
 export const StoriesSection = () => {
-  const ref = useRef(null);
-  const visible = useScreenVisibility(ref);
+  const { visible, ref } = useScreenVisibility();
 
   return (
     <Container padTop ref={ref}>
@@ -239,8 +235,7 @@ export const StoriesSection = () => {
 };
 
 export const AccessSection = () => {
-  const ref = useRef(null);
-  const visible = useScreenVisibility(ref);
+  const { visible, ref } = useScreenVisibility();
 
   return (
     <Container ref={ref}>

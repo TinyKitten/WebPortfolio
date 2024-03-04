@@ -1,7 +1,8 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext } from 'react';
 import Modal from 'react-modal';
 import { animated, useSpring } from 'react-spring';
 import styled, { ThemeContext } from 'styled-components';
+import { useActionable } from '../hooks/useActionable';
 import Button from './Button';
 
 type Props = {
@@ -93,29 +94,15 @@ const ShareModal = ({ isOpen, onRequestClose }: Props): React.ReactElement => {
     width: '0%',
     config: { duration: CANCEL_DISABLED_DURATION },
   }));
-  const [closable, setClosable] = useState(false);
 
-  useEffect(() => {
-    if (isOpen) {
-      animate.start({ width: '100%' });
-    } else {
-      animate.stop();
-      animate.set({ width: '0%' });
-    }
-  }, [animate, isOpen]);
+  if (isOpen) {
+    animate.start({ width: '100%' });
+  } else {
+    animate.stop();
+    animate.set({ width: '0%' });
+  }
 
-  useEffect(() => {
-    let timer: NodeJS.Timeout;
-    if (isOpen) {
-      timer = setTimeout(() => {
-        setClosable(true);
-      }, CANCEL_DISABLED_DURATION);
-    }
-    return () => {
-      setClosable(false);
-      clearTimeout(timer);
-    };
-  }, [isOpen]);
+  const closable = useActionable(isOpen);
 
   const noop = () => undefined;
 

@@ -1,49 +1,16 @@
-import styled from 'styled-components';
-import { titlePostitAnimation } from '../constants/keyframets';
-import VerticalPostitIcon from './VerticalPostitIcon';
+import {
+  Container,
+  SubtitleText,
+  TitleText,
+  TitleTextContainer,
+  VerticalPostit,
+} from './TitlePostit.styled';
 
 type Props = {
   title: string;
   subtitle: string;
   className?: string;
 };
-
-const Container = styled.div`
-  position: absolute;
-  top: 0;
-  left: 32px;
-  filter: drop-shadow(0 3px 3px rgba(0, 0, 0, 0.16));
-  transform: 'translateY(-147px)';
-  animation: ${titlePostitAnimation} 1s ease forwards;
-`;
-
-const VerticalPostit = styled(VerticalPostitIcon)`
-  position: relative;
-`;
-
-const TitleTextContainer = styled.div`
-  position: absolute;
-  left: auto;
-  right: auto;
-  top: auto;
-  bottom: calc(50% - 10.5px);
-  width: 100%;
-  text-align: center;
-`;
-
-const TitleText = styled.p`
-  font-weight: bold;
-  color: ${({ theme }) => theme.primary};
-  font-size: 1.25rem;
-  white-space: pre-wrap;
-`;
-
-const SubtitleText = styled.p`
-  color: ${({ theme }) => theme.text};
-  font-weight: bold;
-  font-size: 1rem;
-  line-height: 1.5;
-`;
 
 const TitlePostit: React.FC<Props> = ({
   className,

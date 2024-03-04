@@ -1,12 +1,13 @@
+'use client';
 import dynamic from 'next/dynamic';
-import { useRef, useState } from 'react';
 import styled from 'styled-components';
 import {
   fadeAnimation,
   headingPostitAnimation,
 } from '../../constants/keyframets';
+import { useFlag } from '../../hooks/useFlag';
 import usePraise from '../../hooks/usePraise';
-import useScreenVisibility from '../../hooks/useScreenVisibility';
+import { useScreenVisibility } from '../../hooks/useScreenVisibility';
 import Button from '../Button';
 import Postit from '../Postit';
 import Praise from '../Praise';
@@ -49,16 +50,13 @@ const StyledPraise = styled(Praise)`
 `;
 
 const ShareScreen: React.FC = () => {
-  const ref = useRef(null);
-  const [isModalShow, setIsModalShow] = useState(false);
-
-  const visible = useScreenVisibility(ref);
-
-  const handleExceeded = () => setIsModalShow(true);
-
-  const { count, incrementCount } = usePraise(visible, handleExceeded);
-
-  const closeModal = () => setIsModalShow(false);
+  const {
+    value: isModalShow,
+    toTrue: showModal,
+    toFalse: hideModal,
+  } = useFlag();
+  const { visible, ref } = useScreenVisibility();
+  const { count, incrementCount } = usePraise(visible, showModal);
 
   const handleIncrement = () => {
     incrementCount();
@@ -91,7 +89,7 @@ const ShareScreen: React.FC = () => {
           )}
         </ContentContainer>
       </Container>
-      <ShareModal isOpen={isModalShow} onRequestClose={closeModal} />
+      <ShareModal isOpen={isModalShow} onRequestClose={hideModal} />
     </>
   );
 };

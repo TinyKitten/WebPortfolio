@@ -1,7 +1,8 @@
-import React, { useRef } from 'react';
+'use client';
+import React from 'react';
 import styled from 'styled-components';
 import resumeFixutre from '../../fixtures/stories/resume.stories.json';
-import useScreenVisibility from '../../hooks/useScreenVisibility';
+import { useScreenVisibility } from '../../hooks/useScreenVisibility';
 import TitlePostit from '../TitlePostit';
 import Tree from '../Tree';
 
@@ -21,8 +22,7 @@ const ContentContainer = styled.div`
 `;
 
 const ResumeScreen: React.FC = () => {
-  const ref = useRef<HTMLDivElement>(null);
-  const visible = useScreenVisibility(ref);
+  const { visible, ref } = useScreenVisibility();
 
   return (
     <Container ref={ref}>

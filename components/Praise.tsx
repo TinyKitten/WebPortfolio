@@ -1,5 +1,6 @@
-import { useCallback, useState } from 'react';
+import { useCallback } from 'react';
 import styled from 'styled-components';
+import { useFlag } from '../hooks/useFlag';
 
 type Props = {
   onIncrement: () => void;
@@ -63,15 +64,19 @@ const Balloon = styled.div`
 `;
 
 const Praise: React.FC<Props> = ({ onIncrement, count, className }: Props) => {
-  const [clicked, setClicked] = useState(false);
+  const {
+    value: clicked,
+    toTrue: toClicked,
+    toFalse: toNotClicked,
+  } = useFlag();
 
   const handleClick = useCallback(() => {
     onIncrement();
-    setClicked(true);
+    toClicked();
     setTimeout(() => {
-      setClicked(false);
+      toNotClicked();
     }, 1500);
-  }, [onIncrement]);
+  }, [onIncrement, toClicked, toNotClicked]);
 
   return (
     <Container className={className}>

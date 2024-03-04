@@ -1,6 +1,7 @@
-import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useMemo } from 'react';
 import reactStringReplace from 'react-string-replace';
 import styled, { keyframes } from 'styled-components';
+import { useFlag } from '../hooks/useFlag';
 import useLGTM from '../hooks/useLGTM';
 import { ResumeItemObject, WorksStoryItemObject } from '../models/tree';
 import Counter from './Counter';
@@ -157,7 +158,11 @@ const TreeItem: React.FC<Props> = ({
   showLGTM = false,
   worksName = '',
 }: Props) => {
-  const [lgtmClicked, setLGTMClicked] = useState(false);
+  const {
+    value: lgtmClicked,
+    toTrue: setClickedForTrue,
+    toFalse: setClickedForFalse,
+  } = useFlag();
 
   const { count: lgtmCount, incrementCount: incrementLGTMCount } = useLGTM(
     worksName,
@@ -166,11 +171,11 @@ const TreeItem: React.FC<Props> = ({
 
   const handleLGTM = useCallback(() => {
     incrementLGTMCount();
-    setLGTMClicked(true);
+    setClickedForTrue();
     setTimeout(() => {
-      setLGTMClicked(false);
+      setClickedForFalse();
     }, 1500);
-  }, [incrementLGTMCount]);
+  }, [incrementLGTMCount, setClickedForFalse, setClickedForTrue]);
 
   const lgtmText = useMemo(
     () => (lgtmClicked ? `わーい！` : `えらいね `),
