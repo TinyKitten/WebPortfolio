@@ -1,5 +1,5 @@
 'use client';
-import { Link as ScrollLink } from 'react-scroll';
+import { ScrollLink } from 'react-scroll';
 import styled from 'styled-components';
 import ArrowIcon from './ArrowIcon';
 import {
@@ -20,8 +20,8 @@ const StyledArrow = styled(ArrowIcon)`
   }
 `;
 
+const ScrollableArrow = ScrollLink(StyledArrow);
+
 export const ArrowButton = () => (
-  <ScrollLink to="about" smooth="ease" duration={500} offset={-48}>
-    <StyledArrow />
-  </ScrollLink>
+  <ScrollableArrow to="about" smooth="ease" duration={500} offset={-48} />
 );
