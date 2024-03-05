@@ -1,7 +1,7 @@
 'use client';
 import { useCallback, useEffect, useMemo, useState } from 'react';
+import { firebaseApp } from '../lib/firebase';
 import { useAnonymousAuthFn } from './useAnonymousAuthFn';
-import { useFirebaseApp } from './useFirebaseApp';
 
 const useLGTM = (
   worksKey: string,
@@ -13,7 +13,6 @@ const useLGTM = (
   const [count, setCount] = useState(0);
   const [firstLoaded, setFirstLoaded] = useState(false);
 
-  const firebase = useFirebaseApp();
   const updateAuth = useAnonymousAuthFn();
 
   const lgtmDBKey = useMemo(
@@ -30,7 +29,7 @@ const useLGTM = (
       const fbDatabase = await import('firebase/database');
       const { getDatabase, onValue, ref } = fbDatabase;
 
-      const db = getDatabase(firebase);
+      const db = getDatabase(firebaseApp);
       const countRef = ref(db, lgtmDBKey);
       onValue(countRef, (snapshot) => {
         const data = snapshot.val() as number | null;
@@ -43,7 +42,7 @@ const useLGTM = (
     if (!firstLoaded) {
       fetchAsync();
     }
-  }, [firebase, firstLoaded, lgtmDBKey, worksKey]);
+  }, [firstLoaded, lgtmDBKey, worksKey]);
 
   const incrementCount = useCallback(async () => {
     await updateAuth();
@@ -51,11 +50,11 @@ const useLGTM = (
     const fbDatabase = await import('firebase/database');
     const { getDatabase, increment, update, ref } = fbDatabase;
 
-    const db = getDatabase(firebase);
+    const db = getDatabase(firebaseApp);
     update(ref(db), {
       [lgtmDBKey]: increment(1),
     });
-  }, [firebase, lgtmDBKey, updateAuth]);
+  }, [lgtmDBKey, updateAuth]);
 
   return {
     count,
