@@ -1,8 +1,10 @@
 import { Metadata } from 'next';
 import { Raleway } from 'next/font/google';
 import React from 'react';
+import Header from '../components/Header';
 import './global.css';
 import { Provider } from './provider';
+import StyledComponentsRegistry from '../lib/registry';
 
 const raleway = Raleway({
   weight: ['400', '700'],
@@ -14,7 +16,6 @@ const raleway = Raleway({
 export const metadata: Metadata = {
   title: 'TinyKitten',
   description: 'フロントエンドエンジニア TinyKittenのポートフォリオです。',
-  metadataBase: new URL(process.env.NEXT_PUBLIC_URL ?? ''),
 };
 
 export default function RootLayout({
@@ -25,7 +26,12 @@ export default function RootLayout({
   return (
     <html lang="ja" className={raleway.className}>
       <body>
-        <Provider>{children}</Provider>
+        <StyledComponentsRegistry>
+          <Provider>
+            <Header />
+            {children}
+          </Provider>
+        </StyledComponentsRegistry>
       </body>
     </html>
   );
