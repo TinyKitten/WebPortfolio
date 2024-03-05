@@ -4,7 +4,6 @@ import React from 'react';
 import Header from '../components/Header';
 import './global.css';
 import { Provider } from './provider';
-import StyledComponentsRegistry from '../lib/registry';
 
 const raleway = Raleway({
   weight: ['400', '700'],
@@ -26,12 +25,10 @@ export default function RootLayout({
   return (
     <html lang="ja" className={raleway.className}>
       <body>
-        <StyledComponentsRegistry>
-          <Provider>
-            <Header />
-            {children}
-          </Provider>
-        </StyledComponentsRegistry>
+        <Provider>
+          <Header />
+          {children}
+        </Provider>
       </body>
     </html>
   );
