@@ -1,7 +1,12 @@
 'use client';
-import { ThemeProvider } from 'styled-components';
+import dynamic from 'next/dynamic';
+import { DynamicLoading } from '../components/DynamicLoading';
 import { darkTheme, lightTheme } from '../constants/theme';
-import StyledComponentsRegistry from '../lib/registry';
+
+const ThemeProvider = dynamic(
+  () => import('styled-components').then((module) => module.ThemeProvider),
+  { ssr: false, loading: DynamicLoading }
+);
 
 export const Provider = ({ children }: { children: React.ReactNode }) => {
   const isDark =
@@ -10,10 +15,8 @@ export const Provider = ({ children }: { children: React.ReactNode }) => {
     window.matchMedia('(prefers-color-scheme: dark)').matches;
 
   return (
-    <StyledComponentsRegistry>
-      <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
-        {children}
-      </ThemeProvider>
-    </StyledComponentsRegistry>
+    <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
+      {children}
+    </ThemeProvider>
   );
 };

@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import { Raleway } from 'next/font/google';
 import React from 'react';
 import Header from '../components/Header';
+import StyledComponentsRegistry from '../lib/registry';
 import './global.css';
 import { Provider } from './provider';
 
@@ -25,10 +26,12 @@ export default function RootLayout({
   return (
     <html lang="ja" className={raleway.className}>
       <body>
-        <Provider>
-          <Header />
-          {children}
-        </Provider>
+        <StyledComponentsRegistry>
+          <Provider>
+            <Header />
+            {children}
+          </Provider>
+        </StyledComponentsRegistry>
       </body>
     </html>
   );
