@@ -4,7 +4,10 @@ import { darkTheme, lightTheme } from '../constants/theme';
 import StyledComponentsRegistry from '../lib/registry';
 
 export const Provider = ({ children }: { children: React.ReactNode }) => {
-  const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const isDark =
+    typeof window !== 'undefined' &&
+    window.matchMedia &&
+    window.matchMedia('(prefers-color-scheme: dark)').matches;
 
   return (
     <StyledComponentsRegistry>
