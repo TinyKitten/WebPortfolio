@@ -1,18 +1,20 @@
 'use client';
-import { ThemeProvider } from 'styled-components';
+
+import dynamic from 'next/dynamic';
+import { DynamicLoading } from '../components/DynamicLoading';
 import { darkTheme, lightTheme } from '../constants/theme';
-import useDarkMode from '../hooks/useDarkMode';
+import StyledComponentsRegistry from '../lib/registry';
+import { isDark } from '../utils/isDark';
 
-export const Provider = ({ children }: { children: React.ReactNode }) => {
-  const { theme, themeReady } = useDarkMode();
+const ThemeProvider = dynamic(
+  () => import('styled-components').then((module) => module.ThemeProvider),
+  { ssr: false, loading: DynamicLoading }
+);
 
-  if (!themeReady) {
-    return null;
-  }
-
-  return (
-    <ThemeProvider theme={theme === 'dark' ? darkTheme : lightTheme}>
+export const Provider = ({ children }: { children: React.ReactNode }) => (
+  <StyledComponentsRegistry>
+    <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
       {children}
     </ThemeProvider>
-  );
-};
+  </StyledComponentsRegistry>
+);

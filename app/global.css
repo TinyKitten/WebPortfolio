@@ -134,3 +134,15 @@ table {
 .ReactModal__Overlay--before-close {
   opacity: 0;
 }
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #252525;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  body {
+    background-color: #fafafa;
+  }
+}
