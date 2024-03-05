@@ -1,7 +1,9 @@
 'use client';
+
 import dynamic from 'next/dynamic';
 import { DynamicLoading } from '../components/DynamicLoading';
 import { darkTheme, lightTheme } from '../constants/theme';
+import StyledComponentsRegistry from '../lib/registry';
 import { isDark } from '../utils/isDark';
 
 const ThemeProvider = dynamic(
@@ -10,7 +12,9 @@ const ThemeProvider = dynamic(
 );
 
 export const Provider = ({ children }: { children: React.ReactNode }) => (
-  <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
-    {children}
-  </ThemeProvider>
+  <StyledComponentsRegistry>
+    <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
+      {children}
+    </ThemeProvider>
+  </StyledComponentsRegistry>
 );
