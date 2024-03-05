@@ -10,7 +10,6 @@ import {
 export const metadata: Metadata = {
   title: 'TrainLCD',
   description: '日本全国の鉄道路線で使える新感覚のナビゲーションアプリ',
-  metadataBase: new URL(`${process.env.NEXT_PUBLIC_URL ?? ''}/works/trainlcd`),
 };
 
 const WorksTrainLCDPage = () => (
