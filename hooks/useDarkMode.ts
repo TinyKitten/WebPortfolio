@@ -5,11 +5,9 @@ type ThemeMode = 'light' | 'dark';
 
 const useDarkMode = (): {
   theme: ThemeMode;
-  themeReady: boolean;
   toggleTheme: () => void;
 } => {
   const [theme, setTheme] = useState<ThemeMode>('light');
-  const [themeReady, setThemeReady] = useState(false);
   const setMode = (mode: ThemeMode) => {
     typeof window !== 'undefined' && window.localStorage.setItem('theme', mode);
     setTheme(mode);
@@ -37,13 +35,10 @@ const useDarkMode = (): {
     ) {
       setTheme('dark');
     }
-
-    setThemeReady(true);
   }, [localTheme]);
 
   return {
     theme,
-    themeReady,
     toggleTheme,
   };
 };

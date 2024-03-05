@@ -2,17 +2,16 @@
 import { ThemeProvider } from 'styled-components';
 import { darkTheme, lightTheme } from '../constants/theme';
 import useDarkMode from '../hooks/useDarkMode';
+import StyledComponentsRegistry from '../lib/registry';
 
 export const Provider = ({ children }: { children: React.ReactNode }) => {
-  const { theme, themeReady } = useDarkMode();
-
-  if (!themeReady) {
-    return null;
-  }
+  const { theme } = useDarkMode();
 
   return (
-    <ThemeProvider theme={theme === 'dark' ? darkTheme : lightTheme}>
-      {children}
-    </ThemeProvider>
+    <StyledComponentsRegistry>
+      <ThemeProvider theme={theme === 'dark' ? darkTheme : lightTheme}>
+        {children}
+      </ThemeProvider>
+    </StyledComponentsRegistry>
   );
 };
