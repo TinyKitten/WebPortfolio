@@ -1,15 +1,14 @@
 'use client';
 import { ThemeProvider } from 'styled-components';
 import { darkTheme, lightTheme } from '../constants/theme';
-import useDarkMode from '../hooks/useDarkMode';
 import StyledComponentsRegistry from '../lib/registry';
 
 export const Provider = ({ children }: { children: React.ReactNode }) => {
-  const { theme } = useDarkMode();
+  const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
   return (
     <StyledComponentsRegistry>
-      <ThemeProvider theme={theme === 'dark' ? darkTheme : lightTheme}>
+      <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
         {children}
       </ThemeProvider>
     </StyledComponentsRegistry>
