@@ -4,7 +4,7 @@ import { useFlag } from '../hooks/useFlag';
 
 type Props = {
   onIncrement: () => void;
-  count: number;
+  count: string;
   className?: string;
 };
 
@@ -55,11 +55,15 @@ const Balloon = styled.div`
   text-align: center;
   width: 210px;
   @media (min-width: 800px) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: absolute;
     left: 220px;
     margin-top: 0;
     width: auto;
-    padding: 14px;
+    height: 48px;
+    padding: 0 14px;
   }
 `;
 
@@ -83,7 +87,7 @@ const Praise: React.FC<Props> = ({ onIncrement, count, className }: Props) => {
       <Button onClick={handleClick}>
         {clicked ? 'ありがとう！' : 'ほめる'}
       </Button>
-      <Balloon>{count.toLocaleString()}</Balloon>
+      <Balloon>{count}</Balloon>
     </Container>
   );
 };

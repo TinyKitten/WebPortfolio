@@ -6,10 +6,10 @@ const usePraise = (
   ready: boolean,
   onExceeded: () => void
 ): {
-  count: number;
+  count: string;
   incrementCount: () => Promise<void>;
 } => {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState('');
   const [firstLoaded, setFirstLoaded] = useState(false);
   const [repeatTimes, setRepeatTimes] = useState(0);
 
@@ -24,11 +24,9 @@ const usePraise = (
       const db = getDatabase(firebaseApp);
       const countRef = ref(db, 'praise/count');
       onValue(countRef, (snapshot) => {
-        const data = snapshot.val() as number | null;
-        if (data) {
-          setCount(data);
-          setFirstLoaded(true);
-        }
+        const data: number = snapshot.val() ?? 0;
+        setCount(data.toLocaleString());
+        setFirstLoaded(true);
       });
     };
     if (ready && !firstLoaded) {

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 type Props = {
   text: string;
   onClick?: () => void;
-  count?: number;
+  count?: string;
 };
 
 const Container = styled.div`
