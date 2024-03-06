@@ -1,10 +1,14 @@
 import { useCallback } from 'react';
 import styled from 'styled-components';
+import {
+  balloonAnimationHorizontal,
+  balloonAnimationVertical,
+} from '../constants/keyframets';
 import { useFlag } from '../hooks/useFlag';
 
 type Props = {
   onIncrement: () => void;
-  count: number;
+  count: string;
   className?: string;
 };
 
@@ -31,6 +35,7 @@ const Button = styled.button`
   cursor: pointer;
   transition: 0.25s;
   background: ${({ theme }) => theme.primary};
+  z-index: 1;
 
   &:focus {
     outline: none;
@@ -54,12 +59,19 @@ const Balloon = styled.div`
   margin-top: 14px;
   text-align: center;
   width: 210px;
+  animation: ${balloonAnimationVertical} 0.5s ease forwards;
+
   @media (min-width: 800px) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: absolute;
     left: 220px;
     margin-top: 0;
     width: auto;
-    padding: 14px;
+    height: 48px;
+    padding: 0 14px;
+    animation: ${balloonAnimationHorizontal} 1s ease forwards;
   }
 `;
 
@@ -83,7 +95,7 @@ const Praise: React.FC<Props> = ({ onIncrement, count, className }: Props) => {
       <Button onClick={handleClick}>
         {clicked ? 'ありがとう！' : 'ほめる'}
       </Button>
-      <Balloon>{count.toLocaleString()}</Balloon>
+      {count.length > 0 ? <Balloon>{count}</Balloon> : null}
     </Container>
   );
 };

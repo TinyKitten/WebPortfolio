@@ -62,3 +62,24 @@ export const skillCircleAnimation = keyframes({
     boxShadow: '0 3px 6px rgba(0, 0, 0, 0.16)',
   },
 });
+
+export const balloonAnimationVertical = keyframes({
+  from: {
+    opacity: 0,
+    transform: 'translateY(-48px)',
+  },
+  to: {
+    opacity: 1,
+    transform: 'translateX(0)',
+  },
+});
+export const balloonAnimationHorizontal = keyframes({
+  from: {
+    opacity: 0,
+    transform: 'translateX(-210px)',
+  },
+  to: {
+    opacity: 1,
+    transform: 'translateX(0)',
+  },
+});

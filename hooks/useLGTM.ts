@@ -6,10 +6,10 @@ const useLGTM = (
   worksKey: string,
   workIndex: number
 ): {
-  count: number;
+  count: string;
   incrementCount: () => Promise<void>;
 } => {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState('');
   const [firstLoaded, setFirstLoaded] = useState(false);
 
   const updateAuth = useAnonymousAuthFn();
@@ -32,11 +32,9 @@ const useLGTM = (
       const db = getDatabase(firebaseApp);
       const countRef = ref(db, lgtmDBKey);
       onValue(countRef, (snapshot) => {
-        const data = snapshot.val() as number | null;
-        if (data) {
-          setCount(data);
-          setFirstLoaded(true);
-        }
+        const data: number = snapshot.val() ?? 0;
+        setCount(data.toLocaleString());
+        setFirstLoaded(true);
       });
     };
     if (!firstLoaded) {
