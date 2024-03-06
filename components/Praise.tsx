@@ -1,5 +1,9 @@
 import { useCallback } from 'react';
 import styled from 'styled-components';
+import {
+  balloonAnimationHorizontal,
+  balloonAnimationVertical,
+} from '../constants/keyframets';
 import { useFlag } from '../hooks/useFlag';
 
 type Props = {
@@ -31,6 +35,7 @@ const Button = styled.button`
   cursor: pointer;
   transition: 0.25s;
   background: ${({ theme }) => theme.primary};
+  z-index: 1;
 
   &:focus {
     outline: none;
@@ -54,6 +59,8 @@ const Balloon = styled.div`
   margin-top: 14px;
   text-align: center;
   width: 210px;
+  animation: ${balloonAnimationVertical} 0.5s ease forwards;
+
   @media (min-width: 800px) {
     display: flex;
     justify-content: center;
@@ -64,6 +71,7 @@ const Balloon = styled.div`
     width: auto;
     height: 48px;
     padding: 0 14px;
+    animation: ${balloonAnimationHorizontal} 1s ease forwards;
   }
 `;
 
@@ -87,7 +95,7 @@ const Praise: React.FC<Props> = ({ onIncrement, count, className }: Props) => {
       <Button onClick={handleClick}>
         {clicked ? 'ありがとう！' : 'ほめる'}
       </Button>
-      <Balloon>{count}</Balloon>
+      {count.length > 0 ? <Balloon>{count}</Balloon> : null}
     </Container>
   );
 };
