@@ -9,6 +9,7 @@ import { useFlag } from '../hooks/useFlag';
 type Props = {
   onIncrement: () => void;
   count: string;
+  visible: boolean;
   className?: string;
 };
 
@@ -75,7 +76,12 @@ const Balloon = styled.div`
   }
 `;
 
-const Praise: React.FC<Props> = ({ onIncrement, count, className }: Props) => {
+const Praise: React.FC<Props> = ({
+  onIncrement,
+  count,
+  className,
+  visible,
+}: Props) => {
   const {
     value: clicked,
     toTrue: toClicked,
@@ -95,7 +101,7 @@ const Praise: React.FC<Props> = ({ onIncrement, count, className }: Props) => {
       <Button onClick={handleClick}>
         {clicked ? 'ありがとう！' : 'ほめる'}
       </Button>
-      {count.length > 0 ? <Balloon>{count}</Balloon> : null}
+      {visible && count.length > 0 ? <Balloon>{count}</Balloon> : null}
     </Container>
   );
 };
