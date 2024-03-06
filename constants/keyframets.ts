@@ -70,7 +70,7 @@ export const balloonAnimationVertical = keyframes({
   },
   to: {
     opacity: 1,
-    transform: 'translateX(0)',
+    transform: 'translateY(0)',
   },
 });
 export const balloonAnimationHorizontal = keyframes({
