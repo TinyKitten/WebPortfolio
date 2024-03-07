@@ -59,7 +59,8 @@ const Balloon = styled.div`
   margin-top: 14px;
   text-align: center;
   width: 210px;
-  animation: ${balloonAnimationVertical} 0.5s ease forwards;
+  transform: translateY(-62px);
+  animation: ${balloonAnimationVertical} 0.5s ease 0.5s forwards;
 
   @media (min-width: 800px) {
     display: flex;
@@ -71,7 +72,8 @@ const Balloon = styled.div`
     width: auto;
     height: 48px;
     padding: 0 14px;
-    animation: ${balloonAnimationHorizontal} 1s ease forwards;
+    transform: translateX(-220px);
+    animation: ${balloonAnimationHorizontal} 1s ease 0.5s forwards;
   }
 `;
 

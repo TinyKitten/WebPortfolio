@@ -84,7 +84,11 @@ const ShareScreen: React.FC = () => {
               >
                 <ShareButton color="#00b900">LINEで送る</ShareButton>
               </a>
-              <StyledPraise count={count} onIncrement={handleIncrement} />
+              <StyledPraise
+                // NOTE: 表示されていない時にカウントを空にすることで表示されるごとにアニメーションを出せる
+                count={visible ? count : ''}
+                onIncrement={handleIncrement}
+              />
             </LinksContainer>
           )}
         </ContentContainer>
