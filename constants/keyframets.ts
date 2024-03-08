@@ -75,10 +75,12 @@ export const balloonAnimationVertical = keyframes({
 });
 export const balloonAnimationHorizontal = keyframes({
   from: {
+    boxShadow: '0 3px 6px rgba(0, 0, 0, 0)',
     opacity: 0,
     transform: 'translateX(-220px)',
   },
   to: {
+    boxShadow: '0 3px 6px rgba(0, 0, 0, 0.16)',
     opacity: 1,
     transform: 'translateX(0)',
   },
