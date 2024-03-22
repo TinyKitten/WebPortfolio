@@ -1,10 +1,8 @@
-import { useSetAtom } from 'jotai';
 import { useCallback } from 'react';
-import { anonymousUserAtom } from '../state/anonUser';
+import { useAnonymousUserStore } from './useAnonymousUserStore';
 
 export const useAnonymousAuthFn = (): (() => Promise<void>) => {
-  const setUser = useSetAtom(anonymousUserAtom);
-
+  const setUser = useAnonymousUserStore((state) => state.setUser);
   const updateUserState = useCallback(async () => {
     const { initializeAuth, signInAnonymously } = await import('firebase/auth');
 
@@ -12,7 +10,7 @@ export const useAnonymousAuthFn = (): (() => Promise<void>) => {
     const auth = initializeAuth(firebaseApp, {});
 
     const credential = await signInAnonymously(auth);
-    setUser((prev) => prev ?? credential.user);
+    setUser(credential.user);
   }, [setUser]);
 
   return updateUserState;
