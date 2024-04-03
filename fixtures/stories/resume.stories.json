@@ -79,8 +79,15 @@
   {
     "id": 11,
     "startAtFullYear": 2023,
-    "endAtFullYear": null,
+    "endAtFullYear": 2024,
     "companyName": "JAPAN AI株式会社",
-    "description": "一部リモートでReact.jsでのWebアプリケーションの開発を行っています。"
+    "description": "一部リモートでReact.js(Next.js)、NestJSを用いたWebアプリケーションの開発を行っていました。"
+  },
+  {
+    "id": 11,
+    "startAtFullYear": 2024,
+    "endAtFullYear": null,
+    "companyName": "株式会社ジーニー",
+    "description": "一部リモートでReact.jsでWebアプリケーションの開発を行っています。"
   }
 ]
