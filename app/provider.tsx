@@ -2,7 +2,7 @@
 
 import dynamic from 'next/dynamic';
 import { DynamicLoading } from '../components/DynamicLoading';
-import { halloweenDarkTheme, halloweenLightTheme } from '../constants/theme';
+import { darkTheme, lightTheme } from '../constants/theme';
 import StyledComponentsRegistry from '../lib/registry';
 import { isDark } from '../utils/isDark';
 
@@ -13,7 +13,7 @@ const ThemeProvider = dynamic(
 
 export const Provider = ({ children }: { children: React.ReactNode }) => (
   <StyledComponentsRegistry>
-    <ThemeProvider theme={isDark ? halloweenDarkTheme : halloweenLightTheme}>
+    <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
       {children}
     </ThemeProvider>
   </StyledComponentsRegistry>
