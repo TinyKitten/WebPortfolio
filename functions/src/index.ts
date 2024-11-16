@@ -46,6 +46,24 @@ function postToBeebotte(count: number) {
   );
 }
 
+/**
+ *
+ * @param {number} count ほめられた回数
+ * @return {void}
+ */
+async function notifyToKDS(count: number) {
+  await fetch(functions.config().kds.webhook_url, {
+    method: "POST",
+    body: JSON.stringify({
+      type: "notify",
+      title: "TinyKitten.meのほめるが増えました",
+      description: `ほめられた回数: ${count}`,
+      channel: "",
+      urgent: false,
+    }),
+  });
+}
+
 exports.praiseUpdateHook = functions.database
   .ref("/praise/count")
   .onUpdate((change) => {
@@ -56,4 +74,5 @@ exports.praiseUpdateHook = functions.database
     `.trim();
     postToSlack(msg);
     postToBeebotte(newValue);
+    notifyToKDS(newValue);
   });
