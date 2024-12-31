@@ -86,7 +86,7 @@
   {
     "id": 11,
     "startAtFullYear": 2024,
-    "endAtFullYear": null,
+    "endAtFullYear": 2024,
     "companyName": "株式会社ジーニー",
     "description": "一部リモートでReact.jsでWebアプリケーションの開発を行っています。"
   }
