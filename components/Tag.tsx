@@ -17,7 +17,7 @@ const Container = styled.div<{ invert: boolean }>`
 `;
 
 const TagText = styled.span<{ invert: boolean }>`
-  color: ${({ theme, invert }) => (invert ? 'white' : theme.headingText)};
+  color: ${({ theme, invert }) => (invert ? 'white' : theme.primary)};
 `;
 
 const Tag: React.FC<Props> = ({ text, onClick, invert = false }: Props) => {

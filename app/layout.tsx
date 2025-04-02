@@ -4,6 +4,7 @@ import React from 'react';
 import Header from '../components/Header';
 import './global.css';
 import { Provider } from './provider';
+import 'swiper/css';
 
 const raleway = Raleway({
   weight: ['400', '700'],
