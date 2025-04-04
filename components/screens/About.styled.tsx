@@ -86,13 +86,13 @@ export const BioText = styled.p`
 export const SwiperContainer = styled.div`
   margin-top: 48px;
   margin-bottom: 64px;
+  opacity: 0;
+  animation: ${sliderAnimation} 0.75s ease forwards;
 `;
 
 export const StyledSwiperSlide = styled(SwiperSlide)`
   display: flex;
   justify-content: center;
   align-items: center;
-  opacity: 0;
   width: 100%;
-  animation: ${sliderAnimation} 0.75s 0.5s ease forwards;
 `;

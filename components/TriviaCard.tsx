@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import Tag from './Tag';
 import { TriviaItemObject } from '../models/trivia';
+import Markdown from 'react-markdown';
 
 type Props = {
   visible: boolean;
@@ -27,11 +28,10 @@ const Container = styled.div`
   padding: 24px;
   width: 100%;
   max-width: 440px;
-  height: 210px;
+  max-height: 240px;
 
   @media (max-width: 800px) {
     max-width: 280px;
-    height: 240px;
   }
 `;
 
@@ -51,7 +51,7 @@ const TitleText = styled.h3`
   white-space: pre-wrap;
 `;
 
-const DescriptionText = styled.p`
+const DescriptionContainer = styled.div`
   margin-top: 16px;
   color: ${({ theme }) => theme.headingText};
   line-height: 1.75;
@@ -73,7 +73,9 @@ const TriviaItemInner = ({ item }: TriviaItemProps) => {
     <Container>
       <IndexText>TinyKitten Trivia #{id}</IndexText>
       <TitleText>{title}</TitleText>
-      <DescriptionText>{description}</DescriptionText>{' '}
+      <DescriptionContainer>
+        <Markdown>{description}</Markdown>
+      </DescriptionContainer>
       {tags.length > 0 && (
         <TagsContainer>
           {tags.map((tag) => (
