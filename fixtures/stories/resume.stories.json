@@ -46,7 +46,7 @@
     "startAtFullYear": 2020,
     "endAtFullYear": 2022,
     "companyName": "社名非公開プロジェクト",
-    "description": "Z世代向けSNSアプリをReact NativeとAWS Amplifyで新規構築。JavaやObjective-Cなどを使ってネイティブ機能も実装し、リリース後1ヶ月で6万DLを達成しました。"
+    "description": "Z世代を主なターゲットとしたモバイルアプリを新規開発。React Native（TypeScript）とAWS Amplifyを用いて構築し、リリース1ヶ月で6万DLを記録。ネイティブ機能の実装にも対応し、後半はWeb版の開発にも携わりました。"
   },
   {
     "id": "dream-teams-inc",
