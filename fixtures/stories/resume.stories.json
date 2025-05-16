@@ -18,83 +18,83 @@
     "startAtFullYear": 2016,
     "endAtFullYear": 2017,
     "companyName": "アシラス株式会社",
-    "description": "Angular 2+を用いたB2Bフロントエンド開発に従事していました。"
+    "description": "Angularを用いたB2B向けWebアプリの開発に従事。新人エンジニアの育成も担当しており、基礎から丁寧に技術支援を行っていました。"
   },
   {
     "id": "brain-farm-inc",
     "startAtFullYear": 2018,
     "endAtFullYear": 2019,
     "companyName": "株式会社ブレインファーム",
-    "description": "Angular、React、Vueを適材適所に使ったフロントエンド開発・設計や、既存システムのバグ修正などを行っていました。"
+    "description": "会議室予約サイトやランチ情報サイトなど、複数のWebサービスを個別に開発。TDDやUI/UX設計を取り入れ、納期短縮と品質の両立を目指しました。"
   },
   {
     "id": "symax-inc",
     "startAtFullYear": 2019,
     "endAtFullYear": 2020,
     "companyName": "サイマックス株式会社",
-    "description": "Angular 7とIonic 4を用いたハイブリッドアプリ開発を主に、\nRails 5を用いたバックエンド開発、Angular 9を用いた社内Webシステムの開発、ReactとStripeを用いた課金システムの構築などを経験しています。\nモバイルアプリ側の開発は、既存の設計を元に一から作り直しました。基本的にプロジェクトの主要エンジニアとして活躍しました。"
+    "description": "Ionic＋Angularによる業務アプリ開発を中心に、RailsやReact＋Stripeを使った課金機能も構築。UI設計やフロント・バックエンドまで幅広く関わりました。"
   },
   {
     "id": "shikmi-inc",
     "startAtFullYear": 2020,
     "endAtFullYear": 2020,
     "companyName": "しくみ製作所株式会社",
-    "description": "React Nativeを用いたファンクラブモバイルアプリ開発に完全リモートで従事していました。\nNotion、ZenHubなどのグループウェアを駆使したスクラム開発です。"
+    "description": "VTuberファン向けアプリをFirebase＋React Native構成で新規開発。限られた人数と時間で効率よく開発を進めていました。"
   },
   {
     "id": "confidential1",
     "startAtFullYear": 2020,
     "endAtFullYear": 2022,
-    "companyName": "外資系経営コンサルティング会社",
-    "description": "守秘義務の兼ね合いで社名は伏せさせていただきます。\nReact NativeとAWS Amplifyを用いたZ世代向けのジャーナリングモバイルアプリ開発にローンチ前から従事していました。\n仕様からゼロイチで考える機会が多く、プロジェクトの主要エンジニアとして活躍していました。\nまた、React Native開発ではReact Nativeでの標準機能や既存エコシステムでは対処できない要望の対処のためにJavaやObjective-C、Swiftのコードを書く作業も幅広くこなしました。\nさらに、最終的にはReact.js(Next.js)Webアプリケーション開発にも従事しておりました。\n開発はNotionをカンバンとして用いたスクラム開発です。"
+    "companyName": "社名非公開プロジェクト",
+    "description": "Z世代向けSNSアプリをReact NativeとAWS Amplifyで新規構築。JavaやObjective-Cなどを使ってネイティブ機能も実装し、リリース後1ヶ月で6万DLを達成しました。"
   },
   {
     "id": "dream-teams-inc",
     "startAtFullYear": 2021,
     "endAtFullYear": 2023,
     "companyName": "ドリームチームズ株式会社",
-    "description": "完全リモートでReact Nativeを用いてスポーツ試合結果予想アプリを開発していました。\n夜間・休日に稼働しており、React Native開発は一時期自分一人で実装を行っていました。"
+    "description": "React Nativeを用いてスポーツ系アプリを開発。初期フェーズは一人で開発を担当し、平日夜間・休日でプロジェクトを前に進めていました。"
   },
   {
     "id": "kids-connect-inc",
     "startAtFullYear": 2022,
     "endAtFullYear": 2023,
     "companyName": "キッズコネクト株式会社",
-    "description": "完全リモートでReact.jsを用いて保育所向けのWebアプリケーションの開発を行っていました。"
+    "description": "保育施設向けWebアプリを開発。日常的な機能追加や修正に加え、パフォーマンス改善にも重点的に取り組みました。"
   },
   {
     "id": "pixiv-inc",
     "startAtFullYear": 2023,
     "endAtFullYear": 2023,
     "companyName": "ピクシブ株式会社",
-    "description": "完全リモートでReact.jsを用いてコンシューマ向けのWebアプリケーションの開発を行っていました。"
+    "description": "React.jsを用いてコンシューマ向けWebアプリの新機能を開発。小規模な実装も丁寧に取り組み、UIの改善にも貢献していました。"
   },
   {
     "id": "impact-blue-inc",
     "startAtFullYear": 2023,
     "endAtFullYear": 2023,
     "companyName": "株式会社インパクトブルー",
-    "description": "完全リモートでReact.jsを用いてコンテンツ管理システムのWebアプリケーションの開発を行っていました。"
+    "description": "ファッション情報サービスの開発を担当。React＋GraphQLの構成で、完全リモートの環境でも安定して開発を進めました。"
   },
   {
     "id": "japan-ai-inc",
     "startAtFullYear": 2023,
     "endAtFullYear": 2024,
     "companyName": "JAPAN AI株式会社",
-    "description": "一部リモートでReact.js(Next.js)、NestJSを用いたWebアプリケーションの開発を行っていました。"
+    "description": "AI系Webアプリの開発に従事。Next.jsやNestJSを使いながら、GCPやBigQueryなど幅広い技術領域もカバーしていました。仕様提案の機会も多くありました。"
   },
   {
     "id": "geniee-inc",
     "startAtFullYear": 2024,
     "endAtFullYear": 2024,
     "companyName": "株式会社ジーニー",
-    "description": "一部リモートでReact.js(Next.js)でWebアプリケーションの開発を行っていました。"
+    "description": "BtoB向けWebサービスのリプレースをNext.jsで担当。新機能の実装も進めつつ、Figmaのデザインを正確に再現するUIづくりを心がけていました。"
   },
   {
     "id": "universal-concern-inc",
     "startAtFullYear": 2025,
     "endAtFullYear": null,
     "companyName": "株式会社ユニバーサルコンツェルン",
-    "description": "一部リモートでReact.jsでWebアプリケーションの開発を行う企業様のお手伝いをしています。"
+    "description": "toC向けサービスをReact.jsで開発中。設計や実装はもちろん、チームの技術共有会も主導し、開発文化の底上げにも関わっています。"
   }
 ]
