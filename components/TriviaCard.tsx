@@ -9,27 +9,17 @@ type Props = {
   item: TriviaItemObject;
 };
 
-type TriviaItemProps = {
-  title: string;
-  item: TriviaItemObject;
-};
-
-const Root = styled.div`
-  cursor: pointer;
-  user-select: none;
-  padding: 8px;
-  max-width: 320px;
-`;
-
 const Container = styled.div`
   color: ${({ theme }) => theme.boxBg};
-  position: relative;
+  cursor: pointer;
+  user-select: none;
   border-radius: 4px;
   border-top: ${({ theme }) => ` 4px solid ${theme.primary}`};
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
   padding: 24px;
   width: 100%;
   max-width: 440px;
+  margin: 8px 0;
 
   @media (max-width: 800px) {
     max-width: 280px;
@@ -67,7 +57,11 @@ const TagsContainer = styled.div`
   flex-wrap: wrap;
 `;
 
-const TriviaItemInner = ({ title, item }: TriviaItemProps) => {
+const TriviaCard: React.FC<Props> = ({ title, item, visible }: Props) => {
+  if (!visible) {
+    return null;
+  }
+
   const { id, subject, description, tags } = item;
 
   return (
@@ -87,18 +81,6 @@ const TriviaItemInner = ({ title, item }: TriviaItemProps) => {
         </TagsContainer>
       )}
     </Container>
-  );
-};
-
-const TriviaCard: React.FC<Props> = ({ title, item, visible }: Props) => {
-  if (!visible) {
-    return null;
-  }
-
-  return (
-    <Root>
-      <TriviaItemInner title={title} item={item} />
-    </Root>
   );
 };
 
