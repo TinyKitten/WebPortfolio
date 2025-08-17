@@ -1,26 +1,5 @@
 [
   {
-    "id": "seiryo-hs",
-    "startAtFullYear": 2011,
-    "endAtFullYear": 2014,
-    "companyName": "群馬県立前橋清陵高等学校",
-    "description": "普通科を卒業しました。"
-  },
-  {
-    "id": "rocket-dev",
-    "startAtFullYear": 2016,
-    "endAtFullYear": 2016,
-    "companyName": "株式会社ろけっと開発",
-    "description": "仕様書作成、コンサルタントなどパートタイムで開発のお手伝いをしていました。"
-  },
-  {
-    "id": "ashiras-inc",
-    "startAtFullYear": 2016,
-    "endAtFullYear": 2017,
-    "companyName": "アシラス株式会社",
-    "description": "Angularを用いたB2B向けWebアプリの開発に従事。新人エンジニアの育成も担当しており、基礎から丁寧に技術支援を行っていました。"
-  },
-  {
     "id": "brain-farm-inc",
     "startAtFullYear": 2018,
     "endAtFullYear": 2019,
