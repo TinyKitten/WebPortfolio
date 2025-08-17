@@ -2,7 +2,6 @@
 import styled, { keyframes } from 'styled-components';
 import Postit from '../Postit';
 import TinyKittenIcon from '../TinyKittenIcon';
-import { SwiperSlide } from 'swiper/react';
 
 export const Container = styled.section`
   position: relative;
@@ -29,23 +28,6 @@ export const headingPostitAnimation = keyframes({
   to: {
     opacity: 1,
     transform: 'translateY(0) rotate(-5deg)',
-  },
-});
-
-export const sliderAnimation = keyframes({
-  '0%': {
-    opacity: 0,
-    transform: 'translateX(0)',
-  },
-  '25%': {
-    opacity: 1,
-  },
-  '50%': {
-    transform: 'translateX(-5%)',
-  },
-  '100%': {
-    opacity: 1,
-    transform: 'translateX(0)',
   },
 });
 
@@ -83,16 +65,7 @@ export const BioText = styled.p`
   }
 `;
 
-export const SwiperContainer = styled.div`
+export const TriviaContainer = styled.div`
   margin-top: 48px;
   margin-bottom: 64px;
-  opacity: 0;
-  animation: ${sliderAnimation} 0.75s ease forwards;
-`;
-
-export const StyledSwiperSlide = styled(SwiperSlide)`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
 `;

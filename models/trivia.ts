@@ -1,6 +1,6 @@
 export type TriviaItemObject = {
   id: number;
-  title: string;
+  subject: string;
   description: string;
   tags: string[];
 };

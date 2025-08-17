@@ -5,10 +5,12 @@ import Markdown from 'react-markdown';
 
 type Props = {
   visible: boolean;
+  title: string;
   item: TriviaItemObject;
 };
 
 type TriviaItemProps = {
+  title: string;
   item: TriviaItemObject;
 };
 
@@ -16,7 +18,7 @@ const Root = styled.div`
   cursor: pointer;
   user-select: none;
   padding: 8px;
-  max-width: 100%;
+  max-width: 320px;
 `;
 
 const Container = styled.div`
@@ -65,13 +67,15 @@ const TagsContainer = styled.div`
   flex-wrap: wrap;
 `;
 
-const TriviaItemInner = ({ item }: TriviaItemProps) => {
-  const { id, title, description, tags } = item;
+const TriviaItemInner = ({ title, item }: TriviaItemProps) => {
+  const { id, subject, description, tags } = item;
 
   return (
     <Container>
-      <IndexText>TinyKitten Trivia #{id}</IndexText>
-      <TitleText>{title}</TitleText>
+      <IndexText>
+        {title} Trivia #{id}
+      </IndexText>
+      <TitleText>{subject}</TitleText>
       <DescriptionContainer>
         <Markdown>{description}</Markdown>
       </DescriptionContainer>
@@ -86,14 +90,14 @@ const TriviaItemInner = ({ item }: TriviaItemProps) => {
   );
 };
 
-const TriviaCard: React.FC<Props> = ({ item, visible }: Props) => {
+const TriviaCard: React.FC<Props> = ({ title, item, visible }: Props) => {
   if (!visible) {
     return null;
   }
 
   return (
     <Root>
-      <TriviaItemInner item={item} />
+      <TriviaItemInner title={title} item={item} />
     </Root>
   );
 };
