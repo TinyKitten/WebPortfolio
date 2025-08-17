@@ -55,7 +55,6 @@ const Heading = styled.p`
   text-align: center;
   line-height: 1.75;
   margin-top: 48px;
-  font-weight: bold;
   color: ${({ theme }) => theme.headingText};
   animation: ${imageAnimation} 1s ease forwards;
 `;
@@ -90,7 +89,9 @@ const WorksTrainLCD: React.FC = () => {
       {visible && (
         <InnerContainer>
           <Heading>
-            日本全国の鉄道路線で使えるナビゲーションアプリ。
+            日本全国の鉄道路線で使える
+            <br />
+            新感覚ナビゲーションアプリ。
             <br />
             2019年から個人開発を続け、現在も進化中。
           </Heading>
