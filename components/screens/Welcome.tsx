@@ -11,7 +11,7 @@ const WelcomeScreen = () => {
   return (
     <Container>
       <LogoWrapper>
-        <StyledPostit>Frontend Engineer</StyledPostit>
+        <StyledPostit>Full-stack Creator</StyledPostit>
         <Logo width={120} height={120} />
       </LogoWrapper>
       <MyName>TinyKitten</MyName>

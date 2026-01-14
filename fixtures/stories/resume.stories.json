@@ -72,8 +72,15 @@
   {
     "id": "universal-concern-inc",
     "startAtFullYear": 2025,
-    "endAtFullYear": null,
+    "endAtFullYear": 2026,
     "companyName": "株式会社ユニバーサルコンツェルン",
     "description": "toC向けサービスをReact.jsで開発中。設計や実装はもちろん、チームの技術共有会も主導し、開発文化の底上げにも関わっています。"
+  },
+  {
+    "id": "proper-2",
+    "startAtFullYear": 2026,
+    "endAtFullYear": null,
+    "companyName": "正社員として転職予定",
+    "description": "新しいキャリアパスとして、正社員としての転職が決まりました。これまでのフリーランス経験を活かし、長期的なプロジェクトに貢献していきたいと考えています。"
   }
 ]

@@ -15,7 +15,7 @@ const raleway = Raleway({
 
 export const metadata: Metadata = {
   title: 'TinyKitten',
-  description: 'フロントエンドエンジニア TinyKittenのポートフォリオです。',
+  description: 'フルスタッククリエイター TinyKittenのポートフォリオです。',
 };
 
 export default function RootLayout({

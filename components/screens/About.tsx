@@ -48,8 +48,7 @@ const TRIVIA_ITEMS: TriviaItemObject[] = [
   {
     id: 5,
     subject: '開業したのはいつ？📅',
-    description:
-      '2018年12月1日に開業しました💼\nすでに5年以上のフロントエンドキャリアがあります。フロントならお任せください🔥',
+    description: '2018年12月1日に屋号「TinyKitten」として開業しました💼',
     tags: ['キャリア', 'フリーランス'],
   },
 ];
@@ -68,11 +67,9 @@ const AboutScreen = () => {
           </LogoWrapper>
           <NameText>TinyKitten</NameText>
           <BioText>
-            東京都練馬区在住のフリーのフロントエンドエンジニア。
+            動物大好きな東京都練馬区在住のクリエイターです。
             <br />
-            Reactの案件を基本的に引き受けています。
-            <br />
-            デザインとネイティブアプリ開発の知識があることが強みです。
+            普段はTrainLCDというアプリを開発しています。
           </BioText>
           {visible && (
             <TriviaContainer>
