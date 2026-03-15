@@ -26,8 +26,8 @@ const TriviaCard = ({ title, item, visible }: Props) => {
       </div>
       {tags.length > 0 && (
         <div className="mt-4 flex flex-wrap gap-2">
-          {tags.map((tag) => (
-            <Tag key={tag} text={tag} />
+          {tags.map((tag, i) => (
+            <Tag key={`${tag}-${i}`} text={tag} />
           ))}
         </div>
       )}

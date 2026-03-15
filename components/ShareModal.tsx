@@ -74,15 +74,19 @@ const ShareModal = ({ isOpen, onRequestClose }: Props): React.ReactElement => {
             href="https://twitter.com/intent/tweet?url=https://tinykitten.me&text=TinyKitten%E3%81%AE%E3%83%9D%E3%83%BC%E3%83%88%E3%83%95%E3%82%A9%E3%83%AA%E3%82%AA&via=tinykitten8&related=tinykitten8"
             target="_blank"
             rel="noreferrer noopener"
+            className="my-2 flex min-w-[210px] h-12 items-center justify-center rounded-[1px] text-[1.2rem] text-white no-underline shadow-[0_3px_6px_rgba(0,0,0,0.16)] transition-all hover:shadow-[0_3px_6px_rgba(0,0,0,0.25)]"
+            style={{ backgroundColor: '#15202B' }}
           >
-            <Button color="#15202B" className="relative my-2">Xでシェア</Button>
+            Xでシェア
           </a>
           <a
             href="https://social-plugins.line.me/lineit/share?url=https://tinykitten.me"
             target="_blank"
             rel="noopener noreferrer"
+            className="my-2 flex min-w-[210px] h-12 items-center justify-center rounded-[1px] text-[1.2rem] text-white no-underline shadow-[0_3px_6px_rgba(0,0,0,0.16)] transition-all hover:shadow-[0_3px_6px_rgba(0,0,0,0.25)]"
+            style={{ backgroundColor: '#00b900' }}
           >
-            <Button color="#00b900" className="relative my-2">LINEで送る</Button>
+            LINEで送る
           </a>
           <div className="my-3 h-px bg-theme-text/50" />
           <button
