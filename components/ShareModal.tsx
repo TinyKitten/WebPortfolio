@@ -39,10 +39,7 @@ const ShareModal = ({ isOpen, onRequestClose }: Props): React.ReactElement => {
   const [progressActive, setProgressActive] = useState(false);
 
   useEffect(() => {
-    if (!isOpen) {
-      setProgressActive(false);
-      return;
-    }
+    if (!isOpen) return;
     const rafId = requestAnimationFrame(() => setProgressActive(true));
     return () => {
       cancelAnimationFrame(rafId);
