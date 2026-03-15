@@ -32,7 +32,7 @@ const Tree = ({ experienceType, items, visible, worksName }: Props) => {
           const storyItem = item as WorksStoryItemObject;
           return (
             <TreeItem
-              key={storyItem.id}
+              key={`${storyItem.id}-${index}`}
               item={storyItem}
               experienceType={experienceType}
               index={index}
