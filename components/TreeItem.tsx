@@ -122,7 +122,10 @@ const TreeItem = ({
         if (story.startAt === story.finishedAt || !story.finishedAt) {
           return { ...baseExperienceObject, period: `${story.startAt}` };
         }
-        return null;
+        return {
+          ...baseExperienceObject,
+          period: `${story.startAt} - ${story.finishedAt}`,
+        };
       }
       default:
         return null;

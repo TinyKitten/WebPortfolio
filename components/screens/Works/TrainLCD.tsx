@@ -72,11 +72,11 @@ const WorksTrainLCD = () => {
           </div>
         </div>
       )}
-      <Link href="/works/trainlcd" aria-label="TrainLCD">
-        {visible && (
+      {visible && (
+        <Link href="/works/trainlcd" aria-label="TrainLCD">
           <Button className="my-8 animate-image-slide">さらに詳しく</Button>
-        )}
-      </Link>
+        </Link>
+      )}
     </div>
   );
 };

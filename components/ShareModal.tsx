@@ -39,16 +39,18 @@ const ShareModal = ({ isOpen, onRequestClose }: Props): React.ReactElement => {
   const [progressActive, setProgressActive] = useState(false);
 
   useEffect(() => {
-    if (isOpen) {
-      // 次フレームでtransitionを開始するためにraf
-      requestAnimationFrame(() => setProgressActive(true));
-    } else {
+    if (!isOpen) {
       setProgressActive(false);
+      return;
     }
+    const rafId = requestAnimationFrame(() => setProgressActive(true));
+    return () => {
+      cancelAnimationFrame(rafId);
+      setProgressActive(false);
+    };
   }, [isOpen]);
 
   const closable = useActionable(isOpen);
-  const noop = () => undefined;
 
   return (
     <Modal
@@ -84,9 +86,10 @@ const ShareModal = ({ isOpen, onRequestClose }: Props): React.ReactElement => {
           </a>
           <div className="my-3 h-px bg-theme-text/50" />
           <button
-            onClick={closable ? onRequestClose : noop}
+            type="button"
+            onClick={onRequestClose}
             disabled={!closable}
-            className="relative min-w-[210px] h-12 cursor-pointer rounded-[1px] text-[1.2rem] text-white shadow-[0_3px_6px_rgba(0,0,0,0.16)] overflow-hidden"
+            className="relative min-w-[210px] h-12 cursor-pointer rounded-[1px] text-[1.2rem] text-white shadow-[0_3px_6px_rgba(0,0,0,0.16)] overflow-hidden disabled:cursor-not-allowed"
             style={{ backgroundColor: 'var(--color-cancel-bg)' }}
           >
             <div

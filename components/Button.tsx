@@ -11,7 +11,7 @@ type Props = {
 const Button = ({ color, children, className, onClick, disabled }: Props) => (
   <button
     style={{ backgroundColor: color ?? 'var(--color-primary)' }}
-    className={`appearance-none border-none min-w-[210px] h-12 cursor-pointer rounded-[1px] text-[1.2rem] text-white shadow-[0_3px_6px_rgba(0,0,0,0.16)] transition-all duration-250 hover:shadow-[0_3px_6px_rgba(0,0,0,0.25)] focus:outline-none ${className ?? ''}`}
+    className={`appearance-none border-none min-w-[210px] h-12 cursor-pointer rounded-[1px] text-[1.2rem] text-white shadow-[0_3px_6px_rgba(0,0,0,0.16)] transition-all duration-250 hover:shadow-[0_3px_6px_rgba(0,0,0,0.25)] focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed ${className ?? ''}`}
     onClick={onClick}
     disabled={disabled}
   >

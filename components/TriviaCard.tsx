@@ -14,7 +14,7 @@ const TriviaCard = ({ title, item, visible }: Props) => {
   const { id, subject, description, tags } = item;
 
   return (
-    <div className="my-2 w-full max-w-[440px] cursor-pointer select-none rounded border-t-4 border-primary p-6 shadow-[0_3px_6px_rgba(0,0,0,0.16)] max-bp800:max-w-[280px]">
+    <div className="my-2 w-full max-w-[440px] select-none rounded border-t-4 border-primary p-6 shadow-[0_3px_6px_rgba(0,0,0,0.16)] max-bp800:max-w-[280px]">
       <p className="font-sans font-bold text-primary">
         {title} Trivia #{id}
       </p>

@@ -13,6 +13,7 @@ export const ArrowButton = () => {
 
   return (
     <button
+      type="button"
       onClick={handleClick}
       className="absolute bottom-8 w-16 cursor-pointer animate-arrow-small md:bottom-16 md:animate-arrow-large"
       aria-label="Scroll to about section"
