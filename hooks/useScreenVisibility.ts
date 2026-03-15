@@ -17,9 +17,7 @@ export const useScreenVisibility = (): {
   const handleScroll = useCallback(() => {
     const top = ref.current?.getBoundingClientRect().top;
     if (top != null) {
-      if (top < window.innerHeight) {
-        setVisible(true);
-      }
+      setVisible(top < window.innerHeight);
     }
   }, []);
 
