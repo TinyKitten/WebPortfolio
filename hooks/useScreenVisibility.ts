@@ -15,7 +15,7 @@ export const useScreenVisibility = (
 } => {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
-  const resetOnLeave = options?.resetOnLeave ?? false;
+  const resetOnLeave = options?.resetOnLeave ?? true;
 
   const handleScroll = useCallback(() => {
     const rect = ref.current?.getBoundingClientRect();

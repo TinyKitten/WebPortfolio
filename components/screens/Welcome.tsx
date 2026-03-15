@@ -5,7 +5,7 @@ import Postit from '../Postit';
 import TinyKittenIcon from '../TinyKittenIcon';
 
 const WelcomeScreen = () => {
-  const { visible, ref } = useScreenVisibility({ resetOnLeave: true });
+  const { visible, ref } = useScreenVisibility();
 
   return (
     <section
