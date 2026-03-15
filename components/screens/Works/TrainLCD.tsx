@@ -1,102 +1,48 @@
+'use client';
+import Image from 'next/image';
 import Link from 'next/link';
-import styled from 'styled-components';
 import TrainLCDImage from '../../../assets/works/trainlcd.png';
-import {
-  headingPostitAnimation,
-  imageAnimation,
-} from '../../../constants/keyframets';
 import { useScreenVisibility } from '../../../hooks/useScreenVisibility';
-import { LearnMoreButton } from '../../LearnMoreButton';
+import Button from '../../Button';
 import Postit from '../../Postit';
-import StyledImage from '../../StyledImage';
 import { TriviaSlider } from '../../TriviaSlider';
 
-const ContentContainer = styled.div`
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
-  min-height: 100vh;
-  padding: 128px 0;
-
-  @media (max-width: 800px) {
-    padding: 64px 0;
-  }
-`;
-
-const LogoContainer = styled.div`
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-const StyledPostit = styled(Postit)`
-  position: absolute;
-  transform: rotate(5deg);
-  left: auto;
-  right: auto;
-  bottom: -24px;
-  z-index: 1;
-  animation: ${headingPostitAnimation} 1s ease 0.25s forwards;
-  opacity: 0;
-`;
-
-const ImageContainer = styled.div`
-  position: relative;
-  width: 480px;
-  max-width: 75%;
-  height: auto;
-  filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.16));
-  animation: ${imageAnimation} 1s ease forwards;
-`;
-
-const Heading = styled.p`
-  text-align: center;
-  line-height: 1.75;
-  margin-top: 48px;
-  color: ${({ theme }) => theme.headingText};
-  animation: ${imageAnimation} 1s ease forwards;
-`;
-
-const InnerContainer = styled.div`
-  width: 100%;
-`;
-
-const TriviaContainer = styled.div`
-  margin-top: 32px;
-`;
-
-const WorksTrainLCD: React.FC = () => {
+const WorksTrainLCD = () => {
   const { visible, ref } = useScreenVisibility();
 
   return (
-    <ContentContainer ref={ref}>
+    <div
+      ref={ref}
+      className="flex min-h-screen flex-col items-center justify-center py-16 bp800:py-32"
+    >
       {visible && (
-        <LogoContainer>
-          <StyledPostit>TrainLCD</StyledPostit>
-          <ImageContainer>
-            <StyledImage
+        <div className="relative flex items-center justify-center">
+          <Postit className="absolute -bottom-6 z-[1] opacity-0 animate-heading-postit-delayed">
+            TrainLCD
+          </Postit>
+          <div className="relative h-auto w-[480px] max-w-[75%] animate-image-slide drop-shadow-[0_3px_6px_rgba(0,0,0,0.16)]">
+            <Image
               sizes="480px"
-              fill
               src={TrainLCDImage}
               alt="TrainLCD"
+              className="object-contain"
+              style={{ position: 'relative' }}
             />
-          </ImageContainer>
-        </LogoContainer>
+          </div>
+        </div>
       )}
 
       {visible && (
-        <InnerContainer>
-          <Heading>
+        <div className="w-full">
+          <p className="mt-12 text-center leading-[1.75] text-heading-text animate-image-slide">
             日本全国の鉄道路線で使える
             <br />
             新感覚ナビゲーションアプリ。
             <br />
             2019年から個人開発を続け、現在も進化中。
-          </Heading>
+          </p>
 
-          <TriviaContainer>
+          <div className="mt-8">
             <TriviaSlider
               title="TrainLCD"
               items={[
@@ -123,13 +69,15 @@ const WorksTrainLCD: React.FC = () => {
                 },
               ]}
             />
-          </TriviaContainer>
-        </InnerContainer>
+          </div>
+        </div>
       )}
-      <Link href="/works/trainlcd" passHref aria-label="TrainLCD">
-        <div>{visible && <LearnMoreButton>さらに詳しく</LearnMoreButton>}</div>
+      <Link href="/works/trainlcd" aria-label="TrainLCD">
+        {visible && (
+          <Button className="my-8 animate-image-slide">さらに詳しく</Button>
+        )}
       </Link>
-    </ContentContainer>
+    </div>
   );
 };
 

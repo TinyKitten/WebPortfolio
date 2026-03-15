@@ -1,16 +1,14 @@
-import { Metadata } from 'next';
+import type { Metadata } from 'next';
 import { Raleway } from 'next/font/google';
-import React from 'react';
 import Header from '../components/Header';
-import './global.css';
-import { Provider } from './provider';
-import 'swiper/css';
+import './globals.css';
 
 const raleway = Raleway({
   weight: ['400', '700'],
   style: ['normal'],
   subsets: ['latin'],
   display: 'swap',
+  variable: '--font-raleway',
 });
 
 export const metadata: Metadata = {
@@ -24,12 +22,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="ja" className={raleway.className}>
-      <body>
-        <Provider>
-          <Header />
-          {children}
-        </Provider>
+    <html lang="ja" className={raleway.variable}>
+      <body className={raleway.className}>
+        <Header />
+        {children}
       </body>
     </html>
   );

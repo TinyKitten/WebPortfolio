@@ -1,10 +1,5 @@
 'use client';
 import dynamic from 'next/dynamic';
-import styled from 'styled-components';
-import {
-  fadeAnimation,
-  headingPostitAnimation,
-} from '../../constants/keyframets';
 import { useFlag } from '../../hooks/useFlag';
 import usePraise from '../../hooks/usePraise';
 import { useScreenVisibility } from '../../hooks/useScreenVisibility';
@@ -15,41 +10,7 @@ import TitlePostit from '../TitlePostit';
 
 const ShareModal = dynamic(() => import('../ShareModal'));
 
-const Container = styled.section`
-  position: relative;
-  min-height: calc(100vh - 48px);
-  overflow: hidden;
-`;
-
-const ContentContainer = styled.div`
-  margin-top: 210px;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-`;
-
-const StyledPostit = styled(Postit)`
-  animation: ${headingPostitAnimation} 1s ease forwards;
-`;
-
-const LinksContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  margin-top: 32px;
-  opacity: 0;
-  animation: ${fadeAnimation} 1s ease 0.25s forwards;
-`;
-
-const ShareButton = styled(Button)`
-  margin: 12px 0;
-`;
-
-const StyledPraise = styled(Praise)`
-  margin: 12px 0;
-`;
-
-const ShareScreen: React.FC = () => {
+const ShareScreen = () => {
   const {
     value: isModalShow,
     toTrue: showModal,
@@ -64,35 +25,37 @@ const ShareScreen: React.FC = () => {
 
   return (
     <>
-      <Container ref={ref}>
+      <section ref={ref} className="relative min-h-[calc(100vh-48px)] overflow-hidden">
         {visible && <TitlePostit title="TinyKitten" subtitle="をシェア" />}
-        <ContentContainer>
-          {visible && <StyledPostit>シェアしよう！</StyledPostit>}
+        <div className="mt-[210px] flex flex-col items-center">
           {visible && (
-            <LinksContainer>
+            <Postit className="animate-heading-postit-left">シェアしよう！</Postit>
+          )}
+          {visible && (
+            <div className="mt-8 flex flex-col justify-center opacity-0 animate-fade-delayed">
               <a
-                href="https://twitter.com/intent/tweet?url=https://tinykitten.me&text=TinyKittenのポートフォリオ&via=tinykitten8&related=tinykitten8"
+                href="https://twitter.com/intent/tweet?url=https://tinykitten.me&text=TinyKitten%E3%81%AE%E3%83%9D%E3%83%BC%E3%83%88%E3%83%95%E3%82%A9%E3%83%AA%E3%82%AA&via=tinykitten8&related=tinykitten8"
                 target="_blank"
                 rel="noreferrer noopener"
               >
-                <ShareButton color="#15202B">Xでシェア</ShareButton>
+                <Button color="#15202B" className="my-3">Xでシェア</Button>
               </a>
               <a
                 href="https://social-plugins.line.me/lineit/share?url=https://tinykitten.me"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <ShareButton color="#00b900">LINEで送る</ShareButton>
+                <Button color="#00b900" className="my-3">LINEで送る</Button>
               </a>
-              <StyledPraise
-                // NOTE: 表示されていない時にカウントを空にすることで表示されるごとにアニメーションを出せる
+              <Praise
                 count={visible ? count : ''}
                 onIncrement={handleIncrement}
+                className="my-3"
               />
-            </LinksContainer>
+            </div>
           )}
-        </ContentContainer>
-      </Container>
+        </div>
+      </section>
       <ShareModal isOpen={isModalShow} onRequestClose={hideModal} />
     </>
   );

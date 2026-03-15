@@ -1,32 +1,18 @@
 'use client';
-import styled from 'styled-components';
 import { useScreenVisibility } from '../../../hooks/useScreenVisibility';
 import TitlePostit from '../../TitlePostit';
 import WorksTrainLCD from './TrainLCD';
 
-const Container = styled.section`
-  overflow: hidden;
-  position: relative;
-  min-height: 100vh;
-`;
-
-const WorksContainer = styled.div`
-  margin-top: 144px;
-  @media (min-width: 800px) {
-    margin-top: 0px;
-  }
-`;
-
-const WorksScreen: React.FC = () => {
+const WorksScreen = () => {
   const { visible, ref } = useScreenVisibility();
 
   return (
-    <Container ref={ref}>
+    <section ref={ref} className="relative min-h-screen overflow-hidden">
       {visible && <TitlePostit title="TinyKitten" subtitle="が作ったよ" />}
-      <WorksContainer>
+      <div className="mt-36 bp800:mt-0">
         <WorksTrainLCD />
-      </WorksContainer>
-    </Container>
+      </div>
+    </section>
   );
 };
 

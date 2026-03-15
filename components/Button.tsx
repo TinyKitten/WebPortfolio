@@ -1,5 +1,4 @@
-import { SyntheticEvent, useContext } from 'react';
-import styled, { ThemeContext } from 'styled-components';
+import type { SyntheticEvent } from 'react';
 
 type Props = {
   color?: string;
@@ -9,44 +8,15 @@ type Props = {
   disabled?: boolean;
 };
 
-const ButtonBase = styled.button`
-  appearance: none;
-  -webkit-appearance: none;
-  border: none;
-  color: #fff;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
-  min-width: 210px;
-  height: 48px;
-  font-size: 1.2rem;
-  border-radius: 1px;
-  cursor: pointer;
-  transition: 0.25s;
-  &:focus {
-    outline: none;
-  }
-  &:hover {
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
-  }
-`;
-
-const Button: React.FC<Props> = ({
-  color,
-  children,
-  className,
-  onClick,
-  disabled,
-}: Props) => {
-  const themeContext = useContext(ThemeContext);
-  return (
-    <ButtonBase
-      style={{ backgroundColor: color || themeContext.primary }}
-      className={className}
-      onClick={onClick}
-      disabled={disabled}
-    >
-      {children}
-    </ButtonBase>
-  );
-};
+const Button = ({ color, children, className, onClick, disabled }: Props) => (
+  <button
+    style={{ backgroundColor: color ?? 'var(--color-primary)' }}
+    className={`appearance-none border-none min-w-[210px] h-12 cursor-pointer rounded-[1px] text-[1.2rem] text-white shadow-[0_3px_6px_rgba(0,0,0,0.16)] transition-all duration-250 hover:shadow-[0_3px_6px_rgba(0,0,0,0.25)] focus:outline-none ${className ?? ''}`}
+    onClick={onClick}
+    disabled={disabled}
+  >
+    {children}
+  </button>
+);
 
 export default Button;

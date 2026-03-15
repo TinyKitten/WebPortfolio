@@ -1,9 +1,5 @@
+'use client';
 import { useCallback } from 'react';
-import styled from 'styled-components';
-import {
-  balloonAnimationHorizontal,
-  balloonAnimationVertical,
-} from '../constants/keyframets';
 import { useFlag } from '../hooks/useFlag';
 
 type Props = {
@@ -12,72 +8,7 @@ type Props = {
   className?: string;
 };
 
-const Container = styled.div`
-  display: flex;
-  align-items: center;
-  position: relative;
-  flex-direction: column;
-  @media (min-width: 800px) {
-    flex-direction: row;
-  }
-`;
-
-const Button = styled.button`
-  appearance: none;
-  -webkit-appearance: none;
-  border: none;
-  color: #fff;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
-  min-width: 210px;
-  height: 48px;
-  font-size: 1.2rem;
-  border-radius: 1px;
-  cursor: pointer;
-  transition: 0.25s;
-  background: ${({ theme }) => theme.primary};
-  z-index: 1;
-
-  &:focus {
-    outline: none;
-  }
-  &:hover {
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
-  }
-`;
-
-const Balloon = styled.div`
-  display: inline-block;
-  position: relative;
-  background: ${({ theme }) => theme.boxBg};
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
-  padding: 14px 0;
-  font-size: 1.2rem;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  border-radius: 8px;
-  color: ${({ theme }) => theme.text};
-  margin-top: 14px;
-  text-align: center;
-  width: 210px;
-  transform: translateY(-62px);
-  animation: ${balloonAnimationVertical} 0.5s ease 0.5s forwards;
-
-  @media (min-width: 800px) {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    left: 220px;
-    margin-top: 0;
-    width: auto;
-    height: 48px;
-    padding: 0 14px;
-    transform: translateX(-220px);
-    animation: ${balloonAnimationHorizontal} 1s ease 0.5s forwards;
-  }
-`;
-
-const Praise: React.FC<Props> = ({ onIncrement, count, className }: Props) => {
+const Praise = ({ onIncrement, count, className }: Props) => {
   const {
     value: clicked,
     toTrue: toClicked,
@@ -93,12 +24,19 @@ const Praise: React.FC<Props> = ({ onIncrement, count, className }: Props) => {
   }, [onIncrement, toClicked, toNotClicked]);
 
   return (
-    <Container className={className}>
-      <Button onClick={handleClick}>
+    <div className={`relative flex flex-col items-center bp800:flex-row ${className ?? ''}`}>
+      <button
+        onClick={handleClick}
+        className="z-[1] appearance-none border-none min-w-[210px] h-12 cursor-pointer rounded-[1px] bg-primary text-[1.2rem] text-white shadow-[0_3px_6px_rgba(0,0,0,0.16)] transition-all hover:shadow-[0_3px_6px_rgba(0,0,0,0.25)] focus:outline-none"
+      >
         {clicked ? 'ありがとう！' : 'ほめる'}
-      </Button>
-      {count.length > 0 ? <Balloon>{count}</Balloon> : null}
-    </Container>
+      </button>
+      {count.length > 0 ? (
+        <div className="praise-balloon">
+          {count}
+        </div>
+      ) : null}
+    </div>
   );
 };
 

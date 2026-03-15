@@ -1,4 +1,3 @@
-import styled from 'styled-components';
 import PostitIcon from './PostitIcon';
 
 type Props = {
@@ -6,32 +5,15 @@ type Props = {
   children: React.ReactNode;
 };
 
-const Container = styled.div`
-  display: inline-block;
-`;
-
-const Text = styled.p`
-  color: ${({ theme }) => theme.text};
-  display: block;
-  position: absolute;
-  width: 189px;
-  margin-left: 21px;
-  left: 0;
-  top: 0;
-  text-align: center;
-  line-height: 48px;
-  font-size: 1.2rem;
-`;
-
-const BG = styled(PostitIcon)`
-  filter: drop-shadow(0 3px 3px rgba(0, 0, 0, 0.16));
-`;
-
-const Postit: React.FC<Props> = ({ className, children }: Props) => (
-  <Container className={className}>
-    <BG width={210} height={48} />
-    <Text>{children}</Text>
-  </Container>
+const Postit = ({ className, children }: Props) => (
+  <div className={`inline-block ${className ?? ''}`}>
+    <div className="relative">
+      <PostitIcon width={210} height={48} className="drop-shadow-[0_3px_3px_rgba(0,0,0,0.16)]" />
+      <p className="absolute left-0 top-0 ml-[21px] block w-[189px] text-center text-[1.2rem] leading-[48px] text-theme-text">
+        {children}
+      </p>
+    </div>
+  </div>
 );
 
 export default Postit;
