@@ -1,9 +1,9 @@
+'use client';
 import { useCallback, useMemo } from 'react';
 import reactStringReplace from 'react-string-replace';
-import styled, { keyframes } from 'styled-components';
 import { useFlag } from '../hooks/useFlag';
 import useLGTM from '../hooks/useLGTM';
-import { ResumeItemObject, WorksStoryItemObject } from '../models/tree';
+import type { ResumeItemObject, WorksStoryItemObject } from '../models/tree';
 import Counter from './Counter';
 import Tag from './Tag';
 
@@ -23,134 +23,39 @@ type TreeResumeItemProps = {
   tags: string[];
 };
 
-export const containerSlideAnimation = keyframes({
-  from: {
-    transform: 'translateX(-480px)',
-  },
-  to: {
-    transform: 'translateX(0)',
-  },
-});
-
-const Root = styled.div`
-  overflow: hidden;
-  margin-left: 6px;
-  padding-right: 4px;
-`;
-
-const Container = styled.div<{ delay: number }>`
-  animation: ${containerSlideAnimation} 1s ease-out forwards;
-  animation-delay: ${({ delay }) => `${delay}ms`};
-  color: ${({ theme }) => theme.boxBg};
-  margin-bottom: 32px;
-  position: relative;
-  margin-left: 32px;
-  border-radius: 4px;
-  border-top: ${({ theme }) => ` 4px solid ${theme.primary}`};
-  box-shadow: 0 0 4px rgba(0, 0, 0, 0.25);
-  padding: 24px;
-  padding-right: 20px;
-  width: 480px;
-  max-width: 60vw;
-  transform: translateX(-480px);
-  &:before {
-    content: '';
-    background-color: ${({ theme }) => theme.primary};
-    width: 28px;
-    height: 4px;
-    position: absolute;
-    top: 16px;
-    left: -28px;
-  }
-
-  @media (max-width: 800px) {
-    max-width: 75vw;
-  }
-`;
-
-const PeriodText = styled.time`
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  font-weight: bold;
-  color: ${({ theme }) => theme.primary};
-`;
-
-const TitleText = styled.h3`
-  font-weight: bold;
-  margin-top: 16px;
-  font-size: 1.25rem;
-  color: ${({ theme }) => theme.text};
-  line-height: 1.25;
-  white-space: pre-wrap;
-`;
-
-const DescriptionText = styled.p`
-  margin-top: 16px;
-  color: ${({ theme }) => theme.headingText};
-  line-height: 1.75;
-  white-space: pre-wrap;
-  overflow-wrap: break-word;
-`;
-
-const TagsContainer = styled.div`
-  display: flex;
-  gap: 8px;
-  margin-top: 16px;
-  flex-wrap: wrap;
-`;
-
-const DescriptionLink = styled.a`
-  color: ${({ theme }) => theme.primary};
-  word-wrap: break-word;
-`;
-
-const LGTMContainer = styled.div`
-  width: 120px;
-  margin-top: 24px;
-  text-align: center;
-`;
-
-const TreeItemInner: React.FC<TreeResumeItemProps> = ({
-  period,
-  title,
-  description,
-  tags,
-}: TreeResumeItemProps) => {
+const TreeItemInner = ({ period, title, description, tags }: TreeResumeItemProps) => {
   const descriptionParagraph = useMemo(
     () => (
-      <DescriptionText>
+      <p className="mt-4 whitespace-pre-wrap break-words leading-[1.75] text-heading-text">
         {reactStringReplace(description, /(https?:\/\/\S+)/g, (match, i) => (
-          <DescriptionLink
-            key={i}
-            href={match}
-            target="_blank"
-            rel="noreferrer"
-          >
+          <a key={i} href={match} target="_blank" rel="noreferrer" className="text-primary break-all">
             {match}
-          </DescriptionLink>
+          </a>
         ))}
-      </DescriptionText>
+      </p>
     ),
     [description]
   );
 
   return (
     <>
-      <PeriodText>{period}</PeriodText>
-      <TitleText>{title}</TitleText>
+      <time className="font-sans font-bold text-primary">{period}</time>
+      <h3 className="mt-4 whitespace-pre-wrap text-[1.25rem] font-bold leading-tight text-theme-text">
+        {title}
+      </h3>
       {descriptionParagraph}
       {tags.length > 0 && (
-        <TagsContainer>
+        <div className="mt-4 flex flex-wrap gap-2">
           {tags.map((tag) => (
             <Tag key={tag} text={tag} />
           ))}
-        </TagsContainer>
+        </div>
       )}
     </>
   );
 };
 
-const TreeItem: React.FC<Props> = ({
+const TreeItem = ({
   experienceType,
   item,
   index,
@@ -178,7 +83,7 @@ const TreeItem: React.FC<Props> = ({
   }, [incrementLGTMCount, setClickedForFalse, setClickedForTrue]);
 
   const lgtmText = useMemo(
-    () => (lgtmClicked ? `わーい！` : `えらいね `),
+    () => (lgtmClicked ? 'わーい！' : 'えらいね '),
     [lgtmClicked]
   );
 
@@ -197,72 +102,54 @@ const TreeItem: React.FC<Props> = ({
           tags: [],
         };
         if (resume.startAtFullYear === resume.endAtFullYear) {
-          return {
-            ...baseExperienceObject,
-            period: `${resume.startAtFullYear}`,
-          };
+          return { ...baseExperienceObject, period: `${resume.startAtFullYear}` };
         }
         if (!resume.endAtFullYear) {
-          return {
-            ...baseExperienceObject,
-            period: `${resume.startAtFullYear}-`,
-          };
+          return { ...baseExperienceObject, period: `${resume.startAtFullYear}-` };
         }
-
         return {
           ...baseExperienceObject,
           period: `${resume.startAtFullYear}-${resume.endAtFullYear}`,
         };
       }
-      case 'worksStory':
-        {
-          const story = item as WorksStoryItemObject;
-          const baseExperienceObject = {
-            title: story.title,
-            description: story.description,
-            tags: story.tags,
-          };
-
-          if (story.startAt === story.finishedAt || !story.finishedAt) {
-            return {
-              ...baseExperienceObject,
-              period: `${story.startAt}`,
-            };
-          }
-          return null;
+      case 'worksStory': {
+        const story = item as WorksStoryItemObject;
+        const baseExperienceObject = {
+          title: story.title,
+          description: story.description,
+          tags: story.tags,
+        };
+        if (story.startAt === story.finishedAt || !story.finishedAt) {
+          return { ...baseExperienceObject, period: `${story.startAt}` };
         }
-        break;
+        return {
+          ...baseExperienceObject,
+          period: `${story.startAt} - ${story.finishedAt}`,
+        };
+      }
       default:
         return null;
     }
   }, [experienceType, item]);
 
-  if (!visible) {
-    return null;
-  }
-
-  if (!experienceInfo) {
-    return null;
-  }
+  if (!visible || !experienceInfo) return null;
 
   const { period, title, description, tags } = experienceInfo;
 
   return (
-    <Root>
-      <Container delay={index * 150}>
-        <TreeItemInner
-          period={period}
-          title={title}
-          description={description}
-          tags={tags}
-        />
+    <div className="overflow-hidden ml-1.5 pr-1">
+      <div
+        className="relative mb-8 ml-8 w-[480px] max-w-[60vw] rounded border-t-4 border-primary p-6 pr-5 shadow-[0_0_4px_rgba(0,0,0,0.25)] animate-tree-slide max-bp800:max-w-[75vw] before:absolute before:top-4 before:-left-7 before:h-1 before:w-7 before:bg-primary before:content-['']"
+        style={{ transform: 'translateX(-480px)', animationDelay: `${index * 150}ms` }}
+      >
+        <TreeItemInner period={period} title={title} description={description} tags={tags} />
         {showLGTM && (
-          <LGTMContainer>
+          <div className="mt-6 w-[120px] text-center">
             <Counter text={lgtmText} onClick={handleLGTM} count={lgtmCount} />
-          </LGTMContainer>
+          </div>
         )}
-      </Container>
-    </Root>
+      </div>
+    </div>
   );
 };
 

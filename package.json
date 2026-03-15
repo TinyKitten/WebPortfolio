@@ -6,38 +6,39 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "eslint",
+    "prepare": "vp config"
   },
   "dependencies": {
-    "@next/bundle-analyzer": "^13.2.4",
-    "firebase": "^9.18.0",
-    "next": "^14.1.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "firebase": "^12.10.0",
+    "next": "16.1.6",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
     "react-markdown": "^10.1.0",
-    "react-modal": "^3.16.1",
-    "react-scroll": "^1.9.0",
-    "react-spring": "^9.7.3",
-    "react-string-replace": "^1.1.0",
-    "sharp": "^0.33.2",
-    "styled-components": "^5.3.9",
-    "swiper": "^11.2.6"
+    "react-modal": "^3.16.3",
+    "react-scroll": "^1.9.3",
+    "react-string-replace": "^2.0.1",
+    "sharp": "^0.34.5",
+    "swiper": "^12.1.2"
   },
   "devDependencies": {
-    "@types/node": "^18.15.11",
-    "@types/react": "^18.0.31",
-    "@types/react-modal": "^3.13.1",
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "@types/react-modal": "^3.16.3",
     "@types/react-scroll": "^1.8.10",
-    "@types/styled-components": "^5.1.26",
-    "@typescript-eslint/eslint-plugin": "^5.57.0",
-    "@typescript-eslint/parser": "^5.57.0",
-    "eslint": "^8.37.0",
-    "eslint-config-next": "^14.1.0",
-    "eslint-config-prettier": "^8.8.0",
-    "eslint-plugin-prettier": "^4.2.1",
-    "eslint-plugin-react": "^7.32.2",
-    "eslint-plugin-react-hooks": "^4.6.0",
-    "prettier": "^2.8.7",
-    "typescript": "^5.0.2"
+    "eslint": "^9",
+    "eslint-config-next": "16.1.6",
+    "tailwindcss": "^4",
+    "typescript": "^5",
+    "vite-plus": "latest"
+  },
+  "packageManager": "pnpm@10.32.1",
+  "pnpm": {
+    "overrides": {
+      "vite": "npm:@voidzero-dev/vite-plus-core@latest",
+      "vitest": "npm:@voidzero-dev/vite-plus-test@latest"
+    }
   }
 }

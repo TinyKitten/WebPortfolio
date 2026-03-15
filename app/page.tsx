@@ -1,43 +1,33 @@
 import dynamic from 'next/dynamic';
-import { DynamicLoading } from '../components/DynamicLoading';
 import AboutScreen from '../components/screens/About';
 import WelcomeScreen from '../components/screens/Welcome';
-import { SectionContainer } from './page.styled';
 
-const ResumeScreen = dynamic(() => import('../components/screens/Resume'), {
-  loading: DynamicLoading,
-});
-const ShareScreen = dynamic(() => import('../components/screens/Share'), {
-  loading: DynamicLoading,
-});
-const SkillsScreen = dynamic(() => import('../components/screens/Skills'), {
-  loading: DynamicLoading,
-});
-const WorksScreen = dynamic(() => import('../components/screens/Works'), {
-  loading: DynamicLoading,
-});
+const ResumeScreen = dynamic(() => import('../components/screens/Resume'));
+const ShareScreen = dynamic(() => import('../components/screens/Share'));
+const SkillsScreen = dynamic(() => import('../components/screens/Skills'));
+const WorksScreen = dynamic(() => import('../components/screens/Works'));
 
 export default function Page() {
   return (
     <>
-      <SectionContainer>
+      <div className="bg-sub-bg">
         <WelcomeScreen />
-      </SectionContainer>
-      <SectionContainer>
+      </div>
+      <div className="bg-theme-bg">
         <AboutScreen />
-      </SectionContainer>
-      <SectionContainer>
+      </div>
+      <div className="bg-sub-bg">
         <SkillsScreen />
-      </SectionContainer>
-      <SectionContainer>
+      </div>
+      <div className="bg-theme-bg">
         <ResumeScreen />
-      </SectionContainer>
-      <SectionContainer>
+      </div>
+      <div className="bg-sub-bg">
         <WorksScreen />
-      </SectionContainer>
-      <SectionContainer>
+      </div>
+      <div className="bg-theme-bg">
         <ShareScreen />
-      </SectionContainer>
+      </div>
     </>
   );
 }

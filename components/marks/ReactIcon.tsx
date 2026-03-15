@@ -1,8 +1,6 @@
-import { SVGProps } from 'react';
+import type { SVGProps } from 'react';
 
-type Props = SVGProps<SVGSVGElement>;
-
-const ReactIcon: React.FC<Props> = (props: Props) => (
+const ReactIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg
     {...props}
     width="100%"

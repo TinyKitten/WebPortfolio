@@ -1,46 +1,23 @@
-import styled from 'styled-components';
-
 type Props = {
   text: string;
   onClick?: () => void;
   count?: string;
 };
 
-const Container = styled.div`
-  border: 1.5px solid ${({ theme }) => theme.primary}BF;
-  border-radius: 32px;
-  display: flex;
-  overflow: hidden;
-  width: 150px;
-`;
-
-const CounterSegment = styled.div<{ rightSegment: boolean }>`
-  background-color: ${({ rightSegment, theme }) =>
-    rightSegment ? theme.bg : theme.primary};
-  padding: 8px 0;
-  width: ${({ rightSegment }) => (rightSegment ? 50 : 100)}px;
-  cursor: ${({ rightSegment }) => (rightSegment ? 'default' : 'pointer')};
-  user-select: ${({ rightSegment }) => (rightSegment ? 'auto' : 'none')};
-`;
-
-const Text = styled.span<{ rightSegment: boolean }>`
-  color: ${({ theme, rightSegment }) =>
-    rightSegment ? theme.headingText : 'white'};
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-`;
-
-const Counter: React.FC<Props> = ({ text, onClick, count }: Props) => {
-  return (
-    <Container>
-      <CounterSegment rightSegment={false} onClick={onClick}>
-        <Text rightSegment={false}>{text}</Text>
-      </CounterSegment>
-      <CounterSegment rightSegment>
-        <Text rightSegment>{count}</Text>
-      </CounterSegment>
-    </Container>
-  );
-};
+const Counter = ({ text, onClick, count }: Props) => (
+  <div className="flex w-[150px] overflow-hidden rounded-full border-[1.5px] border-primary/75">
+    <button
+      type="button"
+      className="w-[100px] cursor-pointer select-none border-none bg-primary py-2 disabled:cursor-default disabled:opacity-50"
+      onClick={onClick}
+      disabled={!onClick}
+    >
+      <span className="font-sans text-white">{text}</span>
+    </button>
+    <div className="w-[50px] bg-theme-bg py-2">
+      <span className="font-sans text-heading-text">{count}</span>
+    </div>
+  </div>
+);
 
 export default Counter;

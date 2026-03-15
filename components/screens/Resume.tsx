@@ -1,36 +1,19 @@
 'use client';
-import React from 'react';
-import styled from 'styled-components';
-import resumeFixutre from '../../fixtures/stories/resume.stories.json';
+import resumeFixture from '../../fixtures/stories/resume.stories.json';
 import { useScreenVisibility } from '../../hooks/useScreenVisibility';
 import TitlePostit from '../TitlePostit';
 import Tree from '../Tree';
 
-const Container = styled.section`
-  position: relative;
-  min-height: 100vh;
-  overflow: hidden;
-`;
-
-const ContentContainer = styled.div`
-  padding-top: 210px;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  padding-bottom: 64px;
-  position: relative;
-`;
-
-const ResumeScreen: React.FC = () => {
+const ResumeScreen = () => {
   const { visible, ref } = useScreenVisibility();
 
   return (
-    <Container ref={ref}>
+    <section ref={ref} className="relative min-h-screen overflow-hidden">
       {visible && <TitlePostit title="TinyKitten" subtitle="の職歴" />}
-      <ContentContainer>
-        <Tree experienceType="resume" items={resumeFixutre} visible={visible} />
-      </ContentContainer>
-    </Container>
+      <div className="relative flex flex-col items-center pt-[210px] pb-16">
+        <Tree experienceType="resume" items={resumeFixture} visible={visible} />
+      </div>
+    </section>
   );
 };
 

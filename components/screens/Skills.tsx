@@ -5,24 +5,23 @@ import TitlePostit from '../TitlePostit';
 import JSIcon from '../marks/JSIcon';
 import ReactIcon from '../marks/ReactIcon';
 import TSIcon from '../marks/TSIcon';
-import { Container, ContentContainer, SkillsContainer } from './Skills.styled';
 
-const SkillsScreen: React.FC = () => {
+const SkillsScreen = () => {
   const { visible, ref } = useScreenVisibility();
 
   return (
-    <Container ref={ref}>
+    <section ref={ref} className="relative flex min-h-screen items-center justify-center overflow-hidden">
       {visible && <TitlePostit title="TinyKitten" subtitle="のスキル" />}
-      <ContentContainer>
+      <div className="flex w-full flex-col items-center">
         {visible && (
-          <SkillsContainer>
+          <div className="mt-[176px] mb-8 grid w-3/4 grid-cols-[repeat(auto-fit,minmax(120px,1fr))] gap-8 animate-fade-slide bp800:mt-0 bp800:mb-0">
             <SkillsCircle icon={JSIcon} name="JavaScript" />
             <SkillsCircle icon={TSIcon} name="TypeScript" />
             <SkillsCircle icon={ReactIcon} name="React (Native)" />
-          </SkillsContainer>
+          </div>
         )}
-      </ContentContainer>
-    </Container>
+      </div>
+    </section>
   );
 };
 

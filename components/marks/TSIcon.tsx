@@ -1,10 +1,7 @@
-import { SVGProps } from 'react';
+import type { SVGProps } from 'react';
 
-type Props = SVGProps<SVGSVGElement>;
-
-const TSIcon: React.FC<Props> = (props: Props) => (
+const TSIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg fill="none" viewBox="0 0 512 512" {...props}>
-    <rect fill="#3178c6" height="512" rx="50" width="512" />
     <rect fill="#3178c6" height="512" rx="50" width="512" />
     <path
       clipRule="evenodd"

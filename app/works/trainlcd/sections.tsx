@@ -1,11 +1,10 @@
 'use client';
+import Image from 'next/image';
 import Link from 'next/link';
-import styled from 'styled-components';
 import TrainLCDImage from '../../../assets/works/trainlcd.png';
 import Button from '../../../components/Button';
 import Postit from '../../../components/Postit';
 import SkillsCircle from '../../../components/SkillsCircle';
-import StyledImage from '../../../components/StyledImage';
 import TitlePostit from '../../../components/TitlePostit';
 import Tree from '../../../components/Tree';
 import MySQLIcon from '../../../components/marks/MySQLIcon';
@@ -13,185 +12,90 @@ import ReactIcon from '../../../components/marks/ReactIcon';
 import RustIcon from '../../../components/marks/RustIcon';
 import TSIcon from '../../../components/marks/TSIcon';
 import TonicIcon from '../../../components/marks/TonicIcon';
-import {
-  imageAnimation,
-  singleHeadingPostitAnimation,
-} from '../../../constants/keyframets';
 import storiesArray from '../../../fixtures/stories/works/trainlcd.stories.json';
 import { useScreenVisibility } from '../../../hooks/useScreenVisibility';
 
-const Container = styled.section<{ padTop?: boolean }>`
-  position: relative;
-  min-height: 100vh;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  background: ${({ theme }) => theme.bg};
-  &:nth-child(even) {
-    background: ${({ theme }) => theme.subBg};
-  }
-  &:first-child {
-    min-height: 100vh;
-    margin-top: -48px;
-  }
-  padding-top: ${({ padTop }) => (padTop ? '144px' : '0px')};
-`;
-
-const ContentContainer = styled.article`
-  width: 100%;
-  min-height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  margin-top: 144px;
-  @media (min-width: 800px) {
-    margin-top: 0;
-  }
-`;
-
-const Anchor = styled.a`
-  margin-bottom: 32px;
-`;
-
-const StyledPostit = styled(Postit)`
-  display: block;
-  margin-bottom: 32px;
-  animation: ${singleHeadingPostitAnimation} 1s ease forwards;
-`;
-
-const Name = styled.h2`
-  margin-top: 32px;
-  font-size: 2rem;
-  text-align: center;
-  font-weight: bold;
-  color: ${({ theme }) => theme.text};
-`;
-
-const LogoContainer = styled.div`
-  position: relative;
-  opacity: 0;
-  width: 320px;
-  height: auto;
-  filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.16));
-  animation: ${imageAnimation} 1s ease 0.25s forwards;
-  @media (min-width: 800px) {
-    width: 480px;
-  }
-`;
-
-const Bio = styled.p`
-  text-align: center;
-  max-width: calc(100% - 64px);
-  line-height: 1.75;
-  margin-top: 12px;
-  color: ${({ theme }) => theme.text};
-`;
-
-const Concept = styled.h2`
-  line-height: 1.5;
-  font-size: 2rem;
-  color: ${({ theme }) => theme.text};
-  font-weight: bold;
-  max-width: 90%;
-`;
-const ConceptDescription = styled.p`
-  text-align: left;
-  max-width: 90%;
-  margin-top: 16px;
-  line-height: 2;
-  color: ${({ theme }) => theme.text};
-  @media (min-width: 800px) {
-    text-align: center;
-  }
-`;
-const ConceptDescriptionAnchor = styled.a`
-  color: ${({ theme }) => theme.text};
-  font-weight: bold;
-  text-decoration: none;
-`;
-
-const SmallCaption = styled.small`
-  text-align: left;
-  max-width: 90%;
-  margin-top: 32px;
-  line-height: 2;
-  color: ${({ theme }) => theme.text};
-  font-size: 0.8rem;
-  margin-top: 0;
-  width: 100%;
-  @media (min-width: 800px) {
-    text-align: center;
-  }
-`;
-
-const TechContainer = styled.article`
-  margin-top: 64px;
-  width: 75%;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  grid-gap: 32px;
-  animation: ${imageAnimation} 1s ease forwards;
-`;
-
-const TreeContainer = styled.article`
-  margin: 64px 0;
-`;
+const SectionWrapper = ({
+  children,
+  className,
+  padTop,
+  innerRef,
+}: {
+  children: React.ReactNode;
+  className?: string;
+  padTop?: boolean;
+  innerRef?: React.Ref<HTMLDivElement>;
+}) => (
+  <section
+    ref={innerRef}
+    className={`relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-theme-bg even:bg-sub-bg first:min-h-screen first:-mt-12 ${padTop ? 'pt-36' : ''} ${className ?? ''}`}
+  >
+    {children}
+  </section>
+);
 
 export const FirstSection = () => (
-  <Container>
-    <StyledPostit>Dev/MobileApp</StyledPostit>
-    <LogoContainer>
-      <StyledImage
-        fill
-        sizes="320px"
+  <SectionWrapper>
+    <Postit className="mb-8 block animate-single-heading-postit">Dev/MobileApp</Postit>
+    <div className="relative h-auto w-80 animate-image-slide-delayed opacity-0 drop-shadow-[0_3px_6px_rgba(0,0,0,0.16)] bp800:w-[480px]">
+      <Image
         src={TrainLCDImage}
+        sizes="320px"
         alt="TrainLCD"
         priority
+        className="object-contain"
+        style={{ position: 'relative' }}
       />
-    </LogoContainer>
-    <Name>TrainLCD</Name>
-    <Bio>日本全国の鉄道路線で使える新感覚のナビゲーションアプリ</Bio>
-  </Container>
+    </div>
+    <h2 className="mt-8 text-center text-[2rem] font-bold text-theme-text">TrainLCD</h2>
+    <p className="mt-3 max-w-[calc(100%-64px)] text-center leading-[1.75] text-theme-text">
+      日本全国の鉄道路線で使える新感覚のナビゲーションアプリ
+    </p>
+  </SectionWrapper>
 );
 
 export const ConceptSection = () => {
   const { visible, ref } = useScreenVisibility();
 
   return (
-    <Container ref={ref}>
+    <SectionWrapper innerRef={ref}>
       {visible && <TitlePostit title="TrainLCD" subtitle="コンセプト" />}
-      <ContentContainer>
-        <Concept>Webの技術で電車のLCDを再現したい</Concept>
-        <ConceptDescription>
+      <article className="mt-36 flex w-full min-h-full flex-col items-center justify-center bp800:mt-0">
+        <h2 className="max-w-[90%] text-[2rem] font-bold leading-[1.5] text-theme-text">
+          Webの技術で電車のLCDを再現したい
+        </h2>
+        <p className="mt-4 max-w-[90%] text-left leading-8 text-theme-text bp800:text-center">
           このアプリの開発を始める前に趣味で作っていた
-          <ConceptDescriptionAnchor
+          <a
             href="https://github.com/TinyKitten/StationAPI"
             target="_blank"
             rel="noopener noreferrer"
+            className="font-bold text-theme-text no-underline"
           >
             StationAPI
-          </ConceptDescriptionAnchor>
-          の応用例の一つです。 <br />
+          </a>
+          の応用例の一つです。
+          <br />
           以前より電車のLCDを再現したいと思っていて、
-          <ConceptDescriptionAnchor
+          <a
             href="https://github.com/TinyKitten/StationAPI"
             target="_blank"
             rel="noopener noreferrer"
+            className="font-bold text-theme-text no-underline"
           >
             StationAPI
-          </ConceptDescriptionAnchor>
+          </a>
           の大型アップデートで色々取れるようにした影響で作ろうと思いました。
           <br />
           満員電車、LCDのない路線など、現在どこにいるか、どの駅を通るのかひと目で分かります。
           <br />
           ぜひお試しください。
-        </ConceptDescription>
-        <SmallCaption>※地下区間は非対応です</SmallCaption>
-      </ContentContainer>
-    </Container>
+        </p>
+        <small className="mt-0 max-w-[90%] w-full text-left text-[0.8rem] leading-8 text-theme-text bp800:text-center">
+          ※地下区間は非対応です
+        </small>
+      </article>
+    </SectionWrapper>
   );
 };
 
@@ -199,18 +103,18 @@ export const TechnologySection = () => {
   const { visible, ref } = useScreenVisibility();
 
   return (
-    <Container padTop ref={ref}>
+    <SectionWrapper padTop innerRef={ref}>
       {visible && <TitlePostit title="TrainLCD" subtitle="使用技術" />}
       {visible && (
-        <TechContainer>
+        <div className="mt-16 grid w-3/4 grid-cols-[repeat(auto-fit,minmax(120px,1fr))] gap-8 animate-image-slide">
           <SkillsCircle icon={TSIcon} name="TypeScript" />
           <SkillsCircle icon={ReactIcon} name="React Native" />
           <SkillsCircle icon={RustIcon} name="Rust" />
           <SkillsCircle icon={TonicIcon} name="Tonic" />
           <SkillsCircle icon={MySQLIcon} name="MySQL" />
-        </TechContainer>
+        </div>
       )}
-    </Container>
+    </SectionWrapper>
   );
 };
 
@@ -218,19 +122,19 @@ export const StoriesSection = () => {
   const { visible, ref } = useScreenVisibility();
 
   return (
-    <Container padTop ref={ref}>
+    <SectionWrapper padTop innerRef={ref}>
       {visible && <TitlePostit title="TrainLCD" subtitle="ストーリー" />}
       {visible && (
-        <TreeContainer>
+        <div className="my-16">
           <Tree
             experienceType="worksStory"
             items={storiesArray}
             visible
             worksName="trainlcd"
           />
-        </TreeContainer>
+        </div>
       )}
-    </Container>
+    </SectionWrapper>
   );
 };
 
@@ -238,30 +142,29 @@ export const AccessSection = () => {
   const { visible, ref } = useScreenVisibility();
 
   return (
-    <Container ref={ref}>
+    <SectionWrapper innerRef={ref}>
       {visible && <TitlePostit title="TrainLCD" subtitle="リンク" />}
-      <ContentContainer>
-        <Anchor
+      <article className="mt-36 flex w-full min-h-full flex-col items-center justify-center bp800:mt-0">
+        <a
           href="https://trainlcd.app"
           target="_blank"
           rel="noopener noreferrer"
+          className="mb-8"
         >
           <Button>公式サイト</Button>
-        </Anchor>
-        <Anchor
+        </a>
+        <a
           href="https://github.com/TrainLCD/MobileApp"
           target="_blank"
           rel="noopener noreferrer"
+          className="mb-8"
         >
           <Button>リポジトリ</Button>
-        </Anchor>
-
-        <Link href="/" passHref>
-          <div>
-            <Button color="#555">戻る</Button>
-          </div>
+        </a>
+        <Link href="/">
+          <Button color="#555">戻る</Button>
         </Link>
-      </ContentContainer>
-    </Container>
+      </article>
+    </SectionWrapper>
   );
 };

@@ -1,7 +1,6 @@
-import styled from 'styled-components';
-import Tag from './Tag';
-import { TriviaItemObject } from '../models/trivia';
 import Markdown from 'react-markdown';
+import type { TriviaItemObject } from '../models/trivia';
+import Tag from './Tag';
 
 type Props = {
   visible: boolean;
@@ -9,78 +8,30 @@ type Props = {
   item: TriviaItemObject;
 };
 
-const Container = styled.div`
-  color: ${({ theme }) => theme.boxBg};
-  cursor: pointer;
-  user-select: none;
-  border-radius: 4px;
-  border-top: ${({ theme }) => ` 4px solid ${theme.primary}`};
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
-  padding: 24px;
-  width: 100%;
-  max-width: 440px;
-  margin: 8px 0;
-
-  @media (max-width: 800px) {
-    max-width: 280px;
-  }
-`;
-
-const IndexText = styled.p`
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  font-weight: bold;
-  color: ${({ theme }) => theme.primary};
-`;
-
-const TitleText = styled.h3`
-  font-weight: bold;
-  margin-top: 16px;
-  font-size: 1.25rem;
-  color: ${({ theme }) => theme.text};
-  line-height: 1.25;
-  white-space: pre-wrap;
-`;
-
-const DescriptionContainer = styled.div`
-  margin-top: 16px;
-  color: ${({ theme }) => theme.headingText};
-  line-height: 1.75;
-  white-space: pre-wrap;
-  overflow-wrap: break-word;
-`;
-
-const TagsContainer = styled.div`
-  display: flex;
-  gap: 8px;
-  margin-top: 16px;
-  flex-wrap: wrap;
-`;
-
-const TriviaCard: React.FC<Props> = ({ title, item, visible }: Props) => {
-  if (!visible) {
-    return null;
-  }
+const TriviaCard = ({ title, item, visible }: Props) => {
+  if (!visible) return null;
 
   const { id, subject, description, tags } = item;
 
   return (
-    <Container>
-      <IndexText>
+    <div className="my-2 w-full max-w-[440px] select-none rounded border-t-4 border-primary p-6 shadow-[0_3px_6px_rgba(0,0,0,0.16)] max-bp800:max-w-[280px]">
+      <p className="font-sans font-bold text-primary">
         {title} Trivia #{id}
-      </IndexText>
-      <TitleText>{subject}</TitleText>
-      <DescriptionContainer>
+      </p>
+      <h3 className="mt-4 whitespace-pre-wrap text-[1.25rem] font-bold leading-tight text-theme-text">
+        {subject}
+      </h3>
+      <div className="mt-4 whitespace-pre-wrap break-words leading-[1.75] text-heading-text">
         <Markdown>{description}</Markdown>
-      </DescriptionContainer>
+      </div>
       {tags.length > 0 && (
-        <TagsContainer>
-          {tags.map((tag) => (
-            <Tag key={tag} text={tag} />
+        <div className="mt-4 flex flex-wrap gap-2">
+          {tags.map((tag, i) => (
+            <Tag key={`${tag}-${i}`} text={tag} />
           ))}
-        </TagsContainer>
+        </div>
       )}
-    </Container>
+    </div>
   );
 };
 

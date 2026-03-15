@@ -1,6 +1,6 @@
 'use client';
 import {
-  MutableRefObject,
+  type MutableRefObject,
   useCallback,
   useEffect,
   useRef,
@@ -16,13 +16,15 @@ export const useScreenVisibility = (): {
 
   const handleScroll = useCallback(() => {
     const top = ref.current?.getBoundingClientRect().top;
-    if (top) {
+    if (top != null) {
       setVisible(top < window.innerHeight);
     }
   }, []);
 
   useEffect(() => {
+    handleScroll();
     window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, [handleScroll]);
 
   return { visible, ref };
