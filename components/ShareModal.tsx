@@ -1,11 +1,10 @@
-'use client';
-import { useEffect, useState } from 'react';
-import Modal from 'react-modal';
-import { useActionable } from '../hooks/useActionable';
-import Button from './Button';
+"use client";
+import { useEffect, useState } from "react";
+import Modal from "react-modal";
+import { useActionable } from "../hooks/useActionable";
 
-if (typeof window !== 'undefined') {
-  Modal.setAppElement('body');
+if (typeof window !== "undefined") {
+  Modal.setAppElement("body");
 }
 
 type Props = {
@@ -15,20 +14,20 @@ type Props = {
 
 const customStyles: Modal.Styles = {
   content: {
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-50%',
-    transform: 'translate(-50%, -50%)',
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
     padding: 0,
-    border: 'none',
+    border: "none",
     zIndex: 2,
     borderRadius: 8,
-    maxWidth: '320px',
+    maxWidth: "320px",
   },
   overlay: {
-    background: 'rgba(0, 0, 0, 0.75)',
+    background: "rgba(0, 0, 0, 0.75)",
     zIndex: 2,
   },
 };
@@ -72,7 +71,7 @@ const ShareModal = ({ isOpen, onRequestClose }: Props): React.ReactElement => {
             target="_blank"
             rel="noreferrer noopener"
             className="my-2 flex min-w-[210px] h-12 items-center justify-center rounded-[1px] text-[1.2rem] text-white no-underline shadow-[0_3px_6px_rgba(0,0,0,0.16)] transition-all hover:shadow-[0_3px_6px_rgba(0,0,0,0.25)]"
-            style={{ backgroundColor: '#15202B' }}
+            style={{ backgroundColor: "#15202B" }}
           >
             Xでシェア
           </a>
@@ -81,7 +80,7 @@ const ShareModal = ({ isOpen, onRequestClose }: Props): React.ReactElement => {
             target="_blank"
             rel="noopener noreferrer"
             className="my-2 flex min-w-[210px] h-12 items-center justify-center rounded-[1px] text-[1.2rem] text-white no-underline shadow-[0_3px_6px_rgba(0,0,0,0.16)] transition-all hover:shadow-[0_3px_6px_rgba(0,0,0,0.25)]"
-            style={{ backgroundColor: '#00b900' }}
+            style={{ backgroundColor: "#00b900" }}
           >
             LINEで送る
           </a>
@@ -91,15 +90,13 @@ const ShareModal = ({ isOpen, onRequestClose }: Props): React.ReactElement => {
             onClick={onRequestClose}
             disabled={!closable}
             className="relative min-w-[210px] h-12 cursor-pointer rounded-[1px] text-[1.2rem] text-white shadow-[0_3px_6px_rgba(0,0,0,0.16)] overflow-hidden disabled:cursor-not-allowed"
-            style={{ backgroundColor: 'var(--color-cancel-bg)' }}
+            style={{ backgroundColor: "var(--color-cancel-bg)" }}
           >
             <div
               className="absolute left-0 top-0 h-full bg-black/50"
               style={{
-                width: progressActive ? '100%' : '0%',
-                transition: progressActive
-                  ? `width ${CANCEL_DISABLED_DURATION}ms linear`
-                  : 'none',
+                width: progressActive ? "100%" : "0%",
+                transition: progressActive ? `width ${CANCEL_DISABLED_DURATION}ms linear` : "none",
               }}
             />
             <span className="relative z-[1]">シェアしない</span>

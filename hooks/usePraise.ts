@@ -1,15 +1,15 @@
-'use client';
-import { useCallback, useEffect, useState } from 'react';
-import { useAnonymousAuthFn } from './useAnonymousAuthFn';
+"use client";
+import { useCallback, useEffect, useState } from "react";
+import { useAnonymousAuthFn } from "./useAnonymousAuthFn";
 
 const usePraise = (
   ready: boolean,
-  onExceeded: () => void
+  onExceeded: () => void,
 ): {
   count: string;
   incrementCount: () => Promise<void>;
 } => {
-  const [count, setCount] = useState('');
+  const [count, setCount] = useState("");
   const [firstLoaded, setFirstLoaded] = useState(false);
   const [repeatTimes, setRepeatTimes] = useState(0);
 
@@ -17,12 +17,12 @@ const usePraise = (
 
   useEffect(() => {
     const fetchAsync = async () => {
-      const fbDatabase = await import('firebase/database');
+      const fbDatabase = await import("firebase/database");
       const { getDatabase, onValue, ref } = fbDatabase;
 
-      const { firebaseApp } = await import('../lib/firebase');
+      const { firebaseApp } = await import("../lib/firebase");
       const db = getDatabase(firebaseApp);
-      const countRef = ref(db, 'praise/count');
+      const countRef = ref(db, "praise/count");
       onValue(countRef, (snapshot) => {
         const data: number = snapshot.val() ?? 0;
         setCount(data.toLocaleString());
@@ -30,7 +30,7 @@ const usePraise = (
       });
     };
     if (ready && !firstLoaded) {
-      fetchAsync();
+      void fetchAsync();
     }
   }, [firstLoaded, ready]);
 
@@ -39,12 +39,12 @@ const usePraise = (
 
     await updateAuth();
 
-    const { firebaseApp } = await import('../lib/firebase');
-    const fbDatabase = await import('firebase/database');
+    const { firebaseApp } = await import("../lib/firebase");
+    const fbDatabase = await import("firebase/database");
     const { getDatabase, increment, ref, update } = fbDatabase;
     const db = getDatabase(firebaseApp);
-    update(ref(db), {
-      'praise/count': increment(1),
+    void update(ref(db), {
+      "praise/count": increment(1),
     });
 
     if (repeatTimes >= Number(process.env.NEXT_PUBLIC_MAX_REPEAT_COUNT) - 1) {
