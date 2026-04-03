@@ -50,7 +50,7 @@ export const FirstSection = () => (
     </div>
     <h2 className="mt-8 text-center text-[2rem] font-bold text-theme-text">TrainLCD</h2>
     <p className="mt-3 max-w-[calc(100%-64px)] text-center leading-[1.75] text-theme-text">
-      日本全国の鉄道路線で使える新感覚のナビゲーションアプリ
+      電車のあの画面、持ち歩けます。
     </p>
   </SectionWrapper>
 );
