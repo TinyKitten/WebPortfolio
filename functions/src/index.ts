@@ -16,12 +16,18 @@ const beebotteSecretKey = defineSecret("BEEBOTTE_SECRET_KEY");
  * @return {Promise<void>}
  */
 async function postToSlack(webhookUrl: string, text: string): Promise<void> {
-  await fetch(webhookUrl, {
+  const res = await fetch(webhookUrl, {
     method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
     body: JSON.stringify({
       text,
     }),
   });
+  if (!res.ok) {
+    throw new Error(`Slack webhook failed: ${res.status} ${res.statusText}`);
+  }
 }
 
 /**
@@ -29,25 +35,30 @@ async function postToSlack(webhookUrl: string, text: string): Promise<void> {
  * @param {string} apiKey beebotteのAPIキー
  * @param {string} secretKey beebotteのシークレットキー
  * @param {number} count ほめられた回数
- * @return {void}
+ * @return {Promise<void>}
  */
-function postToBeebotte(apiKey: string, secretKey: string, count: number): void {
+function postToBeebotte(apiKey: string, secretKey: string, count: number): Promise<void> {
   const bclient = new bbt.Connector({
     apiKey,
     secretKey,
   });
-  bclient.write(
-    {
-      channel: "praise",
-      resource: "count",
-      data: count,
-    },
-    (err: Error) => {
-      if (err) {
-        logger.error(err);
-      }
-    },
-  );
+  return new Promise((resolve, reject) => {
+    bclient.write(
+      {
+        channel: "praise",
+        resource: "count",
+        data: count,
+      },
+      (err: Error | null) => {
+        if (err) {
+          logger.error(err);
+          reject(err);
+          return;
+        }
+        resolve();
+      },
+    );
+  });
 }
 
 export const praiseUpdateHook = onValueUpdated(
@@ -56,12 +67,23 @@ export const praiseUpdateHook = onValueUpdated(
     secrets: [slackWebhookUrl, beebotteApiKey, beebotteSecretKey],
   },
   async (event) => {
-    const newValue = event.data.after.val();
+    const beforeValue = event.data.before.val();
+    const afterValue = event.data.after.val();
+    if (typeof afterValue !== "number") {
+      logger.warn("ほめる数が数値ではないため通知をスキップします", {
+        afterValue,
+      });
+      return;
+    }
+    const previousValue = typeof beforeValue === "number" ? beforeValue : 0;
+    if (afterValue <= previousValue) {
+      return;
+    }
     const msg = `
     TinyKitten.meのほめるが増えました:clap:
-  新しいほめる数: ${newValue}
+  新しいほめる数: ${afterValue}
     `.trim();
     await postToSlack(slackWebhookUrl.value(), msg);
-    postToBeebotte(beebotteApiKey.value(), beebotteSecretKey.value(), newValue);
+    await postToBeebotte(beebotteApiKey.value(), beebotteSecretKey.value(), afterValue);
   },
 );
