@@ -74,6 +74,13 @@
     "startAtFullYear": 2025,
     "endAtFullYear": 2026,
     "companyName": "株式会社ユニバーサルコンツェルン",
-    "description": "toC向けサービスをReact.jsで開発中。設計や実装はもちろん、チームの技術共有会も主導し、開発文化の底上げにも関わっています。"
+    "description": "toC向けサービスをReact.jsで開発中。設計や実装はもちろん、チームの技術共有会も主導し、開発文化の底上げにも関わっていました。"
+  },
+  {
+    "id": "bit-a-inc",
+    "startAtFullYear": 2026,
+    "endAtFullYear": 2026,
+    "companyName": "株式会社ビットエー",
+    "description": "toC向けネイティブアプリ開発に参画。主にReact NativeとTanStack Queryを用いたスマートフォン向けネイティブアプリ開発に従事しています。"
   }
 ]
