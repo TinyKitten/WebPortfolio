@@ -141,6 +141,7 @@ const KittanChatWidget = () => {
           <ChatInput onSend={handleSend} disabled={sendDisabled} />
         </div>
       )}
+      {/* 押している間は下端を軸にきゅっと縮こまり、離すとバネのイージングで少し弾んで戻る。 */}
       <button
         type="button"
         aria-label={
@@ -148,10 +149,13 @@ const KittanChatWidget = () => {
         }
         aria-expanded={phase === 'open'}
         onClick={handleToggle}
-        className="fixed right-5 bottom-[calc(1.25rem+env(safe-area-inset-bottom))] z-[9998] flex h-14 w-14 items-center justify-center rounded-2xl rounded-br-[4px] bg-primary shadow-[0_4px_12px_rgba(0,0,0,0.35)] transition-transform hover:scale-105 active:scale-95 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+        className="group fixed right-5 bottom-[calc(1.25rem+env(safe-area-inset-bottom))] z-[9998] flex h-14 w-14 origin-bottom items-center justify-center rounded-2xl rounded-br-[4px] bg-primary shadow-[0_4px_12px_rgba(0,0,0,0.35)] transition-[transform,translate,scale,rotate,box-shadow] duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:scale-105 active:scale-x-[0.92] active:scale-y-[0.82] active:shadow-[0_1px_4px_rgba(0,0,0,0.35)] active:duration-100 active:ease-out motion-reduce:transition-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
       >
         {/* アイコンの円はボタンと同色に溶け、白いロゴだけが吹き出し型のボタンに載って見える。 */}
-        <TinyKittenIcon className="h-10 w-10" aria-hidden />
+        <TinyKittenIcon
+          className="h-10 w-10 transition-transform duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-active:scale-90 group-active:duration-100 group-active:ease-out motion-reduce:transition-none"
+          aria-hidden
+        />
       </button>
     </>
   );
