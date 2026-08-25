@@ -44,7 +44,7 @@ const ChatInput = ({ onSend, disabled }: Props) => {
           maxLength={MAX_MESSAGE_LENGTH}
           aria-label="きったんへのメッセージ"
           placeholder="きったんに話しかけてみよう"
-          className="flex-1 resize-none rounded bg-transparent px-2 py-1.5 text-base text-theme-text placeholder:text-theme-text/50 outline-none focus:outline-none focus-visible:outline-none disabled:opacity-50"
+          className="flex-1 resize-none rounded bg-transparent text-base text-theme-text placeholder:text-theme-text/50 outline-none focus:outline-none focus-visible:outline-none disabled:opacity-50"
         />
         <button
           type="button"
