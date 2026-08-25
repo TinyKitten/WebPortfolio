@@ -242,7 +242,7 @@
   }
 }
 
-/* 返信の吹き出しがランプから出てくるように伸びる出現。transform-origin は利用側で吹き出しの角に指定する。 */
+/* 吹き出しがランプから出てくるように伸びる出現。transform-origin は利用側でしっぽ側の角に指定する。 */
 @keyframes message-genie {
   from {
     opacity: 0;
