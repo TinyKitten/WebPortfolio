@@ -294,6 +294,7 @@ export const moderateOutput = async (
         },
       ],
       maxOutputTokens: deps.config.limits.maxModerationOutputTokens,
+      // 思考は low に留めつつ、実行時間はトークン予算(maxModerationOutputTokens)で抑えます。
       thinkingLevel: 'low',
     });
   } catch {

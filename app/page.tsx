@@ -2,6 +2,7 @@ import dynamic from 'next/dynamic';
 import AboutScreen from '../components/screens/About';
 import WelcomeScreen from '../components/screens/Welcome';
 
+const KittanChatWidget = dynamic(() => import('../components/KittanChat'));
 const ResumeScreen = dynamic(() => import('../components/screens/Resume'));
 const ShareScreen = dynamic(() => import('../components/screens/Share'));
 const SkillsScreen = dynamic(() => import('../components/screens/Skills'));
@@ -28,6 +29,7 @@ export default function Page() {
       <div className="bg-theme-bg">
         <ShareScreen />
       </div>
+      <KittanChatWidget />
     </>
   );
 }

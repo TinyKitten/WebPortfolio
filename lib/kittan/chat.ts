@@ -71,6 +71,7 @@ export const chatWithKittan = async (
       systemInstruction,
       messages: validation.messages,
       maxOutputTokens: config.limits.maxOutputTokens,
+      // 思考は low に留めつつ、実行時間はトークン予算(maxOutputTokens)で抑えます。
       thinkingLevel: 'low',
     });
   } catch (error) {
