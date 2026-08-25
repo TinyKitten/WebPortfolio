@@ -60,7 +60,7 @@ describe('chatWithKittan', () => {
       systemInstruction: 'テスト用のシステムプロンプト',
       messages,
       maxOutputTokens: config.limits.maxOutputTokens,
-      thinkingLevel: 'low',
+      thinkingLevel: 'minimal',
     });
   });
 

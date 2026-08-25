@@ -282,7 +282,7 @@ describe('moderateOutput', () => {
     expect(client.generate).toHaveBeenCalledWith(
       expect.objectContaining({
         maxOutputTokens: limits.maxModerationOutputTokens,
-        thinkingLevel: 'low',
+        thinkingLevel: 'minimal',
       }),
     );
   });

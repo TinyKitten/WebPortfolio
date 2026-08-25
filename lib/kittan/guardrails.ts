@@ -294,7 +294,8 @@ export const moderateOutput = async (
         },
       ],
       maxOutputTokens: deps.config.limits.maxModerationOutputTokens,
-      thinkingLevel: 'low',
+      // Vercelの実行時間上限に収めるため思考は最小にします(判定ロジック自体は変えません)。
+      thinkingLevel: 'minimal',
     });
   } catch {
     return 'failed';
