@@ -10,6 +10,7 @@
     "prepare": "vp config"
   },
   "dependencies": {
+    "@google/genai": "^2.18.0",
     "firebase": "^12.10.0",
     "next": "16.2.6",
     "react": "19.2.3",
