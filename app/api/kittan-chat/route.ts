@@ -5,6 +5,8 @@ import type { ChatResult } from '../../../lib/kittan/types';
 export const runtime = 'nodejs';
 // 会話ごとに結果が変わるので常に動的実行。
 export const dynamic = 'force-dynamic';
+// 生成+出力チェックの2回直列のモデル呼び出しが既定の上限を超えることがあるため延長。
+export const maxDuration = 60;
 
 /** 同一IPあたり 10 リクエスト / 分(インスタンス単位のベストエフォート)。 */
 const RATE_LIMIT = 10;
