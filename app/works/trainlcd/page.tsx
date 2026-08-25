@@ -1,15 +1,15 @@
-import type { Metadata } from "next";
+import type { Metadata } from 'next';
 import {
   AccessSection,
   ConceptSection,
   FirstSection,
   StoriesSection,
   TechnologySection,
-} from "./sections";
+} from './sections';
 
 export const metadata: Metadata = {
-  title: "TrainLCD",
-  description: "電車のあの画面、持ち歩けます。",
+  title: 'TrainLCD',
+  description: '電車のあの画面、持ち歩けます。',
 };
 
 const WorksTrainLCDPage = () => (

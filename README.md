@@ -2,17 +2,18 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Getting Started
 
-First, run the development server:
+First, install dependencies and start the development server:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+vp install
+vp run dev
 ```
+
+このプロジェクトは [Vite+](https://viteplus.dev/guide/) の `vp` CLI を使います。
+npm / pnpm / Yarn を直接実行せず `vp` 経由で操作してください（`packageManager` は npm のまま）。
+
+`vp dev` は Vite の開発サーバーを起動する組み込みコマンドで、`next dev` とは別物です。
+`package.json` の `dev` スクリプトを実行するには `vp run dev` を使ってください。
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 

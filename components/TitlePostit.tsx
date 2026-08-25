@@ -12,9 +12,7 @@ const TitlePostit = ({ className, title, subtitle }: Props) => (
   >
     <VerticalPostitIcon className="relative" />
     <div className="absolute bottom-[calc(50%-10.5px)] w-full text-center">
-      <p className="text-[1.25rem] font-bold whitespace-pre-wrap text-primary">
-        {title}
-      </p>
+      <p className="text-[1.25rem] font-bold whitespace-pre-wrap text-primary">{title}</p>
       <p className="text-base font-bold leading-6 text-theme-text">{subtitle}</p>
     </div>
   </div>

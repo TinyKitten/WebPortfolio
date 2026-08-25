@@ -14,9 +14,7 @@ const WelcomeScreen = () => (
         className="drop-shadow-[0_3px_6px_rgba(0,0,0,0.16)]"
       />
     </div>
-    <h1 className="mt-6 text-center text-[2rem] font-bold text-heading-text">
-      TinyKitten
-    </h1>
+    <h1 className="mt-6 text-center text-[2rem] font-bold text-heading-text">TinyKitten</h1>
     <ArrowButton />
   </section>
 );

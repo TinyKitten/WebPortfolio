@@ -21,9 +21,7 @@ const Tag = ({ text, onClick, invert = false }: Props) => {
       role={onClick ? 'button' : undefined}
       tabIndex={onClick ? 0 : undefined}
       className={`flex rounded-full border-[1.5px] px-4 py-2 ${
-        invert
-          ? 'border-theme-bg bg-primary'
-          : 'border-primary/75 bg-theme-bg'
+        invert ? 'border-theme-bg bg-primary' : 'border-primary/75 bg-theme-bg'
       }`}
     >
       <span className={invert ? 'text-white' : 'text-primary'}>#{text}</span>
