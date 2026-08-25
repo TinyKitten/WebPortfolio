@@ -25,9 +25,9 @@ const MessageBubble = ({ role, content }: Props) => {
   return (
     <div className="flex max-w-[85%] shrink-0 items-end gap-2 self-start">
       <TinyKittenIcon className="h-8 w-8 shrink-0" aria-hidden />
-      {/* 返信はアイコン側(左上)を起点に生やす。 */}
+      {/* 返信はアイコンのある左下を起点に生やす。 */}
       <div
-        className={`rounded-bl-md bg-sub-bg text-theme-text origin-top-left animate-message-genie ${BUBBLE_BASE}`}
+        className={`rounded-bl-md bg-sub-bg text-theme-text origin-bottom-left animate-message-genie ${BUBBLE_BASE}`}
       >
         {content}
       </div>
