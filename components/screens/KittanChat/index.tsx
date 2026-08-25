@@ -43,7 +43,7 @@ const KittanChatScreen = () => {
 
   return (
     <section ref={ref} className="relative min-h-[calc(100vh-48px)] overflow-hidden">
-      {visible && <TitlePostit title="きったんと" subtitle="おしゃべり" />}
+      {visible && <TitlePostit title="TinyKitten" subtitle="と喋る" />}
       {visible && (
         <div className="mt-[210px] flex flex-col items-center px-4 pb-16 opacity-0 animate-fade-delayed">
           <div className="w-full max-w-[640px] overflow-hidden rounded-lg bg-box-bg drop-shadow-[0_3px_3px_rgba(0,0,0,0.16)]">
