@@ -7,7 +7,7 @@ UIを実装する際は [docs/kittan-chat-ui-spec.md](../../docs/kittan-chat-ui-
 
 ## 全体像
 
-```
+```text
 ブラウザ
   └─ POST /api/kittan-chat          app/api/kittan-chat/route.ts
        ├─ レートリミット             lib/kittan/rateLimit.ts

@@ -102,10 +102,19 @@ describe('buildSystemInstruction', () => {
   });
 
   test('改行を含む説明文は1行に均されている', () => {
-    expect(instruction).not.toContain('\\n');
-    for (const line of instruction.split('\n')) {
-      expect(line.startsWith('- ') || !line.startsWith('-')).toBe(true);
-    }
+    const multiline = buildSystemInstruction(corpus, {
+      ...portfolio,
+      trivia: [
+        {
+          subject: 'テスト豆知識',
+          description: '1行目の説明\n2行目の説明',
+          tags: ['テスト'],
+        },
+      ],
+    });
+
+    expect(multiline).toContain('- テスト豆知識: 1行目の説明 2行目の説明 (タグ: テスト)');
+    expect(multiline).not.toContain('1行目の説明\n2行目の説明');
   });
 });
 

@@ -136,7 +136,7 @@ export const useKittanChat = (): UseKittanChatResult => { ... };
 `app/page.tsx` の `ShareScreen` の手前に `next/dynamic` で追加する
 (既存セクションと同じく `dynamic(() => import(...))`)。
 
-```
+```text
 components/screens/KittanChat/
   index.tsx        … セクション本体('use client')。TitlePostit + チャット枠
   MessageList.tsx  … 吹き出しリスト

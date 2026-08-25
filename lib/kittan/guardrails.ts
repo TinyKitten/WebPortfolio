@@ -236,20 +236,17 @@ export type ModerateOutputDeps = {
   config: KittanConfig;
 };
 
-const VERDICT_PATTERN = /\{[^{}]*\}/;
-
 /**
  * 分類器の出力を厳しく解釈します。
+ * 出力全体がちょうど1つのJSONドキュメントであることを要求し、
+ * 前後の地の文・コードフェンス・複数オブジェクトの並びはすべて 'failed' にします
+ * (例: `{"verdict":"SAFE"} {"verdict":"UNSAFE"}` を安全と誤読しないため)。
  * JSONとして読めない / verdict が SAFE でない / 例外 —— すべて安全側(止める)に倒します。
  */
 export const parseModerationVerdict = (raw: string): ModerationVerdict => {
-  const match = VERDICT_PATTERN.exec(raw);
-  if (match === null) {
-    return 'failed';
-  }
   let parsed: unknown;
   try {
-    parsed = JSON.parse(match[0]);
+    parsed = JSON.parse(raw.trim());
   } catch {
     return 'failed';
   }
