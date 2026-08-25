@@ -7,13 +7,12 @@ import Postit from '../../../components/Postit';
 import SkillsCircle from '../../../components/SkillsCircle';
 import TitlePostit from '../../../components/TitlePostit';
 import Tree from '../../../components/Tree';
+import CloudflareIcon from '../../../components/marks/CloudflareIcon';
 import ReactIcon from '../../../components/marks/ReactIcon';
 import RustIcon from '../../../components/marks/RustIcon';
 import TSIcon from '../../../components/marks/TSIcon';
-import TonicIcon from '../../../components/marks/TonicIcon';
 import storiesArray from '../../../fixtures/stories/works/trainlcd.stories.json';
 import { useScreenVisibility } from '../../../hooks/useScreenVisibility';
-import PostgreSQLIcon from '../../../components/marks/PostgreSQLIcon';
 import NodeJSIcon from '@/components/marks/NodeJSIcon';
 
 const SectionWrapper = ({
@@ -112,8 +111,7 @@ export const TechnologySection = () => {
           <SkillsCircle icon={NodeJSIcon} name="Node.js" />
           <SkillsCircle icon={ReactIcon} name="React Native" />
           <SkillsCircle icon={RustIcon} name="Rust" />
-          <SkillsCircle icon={TonicIcon} name="Tonic" />
-          <SkillsCircle icon={PostgreSQLIcon} name="PostgreSQL" />
+          <SkillsCircle icon={CloudflareIcon} name="Cloudflare" />
         </div>
       )}
     </SectionWrapper>
