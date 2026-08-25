@@ -28,7 +28,8 @@ export type UseKittanChatResult = {
 };
 
 const MAX_MESSAGES = 20;
-const MAX_MESSAGE_LENGTH = 500;
+/** 1メッセージの最大文字数(APIの制約。入力欄側でも同じ値を使う)。 */
+export const MAX_MESSAGE_LENGTH = 500;
 const NETWORK_ERROR_MESSAGE = '通信がうまくいかなかったみたい。もう一度試してみてね🙏';
 
 type ApiErrorBody = { error?: { code?: unknown; message?: unknown } };

@@ -292,7 +292,7 @@ describe('useKittanChat', () => {
 
   test('送信中の send は無視される', async () => {
     const fetchMock = createFetchMock();
-    let resolveFetch: ((response: FetchResponse) => void) | null = null;
+    let resolveFetch: ((response: FetchResponse) => void) | undefined;
     fetchMock.mockImplementation(
       () =>
         new Promise<FetchResponse>((resolve) => {
@@ -343,7 +343,7 @@ describe('useKittanChat', () => {
 
   test('送信中に reset すると遅れて届いた返答は捨てられる', async () => {
     const fetchMock = createFetchMock();
-    let resolveFetch: ((response: FetchResponse) => void) | null = null;
+    let resolveFetch: ((response: FetchResponse) => void) | undefined;
     fetchMock.mockImplementation(
       () =>
         new Promise<FetchResponse>((resolve) => {
