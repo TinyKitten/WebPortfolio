@@ -116,6 +116,22 @@ describe('buildSystemInstruction', () => {
     expect(multiline).toContain('- テスト豆知識: 1行目の説明 2行目の説明 (タグ: テスト)');
     expect(multiline).not.toContain('1行目の説明\n2行目の説明');
   });
+
+  test('CRLF改行を含む説明文も1行に均されている', () => {
+    const crlf = buildSystemInstruction(corpus, {
+      ...portfolio,
+      trivia: [
+        {
+          subject: 'テスト豆知識',
+          description: '1行目の説明\r\n2行目の説明',
+          tags: ['テスト'],
+        },
+      ],
+    });
+
+    expect(crlf).toContain('- テスト豆知識: 1行目の説明 2行目の説明 (タグ: テスト)');
+    expect(crlf).not.toContain('\r');
+  });
 });
 
 describe('buildModerationInstruction', () => {

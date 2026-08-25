@@ -30,7 +30,7 @@ export const buildSystemInstruction = (corpus: KittanCorpus, portfolio: Portfoli
   const triviaBlock = bulletList(
     portfolio.trivia.map(
       (item) =>
-        `${item.subject}: ${item.description.replace(/\n/g, ' ')} (タグ: ${item.tags.join('・')})`,
+        `${item.subject}: ${item.description.replace(/\r\n?|\n/g, ' ')} (タグ: ${item.tags.join('・')})`,
     ),
   );
 
@@ -40,7 +40,7 @@ export const buildSystemInstruction = (corpus: KittanCorpus, portfolio: Portfoli
 
   const trainlcdBlock = bulletList(
     portfolio.trainlcd.map(
-      (item) => `${item.period} ${item.title}: ${item.description.replace(/\n/g, ' ')}`,
+      (item) => `${item.period} ${item.title}: ${item.description.replace(/\r\n?|\n/g, ' ')}`,
     ),
   );
 

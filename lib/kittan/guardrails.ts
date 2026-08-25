@@ -241,7 +241,11 @@ export type ModerateOutputDeps = {
  * 出力全体がちょうど1つのJSONドキュメントであることを要求し、
  * 前後の地の文・コードフェンス・複数オブジェクトの並びはすべて 'failed' にします
  * (例: `{"verdict":"SAFE"} {"verdict":"UNSAFE"}` を安全と誤読しないため)。
- * JSONとして読めない / verdict が SAFE でない / 例外 —— すべて安全側(止める)に倒します。
+ * さらに、SAFE と読めた場合でも元テキストに 'UNSAFE' が残っていれば 'failed' にします
+ * (例: キー重複の `{"verdict":"UNSAFE","verdict":"SAFE"}` は後勝ちで SAFE と解釈されるため、
+ * 矛盾した分類器出力を安全と誤読しないための保険)。
+ * JSONとして読めない / verdict が SAFE でない / 矛盾している / 例外 ——
+ * すべて安全側(止める)に倒します。
  */
 export const parseModerationVerdict = (raw: string): ModerationVerdict => {
   let parsed: unknown;
@@ -255,7 +259,7 @@ export const parseModerationVerdict = (raw: string): ModerationVerdict => {
   }
   const { verdict } = parsed as Record<string, unknown>;
   if (verdict === 'SAFE') {
-    return 'safe';
+    return /UNSAFE/.test(raw) ? 'failed' : 'safe';
   }
   if (verdict === 'UNSAFE') {
     return 'unsafe';

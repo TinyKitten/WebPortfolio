@@ -213,6 +213,7 @@ describe('parseModerationVerdict', () => {
     ['コードフェンスで囲まれている', '```json\n{"verdict":"UNSAFE"}\n```'],
     ['前置きの地の文が付いている', '判定結果です: {"verdict":"SAFE"}'],
     ['JSONオブジェクトが複数並んでいる', '{"verdict":"SAFE"} {"verdict":"UNSAFE"}'],
+    ['verdictキーが重複して矛盾している', '{"verdict":"UNSAFE","verdict":"SAFE"}'],
   ])('%s のときは failed(fail-closed)', (_label, raw) => {
     expect(parseModerationVerdict(raw)).toBe('failed');
   });
