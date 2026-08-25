@@ -92,7 +92,7 @@
     "startAt": "2026/08",
     "finishedAt": null,
     "title": "StationAPIをPure Rust化して\nCloudflare Workersのみで稼働開始☁️",
-    "description": "2023年7月よりRustで構築したgRPCサーバーとデータベースでTrainLCDサービスを提供していましたが、今回はStationAPIをPure Rustで書き直し、データベースへの依存を完全に撤廃してCloudflare Workersのみで動作するように改修しました👨‍💻\nサーバーとデータベースの運用から解放され、エッジで動くようになったことで駅検索のレスポンスもさらに軽快になりました🚀",
+    "description": "2023年7月よりRustで構築したgRPCサーバーとデータベースでTrainLCDサービスを提供していましたが、今回はStationAPIをPure Rustで書き直し、データベースへの依存を完全に撤廃してCloudflare Workersのみで動作するように改修しました👨‍💻\nこれによりサーバーとデータベースの運用から解放され、今まで以上に身軽な構成でTrainLCDを提供できるようになりました🚀",
     "tags": ["Rust", "Cloudflare", "StationAPI"]
   }
 ]
