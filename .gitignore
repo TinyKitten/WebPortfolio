@@ -42,3 +42,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# きったんのコーパス取り込み(X アーカイブ。個人データなのでコミットしない)
+data/kittan/corpus.candidates.json
+data/kittan/x-archive/
