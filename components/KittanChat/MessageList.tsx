@@ -1,7 +1,7 @@
 'use client';
 import { useEffect, useRef } from 'react';
-import type { ChatMessage } from '../../../lib/kittan/types';
-import TinyKittenIcon from '../../TinyKittenIcon';
+import type { ChatMessage } from '../../lib/kittan/types';
+import TinyKittenIcon from '../TinyKittenIcon';
 import MessageBubble from './MessageBubble';
 
 type Props = {

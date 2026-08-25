@@ -1,6 +1,6 @@
 'use client';
-import type { ChatRole } from '../../../lib/kittan/types';
-import TinyKittenIcon from '../../TinyKittenIcon';
+import type { ChatRole } from '../../lib/kittan/types';
+import TinyKittenIcon from '../TinyKittenIcon';
 
 type Props = {
   role: ChatRole;

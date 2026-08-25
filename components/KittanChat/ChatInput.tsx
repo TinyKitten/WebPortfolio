@@ -1,6 +1,6 @@
 'use client';
 import { type KeyboardEvent, useState } from 'react';
-import { MAX_MESSAGE_LENGTH } from '../../../hooks/useKittanChat';
+import { MAX_MESSAGE_LENGTH } from '../../hooks/useKittanChat';
 
 type Props = {
   onSend: (text: string) => void;
