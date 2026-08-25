@@ -9,12 +9,14 @@ export const DEFAULT_KITTAN_MODEL = 'gemini-3.7-flash';
  * 思考だけで予算が尽きて出力が空/途中で切れます。
  * 分類器は `{"verdict":"SAFE"}` の十数トークンしか書きませんが、
  * それでも思考分を含めた合計として余裕を確保しておく必要があります。
+ * ここの値は Vercel の関数実行時間上限に収めるための予算で、
+ * KITTAN_MAX_OUTPUT_TOKENS / KITTAN_MAX_MODERATION_OUTPUT_TOKENS で上書きできます。
  */
 export const DEFAULT_KITTAN_LIMITS: KittanLimits = {
   maxMessageLength: 500,
   maxHistoryTurns: 20,
-  maxOutputTokens: 2048,
-  maxModerationOutputTokens: 1024,
+  maxOutputTokens: 1024,
+  maxModerationOutputTokens: 512,
 };
 
 /** 設定が足りないときに投げるエラー。詳細はユーザーには返しません。 */

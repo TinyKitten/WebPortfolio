@@ -71,8 +71,8 @@ export const chatWithKittan = async (
       systemInstruction,
       messages: validation.messages,
       maxOutputTokens: config.limits.maxOutputTokens,
-      // Vercelの実行時間上限(生成+出力チェックの2回直列)に収めるため思考は最小にします。
-      thinkingLevel: 'minimal',
+      // 思考は low に留めつつ、実行時間はトークン予算(maxOutputTokens)で抑えます。
+      thinkingLevel: 'low',
     });
   } catch (error) {
     return { status: 'error', reason: toChatErrorReason(error) };

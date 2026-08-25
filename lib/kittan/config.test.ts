@@ -68,8 +68,8 @@ describe('readKittanLimits', () => {
     expect(DEFAULT_KITTAN_LIMITS).toEqual({
       maxMessageLength: 500,
       maxHistoryTurns: 20,
-      maxOutputTokens: 2048,
-      maxModerationOutputTokens: 1024,
+      maxOutputTokens: 1024,
+      maxModerationOutputTokens: 512,
     });
   });
 
