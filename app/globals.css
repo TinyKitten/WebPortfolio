@@ -44,6 +44,7 @@
   --animate-tree-slide: tree-slide 1s ease-out 0s forwards;
   --animate-genie: genie 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) 0s forwards;
   --animate-genie-out: genie-out 0.25s cubic-bezier(0.36, 0, 0.66, -0.56) 0s forwards;
+  --animate-message-genie: message-genie 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) 0s forwards;
 }
 
 @theme inline {
@@ -238,6 +239,18 @@
   to {
     opacity: 0;
     transform: scale(0.1) translateY(16px);
+  }
+}
+
+/* 返信の吹き出しがランプから出てくるように伸びる出現。transform-origin は利用側で吹き出しの角に指定する。 */
+@keyframes message-genie {
+  from {
+    opacity: 0;
+    transform: scale(0.2, 0.55);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1, 1);
   }
 }
 
