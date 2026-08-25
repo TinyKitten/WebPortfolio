@@ -64,7 +64,7 @@ const KittanChatWidget = () => {
   return (
     <>
       {isOpen && (
-        <div className="fixed right-5 bottom-[calc(5.5rem+env(safe-area-inset-bottom))] z-[9998] flex h-[min(60vh,480px)] w-[min(calc(100vw-2.5rem),400px)] flex-col overflow-hidden rounded-lg bg-box-bg opacity-0 drop-shadow-[0_3px_3px_rgba(0,0,0,0.16)] animate-fade">
+        <div className="fixed right-5 bottom-[calc(5.5rem+env(safe-area-inset-bottom))] z-[9998] flex h-[min(60vh,480px)] w-[min(calc(100vw-2.5rem),400px)] flex-col overflow-hidden origin-bottom-right rounded-lg bg-box-bg opacity-0 drop-shadow-[0_3px_3px_rgba(0,0,0,0.16)] animate-genie">
           <div className="flex shrink-0 items-center gap-2 border-b border-theme-text/10 px-3 py-2">
             <TinyKittenIcon className="h-6 w-6 shrink-0" aria-hidden />
             <p className="flex-1 text-sm font-bold text-heading-text">きったんとおしゃべり</p>
