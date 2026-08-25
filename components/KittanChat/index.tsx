@@ -148,9 +148,10 @@ const KittanChatWidget = () => {
         }
         aria-expanded={phase === 'open'}
         onClick={handleToggle}
-        className="fixed right-5 bottom-[calc(1.25rem+env(safe-area-inset-bottom))] z-[9998] rounded-full transition-transform hover:scale-105 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+        className="fixed right-5 bottom-[calc(1.25rem+env(safe-area-inset-bottom))] z-[9998] flex h-14 w-14 items-center justify-center rounded-2xl rounded-br-[4px] bg-primary shadow-[0_4px_12px_rgba(0,0,0,0.35)] transition-transform hover:scale-105 active:scale-95 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
       >
-        <TinyKittenIcon className="h-14 w-14 drop-shadow-[0_3px_3px_rgba(0,0,0,0.3)]" aria-hidden />
+        {/* アイコンの円はボタンと同色に溶け、白いロゴだけが吹き出し型のボタンに載って見える。 */}
+        <TinyKittenIcon className="h-10 w-10" aria-hidden />
       </button>
     </>
   );
