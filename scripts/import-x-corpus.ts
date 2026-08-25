@@ -26,6 +26,8 @@ import {
  * すべて lib/kittan/xArchive.ts に置いています(Node固有APIをこのファイルに閉じ込めるため)。
  */
 
+/** 上書きを禁止するコーパス本体。 */
+const CORPUS_PATH = 'data/kittan/corpus.json';
 const DEFAULT_OUT = 'data/kittan/corpus.candidates.json';
 const DEFAULT_TOP = 80;
 
@@ -63,8 +65,9 @@ const parseArgs = (argv: readonly string[]): CliOptions => {
       }
       index += 1;
       if (arg === '--top') {
-        const parsed = Number.parseInt(value, 10);
-        if (!Number.isFinite(parsed) || parsed <= 0) {
+        // Number.parseInt は '1.5' や '12abc' を黙って 1 / 12 として受けてしまうため使いません。
+        const parsed = Number(value);
+        if (!Number.isSafeInteger(parsed) || parsed <= 0) {
           throw new CliError('--top には1以上の整数を指定してください。');
         }
         top = parsed;
@@ -106,6 +109,12 @@ const writeCandidates = (
   payload: { sources: string[]; stats: FilterStats; candidates: CorpusCandidate[] },
 ): string => {
   const path = resolve(process.cwd(), out);
+  // 反映は人間のレビューを挟む運用なので、コーパス本体への上書きは受け付けません。
+  if (path === resolve(process.cwd(), CORPUS_PATH)) {
+    throw new CliError(
+      'corpus.json は直接上書きできません。--out には別のパスを指定して、候補をレビューしてから手で反映してください。',
+    );
+  }
   mkdirSync(dirname(path), { recursive: true });
   writeFileSync(path, `${JSON.stringify(payload, null, 2)}\n`, 'utf8');
   return path;

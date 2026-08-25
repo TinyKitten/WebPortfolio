@@ -146,6 +146,11 @@ describe('parseArchiveJs', () => {
     expect(parseArchiveJs('window.YTD.tweets.part1 = [1, 2]')).toEqual([1, 2]);
   });
 
+  test('文末のセミコロンが付いていても読める', () => {
+    expect(parseArchiveJs('window.YTD.tweets.part0 = [1];')).toEqual([1]);
+    expect(parseArchiveJs('window.YTD.tweets.part0 = [1] ;\n')).toEqual([1]);
+  });
+
   test.each([
     ['壊れたJS', 'これはアーカイブではありません'],
     ['空文字', '   '],

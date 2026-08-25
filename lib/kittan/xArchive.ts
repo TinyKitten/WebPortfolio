@@ -54,14 +54,14 @@ const isRecord = (value: unknown): value is Record<string, unknown> =>
 /**
  * `window.YTD.tweets.part0 = [...]` の代入部分を落とします。
  * 最初の `[` より前に `=` があるときだけ剥がすので、素のJSON配列も受け付けます。
+ * 文末のセミコロン(付けて書き出す環境がある)も、JSONに混ざらないよう落とします。
  */
 const stripAssignment = (source: string): string => {
   const arrayStart = source.indexOf('[');
   const equals = source.indexOf('=');
-  if (equals !== -1 && (arrayStart === -1 || equals < arrayStart)) {
-    return source.slice(equals + 1);
-  }
-  return source;
+  const body =
+    equals !== -1 && (arrayStart === -1 || equals < arrayStart) ? source.slice(equals + 1) : source;
+  return body.trim().replace(/;\s*$/, '');
 };
 
 /**
