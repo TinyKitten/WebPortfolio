@@ -1,12 +1,18 @@
 'use client';
-import { useEffect, useState } from 'react';
+import { type AnimationEvent, useEffect, useState } from 'react';
 import { useKittanChat } from '../../hooks/useKittanChat';
 import TinyKittenIcon from '../TinyKittenIcon';
 import ChatInput from './ChatInput';
 import MessageList from './MessageList';
 
+/** 退場アニメーションを見せてからアンマウントするための状態。 */
+type Phase = 'closed' | 'open' | 'closing';
+
+/** animationend が来ない環境(タブ非表示など)でも必ず閉じるための保険。 */
+const CLOSING_FALLBACK_MS = 400;
+
 const KittanChatWidget = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [phase, setPhase] = useState<Phase>('closed');
   const { messages, status, error, send, retry, reset } = useKittanChat();
   const [now, setNow] = useState(() => Date.now());
 
@@ -29,17 +35,27 @@ const KittanChatWidget = () => {
   }, [retryAt]);
 
   useEffect(() => {
-    if (!isOpen) {
+    if (phase !== 'open') {
       return;
     }
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
-        setIsOpen(false);
+        setPhase('closing');
       }
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [isOpen]);
+  }, [phase]);
+
+  useEffect(() => {
+    if (phase !== 'closing') {
+      return;
+    }
+    const timer = setTimeout(() => {
+      setPhase('closed');
+    }, CLOSING_FALLBACK_MS);
+    return () => clearTimeout(timer);
+  }, [phase]);
 
   const waitingSeconds =
     retryAt !== undefined && now < retryAt ? Math.ceil((retryAt - now) / 1000) : 0;
@@ -54,17 +70,30 @@ const KittanChatWidget = () => {
   };
 
   const handleClose = () => {
-    setIsOpen(false);
+    setPhase((previous) => (previous === 'open' ? 'closing' : previous));
   };
 
+  // 退場中にもう一度押されたら、そのまま生え直す。
   const handleToggle = () => {
-    setIsOpen((previous) => !previous);
+    setPhase((previous) => (previous === 'open' ? 'closing' : 'open'));
+  };
+
+  const handleAnimationEnd = (event: AnimationEvent<HTMLDivElement>) => {
+    // 吹き出しなど子要素のアニメーション終了がバブリングしてくるので自身の分だけ拾う。
+    if (event.target === event.currentTarget && phase === 'closing') {
+      setPhase('closed');
+    }
   };
 
   return (
     <>
-      {isOpen && (
-        <div className="fixed right-5 bottom-[calc(5.5rem+env(safe-area-inset-bottom))] z-[9998] flex h-[min(60vh,480px)] w-[min(calc(100vw-2.5rem),400px)] flex-col overflow-hidden origin-bottom-right rounded-lg bg-box-bg opacity-0 drop-shadow-[0_3px_3px_rgba(0,0,0,0.16)] animate-genie">
+      {phase !== 'closed' && (
+        <div
+          onAnimationEnd={handleAnimationEnd}
+          className={`fixed right-5 bottom-[calc(5.5rem+env(safe-area-inset-bottom))] z-[9998] flex h-[min(60vh,480px)] w-[min(calc(100vw-2.5rem),400px)] flex-col overflow-hidden origin-bottom-right rounded-lg bg-box-bg drop-shadow-[0_3px_3px_rgba(0,0,0,0.16)] ${
+            phase === 'closing' ? 'animate-genie-out' : 'opacity-0 animate-genie'
+          }`}
+        >
           <div className="flex shrink-0 items-center gap-2 border-b border-theme-text/10 px-3 py-2">
             <TinyKittenIcon className="h-6 w-6 shrink-0" aria-hidden />
             <p className="flex-1 text-sm font-bold text-heading-text">きったんとおしゃべり</p>
@@ -114,8 +143,10 @@ const KittanChatWidget = () => {
       )}
       <button
         type="button"
-        aria-label={isOpen ? 'きったんとおしゃべりを閉じる' : 'きったんとおしゃべりを開く'}
-        aria-expanded={isOpen}
+        aria-label={
+          phase === 'open' ? 'きったんとおしゃべりを閉じる' : 'きったんとおしゃべりを開く'
+        }
+        aria-expanded={phase === 'open'}
         onClick={handleToggle}
         className="fixed right-5 bottom-[calc(1.25rem+env(safe-area-inset-bottom))] z-[9998] rounded-full transition-transform hover:scale-105 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
       >
