@@ -1,20 +1,20 @@
-"use client";
-import Image from "next/image";
-import Link from "next/link";
-import TrainLCDImage from "../../../assets/works/trainlcd.png";
-import Button from "../../../components/Button";
-import Postit from "../../../components/Postit";
-import SkillsCircle from "../../../components/SkillsCircle";
-import TitlePostit from "../../../components/TitlePostit";
-import Tree from "../../../components/Tree";
-import ReactIcon from "../../../components/marks/ReactIcon";
-import RustIcon from "../../../components/marks/RustIcon";
-import TSIcon from "../../../components/marks/TSIcon";
-import TonicIcon from "../../../components/marks/TonicIcon";
-import storiesArray from "../../../fixtures/stories/works/trainlcd.stories.json";
-import { useScreenVisibility } from "../../../hooks/useScreenVisibility";
-import PostgreSQLIcon from "../../../components/marks/PostgreSQLIcon";
-import NodeJSIcon from "@/components/marks/NodeJSIcon";
+'use client';
+import Image from 'next/image';
+import Link from 'next/link';
+import TrainLCDImage from '../../../assets/works/trainlcd.png';
+import Button from '../../../components/Button';
+import Postit from '../../../components/Postit';
+import SkillsCircle from '../../../components/SkillsCircle';
+import TitlePostit from '../../../components/TitlePostit';
+import Tree from '../../../components/Tree';
+import ReactIcon from '../../../components/marks/ReactIcon';
+import RustIcon from '../../../components/marks/RustIcon';
+import TSIcon from '../../../components/marks/TSIcon';
+import TonicIcon from '../../../components/marks/TonicIcon';
+import storiesArray from '../../../fixtures/stories/works/trainlcd.stories.json';
+import { useScreenVisibility } from '../../../hooks/useScreenVisibility';
+import PostgreSQLIcon from '../../../components/marks/PostgreSQLIcon';
+import NodeJSIcon from '@/components/marks/NodeJSIcon';
 
 const SectionWrapper = ({
   children,
@@ -29,7 +29,7 @@ const SectionWrapper = ({
 }) => (
   <section
     ref={innerRef}
-    className={`relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-theme-bg even:bg-sub-bg first:min-h-screen first:-mt-12 ${padTop ? "pt-36" : ""} ${className ?? ""}`}
+    className={`relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-theme-bg even:bg-sub-bg first:min-h-screen first:-mt-12 ${padTop ? 'pt-36' : ''} ${className ?? ''}`}
   >
     {children}
   </section>
@@ -45,7 +45,7 @@ export const FirstSection = () => (
         alt="TrainLCD"
         priority
         className="object-contain"
-        style={{ position: "relative" }}
+        style={{ position: 'relative' }}
       />
     </div>
     <h2 className="mt-8 text-center text-[2rem] font-bold text-theme-text">TrainLCD</h2>

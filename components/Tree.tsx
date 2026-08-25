@@ -46,7 +46,7 @@ const Tree = ({ experienceType, items, visible, worksName }: Props) => {
           return <></>;
       }
     },
-    [experienceType, visible, worksName]
+    [experienceType, visible, worksName],
   );
 
   return (

@@ -1,14 +1,14 @@
-"use client";
-import dynamic from "next/dynamic";
-import { useFlag } from "../../hooks/useFlag";
-import usePraise from "../../hooks/usePraise";
-import { useScreenVisibility } from "../../hooks/useScreenVisibility";
-import Button from "../Button";
-import Postit from "../Postit";
-import Praise from "../Praise";
-import TitlePostit from "../TitlePostit";
+'use client';
+import dynamic from 'next/dynamic';
+import { useFlag } from '../../hooks/useFlag';
+import usePraise from '../../hooks/usePraise';
+import { useScreenVisibility } from '../../hooks/useScreenVisibility';
+import Button from '../Button';
+import Postit from '../Postit';
+import Praise from '../Praise';
+import TitlePostit from '../TitlePostit';
 
-const ShareModal = dynamic(() => import("../ShareModal"));
+const ShareModal = dynamic(() => import('../ShareModal'));
 
 const ShareScreen = () => {
   const { value: isModalShow, toTrue: showModal, toFalse: hideModal } = useFlag();
@@ -45,7 +45,7 @@ const ShareScreen = () => {
                   LINEで送る
                 </Button>
               </a>
-              <Praise count={visible ? count : ""} onIncrement={handleIncrement} className="my-3" />
+              <Praise count={visible ? count : ''} onIncrement={handleIncrement} className="my-3" />
             </div>
           )}
         </div>

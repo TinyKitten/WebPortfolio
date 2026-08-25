@@ -10,7 +10,10 @@ const SkillsScreen = () => {
   const { visible, ref } = useScreenVisibility();
 
   return (
-    <section ref={ref} className="relative flex min-h-screen items-center justify-center overflow-hidden">
+    <section
+      ref={ref}
+      className="relative flex min-h-screen items-center justify-center overflow-hidden"
+    >
       {visible && <TitlePostit title="TinyKitten" subtitle="のスキル" />}
       <div className="flex w-full flex-col items-center">
         {visible && (

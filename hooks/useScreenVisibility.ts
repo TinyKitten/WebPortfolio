@@ -1,11 +1,5 @@
 'use client';
-import {
-  type MutableRefObject,
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-} from 'react';
+import { type MutableRefObject, useCallback, useEffect, useRef, useState } from 'react';
 
 export const useScreenVisibility = (): {
   visible: boolean;

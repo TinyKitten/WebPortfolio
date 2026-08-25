@@ -9,11 +9,7 @@ type Props = {
 };
 
 const Praise = ({ onIncrement, count, className }: Props) => {
-  const {
-    value: clicked,
-    toTrue: toClicked,
-    toFalse: toNotClicked,
-  } = useFlag();
+  const { value: clicked, toTrue: toClicked, toFalse: toNotClicked } = useFlag();
 
   const handleClick = useCallback(() => {
     onIncrement();
@@ -31,11 +27,7 @@ const Praise = ({ onIncrement, count, className }: Props) => {
       >
         {clicked ? 'ありがとう！' : 'ほめる'}
       </button>
-      {count.length > 0 ? (
-        <div className="praise-balloon">
-          {count}
-        </div>
-      ) : null}
+      {count.length > 0 ? <div className="praise-balloon">{count}</div> : null}
     </div>
   );
 };

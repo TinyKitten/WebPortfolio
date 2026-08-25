@@ -13,7 +13,10 @@ export const TriviaSlider = ({ title, items }: Props) => (
   <div className="opacity-0 animate-slider">
     <Swiper slidesPerView="auto" spaceBetween={0}>
       {items.map((item) => (
-        <SwiperSlide key={item.id} style={{ width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+        <SwiperSlide
+          key={item.id}
+          style={{ width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}
+        >
           <TriviaCard title={title} item={item} visible />
         </SwiperSlide>
       ))}
