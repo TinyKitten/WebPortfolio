@@ -59,6 +59,7 @@ const PAGE_PATH_PREFIXES: readonly { prefix: string; key: KittanPageKey }[] = [
   { prefix: '/works/trainlcd', key: 'trainlcd' },
 ];
 
+/** クライアント由来の値が既知のページキーかどうかを判定します。 */
 export const isKittanPageKey = (value: unknown): value is KittanPageKey =>
   typeof value === 'string' && (KITTAN_PAGE_KEYS as readonly string[]).includes(value);
 

@@ -74,7 +74,9 @@ Edge / Workers ランタイムへそのまま移せます。
 
 - `messages` は `user` から始まり、`user` と `assistant` が交互に並び、`user` で終わる必要があります。
 - `page` は任意です。`pageContext.ts` の `KITTAN_PAGE_KEYS` にあるキーだけを受け付け、
-  未指定なら `home` として扱います。未知の値は `invalid_request`(400)で弾きます。
+  未指定なら `home` として扱います。未知の値は `invalid_request`(400)で弾きます
+  (`validateChatRequest` の詳細コード `invalid_page` は他の検証エラーと同じくレスポンスには含めず、
+  サーバーログの `validationCode=` にだけ出ます)。
 - 会話の状態はサーバーに保存しません。毎回クライアントが履歴を全部送ります。
 
 レスポンス:
