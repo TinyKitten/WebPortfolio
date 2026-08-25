@@ -2,6 +2,7 @@
 
 ポートフォリオの持ち主 TinyKitten(きったん)本人をモデルにした、おしゃべり相手のAIエージェントです。
 このディレクトリにはロジックのみが入っています(UIは未実装)。
+設計の背景と判断の記録は [docs/kittan-chat-design.md](../../docs/kittan-chat-design.md)、
 UIを実装する際は [docs/kittan-chat-ui-spec.md](../../docs/kittan-chat-ui-spec.md) を参照してください。
 
 ## 全体像
