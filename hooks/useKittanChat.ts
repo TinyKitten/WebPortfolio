@@ -1,5 +1,6 @@
 'use client';
 import { useCallback, useRef, useState } from 'react';
+import { DEFAULT_KITTAN_PAGE, type KittanPageKey } from '../lib/kittan/pageContext';
 import type { ChatMessage } from '../lib/kittan/types';
 
 export type KittanChatStatus = 'idle' | 'sending';
@@ -66,7 +67,10 @@ const buildPayload = (history: ChatMessage[]): ChatMessage[] => {
   return payload;
 };
 
-export const useKittanChat = (): UseKittanChatResult => {
+/**
+ * @param page 相手がいま見ているページ。サーバーがページ別のシステムプロンプトを選ぶのに使います。
+ */
+export const useKittanChat = (page: KittanPageKey = DEFAULT_KITTAN_PAGE): UseKittanChatResult => {
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [status, setStatus] = useState<KittanChatStatus>('idle');
   const [error, setError] = useState<KittanChatError | null>(null);
@@ -76,62 +80,66 @@ export const useKittanChat = (): UseKittanChatResult => {
   /** state 更新の遅延に依存しない多重送信ガード。 */
   const sendingRef = useRef(false);
 
-  const post = useCallback(async (history: ChatMessage[]): Promise<void> => {
-    const generation = generationRef.current;
-    sendingRef.current = true;
-    setStatus('sending');
-    setError(null);
+  const post = useCallback(
+    async (history: ChatMessage[]): Promise<void> => {
+      const generation = generationRef.current;
+      sendingRef.current = true;
+      setStatus('sending');
+      setError(null);
 
-    let nextMessages: ChatMessage[] | null = null;
-    let nextError: KittanChatError | null = null;
+      let nextMessages: ChatMessage[] | null = null;
+      let nextError: KittanChatError | null = null;
 
-    try {
-      const res = await fetch('/api/kittan-chat', {
-        method: 'POST',
-        headers: { 'content-type': 'application/json' },
-        body: JSON.stringify({ messages: buildPayload(history) }),
-      });
-      const body: unknown = await res.json();
+      try {
+        const res = await fetch('/api/kittan-chat', {
+          method: 'POST',
+          headers: { 'content-type': 'application/json' },
+          // page はサーバー側でページ別のシステムプロンプトを選ぶために使う。
+          body: JSON.stringify({ messages: buildPayload(history), page }),
+        });
+        const body: unknown = await res.json();
 
-      if (res.status === 200) {
-        const reply = (body as { reply?: unknown } | null)?.reply;
-        if (typeof reply === 'string' && reply.length > 0) {
-          nextMessages = [...history, { role: 'assistant', content: reply }];
+        if (res.status === 200) {
+          const reply = (body as { reply?: unknown } | null)?.reply;
+          if (typeof reply === 'string' && reply.length > 0) {
+            nextMessages = [...history, { role: 'assistant', content: reply }];
+          } else {
+            nextError = { message: NETWORK_ERROR_MESSAGE, retryable: true };
+          }
+        } else if (res.status === 400 && pickCode(body) === 'blocked_content') {
+          // お断り文はエラーではなく、きったんの発言として履歴に残す。
+          nextMessages = [...history, { role: 'assistant', content: pickMessage(body) }];
+        } else if (res.status === 400) {
+          nextError = { message: pickMessage(body), retryable: false };
+        } else if (res.status === 429) {
+          nextError = {
+            message: pickMessage(body),
+            retryable: true,
+            retryAt: parseRetryAt(res.headers.get('retry-after')),
+          };
+        } else if (res.status === 500 || res.status === 503) {
+          nextError = { message: pickMessage(body), retryable: true };
         } else {
           nextError = { message: NETWORK_ERROR_MESSAGE, retryable: true };
         }
-      } else if (res.status === 400 && pickCode(body) === 'blocked_content') {
-        // お断り文はエラーではなく、きったんの発言として履歴に残す。
-        nextMessages = [...history, { role: 'assistant', content: pickMessage(body) }];
-      } else if (res.status === 400) {
-        nextError = { message: pickMessage(body), retryable: false };
-      } else if (res.status === 429) {
-        nextError = {
-          message: pickMessage(body),
-          retryable: true,
-          retryAt: parseRetryAt(res.headers.get('retry-after')),
-        };
-      } else if (res.status === 500 || res.status === 503) {
-        nextError = { message: pickMessage(body), retryable: true };
-      } else {
+      } catch {
         nextError = { message: NETWORK_ERROR_MESSAGE, retryable: true };
       }
-    } catch {
-      nextError = { message: NETWORK_ERROR_MESSAGE, retryable: true };
-    }
 
-    // reset() を挟んでいたら、この結果はもう表示してはいけない。
-    if (generationRef.current !== generation) {
-      return;
-    }
+      // reset() を挟んでいたら、この結果はもう表示してはいけない。
+      if (generationRef.current !== generation) {
+        return;
+      }
 
-    if (nextMessages !== null) {
-      setMessages(nextMessages);
-    }
-    setError(nextError);
-    sendingRef.current = false;
-    setStatus('idle');
-  }, []);
+      if (nextMessages !== null) {
+        setMessages(nextMessages);
+      }
+      setError(nextError);
+      sendingRef.current = false;
+      setStatus('idle');
+    },
+    [page],
+  );
 
   const send = useCallback(
     async (text: string): Promise<void> => {

@@ -6,6 +6,7 @@ import {
   buildModerationInstruction,
   buildSystemInstruction,
 } from './persona';
+import { DEFAULT_KITTAN_PAGE, KITTAN_PAGE_CONTEXTS, KITTAN_PAGE_KEYS } from './pageContext';
 import { getPortfolioFacts } from './portfolio';
 
 const corpus = getKittanCorpus();
@@ -99,6 +100,34 @@ describe('buildSystemInstruction', () => {
 
   test('純粋関数として同じ入力から同じ結果を返す', () => {
     expect(buildSystemInstruction(corpus, portfolio)).toBe(instruction);
+  });
+
+  test('page を省略すると既定のページとして組み立てる', () => {
+    expect(buildSystemInstruction(corpus, portfolio, DEFAULT_KITTAN_PAGE)).toBe(instruction);
+  });
+
+  test.each([...KITTAN_PAGE_KEYS])('page=%s のときそのページ向けの指示を入れる', (page) => {
+    const pageInstruction = buildSystemInstruction(corpus, portfolio, page);
+    const context = KITTAN_PAGE_CONTEXTS[page];
+
+    expect(pageInstruction).toContain('## いま相手が見ているページ');
+    expect(pageInstruction).toContain(context.title);
+    expect(pageInstruction).toContain(context.summary);
+    for (const point of context.talkingPoints) {
+      expect(pageInstruction).toContain(point);
+    }
+  });
+
+  test('別のページを指定すると他のページ向けの指示は入らない', () => {
+    const trainlcd = buildSystemInstruction(corpus, portfolio, 'trainlcd');
+    expect(trainlcd).not.toContain(KITTAN_PAGE_CONTEXTS.home.summary);
+    expect(trainlcd).toContain(KITTAN_PAGE_CONTEXTS.trainlcd.summary);
+  });
+
+  test('ページが変わっても人物像と安全ルールは共通で入る', () => {
+    const trainlcd = buildSystemInstruction(corpus, portfolio, 'trainlcd');
+    expect(trainlcd).toContain('絶対に守る安全ルール(最優先)');
+    expect(trainlcd).toContain(portfolio.profile[0]);
   });
 
   test('改行を含む説明文は1行に均されている', () => {

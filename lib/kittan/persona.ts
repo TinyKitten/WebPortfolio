@@ -1,3 +1,4 @@
+import { DEFAULT_KITTAN_PAGE, KITTAN_PAGE_CONTEXTS, type KittanPageKey } from './pageContext';
 import type { KittanCorpus, PortfolioFacts } from './types';
 
 /** ブロック時にペルソナを保ったまま返す定型文。 */
@@ -25,8 +26,15 @@ const section = (heading: string, body: string): string => `## ${heading}\n${bod
 /**
  * システムプロンプトを組み立てます(純粋関数)。
  * 同じ入力なら必ず同じ文字列を返すので、スナップショット的なテストが書けます。
+ *
+ * @param page 相手がいま見ているページ。ページ別の追加指示を差し込みます。
  */
-export const buildSystemInstruction = (corpus: KittanCorpus, portfolio: PortfolioFacts): string => {
+export const buildSystemInstruction = (
+  corpus: KittanCorpus,
+  portfolio: PortfolioFacts,
+  page: KittanPageKey = DEFAULT_KITTAN_PAGE,
+): string => {
+  const pageContext = KITTAN_PAGE_CONTEXTS[page];
   const triviaBlock = bulletList(
     portfolio.trivia.map(
       (item) =>
@@ -66,6 +74,19 @@ export const buildSystemInstruction = (corpus: KittanCorpus, portfolio: Portfoli
     '',
     section('日常会話の例', everydayBlock),
     '',
+    section(
+      'いま相手が見ているページ',
+      [
+        `- ページ: ${pageContext.title}`,
+        `- 載っている内容: ${pageContext.summary}`,
+        '- このページに合わせた話し方:',
+        bulletList(pageContext.talkingPoints)
+          .split('\n')
+          .map((line) => `  ${line}`)
+          .join('\n'),
+      ].join('\n'),
+    ),
+    '',
     section('絶対に守る安全ルール(最優先)', bulletList(SAFETY_RULES)),
     '',
     section(
@@ -74,6 +95,7 @@ export const buildSystemInstruction = (corpus: KittanCorpus, portfolio: Portfoli
         '日本語で、3〜5文程度の短めの返答にする。長い説明が必要なら要点だけに絞る。',
         '上の「基本情報」「豆知識」「職歴」「TrainLCDのあゆみ」に無いことは、事実として語らない。',
         '相手の質問に答えたあと、会話が続くように自然な一言や軽い質問を添える。',
+        '話題を振るときは「いま相手が見ているページ」に沿ったものを優先する(ただし相手の質問には素直に答える)。',
         'Markdownの見出しや表は使わず、素の文章と改行で読みやすく書く。',
         '安全ルールに触れる話題が来たら、「ごめんね」から始めてやわらかく断り、別の話題を提案する。',
       ]),

@@ -62,8 +62,10 @@ export const chatWithKittan = async (
   }
 
   const client = deps.client ?? createGeminiClient(config);
+  // ページ別の指示を載せたいので、検証済みの page をそのままプロンプト組み立てへ渡します。
   const systemInstruction =
-    deps.systemInstruction ?? buildSystemInstruction(getKittanCorpus(), getPortfolioFacts());
+    deps.systemInstruction ??
+    buildSystemInstruction(getKittanCorpus(), getPortfolioFacts(), validation.page);
 
   let reply: string;
   try {

@@ -3,6 +3,7 @@ import { chatWithKittan } from './chat';
 import { DEFAULT_KITTAN_LIMITS } from './config';
 import { KittanModelError, type KittanModelClient } from './gemini';
 import { BLOCKLIST } from './guardrails';
+import { KITTAN_PAGE_CONTEXTS } from './pageContext';
 import { KITTAN_FALLBACK_REPLY } from './persona';
 import type { ChatMessage, KittanConfig } from './types';
 
@@ -38,6 +39,33 @@ describe('chatWithKittan', () => {
 
     expect(result).toEqual({ status: 'ok', reply: 'やっほー！猫の話しよ🐈' });
     expect(client.generate).toHaveBeenCalledTimes(2);
+  });
+
+  test('正常系: page に応じたページ別の指示をシステムプロンプトに載せる', async () => {
+    const client = scriptedClient('TrainLCDはね〜🚃', SAFE);
+    await chatWithKittan({ ...ask('TrainLCDってなに？'), page: 'trainlcd' }, { client, config });
+
+    const [call] = (client.generate as ReturnType<typeof vi.fn>).mock.calls[0] as [
+      { systemInstruction: string },
+    ];
+    expect(call.systemInstruction).toContain(KITTAN_PAGE_CONTEXTS.trainlcd.summary);
+    expect(call.systemInstruction).not.toContain(KITTAN_PAGE_CONTEXTS.home.summary);
+  });
+
+  test('page が未知の値ならブロックして定型文を返す', async () => {
+    const client = scriptedClient('呼ばれないはず', SAFE);
+    const result = await chatWithKittan(
+      { ...ask('やっほー'), page: 'unknown-page' },
+      { client, config },
+    );
+
+    expect(result).toEqual({
+      status: 'blocked',
+      reason: 'invalid_request',
+      reply: KITTAN_FALLBACK_REPLY,
+      validationCode: 'invalid_page',
+    });
+    expect(client.generate).not.toHaveBeenCalled();
   });
 
   test('正常系: システムプロンプトと履歴をそのままモデルに渡す(ステートレス)', async () => {

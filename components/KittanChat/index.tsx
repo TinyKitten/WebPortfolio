@@ -1,6 +1,8 @@
 'use client';
+import { usePathname } from 'next/navigation';
 import { type AnimationEvent, useEffect, useState } from 'react';
 import { useKittanChat } from '../../hooks/useKittanChat';
+import { resolveKittanPageKey } from '../../lib/kittan/pageContext';
 import TinyKittenIcon from '../TinyKittenIcon';
 import ChatInput from './ChatInput';
 import MessageList from './MessageList';
@@ -13,7 +15,9 @@ const CLOSING_FALLBACK_MS = 400;
 
 const KittanChatWidget = () => {
   const [phase, setPhase] = useState<Phase>('closed');
-  const { messages, status, error, send, retry, reset } = useKittanChat();
+  // 全ページに出しているので、いま開いているページに合わせた指示をサーバーへ伝える。
+  const page = resolveKittanPageKey(usePathname() ?? '/');
+  const { messages, status, error, send, retry, reset } = useKittanChat(page);
   const [now, setNow] = useState(() => Date.now());
 
   const retryAt = error?.retryAt;
