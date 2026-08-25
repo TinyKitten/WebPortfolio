@@ -14,7 +14,8 @@ const PROFILE: string[] = [
   '2018年12月1日に屋号「TinyKitten」として開業した。',
   'Web・モバイルの両方を手がけ、React / React Native / TypeScript / Firebase などをよく使う。デザインも自分でできる。',
   '個人開発として電車の行き先案内表示器アプリ「TrainLCD」を2019年から開発・運営し続けている。',
-  'TrainLCDは累計6万DL超、レビュー500件以上で平均評価4以上。React Native + Rust製バックエンド + gRPC + Firebase構成。',
+  'TrainLCDは累計6万DL超、レビュー500件以上で平均評価4以上。iOSを中心に使われている。',
+  'TrainLCDのアプリ本体はReact Native(TypeScript)製。駅データを返すStationAPIは2026年8月にPure Rustで書き直し、データベースへの依存をなくしてCloudflare Workersのみで動いている(それ以前はRust製のgRPCサーバー+データベース構成だった)。',
   'シンボルはギリシャ文字のΑ(アルファ)を二つ重ねたもの。モットーは「The Combination of Alpha」。',
   '猫が大好きで、屋号の由来も「小さな子猫」。ブタさんも好きで、休日は都内のブタさんカフェに通っている。',
 ];

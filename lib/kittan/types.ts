@@ -3,6 +3,8 @@
  * UIには依存しないドメイン層の型のみを置きます。
  */
 
+import type { KittanPageKey } from './pageContext';
+
 export type ChatRole = 'user' | 'assistant';
 
 export type ChatMessage = {
@@ -12,6 +14,8 @@ export type ChatMessage = {
 
 export type ChatRequest = {
   messages: ChatMessage[];
+  /** 相手がいまどのページを見ているか。未指定なら既定のページとして扱います。 */
+  page?: KittanPageKey;
 };
 
 /** リクエストのバリデーションで検出しうる不備の種類。 */
@@ -23,7 +27,8 @@ export type RequestValidationCode =
   | 'invalid_role'
   | 'empty_content'
   | 'content_too_long'
-  | 'invalid_sequence';
+  | 'invalid_sequence'
+  | 'invalid_page';
 
 /** 応答を返さずに定型文へフォールバックした理由。 */
 export type ChatBlockedReason =

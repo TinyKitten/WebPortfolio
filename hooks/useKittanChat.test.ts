@@ -1,5 +1,6 @@
 import { createRequire } from 'node:module';
 import { afterEach, describe, expect, test, vi } from 'vite-plus/test';
+import { DEFAULT_KITTAN_PAGE } from '../lib/kittan/pageContext';
 import type { ChatMessage } from '../lib/kittan/types';
 import { useKittanChat } from './useKittanChat';
 
@@ -67,6 +68,9 @@ const createFetchMock = () => {
 const sentMessages = (init: FetchInit): ChatMessage[] =>
   (JSON.parse(init.body) as { messages: ChatMessage[] }).messages;
 
+const sentPage = (init: FetchInit): string | undefined =>
+  (JSON.parse(init.body) as { page?: string }).page;
+
 const lastCall = (fetchMock: ReturnType<typeof createFetchMock>): FetchInit => {
   const call = fetchMock.mock.calls.at(-1);
   if (call === undefined) {
@@ -99,6 +103,30 @@ describe('useKittanChat', () => {
     expect(sentMessages(lastCall(fetchMock))).toEqual([
       { role: 'user', content: 'はじめまして！' },
     ]);
+  });
+
+  test('引数のページをリクエストに載せる', async () => {
+    const fetchMock = createFetchMock();
+    fetchMock.mockResolvedValue(jsonResponse(200, { reply: 'TrainLCDはね〜🚃' }));
+
+    const { result } = renderHook(() => useKittanChat('trainlcd'));
+    await act(async () => {
+      await result.current.send('TrainLCDってなに？');
+    });
+
+    expect(sentPage(lastCall(fetchMock))).toBe('trainlcd');
+  });
+
+  test('ページを省略すると既定のページを載せる', async () => {
+    const fetchMock = createFetchMock();
+    fetchMock.mockResolvedValue(jsonResponse(200, { reply: 'やっほー🐈' }));
+
+    const { result } = renderHook(() => useKittanChat());
+    await act(async () => {
+      await result.current.send('やっほー');
+    });
+
+    expect(sentPage(lastCall(fetchMock))).toBe(DEFAULT_KITTAN_PAGE);
   });
 
   test('空文字は送信しない', async () => {

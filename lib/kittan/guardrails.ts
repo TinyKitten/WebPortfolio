@@ -1,3 +1,4 @@
+import { DEFAULT_KITTAN_PAGE, isKittanPageKey, type KittanPageKey } from './pageContext';
 import { buildModerationInstruction } from './persona';
 import type {
   ChatMessage,
@@ -168,22 +169,26 @@ export const screenMessages = (messages: readonly ChatMessage[]): ScreenResult =
 };
 
 export type ValidationResult =
-  | { ok: true; messages: ChatMessage[] }
+  | { ok: true; messages: ChatMessage[]; page: KittanPageKey }
   | { ok: false; code: RequestValidationCode };
 
 const isChatRole = (value: unknown): value is ChatMessage['role'] =>
   value === 'user' || value === 'assistant';
 
 /**
- * 形・長さ・件数・role の並びを検証します。
+ * 形・長さ・件数・role の並びと、ページの指定を検証します。
  * 会話履歴は user から始まり、user と assistant が交互で、user で終わる必要があります。
+ * `page` はクライアント由来の値なので、既知のキー以外は受け付けません(未指定は既定のページ)。
  */
 export const validateChatRequest = (request: unknown, limits: KittanLimits): ValidationResult => {
   if (typeof request !== 'object' || request === null) {
     return { ok: false, code: 'invalid_body' };
   }
 
-  const { messages } = request as Partial<ChatRequest>;
+  const { messages, page } = request as Partial<ChatRequest>;
+  if (page !== undefined && !isKittanPageKey(page)) {
+    return { ok: false, code: 'invalid_page' };
+  }
   if (!Array.isArray(messages)) {
     return { ok: false, code: 'invalid_body' };
   }
@@ -226,7 +231,7 @@ export const validateChatRequest = (request: unknown, limits: KittanLimits): Val
     return { ok: false, code: 'invalid_sequence' };
   }
 
-  return { ok: true, messages: normalized };
+  return { ok: true, messages: normalized, page: page ?? DEFAULT_KITTAN_PAGE };
 };
 
 export type ModerationVerdict = 'safe' | 'unsafe' | 'failed';

@@ -9,6 +9,7 @@ import {
   screenText,
   validateChatRequest,
 } from './guardrails';
+import { DEFAULT_KITTAN_PAGE } from './pageContext';
 import type { ChatMessage, KittanConfig } from './types';
 
 const limits = DEFAULT_KITTAN_LIMITS;
@@ -24,6 +25,7 @@ describe('validateChatRequest', () => {
     expect(result).toEqual({
       ok: true,
       messages: [{ role: 'user', content: 'こんにちは' }],
+      page: DEFAULT_KITTAN_PAGE,
     });
   });
 
@@ -48,6 +50,29 @@ describe('validateChatRequest', () => {
     ['messagesが空', 'empty_messages', { messages: [] }],
   ])('%s とき %s を返す', (_label, code, body) => {
     expect(validateChatRequest(body, limits)).toEqual({ ok: false, code });
+  });
+
+  test('既知の page を指定すればそのまま返す', () => {
+    const result = validateChatRequest(
+      { messages: [userMessage('やっほー')], page: 'trainlcd' },
+      limits,
+    );
+    expect(result).toEqual({
+      ok: true,
+      messages: [{ role: 'user', content: 'やっほー' }],
+      page: 'trainlcd',
+    });
+  });
+
+  test.each([
+    ['未知の値', 'about'],
+    ['文字列でない', 1],
+    ['null', null],
+  ])('page が%sのときは invalid_page', (_label, page) => {
+    expect(validateChatRequest({ messages: [userMessage('やっほー')], page }, limits)).toEqual({
+      ok: false,
+      code: 'invalid_page',
+    });
   });
 
   test('メッセージ数が上限を超えると too_many_messages', () => {

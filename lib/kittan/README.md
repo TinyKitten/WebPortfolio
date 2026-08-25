@@ -1,39 +1,42 @@
 # 「きったんとおしゃべり」ロジック
 
 ポートフォリオの持ち主 TinyKitten(きったん)本人をモデルにした、おしゃべり相手のAIエージェントです。
-このディレクトリにはロジックのみが入っています(UIは未実装)。
+このディレクトリにはロジックのみが入っています(UIは `components/KittanChat/`。
+`app/layout.tsx` でマウントしているので、全ページの右下に出ます)。
 設計の背景と判断の記録は [docs/kittan-chat-design.md](../../docs/kittan-chat-design.md)、
 UIを実装する際は [docs/kittan-chat-ui-spec.md](../../docs/kittan-chat-ui-spec.md) を参照してください。
 
 ## 全体像
 
 ```text
-ブラウザ
+ブラウザ (components/KittanChat = 全ページの右下に常駐)
   └─ POST /api/kittan-chat          app/api/kittan-chat/route.ts
        ├─ レートリミット             lib/kittan/rateLimit.ts
        └─ chatWithKittan()          lib/kittan/chat.ts   ← 司令塔
             ├─ validateChatRequest  lib/kittan/guardrails.ts
             ├─ screenMessages       lib/kittan/guardrails.ts  (入力・ルールベース)
             ├─ buildSystemInstruction lib/kittan/persona.ts
-            │    ├─ getKittanCorpus     lib/kittan/corpus.ts   ← data/kittan/corpus.json
-            │    └─ getPortfolioFacts   lib/kittan/portfolio.ts ← constants/trivia.ts, fixtures/stories/*
+            │    ├─ getKittanCorpus       lib/kittan/corpus.ts   ← data/kittan/corpus.json
+            │    ├─ getPortfolioFacts     lib/kittan/portfolio.ts ← constants/trivia.ts, fixtures/stories/*
+            │    └─ KITTAN_PAGE_CONTEXTS  lib/kittan/pageContext.ts (ページ別の追加指示)
             ├─ KittanModelClient.generate lib/kittan/gemini.ts (Interactions API)
             ├─ screenText           lib/kittan/guardrails.ts  (出力・ルールベース)
             └─ moderateOutput       lib/kittan/guardrails.ts  (出力・LLM判定)
 ```
 
-| ファイル        | 役割                                                                                           |
-| --------------- | ---------------------------------------------------------------------------------------------- |
-| `types.ts`      | 共通の型定義。`ChatResult` は `ok` / `blocked` / `error` の判別可能なユニオン。                |
-| `config.ts`     | 環境変数の読み取り。**呼び出し時**に評価するので、鍵が無くてもビルドは通ります。               |
-| `corpus.ts`     | `data/kittan/corpus.json` を静的インポートして検証。                                           |
-| `portfolio.ts`  | サイトが表示しているデータからプロンプト用の事実情報を組み立てる純粋モジュール。               |
-| `persona.ts`    | システムプロンプトと出力チェック用プロンプトの組み立て(純粋関数)。                             |
-| `guardrails.ts` | リクエスト検証、ブロックリスト、LLMによる出力チェック。                                        |
-| `gemini.ts`     | `@google/genai` の薄いラッパー。`KittanModelClient` インターフェースでテストから差し替え可能。 |
-| `chat.ts`       | 上記を順に通す司令塔。プロバイダーの例外を外に投げません。                                     |
-| `rateLimit.ts`  | インメモリのスライディングウィンドウ。                                                         |
-| `xArchive.ts`   | X の公式アーカイブからコーパス候補を抜き出す純粋ロジック(リクエスト経路では使いません)。       |
+| ファイル         | 役割                                                                                            |
+| ---------------- | ----------------------------------------------------------------------------------------------- |
+| `types.ts`       | 共通の型定義。`ChatResult` は `ok` / `blocked` / `error` の判別可能なユニオン。                 |
+| `config.ts`      | 環境変数の読み取り。**呼び出し時**に評価するので、鍵が無くてもビルドは通ります。                |
+| `corpus.ts`      | `data/kittan/corpus.json` を静的インポートして検証。                                            |
+| `portfolio.ts`   | サイトが表示しているデータからプロンプト用の事実情報を組み立てる純粋モジュール。                |
+| `pageContext.ts` | ページ別の追加指示と、パス→ページキーの解決。クライアント・サーバー双方から読む純粋モジュール。 |
+| `persona.ts`     | システムプロンプトと出力チェック用プロンプトの組み立て(純粋関数)。                              |
+| `guardrails.ts`  | リクエスト検証、ブロックリスト、LLMによる出力チェック。                                         |
+| `gemini.ts`      | `@google/genai` の薄いラッパー。`KittanModelClient` インターフェースでテストから差し替え可能。  |
+| `chat.ts`        | 上記を順に通す司令塔。プロバイダーの例外を外に投げません。                                      |
+| `rateLimit.ts`   | インメモリのスライディングウィンドウ。                                                          |
+| `xArchive.ts`    | X の公式アーカイブからコーパス候補を抜き出す純粋ロジック(リクエスト経路では使いません)。        |
 
 すべてのモジュールはリクエスト時に Node 固有API(`fs` など)を使いません。データはすべて静的インポートなので、
 Edge / Workers ランタイムへそのまま移せます。
@@ -64,11 +67,14 @@ Edge / Workers ランタイムへそのまま移せます。
     { "role": "user", "content": "やっほー" },
     { "role": "assistant", "content": "やっほー🐈" },
     { "role": "user", "content": "TrainLCDってなに？" }
-  ]
+  ],
+  "page": "trainlcd"
 }
 ```
 
 - `messages` は `user` から始まり、`user` と `assistant` が交互に並び、`user` で終わる必要があります。
+- `page` は任意です。`pageContext.ts` の `KITTAN_PAGE_KEYS` にあるキーだけを受け付け、
+  未指定なら `home` として扱います。未知の値は `invalid_request`(400)で弾きます。
 - 会話の状態はサーバーに保存しません。毎回クライアントが履歴を全部送ります。
 
 レスポンス:
@@ -124,6 +130,29 @@ UI側はこれをそのまま吹き出しとして表示して構いません(�
   (テストコード側に該当語を書かなくて済むようにするための仕組みです)。
 
 語を追加するときは、必ず「普通の会話を巻き込まないか」のテストも `guardrails.test.ts` に足してください。
+
+## ページ別のプロンプト
+
+チャットは `app/layout.tsx` でマウントしているので全ページの右下に出ます。
+ウィジェットは `usePathname()` の値を `resolveKittanPageKey()` でキーに変換してリクエストに載せ、
+サーバーは検証したキーで `KITTAN_PAGE_CONTEXTS` を引き、システムプロンプトに
+「いま相手が見ているページ」セクションを差し込みます(人物像・事実・安全ルールは全ページ共通)。
+
+| キー       | 対象パス          | 差し込む内容                                         |
+| ---------- | ----------------- | ---------------------------------------------------- |
+| `home`     | 上記以外すべて    | サイト全体の入り口としての話の振り方。既定値。       |
+| `trainlcd` | `/works/trainlcd` | TrainLCD中心の受け答えと、答えられない範囲の線引き。 |
+
+ページを増やすときは `pageContext.ts` の3か所を直します。
+
+1. `KITTAN_PAGE_KEYS` にキーを足す(型と検証は自動で追従します)。
+2. `KITTAN_PAGE_CONTEXTS` に `title` / `summary` / `talkingPoints` を書く。
+   **ここに新しい事実を書かないこと。** 事実は `portfolio.ts`(= サイトが表示しているデータ)が単一の情報源で、
+   ここには「そのページを見ている相手にどう話すか」だけを書きます。
+3. `PAGE_PATH_PREFIXES` にパスの前方一致を足す。未知のパス(404など)は既定のキーに落ちます。
+
+`page` はクライアント由来の値なので、サーバーは既知のキー以外を受け付けません
+(`validateChatRequest` が `invalid_page` で弾きます)。
 
 ## コーパスの更新方法(重要)
 
@@ -254,6 +283,7 @@ vp test --run    # 1回だけ
 | `chat.test.ts`                                | 司令塔の分岐(正常系・入力ブロック・出力ブロック・エラー) |
 | `rateLimit.test.ts`                           | 時計を注入したウィンドウの挙動                           |
 | `persona.test.ts`                             | コーパス検証・ポートフォリオ取り込み・プロンプトの内容   |
+| `pageContext.test.ts`                         | ページ別文脈の定義とパスの解決                           |
 | `config.test.ts`                              | 環境変数の読み取り                                       |
 | `gemini.test.ts`                              | steps変換・エラーの理由コード対応づけ                    |
 | `xArchive.test.ts`                            | アーカイブの解析・整形・フィルター・並び替え             |
@@ -261,7 +291,6 @@ vp test --run    # 1回だけ
 
 ## 未実装 / 今後
 
-- UI(チャット画面)。
 - ストリーミング(上記の理由で v1 では見送り)。
 - 共有ストアによるレートリミット。
 - 会話ログの保存(現在は一切保存していません。`store: false` でモデル側にも残しません)。
