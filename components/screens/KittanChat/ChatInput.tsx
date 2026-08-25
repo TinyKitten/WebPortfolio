@@ -33,7 +33,7 @@ const ChatInput = ({ onSend, disabled }: Props) => {
   };
 
   return (
-    <div className="border-t border-theme-text/10 p-3">
+    <div className="shrink-0 border-t border-theme-text/10 p-3">
       <div className="flex items-end gap-2">
         <textarea
           value={value}

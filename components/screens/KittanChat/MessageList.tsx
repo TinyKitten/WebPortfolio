@@ -42,7 +42,7 @@ const MessageList = ({ messages, sending }: Props) => {
       ref={containerRef}
       onScroll={handleScroll}
       aria-live="polite"
-      className="flex h-[400px] flex-col gap-3 overflow-y-auto p-4 bp800:h-[480px]"
+      className="flex min-h-0 flex-1 flex-col gap-3 overflow-y-auto p-4"
     >
       <MessageBubble role="assistant" content={GREETING} />
       {/* 履歴は末尾への追記しか起きないので index をキーにしてよい。 */}

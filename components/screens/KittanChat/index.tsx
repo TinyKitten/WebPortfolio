@@ -46,12 +46,12 @@ const KittanChatScreen = () => {
       {visible && <TitlePostit title="TinyKitten" subtitle="とおしゃべり" />}
       {visible && (
         <div className="mt-[210px] flex flex-col items-center px-4 pb-16 opacity-0 animate-fade-delayed">
-          <div className="w-full max-w-[640px] overflow-hidden rounded-lg bg-box-bg drop-shadow-[0_3px_3px_rgba(0,0,0,0.16)]">
+          <div className="flex h-[500px] w-full max-w-[640px] flex-col overflow-hidden rounded-lg bg-box-bg drop-shadow-[0_3px_3px_rgba(0,0,0,0.16)] bp800:h-[580px]">
             <MessageList messages={messages} sending={status === 'sending'} />
             {error !== null && (
               <div
                 role="alert"
-                className="mx-3 flex flex-wrap items-center gap-2 rounded border border-theme-text/20 px-3 py-2 text-xs text-theme-text"
+                className="mx-3 flex shrink-0 flex-wrap items-center gap-2 rounded border border-theme-text/20 px-3 py-2 text-xs text-theme-text"
               >
                 <span className="flex-1">{error.message}</span>
                 {waitingSeconds > 0 && <span>あと{waitingSeconds}秒待ってね</span>}
