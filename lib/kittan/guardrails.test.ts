@@ -203,6 +203,10 @@ describe('parseModerationVerdict', () => {
     expect(parseModerationVerdict('\n  {"verdict":"SAFE"}  \n')).toBe('safe');
   });
 
+  test('キーと値の区切りの空白揺れは許容する', () => {
+    expect(parseModerationVerdict('{ "verdict" : "SAFE" }')).toBe('safe');
+  });
+
   test.each([
     ['空文字', ''],
     ['JSONでない', 'SAFEです'],
@@ -214,6 +218,8 @@ describe('parseModerationVerdict', () => {
     ['前置きの地の文が付いている', '判定結果です: {"verdict":"SAFE"}'],
     ['JSONオブジェクトが複数並んでいる', '{"verdict":"SAFE"} {"verdict":"UNSAFE"}'],
     ['verdictキーが重複して矛盾している', '{"verdict":"UNSAFE","verdict":"SAFE"}'],
+    ['Unicodeエスケープで矛盾を隠している', '{"verdict":"\\u0055NSAFE","verdict":"SAFE"}'],
+    ['想定外のフィールドが増えている', '{"verdict":"SAFE","note":"x"}'],
   ])('%s のときは failed(fail-closed)', (_label, raw) => {
     expect(parseModerationVerdict(raw)).toBe('failed');
   });

@@ -237,34 +237,28 @@ export type ModerateOutputDeps = {
 };
 
 /**
- * 分類器の出力を厳しく解釈します。
- * 出力全体がちょうど1つのJSONドキュメントであることを要求し、
- * 前後の地の文・コードフェンス・複数オブジェクトの並びはすべて 'failed' にします
- * (例: `{"verdict":"SAFE"} {"verdict":"UNSAFE"}` を安全と誤読しないため)。
- * さらに、SAFE と読めた場合でも元テキストに 'UNSAFE' が残っていれば 'failed' にします
- * (例: キー重複の `{"verdict":"UNSAFE","verdict":"SAFE"}` は後勝ちで SAFE と解釈されるため、
- * 矛盾した分類器出力を安全と誤読しないための保険)。
- * JSONとして読めない / verdict が SAFE でない / 矛盾している / 例外 ——
- * すべて安全側(止める)に倒します。
+ * 分類器が返してよい正規形。判定プロンプト(`buildModerationInstruction`)が
+ * 指示している2つの形だけを、前後と区切りの空白揺れを許して受け付けます。
+ */
+const CANONICAL_VERDICT = /^\{\s*"verdict"\s*:\s*"(SAFE|UNSAFE)"\s*\}$/;
+
+/**
+ * 分類器の出力を「正規形との完全一致」で解釈します(許可リスト方式)。
+ * 受理するのは `{"verdict":"SAFE"}` と `{"verdict":"UNSAFE"}` の2つだけで、
+ * それ以外はすべて 'failed'(= ブロック)に倒します。
+ *
+ * JSONとして解釈してから中身を見る方式をやめたのは、パーサの寛容さが
+ * 抜け道になるためです。キー重複(`{"verdict":"UNSAFE","verdict":"SAFE"}` は
+ * 後勝ちで SAFE になる)・値をUnicodeエスケープで書いた表記揺れ・追加フィールド・
+ * 前後の地の文やコードフェンス・複数オブジェクトの並びは、いずれも
+ * 正規形に一致しないため構造的に弾かれます。
  */
 export const parseModerationVerdict = (raw: string): ModerationVerdict => {
-  let parsed: unknown;
-  try {
-    parsed = JSON.parse(raw.trim());
-  } catch {
+  const match = CANONICAL_VERDICT.exec(raw.trim());
+  if (match === null) {
     return 'failed';
   }
-  if (typeof parsed !== 'object' || parsed === null) {
-    return 'failed';
-  }
-  const { verdict } = parsed as Record<string, unknown>;
-  if (verdict === 'SAFE') {
-    return /UNSAFE/.test(raw) ? 'failed' : 'safe';
-  }
-  if (verdict === 'UNSAFE') {
-    return 'unsafe';
-  }
-  return 'failed';
+  return match[1] === 'SAFE' ? 'safe' : 'unsafe';
 };
 
 /**
