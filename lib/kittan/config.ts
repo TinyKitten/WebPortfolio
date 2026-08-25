@@ -3,11 +3,18 @@ import type { KittanConfig, KittanLimits } from './types';
 /** 既定で使う生成モデル。KITTAN_MODEL で上書きできます。 */
 export const DEFAULT_KITTAN_MODEL = 'gemini-3.7-flash';
 
+/**
+ * 出力トークンの上限は「思考(thinking)トークンを含めた合計」の予算です。
+ * 思考トークンもこの上限を消費するため、可視出力に必要な分だけを設定すると
+ * 思考だけで予算が尽きて出力が空/途中で切れます。
+ * 分類器は `{"verdict":"SAFE"}` の十数トークンしか書きませんが、
+ * それでも思考分を含めた合計として余裕を確保しておく必要があります。
+ */
 export const DEFAULT_KITTAN_LIMITS: KittanLimits = {
   maxMessageLength: 500,
   maxHistoryTurns: 20,
-  maxOutputTokens: 640,
-  maxModerationOutputTokens: 32,
+  maxOutputTokens: 2048,
+  maxModerationOutputTokens: 1024,
 };
 
 /** 設定が足りないときに投げるエラー。詳細はユーザーには返しません。 */

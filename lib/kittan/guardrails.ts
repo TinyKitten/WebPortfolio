@@ -242,19 +242,33 @@ export type ModerateOutputDeps = {
  */
 const CANONICAL_VERDICT = /^\{\s*"verdict"\s*:\s*"(SAFE|UNSAFE)"\s*\}$/;
 
+/** 出力全体をちょうど1つだけ包むMarkdownコードフェンス(```json 〜 ``` / ``` 〜 ```)。 */
+const WRAPPING_CODE_FENCE = /^```[a-zA-Z0-9_+-]*[ \t]*\r?\n?([\s\S]*?)\r?\n?```$/;
+
+/**
+ * 「JSONだけを返せ」と指示していてもコードフェンスを付けてくる分類器がいるため、
+ * 全体を包む1つ分のフェンスだけを剥がします。剥がしたあとも正規形との完全一致しか
+ * 受理しないので、許可リスト方式は崩れません(フェンスの中身が正規形以外なら 'failed')。
+ */
+const stripWrappingCodeFence = (text: string): string => {
+  const match = WRAPPING_CODE_FENCE.exec(text);
+  return match === null ? text : (match[1] ?? '').trim();
+};
+
 /**
  * 分類器の出力を「正規形との完全一致」で解釈します(許可リスト方式)。
- * 受理するのは `{"verdict":"SAFE"}` と `{"verdict":"UNSAFE"}` の2つだけで、
+ * 受理するのは `{"verdict":"SAFE"}` と `{"verdict":"UNSAFE"}` の2つだけで
+ * (前後の空白と、全体を包むコードフェンス1つ分の揺れは吸収します)、
  * それ以外はすべて 'failed'(= ブロック)に倒します。
  *
  * JSONとして解釈してから中身を見る方式をやめたのは、パーサの寛容さが
  * 抜け道になるためです。キー重複(`{"verdict":"UNSAFE","verdict":"SAFE"}` は
  * 後勝ちで SAFE になる)・値をUnicodeエスケープで書いた表記揺れ・追加フィールド・
- * 前後の地の文やコードフェンス・複数オブジェクトの並びは、いずれも
+ * 前後の地の文・複数オブジェクトの並びは、いずれも
  * 正規形に一致しないため構造的に弾かれます。
  */
 export const parseModerationVerdict = (raw: string): ModerationVerdict => {
-  const match = CANONICAL_VERDICT.exec(raw.trim());
+  const match = CANONICAL_VERDICT.exec(stripWrappingCodeFence(raw.trim()));
   if (match === null) {
     return 'failed';
   }

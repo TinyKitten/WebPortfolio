@@ -61,9 +61,9 @@ export type KittanLimits = {
    * ここでの「ターン」は user / assistant いずれか1発言を指します。
    */
   maxHistoryTurns: number;
-  /** 本文生成時の最大出力トークン数。 */
+  /** 本文生成時の最大出力トークン数(思考トークンを含む合計)。 */
   maxOutputTokens: number;
-  /** 出力チェック(モデレーション)時の最大出力トークン数。 */
+  /** 出力チェック(モデレーション)時の最大出力トークン数(思考トークンを含む合計)。 */
   maxModerationOutputTokens: number;
 };
 

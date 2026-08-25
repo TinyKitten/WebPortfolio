@@ -208,18 +208,30 @@ describe('parseModerationVerdict', () => {
   });
 
   test.each([
+    ['```json で囲まれたSAFE', '```json\n{"verdict":"SAFE"}\n```', 'safe'],
+    ['言語指定なしのフェンスのUNSAFE', '```\n{"verdict":"UNSAFE"}\n```', 'unsafe'],
+  ])('%s は中身を読み取る', (_label, raw, expected) => {
+    expect(parseModerationVerdict(raw)).toBe(expected);
+  });
+
+  test.each([
     ['空文字', ''],
     ['JSONでない', 'SAFEです'],
     ['壊れたJSON', '{"verdict": }'],
     ['未知のverdict', '{"verdict":"MAYBE"}'],
     ['verdictが無い', '{"result":"SAFE"}'],
     ['配列', '[]'],
-    ['コードフェンスで囲まれている', '```json\n{"verdict":"UNSAFE"}\n```'],
     ['前置きの地の文が付いている', '判定結果です: {"verdict":"SAFE"}'],
     ['JSONオブジェクトが複数並んでいる', '{"verdict":"SAFE"} {"verdict":"UNSAFE"}'],
     ['verdictキーが重複して矛盾している', '{"verdict":"UNSAFE","verdict":"SAFE"}'],
     ['Unicodeエスケープで矛盾を隠している', '{"verdict":"\\u0055NSAFE","verdict":"SAFE"}'],
     ['想定外のフィールドが増えている', '{"verdict":"SAFE","note":"x"}'],
+    ['フェンスの中身が正規形でない', '```json\n{"verdict":"SAFE","note":"x"}\n```'],
+    ['フェンスの中に地の文が混ざっている', '```json\n判定: {"verdict":"SAFE"}\n```'],
+    [
+      'フェンスが複数並んでいる',
+      '```json\n{"verdict":"SAFE"}\n```\n```json\n{"verdict":"UNSAFE"}\n```',
+    ],
   ])('%s のときは failed(fail-closed)', (_label, raw) => {
     expect(parseModerationVerdict(raw)).toBe('failed');
   });

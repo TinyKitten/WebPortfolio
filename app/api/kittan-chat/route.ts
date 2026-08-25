@@ -51,10 +51,26 @@ export const resolveClientKey = (request: Request): string => {
   return realIp !== undefined && realIp.length > 0 ? realIp : 'unknown';
 };
 
+/**
+ * 停止・失敗の理由をサーバーログにだけ残します。
+ * クライアントには従来どおり定型文しか返さない(どの層で止まったかを外から観測させない)ため、
+ * 原因の切り分けはこのログ(Vercel の Function logs)からのみ行えます。
+ * プライバシー方針として、会話の内容・ユーザー入力は一切ログしません。
+ */
+const logRejection = (result: Exclude<ChatResult, { status: 'ok' }>): void => {
+  const validationCode = result.status === 'blocked' ? result.validationCode : undefined;
+  console.warn(
+    `[kittan-chat] ${result.status}: reason=${result.reason}` +
+      (validationCode === undefined ? '' : ` validationCode=${validationCode}`),
+  );
+};
+
 const toResponse = (result: ChatResult): Response => {
   if (result.status === 'ok') {
     return jsonResponse({ reply: result.reply }, 200);
   }
+
+  logRejection(result);
 
   if (result.status === 'blocked') {
     if (result.reason === 'invalid_request') {

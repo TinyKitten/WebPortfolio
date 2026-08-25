@@ -59,6 +59,20 @@ describe('readKittanLimits', () => {
     expect(readKittanLimits({})).toEqual(DEFAULT_KITTAN_LIMITS);
   });
 
+  /**
+   * 出力上限は思考トークンも消費するため、切り詰めすぎると
+   * 分類器の出力が空になって全応答がブロックされます(実環境で発生済み)。
+   * 既定値そのものを固定して、うっかり戻さないようにします。
+   */
+  test('既定の上限値', () => {
+    expect(DEFAULT_KITTAN_LIMITS).toEqual({
+      maxMessageLength: 500,
+      maxHistoryTurns: 20,
+      maxOutputTokens: 2048,
+      maxModerationOutputTokens: 1024,
+    });
+  });
+
   test('環境変数で上書きできる', () => {
     expect(
       readKittanLimits({
