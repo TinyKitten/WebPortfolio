@@ -82,5 +82,12 @@
     "endAtFullYear": 2026,
     "companyName": "株式会社ビットエー",
     "description": "toC向けネイティブアプリ開発に参画。主にReact NativeとTanStack Queryを用いたスマートフォン向けネイティブアプリ開発に従事しています。"
+  },
+  {
+    "id": "play-inc",
+    "startAtFullYear": 2026,
+    "endAtFullYear": null,
+    "companyName": "株式会社PLAY",
+    "description": "JavaScriptを用いた動画プレイヤーSDKの開発に従事しています。"
   }
 ]
