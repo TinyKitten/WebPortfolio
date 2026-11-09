@@ -234,10 +234,15 @@ const KittanChatWidget = () => {
                 setPanelSize(undefined);
               }
             }}
-            className="absolute top-0 left-0 hidden h-7 w-7 touch-none cursor-nwse-resize items-start justify-start rounded p-1.5 text-theme-text/70 hover:bg-theme-text/10 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-inset bp800:flex"
+            className="absolute top-0 left-0 hidden h-7 w-7 touch-none cursor-nwse-resize items-start justify-start rounded-tl-lg rounded-br-xl p-1.5 text-theme-text/70 hover:bg-primary/10 hover:text-primary focus-visible:bg-primary/10 focus-visible:text-primary focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-inset motion-safe:transition-colors bp800:flex"
           >
             <svg aria-hidden="true" width="14" height="14" viewBox="0 0 16 16" fill="none">
-              <path d="M3 9V3h6M3 3l10 10" stroke="currentColor" strokeWidth="1.5" />
+              <path
+                d="m3 8 5-5M3 13 13 3"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+              />
             </svg>
           </button>
           <div className="flex shrink-0 items-center gap-2 border-b border-theme-text/10 px-3 py-2 bp800:pl-8">
