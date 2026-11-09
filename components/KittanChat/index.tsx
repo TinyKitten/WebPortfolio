@@ -6,6 +6,7 @@ import {
   type KeyboardEvent as ReactKeyboardEvent,
   type PointerEvent,
   useEffect,
+  useLayoutEffect,
   useRef,
   useState,
 } from 'react';
@@ -20,6 +21,7 @@ type Phase = 'closed' | 'open' | 'closing';
 
 /** animationend が来ない環境(タブ非表示など)でも必ず閉じるための保険。 */
 const CLOSING_FALLBACK_MS = 400;
+const MODE_TRANSITION_MS = 260;
 
 type PanelSize = { width: number; height: number };
 type ResizeDrag = PanelSize & { pointerId: number; x: number; y: number };
@@ -31,6 +33,7 @@ const RESIZE_STEP = 24;
 const KittanChatWidget = () => {
   const [phase, setPhase] = useState<Phase>('closed');
   const [maximized, setMaximized] = useState(false);
+  const [animatingMode, setAnimatingMode] = useState(false);
   const [panelSize, setPanelSize] = useState<PanelSize>();
   const panelRef = useRef<HTMLDivElement>(null);
   const resizeDrag = useRef<ResizeDrag | null>(null);
@@ -42,7 +45,7 @@ const KittanChatWidget = () => {
 
   const retryAt = error?.retryAt;
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const panel = panelRef.current;
     const viewport = window.visualViewport;
     if (!maximized || phase === 'closed' || !panel || !viewport) {
@@ -64,6 +67,14 @@ const KittanChatWidget = () => {
       panel.style.removeProperty('--chat-viewport-height');
     };
   }, [maximized, phase]);
+
+  useEffect(() => {
+    if (!animatingMode) {
+      return;
+    }
+    const timer = setTimeout(() => setAnimatingMode(false), MODE_TRANSITION_MS + 50);
+    return () => clearTimeout(timer);
+  }, [animatingMode, maximized]);
 
   useEffect(() => {
     if (retryAt === undefined) {
@@ -126,6 +137,7 @@ const KittanChatWidget = () => {
       handleClose();
     } else {
       setMaximized(false);
+      setAnimatingMode(false);
       setPhase('open');
     }
   };
@@ -210,11 +222,16 @@ const KittanChatWidget = () => {
             {
               '--chat-width': panelSize && `${panelSize.width}px`,
               '--chat-height': panelSize && `${panelSize.height}px`,
+              '--chat-mode-duration': `${MODE_TRANSITION_MS}ms`,
             } as CSSProperties
           }
           className={`fixed right-5 bottom-[calc(5.5rem+env(safe-area-inset-bottom))] z-[9998] flex h-[min(60vh,480px)] w-[min(calc(100vw-2.5rem),400px)] origin-bottom-right flex-col overflow-hidden overscroll-contain rounded-lg bg-box-bg drop-shadow-[0_3px_3px_rgba(0,0,0,0.16)] bp800:h-[var(--chat-height,min(60vh,480px))] bp800:max-h-[calc(100dvh-9.25rem-env(safe-area-inset-bottom))] bp800:w-[min(var(--chat-width,400px),calc(100vw-2.5rem))] ${
             maximized
-              ? 'max-bp800:top-[var(--chat-viewport-top,0px)] max-bp800:right-0 max-bp800:bottom-auto max-bp800:z-[10000] max-bp800:h-[var(--chat-viewport-height,100dvh)] max-bp800:w-full max-bp800:rounded-none max-bp800:pt-[env(safe-area-inset-top)] max-bp800:pr-[env(safe-area-inset-right)] max-bp800:pb-[env(safe-area-inset-bottom)] max-bp800:pl-[env(safe-area-inset-left)]'
+              ? 'max-bp800:right-0 max-bp800:bottom-[calc(100dvh-var(--chat-viewport-top,0px)-var(--chat-viewport-height,100dvh))] max-bp800:h-[var(--chat-viewport-height,100dvh)] max-bp800:w-full max-bp800:rounded-none max-bp800:pt-[env(safe-area-inset-top)] max-bp800:pr-[env(safe-area-inset-right)] max-bp800:pb-[env(safe-area-inset-bottom)] max-bp800:pl-[env(safe-area-inset-left)]'
+              : ''
+          } ${maximized || animatingMode ? 'max-bp800:z-[10000]' : ''} ${
+            animatingMode
+              ? 'motion-safe:max-bp800:transition-[right,bottom,width,height,border-radius] motion-safe:max-bp800:duration-[var(--chat-mode-duration)] motion-safe:max-bp800:ease-[cubic-bezier(0.2,0.75,0.25,1)]'
               : ''
           } ${phase === 'closing' ? 'animate-genie-out' : 'opacity-0 animate-genie'}`}
         >
@@ -266,7 +283,10 @@ const KittanChatWidget = () => {
             <button
               type="button"
               aria-label={maximized ? 'チャットを元のサイズに戻す' : 'チャットを最大化'}
-              onClick={() => setMaximized(!maximized)}
+              onClick={() => {
+                setAnimatingMode(true);
+                setMaximized((previous) => !previous);
+              }}
               className="grid h-9 w-9 shrink-0 place-items-center rounded text-theme-text/70 focus-visible:ring-2 focus-visible:ring-primary bp800:hidden"
             >
               <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none">
