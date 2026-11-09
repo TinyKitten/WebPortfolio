@@ -225,7 +225,7 @@ const KittanChatWidget = () => {
               '--chat-mode-duration': `${MODE_TRANSITION_MS}ms`,
             } as CSSProperties
           }
-          className={`fixed right-5 bottom-[calc(5.5rem+env(safe-area-inset-bottom))] z-[9998] flex h-[min(60vh,480px)] w-[min(calc(100vw-2.5rem),400px)] origin-bottom-right flex-col overflow-hidden overscroll-contain rounded-lg bg-box-bg drop-shadow-[0_3px_3px_rgba(0,0,0,0.16)] bp800:h-[var(--chat-height,min(60vh,480px))] bp800:max-h-[calc(100dvh-9.25rem-env(safe-area-inset-bottom))] bp800:w-[min(var(--chat-width,400px),calc(100vw-2.5rem))] ${
+          className={`@container/chat fixed right-5 bottom-[calc(5.5rem+env(safe-area-inset-bottom))] z-[9998] flex h-[min(60vh,480px)] w-[min(calc(100vw-2.5rem),400px)] origin-bottom-right flex-col overflow-hidden overscroll-contain rounded-lg bg-box-bg drop-shadow-[0_3px_3px_rgba(0,0,0,0.16)] bp800:h-[var(--chat-height,min(60vh,480px))] bp800:max-h-[calc(100dvh-9.25rem-env(safe-area-inset-bottom))] bp800:w-[min(var(--chat-width,400px),calc(100vw-2.5rem))] ${
             maximized
               ? 'max-bp800:right-0 max-bp800:bottom-[calc(100dvh-var(--chat-viewport-top,0px)-var(--chat-viewport-height,100dvh))] max-bp800:h-[var(--chat-viewport-height,100dvh)] max-bp800:w-full max-bp800:rounded-none max-bp800:pt-[env(safe-area-inset-top)] max-bp800:pr-[env(safe-area-inset-right)] max-bp800:pb-[env(safe-area-inset-bottom)] max-bp800:pl-[env(safe-area-inset-left)]'
               : ''
@@ -270,14 +270,37 @@ const KittanChatWidget = () => {
               </svg>
             </button>
             <TinyKittenIcon className="h-6 w-6 shrink-0" aria-hidden />
-            <p className="flex-1 text-sm font-bold text-heading-text">きったんとおしゃべり</p>
+            <div className="@container min-w-0 flex-[1_1_8.75rem]">
+              {/* 全角10文字がタイトル領域に収まるよう、1文字を幅の10%以下にする。 */}
+              <p className="text-[length:min(0.875rem,10cqi)] leading-tight font-bold whitespace-nowrap text-heading-text">
+                きったんとおしゃべり
+              </p>
+            </div>
             {messages.length > 0 && (
               <button
                 type="button"
+                aria-label="会話をリセット"
+                title="会話をリセット"
                 onClick={reset}
-                className="rounded px-1 text-xs text-theme-text/70 underline focus-visible:ring-2 focus-visible:ring-primary"
+                className="shrink-0 rounded px-1 text-xs whitespace-nowrap text-theme-text/70 underline focus-visible:ring-2 focus-visible:ring-primary @max-[22rem]/chat:grid @max-[22rem]/chat:size-7 @max-[22rem]/chat:place-items-center"
               >
-                会話をリセット
+                <span className="@max-[22rem]/chat:hidden">会話をリセット</span>
+                <svg
+                  aria-hidden="true"
+                  className="hidden @max-[22rem]/chat:block"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                >
+                  <path
+                    d="M2.5 3.5v4h4M2.6 7.5a5.5 5.5 0 1 1 1.5 4.4"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
               </button>
             )}
             <button
@@ -303,7 +326,7 @@ const KittanChatWidget = () => {
               type="button"
               aria-label="閉じる"
               onClick={handleClose}
-              className="rounded px-2 text-lg leading-none text-theme-text/70 focus-visible:ring-2 focus-visible:ring-primary bp800:grid bp800:size-7 bp800:shrink-0 bp800:place-items-center bp800:px-0"
+              className="shrink-0 rounded px-2 text-lg leading-none text-theme-text/70 focus-visible:ring-2 focus-visible:ring-primary bp800:grid bp800:size-7 bp800:place-items-center bp800:px-0"
             >
               <span aria-hidden="true" className="bp800:hidden">
                 ×
