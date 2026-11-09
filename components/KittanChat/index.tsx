@@ -218,7 +218,7 @@ const KittanChatWidget = () => {
               : ''
           } ${phase === 'closing' ? 'animate-genie-out' : 'opacity-0 animate-genie'}`}
         >
-          <div className="flex shrink-0 items-center gap-2 border-b border-theme-text/10 px-3 py-2">
+          <div className="relative flex shrink-0 items-center gap-2 border-b border-theme-text/10 px-3 py-2 bp800:pl-10">
             <button
               type="button"
               aria-label="チャットのサイズを調整。矢印キーで変更し、Enterキーで元に戻す"
@@ -235,7 +235,7 @@ const KittanChatWidget = () => {
                   setPanelSize(undefined);
                 }
               }}
-              className="hidden size-7 shrink-0 touch-none cursor-nwse-resize place-items-center rounded text-theme-text/70 hover:bg-primary/10 hover:text-primary focus-visible:bg-primary/10 focus-visible:text-primary focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-inset motion-safe:transition-colors bp800:grid"
+              className="absolute top-0 left-0 hidden size-8 touch-none cursor-nwse-resize place-items-center rounded-tl-lg rounded-br-xl bg-theme-text/5 text-theme-text/70 hover:bg-primary/10 hover:text-primary focus-visible:bg-primary/10 focus-visible:text-primary focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-inset motion-safe:transition-colors bp800:grid"
             >
               <svg
                 aria-hidden="true"
