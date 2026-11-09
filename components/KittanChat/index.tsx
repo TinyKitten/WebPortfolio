@@ -235,7 +235,7 @@ const KittanChatWidget = () => {
                   setPanelSize(undefined);
                 }
               }}
-              className="absolute top-0 left-0 hidden size-8 touch-none cursor-nwse-resize place-items-center rounded-tl-lg rounded-br-xl bg-theme-text/5 text-theme-text/70 hover:bg-primary/10 hover:text-primary focus-visible:bg-primary/10 focus-visible:text-primary focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-inset motion-safe:transition-colors bp800:grid"
+              className="absolute top-0 left-0 hidden size-8 touch-none cursor-nwse-resize place-items-center rounded-tl-lg rounded-br-xl bg-theme-text/5 text-theme-text/70 hover:bg-theme-text/10 hover:text-theme-text focus-visible:bg-theme-text/10 focus-visible:text-theme-text focus-visible:ring-2 focus-visible:ring-theme-text/60 focus-visible:ring-inset motion-safe:transition-colors bp800:grid"
             >
               <svg
                 aria-hidden="true"
