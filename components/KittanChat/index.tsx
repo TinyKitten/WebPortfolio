@@ -218,7 +218,7 @@ const KittanChatWidget = () => {
               : ''
           } ${phase === 'closing' ? 'animate-genie-out' : 'opacity-0 animate-genie'}`}
         >
-          <div className="flex shrink-0 items-center gap-2 border-b border-theme-text/10 px-3 py-2">
+          <div className="flex shrink-0 items-center gap-2 border-b border-theme-text/10 px-3 py-2 bp800:px-1.5">
             <button
               type="button"
               aria-label="チャットのサイズを調整。矢印キーで変更し、Enterキーで元に戻す"
