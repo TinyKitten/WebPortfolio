@@ -218,7 +218,7 @@ const KittanChatWidget = () => {
               : ''
           } ${phase === 'closing' ? 'animate-genie-out' : 'opacity-0 animate-genie'}`}
         >
-          <div className="flex shrink-0 items-center gap-2 border-b border-theme-text/10 px-3 py-2 bp800:px-1.5">
+          <div className="flex shrink-0 items-center gap-2 border-b border-theme-text/10 px-3 py-2">
             <button
               type="button"
               aria-label="チャットのサイズを調整。矢印キーで変更し、Enterキーで元に戻す"
@@ -237,13 +237,19 @@ const KittanChatWidget = () => {
               }}
               className="hidden size-7 shrink-0 touch-none cursor-nwse-resize place-items-center rounded text-theme-text/70 hover:bg-primary/10 hover:text-primary focus-visible:bg-primary/10 focus-visible:text-primary focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-inset motion-safe:transition-colors bp800:grid"
             >
-              <svg aria-hidden="true" width="14" height="14" viewBox="0 0 16 16" fill="none">
-                <path
-                  d="m3 8 5-5M3 13 13 3"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                />
+              <svg
+                aria-hidden="true"
+                width="14"
+                height="14"
+                viewBox="0 0 16 16"
+                fill="currentColor"
+              >
+                <circle cx="3.5" cy="3.5" r="1.3" />
+                <circle cx="8" cy="3.5" r="1.3" />
+                <circle cx="12.5" cy="3.5" r="1.3" />
+                <circle cx="3.5" cy="8" r="1.3" />
+                <circle cx="8" cy="8" r="1.3" />
+                <circle cx="3.5" cy="12.5" r="1.3" />
               </svg>
             </button>
             <TinyKittenIcon className="h-6 w-6 shrink-0" aria-hidden />
