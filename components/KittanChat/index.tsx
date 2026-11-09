@@ -279,7 +279,24 @@ const KittanChatWidget = () => {
               onClick={handleClose}
               className="rounded px-2 text-lg leading-none text-theme-text/70 focus-visible:ring-2 focus-visible:ring-primary bp800:grid bp800:size-7 bp800:shrink-0 bp800:place-items-center bp800:px-0"
             >
-              ×
+              <span aria-hidden="true" className="bp800:hidden">
+                ×
+              </span>
+              <svg
+                aria-hidden="true"
+                className="hidden bp800:block"
+                width="14"
+                height="14"
+                viewBox="0 0 16 16"
+                fill="none"
+              >
+                <path
+                  d="m3 3 10 10m0-10L3 13"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                />
+              </svg>
             </button>
           </div>
           <p className="shrink-0 px-3 pt-1 text-[10px] text-theme-text/70">
