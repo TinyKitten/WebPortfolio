@@ -218,34 +218,34 @@ const KittanChatWidget = () => {
               : ''
           } ${phase === 'closing' ? 'animate-genie-out' : 'opacity-0 animate-genie'}`}
         >
-          <button
-            type="button"
-            aria-label="チャットのサイズを調整。矢印キーで変更し、Enterキーで元に戻す"
-            aria-keyshortcuts="ArrowUp ArrowDown ArrowLeft ArrowRight"
-            title="ドラッグでサイズ変更、クリックで元に戻す"
-            onPointerDown={handleResizeStart}
-            onPointerMove={handleResizeMove}
-            onLostPointerCapture={() => {
-              resizeDrag.current = null;
-            }}
-            onKeyDown={handleResizeKeyDown}
-            onClick={(event) => {
-              if (event.detail === 0 || !didResize.current) {
-                setPanelSize(undefined);
-              }
-            }}
-            className="absolute top-0 left-0 hidden h-7 w-7 touch-none cursor-nwse-resize items-start justify-start rounded-tl-lg rounded-br-xl p-1.5 text-theme-text/70 hover:bg-primary/10 hover:text-primary focus-visible:bg-primary/10 focus-visible:text-primary focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-inset motion-safe:transition-colors bp800:flex"
-          >
-            <svg aria-hidden="true" width="14" height="14" viewBox="0 0 16 16" fill="none">
-              <path
-                d="m3 8 5-5M3 13 13 3"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-              />
-            </svg>
-          </button>
-          <div className="flex shrink-0 items-center gap-2 border-b border-theme-text/10 px-3 py-2 bp800:pl-8">
+          <div className="flex shrink-0 items-center gap-2 border-b border-theme-text/10 px-3 py-2">
+            <button
+              type="button"
+              aria-label="チャットのサイズを調整。矢印キーで変更し、Enterキーで元に戻す"
+              aria-keyshortcuts="ArrowUp ArrowDown ArrowLeft ArrowRight"
+              title="ドラッグでサイズ変更、クリックで元に戻す"
+              onPointerDown={handleResizeStart}
+              onPointerMove={handleResizeMove}
+              onLostPointerCapture={() => {
+                resizeDrag.current = null;
+              }}
+              onKeyDown={handleResizeKeyDown}
+              onClick={(event) => {
+                if (event.detail === 0 || !didResize.current) {
+                  setPanelSize(undefined);
+                }
+              }}
+              className="hidden size-7 shrink-0 touch-none cursor-nwse-resize place-items-center rounded text-theme-text/70 hover:bg-primary/10 hover:text-primary focus-visible:bg-primary/10 focus-visible:text-primary focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-inset motion-safe:transition-colors bp800:grid"
+            >
+              <svg aria-hidden="true" width="14" height="14" viewBox="0 0 16 16" fill="none">
+                <path
+                  d="m3 8 5-5M3 13 13 3"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                />
+              </svg>
+            </button>
             <TinyKittenIcon className="h-6 w-6 shrink-0" aria-hidden />
             <p className="flex-1 text-sm font-bold text-heading-text">きったんとおしゃべり</p>
             {messages.length > 0 && (
@@ -277,7 +277,7 @@ const KittanChatWidget = () => {
               type="button"
               aria-label="閉じる"
               onClick={handleClose}
-              className="rounded px-2 text-lg leading-none text-theme-text/70 focus-visible:ring-2 focus-visible:ring-primary"
+              className="rounded px-2 text-lg leading-none text-theme-text/70 focus-visible:ring-2 focus-visible:ring-primary bp800:grid bp800:size-7 bp800:shrink-0 bp800:place-items-center bp800:px-0"
             >
               ×
             </button>
